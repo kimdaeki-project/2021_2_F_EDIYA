@@ -44,12 +44,12 @@ header, footer{
 	width: 100%;
 }
 
-/* hide */
+/* ======= hide ======= */
 .hide{
 	display: none;
 }
 
-/* header */
+/* ======= header ======= */
 header{
 	position: relative;
 	width: 100%;
@@ -68,17 +68,99 @@ header h1.top_logo{
 	margin-left: -101px;
 	z-index: 51;
 }
+/* ======= header 상단 파란 부분 ======= */
 header .top_align{
 	position: relative;
 	height: 50px;
 	background: #243c84;
 }
-header.top_nav.top_fixed{
-	position: fixed;
-	height: 120px;
-	border-bottom: 1px solid #d9d9d9;
-	z-index: 50;
+header .top_align .top_util{
+	float: right;
+	width: auto;
+	margin: 10px 30px 10px 0;
 }
+/* ======= 로그인 , 매장찾기, 고객의 소리, 이디야 공식몰 ======= */
+header .top_align .top_util .top_members{
+	float: left;
+	margin: 0 20px 0 25px;
+}
+.top_members li{
+	float: left;
+	margin-left: 17px;
+	padding-left: 18px;
+	background: url("../../images/common/util_line.gif") no-repeat left;
+}
+.top_members li:first-child{
+	background: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+.top_members li a{
+	font-size: 13px;
+	height: 30px;
+	line-height: 30px;
+	color: #FFF;
+}
+/* ======= 이디야 공식 SNS 링크 ======= */
+header .top_align .top_util .top_sns{
+	float: left;
+	margin: 4px 15px 0 0;
+}
+.top_sns li{
+	float: left;
+	margin: 0 5px 0 0;
+}
+.top_sns li:nth-child(1) a{
+	background: url("../../images/common/top_sns01.png") no-repeat;
+	display: block;
+	width: 22px;
+	height: 22px;
+}
+.top_sns li:nth-child(2) a{
+	background: url("../../images/common/top_sns02.png") no-repeat;
+	display: block;
+	width: 22px;
+	height: 22px;
+}
+.top_sns li:nth-child(3) a{
+	background: url("../../images/common/top_sns03.png") no-repeat;
+	display: block;
+	width: 22px;
+	height: 22px;
+}
+.top_sns li:nth-child(4) a{
+	background: url("../../images/common/top_sns04.png") no-repeat;
+	display: block;
+	width: 22px;
+	height: 22px;
+}
+/* ======= 웹 페이지 전체 검색 ======= */
+header .top_align .top_util .total_search{
+	position: relative;
+	float: left;
+	display: block;
+	width: 160px;
+	height: 30px;
+	background: #FFF;
+}
+.total_search input{
+	position: absolute;
+	left: 0;
+	width: 122px;
+	height: 30px;
+	border: none;
+}
+.total_search button{
+	position: absolute;
+	display: block;
+	right: 0;
+	width: 38px;
+	height: 30px;
+	border: none;
+	background: url("../../images/common/icon_search.gif") no-repeat center;
+	cursor: pointer;
+}
+/* ======= 메인 메뉴 ======= */
 header .main{
 	position: absolute;
 	top: 125px;
@@ -91,11 +173,11 @@ header .main{
 header.top_nav.top_fixed .main{
 	top: 75px;
 }
-header .main li{
+header .main > li{
 	background: none;
 	float: left;
 }
-header .main li a{
+header .main > li > a{
 	font-size: 16px;
 	height: auto;
 	line-height: normal;
@@ -104,3 +186,66 @@ header .main li a{
 	padding: 0 40px;
 	color: #202023;
 }
+/* ======= 메인 메뉴 호버시 ======= */
+.dropdown{
+	display: none;
+	width: 139px;
+	position: absolute;
+}
+.dropdown li{
+	width: 139px;
+	display: block;
+	padding: 5px 0 5px 40px;
+	text-align: left;
+}
+.dropdown li:first-child{
+	margin-top: 30px;
+}
+.dropdown li a{
+	font-size: 13px;
+	color: #8C8C8C;
+}
+.dropdown li a:hover{
+	color: #353535;
+}
+.main:hover .dropdown{
+	display: block;
+}
+.main:hover::after{
+	display: block;
+	content: '';
+	width: 100%;
+	position: fixed;
+	top: 90px;
+	left: 0;
+	height: 300px;
+	background: #FFF;
+	border-bottom: 2px solid #5D5D5D;
+	opacity: 1;
+	z-index: -1;
+	transition: ease-in-out;
+	transition-duration: 0.2s;
+}
+/* ======= 스크롤 50이상시 나오는 css  ======= */
+header.top_nav.top_fixed{
+	position: fixed;
+	height: 120px;
+	border-bottom: 2px solid #d9d9d9;
+	z-index: 50;
+}
+.main.changed:hover::after{
+	display: block;
+	content: '';
+	width: 100%;
+	position: fixed;
+	top: 90px;
+	left: 0;
+	height: 250px;
+	background: #FFF;
+	border-bottom: 2px solid #5D5D5D;
+	opacity: 1;
+	z-index: -1;
+	transition: ease-in-out;
+	transition-duration: 0.2s;
+}
+
