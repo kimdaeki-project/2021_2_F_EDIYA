@@ -17,7 +17,7 @@
 	<c:import url="./temp_common/header.jsp"></c:import>
 	
 	<section id="container">
-	
+	<h3>Test</h3>
 	</section>
 	
 	<c:import url="./temp_common/footer.jsp"></c:import>
