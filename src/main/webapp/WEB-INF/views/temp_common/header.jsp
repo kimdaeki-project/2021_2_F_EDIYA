@@ -4,7 +4,7 @@
 	<div class="top_align">
 		<div class="top_util">
 			<ul class="top_members">
-				<li><a href="#">로그인</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
 				<li><a href="#">매장찾기</a></li>
 				<li><a href="#">고객의 소리</a></li>
 				<li><a href="#">이디야 공식몰</a></li>
