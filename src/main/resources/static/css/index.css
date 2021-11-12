@@ -1,4 +1,35 @@
 @charset "UTF-8";
-h1{
-	color: red;
+
+/* ============ Main Slider Container ============ */
+.main_contents{
+	position: relative;
+	width: 100%;
+}
+.main_contents .slider_wrapper{
+	margin: 0 auto;
+	width: 1920px;
+}
+.main_contents .main_slider{
+	position: relative;
+	width: 1920px;
+	padding: 0;
+}
+
+/* ligth slider pager 수정 */
+.main_contents .slider_wrapper .lSSlideOuter{
+	position: relative;
+}
+.main_contents .slider_wrapper .lSSlideOuter .lSPager.lSpg{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.main_contents .slider_wrapper .lSSlideOuter .lSPager.lSpg > li a{
+	background-color: #FFF;
+	width: 10px;
+	height: 10px;
+}
+.main_contents .slider_wrapper .lSSlideOuter .lSPager.lSpg > li.active a{
+	background-color: #003399;
 }
