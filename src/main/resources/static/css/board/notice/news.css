@@ -46,7 +46,7 @@
 }
 .lnb li:not(li:nth-child(1)){
 	border-left: none;
-	margin-left: -2px;
+	margin-left: -3px;
 }
 .lnb li.on{
 	background: #84847c;

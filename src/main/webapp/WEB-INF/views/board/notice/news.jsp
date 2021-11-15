@@ -58,6 +58,7 @@
 				</div>
 				
 				<ul class="board_list">
+					<!-- event 게시판하고 다른곳 -->
 					<c:forEach begin="1" end="5" var="i">
 						<li>
 							<!-- 특별한 공지들은 board_notice 사용해서 아이콘 추가 -->
@@ -71,6 +72,7 @@
 							</div>
 						</li>
 					</c:forEach>
+					<!-- event 게시판하고 다른곳 -->
 				</ul>
 				
 				<div class="board_pager">
