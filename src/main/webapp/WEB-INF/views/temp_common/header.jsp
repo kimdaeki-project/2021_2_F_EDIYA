@@ -24,8 +24,8 @@
 		</div>
 	</div>
 	<h1 class="top_logo">
-		<a href="#">
-			<img alt="" src="images/common/top_logo.gif">
+		<a href="/">
+			<img alt="EDIYACOFFE LOGO" src="${pageContext.request.contextPath}/images/common/top_logo.gif">
 		</a>
 	</h1>
 	<div class="m_gnb">
