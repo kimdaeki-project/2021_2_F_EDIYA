@@ -16,7 +16,7 @@
 	
  <div class="login_bg">	
 	<div class="login_con">
-		<h1 class="login_tt"><img src="../images/member/login_tt.png" width="227" height="76" alt="로그인"></h1>
+		<h1 class="login_tt"><img src="../images/member/login/login_tt.png" width="227" height="76" alt="로그인"></h1>
 		<p class="login_txt">
 			<em>Welcome, Ediya Coffee</em>
 			  이디야커피에 오신 것을 환영합니다.
@@ -36,17 +36,39 @@
 					<a href="#c" onclick="">이디야 멤버스 가입정보 찾기</a>
 			</div>
 			
-	</div>
-	
-	
-	<div class="login_box" id="login_wrap">
+			
+			<div class="login_box" id="login_wrap">
 		<div id="login_form">
+		<form action="./login" name="login_form" method="POST" >
+		<fieldset>
+			<legend>ADMIN LOGIN</legend>
+				<div>                                                                           <!-- 영문만 입력  -->
+					<input type="text" name="user_id" id="user_id" placeholder="이메일을 입력하세요" style="ime-mode:disabled">
+					<input type="password" name="password" id="password" placeholder="비밀번호를 입력하세요">
+				</div>
+				
+				<div class="email_save">
+				<input type="checkbox" id="email_save">
+				<label for="email_save">이메일 저장</label>
+				</div>
+				<input type="submit" name="Submit" value="로그인" class="login_btn">
+				
+				<div class="join_btn">
+					<a href="./join">회원가입</a>
+					<a href="#c">이메일 찾기</a>
+					<a href="#c">비밀번호 찾기</a>
+				</div>
 		
+		</fieldset>
+		</form>
 		</div>
 	</div>
-	
-	
-	
+		
+			
+			
+			
+			
+	</div>
 	
 </div>	
 
