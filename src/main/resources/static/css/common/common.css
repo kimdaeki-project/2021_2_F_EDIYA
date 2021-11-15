@@ -188,9 +188,11 @@ header .main > li > a{
 }
 /* ======= 메인 메뉴 호버시 ======= */
 .dropdown{
-	display: none;
+	visibility: hidden;
 	width: 139px;
+	opacity: 0;
 	position: absolute;
+	transition: 0.15s;
 }
 .dropdown li{
 	width: 139px;
@@ -209,10 +211,23 @@ header .main > li > a{
 	color: #353535;
 }
 .main:hover .dropdown{
-	display: block;
+	visibility: visible;
+	opacity: 1;
+}
+.main:after{
+	content: '';
+	width: 100%;
+	position: fixed;
+	top: 90px;
+	left: 0;
+	height: 0px;
+	background: #FFF;
+	border-bottom: 0 solid #5D5D5D;
+	opacity: 0;
+	transition: 0.15s;
+	z-index: -1;
 }
 .main:hover::after{
-	display: block;
 	content: '';
 	width: 100%;
 	position: fixed;
@@ -223,8 +238,6 @@ header .main > li > a{
 	border-bottom: 2px solid #5D5D5D;
 	opacity: 1;
 	z-index: -1;
-	transition: ease-in-out;
-	transition-duration: 0.2s;
 }
 /* ======= 스크롤 50이상시 나오는 css  ======= */
 header.top_nav.top_fixed{
