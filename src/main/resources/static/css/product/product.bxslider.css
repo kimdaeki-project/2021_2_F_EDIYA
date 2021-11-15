@@ -92,7 +92,7 @@ ul.bxslider {
 .bx-wrapper .bx-prev {
   left: 0px;
   /*background: url('../images/bximages/controls.png') no-repeat 0 -32px;*/
-  background: url('../images/common/new_btn_arrow01.gif');
+  background: url('https://ediya.com/images/common/new_btn_arrow01.gif');
 	background-size:cover;
 }
 .bx-wrapper .bx-prev:hover,
@@ -102,7 +102,7 @@ ul.bxslider {
 .bx-wrapper .bx-next {
   right: 0px;
   /*background: url('../images/bximages/controls.png') no-repeat -43px -32px;*/
-	background: url('../images/common/new_btn_arrow02.gif');
+	background: url('https://ediya.com/images/common/new_btn_arrow02.gif');
 	background-size:cover;
 }
 .bx-wrapper .bx-next:hover,

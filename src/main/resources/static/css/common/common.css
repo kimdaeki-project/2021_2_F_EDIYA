@@ -35,11 +35,6 @@ input[type="search"]{-webkit-appearance:textfield; box-sizing:content-box; outli
 	min-height: 150vh;
 	flex-direction: column;
 }
-#container{
-	width: 100%;
-	flex: 1;
-	background-color: pink;
-}
 header, footer{
 	width: 100%;
 }
@@ -248,4 +243,3 @@ header.top_nav.top_fixed{
 	transition: ease-in-out;
 	transition-duration: 0.2s;
 }
-
