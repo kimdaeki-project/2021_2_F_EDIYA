@@ -1,0 +1,258 @@
+@charset "UTF-8";
+
+
+#contentWrap{
+
+	word-break: keep-all;
+	position: relative;
+}
+
+.sub_visual{
+	width: 100%;
+	position: relative;
+}
+
+
+.join_visual{
+	height:850px;
+	background: url(../../images/member/join/join_bg.jpg) no-repeat center;
+	background-size: cover;
+}
+
+.visual_big .sub_visual h1.con_tt{
+	padding: 226px 0 75px;
+	font-size: 48px;
+	color: #FFF;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+	text-align: center;
+	font-weight: lighter;
+	line-height: 1.2em; 
+}
+
+.visual_txt_w .sub_visual .visual_mt{
+	color: #FFF;
+	letter-spacing: 0;
+	display: block;
+    width: auto;
+    margin: -10px auto 4px;
+    font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+    text-align: center;
+    font-size: 38px;
+}
+
+.visual_txt_w .sub_visual .visual_txt{
+	color: #b9b8b8;
+	display: block;
+	width: auto;
+	margin: auto;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+	text-align: center;
+	font-size: 18px;
+	line-height: 1.3em;
+}
+
+.join_box_bg{
+	padding: 0;
+	max-width: 1180px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.join_box {
+	padding:30px 0 70px;
+	width: 100%;
+	max-width:1180px;
+	overflow: hidden;
+	margin-top: 100px;
+	margin-bottom:  100px;
+	border: 1px solid #ebebeb;
+	box-sizing: border-box;
+}
+
+.join_con{
+	padding: 44px 0 50px;
+	width: 100%;
+	max-width: 680px;
+	margin: 0 auto;
+	border-bottom: 1px solid #ebebeb; 
+}
+
+.join_con h2.join_tt{
+	font-size: 28px;
+	text-align: center;
+	color: #202022;
+	line-height: 1.4em;
+}
+
+.join_con p.join_txt{
+	font-size: 18px;
+	padding-top: 7px;
+	text-align: center; 
+}
+
+.join_email_form{
+	display: table;
+	width: 100%;
+	padding-top: 44px;
+	overflow: hidden; 
+}
+
+.join_email_form li{
+	height: 58px;
+	line-height: 58px;
+	width: 31.1%;
+	float: left;
+	overflow: hidden;
+}
+
+
+.join_email_form li input{
+	height: 58px;
+	padding-left: 20px;
+	font-size: 15px;
+	width: 100%;
+	border: solid 1px #cccccc;
+	border-radius: 3px 3px;
+	color: #707070;
+	box-sizing: border-box;
+}
+
+.join_email_form li.join_at{
+	font-size: 16px;
+	width: 3.7%;
+	margin: 0 1%;
+	text-align: center;
+	border: 0;
+}
+
+.join_select{
+	width: 31.1%;
+	margin: 0 0 0 1%;
+	background: url(../../images/member/join/pop_select_arrow.gif) no-repeat right center;
+	border: solid 1px #cccccc;
+	border-radius: 3px 3px;
+	box-sizing: border-box; 
+}
+
+
+.join_select select{
+	width: 100%;
+	height: 58px;
+	font-size: 15px;
+	background: transparent;
+	border: none;
+	padding: 5px;
+	padding-left: 15px;
+	color: #707070;
+	appearance: none;
+}
+
+.join_con h3.join_check_all{
+	padding-top: 40px;
+
+}
+
+
+.join_check_all a{
+	display:inline-block;
+	padding-left: 37px;
+	font-size: 20px;
+	background: url(../../images/member/join/join_check_on.gif) no-repeat center left; 
+
+}
+
+.join_check_list{
+	padding-top: 20px;
+}
+
+.join_check_list li{
+	clear: both;
+	margin-bottom: 10px;
+}
+
+.join_check_list li dl dt{
+	position: static;
+	overflow: hidden;
+}
+
+.join_check_list li dl dd{
+	padding-top: 15px;
+	padding-bottom: 20px;
+}
+
+.check_tt {
+	
+	display: block;
+	float: left;
+	font-size: 18px;
+}
+
+.blue_txt{
+	color: #002f6c;
+}
+
+.check_btn{
+	top: 0;
+	right: 0;
+	position: static;
+	display: inline-block;
+	float: right;
+	width: 14px;
+	height: 14px;
+	vertical-align: middle;
+	
+}
+
+.agree_con{
+	clear: both;
+	width: 100%;
+	height: 200px;
+	padding: 20px;
+	border: 1px solid #cccccc;
+	border-radius:3px;
+	background-color: #f8f8f8;
+	box-sizing: border-box;
+	overflow-y: scroll;  
+}
+
+.agree_con_tt{
+	font-size: 15px;
+	color: #002f6c;
+	margin-bottom: 25px;
+}
+
+.agree_con2{
+	clear: both;
+	width: 100%;
+	padding: 20px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	background-color: #f8f8f8;
+	box-sizing: border-box; 
+}
+
+.box_btn{
+	margin-top: 50px;
+	width: 100%;
+	max-width: 500px;
+	margin: auto;
+}
+
+.box_btn a.blue_btn{
+	margin-top:50px;
+	height: 68px;
+	line-height: 68px;
+	width: 100%;
+	max-width: none;
+	float: left;
+	display: block;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	color: #FFF;
+	background: #002f6c;
+	border-radius:3px 3px;
+	 
+	
+	
+}

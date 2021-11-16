@@ -1,0 +1,272 @@
+@charset "UTF-8";
+/* ================ notice_banner ================ */
+.notice_banner{
+	position: relative;
+	background: url("../../../images/board/notice/news_visual.jpg") no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 450px;
+}
+.notice_banner h1.banner_title{
+	padding: 116px 0 19px;
+	font-size: 48px;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	font-weight: lighter;
+	color: #202023;
+	line-height: 1.2em;
+	text-align: center;
+}
+.notice_banner .banner_subtit{
+	display: block;
+	width: auto;
+	margin: auto;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	text-align: center;
+	font-size: 18px;
+	color: #000;
+	line-height: 1.3em;
+}
+.notice_banner .banner_subtit span{
+	display: block;
+}
+
+/* lnb 지역 네비게이션바 */
+.lnb{
+	width: 100%;
+	position: absolute;
+	top: 300px;
+	text-align: center;
+}
+.lnb li{
+	width: 178px;
+	display: inline-block;
+	border: 1px solid #98989e;
+	box-sizing: border-box;
+	opacity: 0.7;
+}
+.lnb li:not(li:nth-child(1)){
+	border-left: none;
+	margin-left: -3px;
+}
+.lnb li.on{
+	background: #84847c;
+	border: 1px solid #84847c;
+	opacity: 1;
+}
+.lnb li a{
+	display: block;
+	height: 37px;
+	line-height: 37px;
+	color: #202023;
+	text-align: center;
+}
+.lnb li.on a{
+	color: #FFF;
+	font-weight: 500;
+}
+
+/* ================ contents 영역 ================ */
+.contents{
+	max-width: 1180px;
+	padding: 0 15px 100px;
+	margin: 0 auto;
+}
+.contents .location{
+	display: block;
+	max-width: 1180px;
+	text-align: right;
+	margin: 0 auto;
+	padding-top: 38px;
+	color: #898989;
+	font-size: 12px;
+}
+.contents .location span{
+	background: url("../../../images/common/icon_loc.png") right no-repeat;
+	margin-right: 8px;
+	padding-right: 15px;
+}
+
+/* == board wrap == */
+
+.contents .board_wrap{
+	padding: 0;
+}
+.board_wrap .board_top{
+	width: 100%;
+	padding: 40px 0 20px;
+	overflow: hidden;
+}
+
+/* search */
+.board_wrap .board_top .board_search{
+	width: 70%;
+	max-width: 325px;
+	float: right;
+	overflow: hidden;
+}
+.board_search .search_kind{
+	float: left;
+	width: 30%;
+	height: 40px;
+	border: 1px solid #d9d9d9;
+	margin-right: 2%;
+	padding-left: 10px;
+	border-radius: 3px;
+	background: #FFF;
+}
+.board_search .search_bar{
+	float: left;
+	width: 67%;
+	height: 38px;
+	border: 1px solid #d9d9d9;
+	border-radius: 3px;
+}
+.board_search .search_bar .search_bar_input{
+	width: 81%;
+	height: 38px;
+	border: none;
+}
+.board_search .search_bar .search_bar_btn{
+	width: 34px;
+	height: 38px;
+	background: url("../../../images/common/icon_search.gif") no-repeat 10px center;
+	float: right;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+/* list */
+.board_list{
+	border-top: 2px solid #002f6c;
+}
+.board_list li{
+	display: table;
+	width: 100%;
+	border-bottom: 1px solid #d9d9d9;
+	padding: 20px 0;
+	overflow: hidden;
+}
+.board_list li .board_num{
+	display: table-cell;
+	width: 80px;
+	vertical-align: middle;
+	text-align: center;
+	color: #202023;
+	font-weight: 700;
+}
+.board_list li .board_list_con{
+	position: relative;
+	padding-right: 200px;
+	vertical-align: middle;
+	height: 135px;
+	display: table-cell;
+}
+.board_list li .board_list_con h5 a{
+	font-size: 20px;
+	font-weight: 500;
+	color: #202023;
+	vertical-align: top;
+}
+.board_list li .board_list_con p:nth-child(2){ /* ? */
+	height: 60px;
+	margin: 30px 0 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.board_list li .board_list_con .board_date{
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	margin-top: -11px;
+	color: #898989;
+}
+
+
+/* =================== Event.jsp CSS =================== */
+.board_e_img{
+	width: 500px;
+	height: 135px;
+	margin-right: 40px;
+	margin-bottom: 0;
+	float: left;
+	background: #999;
+}
+.board_e_con{
+	float: left;
+	max-width: 435px;
+	padding-top: 10px;
+	width: 45%;
+}
+.board_e_con dt{
+	margin-bottom: 12px;
+	font-size: 20px;
+	font-weight: 500;
+	color: #202023;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.board_e_con dt a{
+	font-size: 20px;
+}
+.board_e_con dd{
+	color: #898989;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 60px;
+}
+.board_e_con dd span.blue_txt{
+	color: #002f6c;
+}
+.board_e_state{
+	float: right;
+	margin-top: 10px;
+}
+.board_e_state .go{
+	display: inline-block;
+	margin-right: 0;
+	width: 100px;
+	line-height: 30px;
+	border-radius: 30px;
+	color: #FFF;
+	text-align: center;
+	font-weight: 500;
+	background: #6bb93f;
+}
+.board_e_state .end{
+	display: inline-block;
+	margin-right: 0;
+	width: 100px;
+	line-height: 30px;
+	border-radius: 30px;
+	color: #FFF;
+	text-align: center;
+	font-weight: 500;
+	background: #898989;
+}
+
+
+
+/* pager */
+.board_pager{
+	height: 26px;
+	text-align: center;
+	margin: 50px auto 0;
+}
+.board_pager span{
+	margin: 0 19px;
+}
+.board_pager a{
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	color: #898989;
+}
+.board_pager a.page_on{ /* 해당 page 클릭시 강조 표시 */
+	font-weight: bold;
+	color: #002f6c;
+}
