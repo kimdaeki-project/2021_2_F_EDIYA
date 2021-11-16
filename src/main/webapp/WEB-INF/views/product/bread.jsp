@@ -8,10 +8,9 @@
 	<title>EDIYA COFFEE</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/common/common.css">
-	
+
 	<!-- 페이지 css -->
 	<link rel="stylesheet" type="text/css" href="../css/product/animate.css">
-	<link rel="stylesheet" type="text/css" href="../css/product/common.css">
 	<link rel="stylesheet" type="text/css" href="../css/product/ediya_2017_member.css">
 	<link rel="stylesheet" type="text/css" href="../css/product/ediya_2017_style.css">
 	<link rel="stylesheet" type="text/css" href="../css/product/ediya_2018_festa_v180912.css">
@@ -20,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/product/product.bxslider.css">
 	<link rel="stylesheet" type="text/css" href="../css/product/swiper.css">
 	
+	<link rel="stylesheet" type="text/css" href="../css/product/common.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -249,8 +249,6 @@
 
 <!-- Script -->
 	<script type="text/javascript" src="../js/common.js"></script>
-	<script type="text/javascript" src="../js/product/bread1.js"></script>
-	<script type="text/javascript" src="../js/product/bread2.js"></script>
 
 </body>
 </html>
