@@ -69,7 +69,7 @@
 			<li>
 				<a href="#">사회공헌</a>
 				<ul class="dropdown">
-					<li><a href="#">메이트 희망기금</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/campaign">메이트 희망기금</a></li>
 					<li><a href="#">캠퍼스 희망기금</a></li>
 					<li><a href="#">식수위생 캠페인</a></li>
 					<li><a href="#">이디야의 동행</a></li>

@@ -20,4 +20,10 @@ public class BoardController {
 		
 		return "board/notice/event";
 	}
+	
+	@GetMapping("campaign")
+	public String getCampaign() throws Exception{
+		
+		return "board/notice/campaign";
+	}
 }
