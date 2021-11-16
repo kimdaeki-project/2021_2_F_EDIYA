@@ -11,8 +11,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+<!-- nav -->
 <c:import url="../temp_common/header.jsp"></c:import>
+<!-- /nav -->
 
+
+<!-- popup  -->
+
+<!-- /popup  -->
+
+<!-- contents -->
 <section id="contentWrap" class="visual_big visual_txt_w">
 	<div class="sub_visual join_visual">
 		<h1 class="con_tt">
@@ -168,8 +176,10 @@
 	</div>
 
 </section>
-
+<!-- /contents -->
 	
+	<!-- footer  -->
 <c:import url="../temp_common/footer.jsp"></c:import>
+<!-- /footer  -->
 </body>
 </html>

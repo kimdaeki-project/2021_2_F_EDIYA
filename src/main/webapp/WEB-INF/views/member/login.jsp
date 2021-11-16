@@ -11,12 +11,62 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- nav  -->
 <c:import url="../temp_common/header.jsp"></c:import>
+<!-- /nav  -->
+
+
+	<!-- popup -->
+	<div class="popup_wrap" id="email_find" style="display: none;">
+		<div class="popup_blind">
+			<div class="login_popup">
+				<h1 class="pop_tt">회원확인 서비스</h1>
+				<div class="pop_close">
+				 <a href="#c" onclick="close_login_pop()">
+				 	<img alt="창닫기" src="${pageContext.request.contextPath}/images/member/pop/mypage_pop_close.gif" width="17" height="16">
+				 </a>
+				</div>
+				<h2 class="pop_con_tt">이메일을 찾을 방법을 선택해주세요.</h2>
+				<p class="pop_txt">
+					타인의 개인정보를 도용할 경우<br>
+					서비스 이용 제한 및 법적 제재를 받으실 수 있습니다.
+				</p>
+				<ul class="certify_list">
+					<li>
+						<a href="#">
+							<em>휴대폰 인증</em>
+							<span>본인 명의의 휴대폰을</span>
+							이용해 찾습니다.
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<em>이메일 인증</em>
+							<span>이메일을 이용해</span>
+							찾습니다.
+						</a>
+					</li>
+					<li>
+						<a href="#">
+						<em>가입된 정보확인</em>
+						<span>가입 시 입력한</span>
+						정보로 찾습니다.
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	
 	
+		<!-- /popup -->
+	
+	
+	
+	<!-- contents  -->
  <div class="login_bg">	
 	<div class="login_con">
-		<h1 class="login_tt"><img src="../images/member/login/login_tt.png" width="227" height="76" alt="로그인"></h1>
+		<h1 class="login_tt"><img src="${pageContext.request.contextPath}/images/member/login/login_tt.png" width="227" height="76" alt="로그인"></h1>
 		<p class="login_txt">
 			<em>Welcome, Ediya Coffee</em>
 			  이디야커피에 오신 것을 환영합니다.
@@ -43,7 +93,7 @@
 		<fieldset>
 			<legend>ADMIN LOGIN</legend>
 				<div>                                                                           <!-- 영문만 입력  -->
-					<input type="text" name="user_id" id="user_id" placeholder="이메일을 입력하세요" style="ime-mode:disabled">
+					<input type="text" name="username" id="user_id" placeholder="이메일을 입력하세요" style="ime-mode:disabled">
 					<input type="password" name="password" id="password" placeholder="비밀번호를 입력하세요">
 				</div>
 				
@@ -55,29 +105,40 @@
 				
 				<div class="join_btn">
 					<a href="./join">회원가입</a>
-					<a href="#c">이메일 찾기</a>
-					<a href="#c">비밀번호 찾기</a>
+					<a href="#c" onclick="open_login_pop('email_find')">이메일 찾기</a>
+					<a href="#c" onclick="">비밀번호 찾기</a>
 				</div>
 		
 		</fieldset>
 		</form>
 		</div>
 	</div>
-		
-			
-			
-			
+				
 			
 	</div>
 	
 </div>	
 
+	<!-- /contents  -->
 
 
+<!-- footer  -->
 <c:import url="../temp_common/footer.jsp"></c:import>
-
+<!-- /footer  -->
 
 <!-- Script -->
 	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript">
+		function close_login_pop() {
+			$(".popup_wrap").hide();
+		}
+		
+		function open_login_pop(pop_id){
+			$(".popup_wrap").hide();
+			$("#"+pop_id).css({"top":(($(window).height()-$("#"+pop_id).outerHeight())/2+ $(window).scrollTop())+"px", 	"left":(($(window).width()-$("#"+pop_id).outerWidth())/2+ $(window).scrollLeft())+"px"}); 
+			$("#"+pop_id).show();	
+		}
+		
+	</script>
 </body>
 </html>
