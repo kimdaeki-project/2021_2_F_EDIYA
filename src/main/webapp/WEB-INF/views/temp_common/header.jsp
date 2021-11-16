@@ -24,8 +24,8 @@
 		</div>
 	</div>
 	<h1 class="top_logo">
-		<a href="#">
-			<img alt="" src="images/common/top_logo.gif">
+		<a href="/">
+			<img alt="EDIYACOFFE LOGO" src="${pageContext.request.contextPath}/images/common/top_logo.gif">
 		</a>
 	</h1>
 	<div class="m_gnb">
@@ -77,10 +77,10 @@
 				</ul>
 			</li>
 			<li>
-				<a href="#">공지사항</a>
+				<a href="#">이디야 소식</a>
 				<ul class="dropdown">
-					<li><a href="#">이디야 소식</a></li>
-					<li><a href="#">이벤트</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/news">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
 					<li><a href="#">홈카페 레시피</a></li>
 					<li><a href="#">대량쿠폰구매</a></li>
 				</ul>

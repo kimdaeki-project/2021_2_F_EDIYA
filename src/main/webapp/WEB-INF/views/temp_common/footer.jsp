@@ -12,7 +12,7 @@
 	</ul>
 	<div class="bottom_ccm">
 		<span>
-			<img alt="인증마크" src="images/common/footer_ccm.png">
+			<img alt="인증마크" src="${pageContext.request.contextPath}/images/common/footer_ccm.png">
 		</span>
 	</div>
 	<div class="language_tab">
@@ -24,7 +24,7 @@
 		</ul>
 	</div>
 	<div class="bottom_logo">
-		<img alt="EDIYA COFFEE" src="images/common/bottom_logo.gif" width="210" height="20">
+		<img alt="EDIYA COFFEE" src="${pageContext.request.contextPath}/images/common/bottom_logo.gif" width="210" height="20">
 	</div>
 	<p class="copy_info">
 		<span>서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17)</span>

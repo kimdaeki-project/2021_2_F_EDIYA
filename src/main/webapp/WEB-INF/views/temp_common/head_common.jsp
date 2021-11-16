@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
     
 <!-- common -->      
-<link rel="stylesheet" type="text/css" href="css/common/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
