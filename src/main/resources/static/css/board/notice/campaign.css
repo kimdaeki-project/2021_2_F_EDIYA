@@ -29,3 +29,144 @@
 .campaign_banner .banner_subtit span{
 	display: block;
 }
+
+/* lnb 지역 네비게이션바 */
+.lnb{
+	width: 100%;
+	position: absolute;
+	top: 300px;
+	text-align: center;
+}
+.lnb li{
+	width: 178px;
+	display: inline-block;
+	border: 1px solid #98989e;
+	box-sizing: border-box;
+	opacity: 0.7;
+}
+.lnb li:not(li:nth-child(1)){
+	border-left: none;
+	margin-left: -3px;
+}
+.lnb li.on{
+	background: #FFF;
+	border: 1px solid #FFF;
+	opacity: 1;
+}
+.lnb li a{
+	display: block;
+	height: 37px;
+	line-height: 37px;
+	color: #FFF;
+	text-align: center;
+}
+.lnb li.on a{
+	color: #010101;
+	font-weight: 500;
+}
+
+/* ================ contents 영역 ================ */
+.contents{
+	max-width: 1180px;
+	padding: 0 15px 100px;
+	margin: 0 auto;
+}
+.contents .location{
+	display: block;
+	max-width: 1180px;
+	text-align: right;
+	margin: 0 auto;
+	padding-top: 38px;
+	color: #898989;
+	font-size: 12px;
+}
+.contents .location span{
+	background: url("../../../images/common/icon_loc.png") right no-repeat;
+	margin-right: 8px;
+	padding-right: 15px;
+}
+
+/* == board wrap == */
+.contents .board_wrap{
+	padding: 0;
+}
+.contents .board_wrap .board_title{
+	margin: 30px 0 30px 0;
+}
+.board_title h2{
+	font-size: 26px;
+	line-height: 1.5em;
+	background: url("../../../images/common/contents_bull.gif") no-repeat left center;
+	padding-left: 20px;
+	color: #202023;
+}
+.board_title p{
+	font-size: 20px;
+	font-weight: 300;
+	margin-top: 22px;
+	color: #202023;
+}
+.contents .board_wrap .board_list{
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+.board_list .board_list_item{
+	position: relative;
+	border: 1px solid #d9d9d9;
+	margin-top: 20px;
+	width: 578px;
+}
+.board_list .board_list_item .list_item_txt{
+	padding: 30px;
+}
+.list_item_txt a h5{
+	font-size: 18px;
+	font-weight: 500;
+	color: #002f6c;
+}
+.list_item_txt a p{
+	width: 408px;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	font-size: 13px;
+	color: #202023;
+	height: 40px;
+}
+.board_list .board_list_item .list_item_more{
+	background: #FFF;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	width: 83px;
+	height: 28px;
+	border: 1px solid #d9d9d9;
+	border-radius: 15px;
+}
+.list_item_more a{
+	text-align: center;
+	padding-top: 3px;
+	display: block;
+}
+
+/* pager */
+.board_pager{
+	height: 26px;
+	text-align: center;
+	margin: 50px auto 0;
+}
+.board_pager span{
+	margin: 0 19px;
+}
+.board_pager a{
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	color: #898989;
+}
+.board_pager a.page_on{ /* 해당 page 클릭시 강조 표시 */
+	font-weight: bold;
+	color: #002f6c;
+}
