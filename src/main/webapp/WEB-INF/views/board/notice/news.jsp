@@ -66,8 +66,8 @@
 								${i}
 							</div>
 							<div class="board_list_con">
-								<h5><a href="#">이디야 멤버스 이용약관 공지</a></h5>
-								<p><a href="#">개인정보처리방침 바로가기위치기반서비스 이용약관 바로가기</a></p>
+								<h5><a href="/board/selectList">이디야 멤버스 이용약관 공지</a></h5>
+								<p><a href="/board/selectList">개인정보처리방침 바로가기위치기반서비스 이용약관 바로가기</a></p>
 								<p class="board_date">2021.11.15</p>
 							</div>
 						</li>
