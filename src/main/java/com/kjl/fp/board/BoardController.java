@@ -8,16 +8,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board/**")
 public class BoardController {
 	
-	@GetMapping("news")
-	public String getList() throws Exception{
+	@GetMapping("notice")
+	public String goNotice() throws Exception{
 		
-		return "board/notice/news";
-		
+		return "board/ediya_news/notice";
 	}
 	
 	@GetMapping("event")
-	public String getEvent() throws Exception{
+	public String goEvent() throws Exception{
 		
-		return "board/notice/event";
+		return "board/ediya_news/event";
 	}
+	
+	@GetMapping("campaign")
+	public String goCamp() throws Exception{
+		
+		return "board/campaign/campaign";
+	}
+	
+	@GetMapping("news_view")
+	public String goDetailView() throws Exception{
+		
+		return "board/common/news_view";
+	}
+	
 }

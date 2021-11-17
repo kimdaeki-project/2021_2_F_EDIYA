@@ -27,7 +27,7 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li><a href="${pageContext.request.contextPath}/board/news">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
 				<li class="on"><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
 				<li><a href="#">대량쿠폰구매</a></li>
@@ -63,12 +63,12 @@
 						<li>
 							<!-- event -->
 							<div class="board_e_img">
-								<a href="#">
+								<a href="news_view?category=event">
 									<img alt="temp" src="${pageContext.request.contextPath}/images/temp/IMG_1628640375152.thumb">
 								</a>
 							</div>
 							<dl class="board_e_con">
-								<dt><a href="#">이디야커피X로스트아크 리미티드 에디션</a></dt>
+								<dt><a href="news_view?category=event">이디야커피X로스트아크 리미티드 에디션</a></dt>
 								<dd>
 									<span class="blue_txt">기간 : </span>
 									2021년 11월 15일 ~ 2021년 11월 31일
