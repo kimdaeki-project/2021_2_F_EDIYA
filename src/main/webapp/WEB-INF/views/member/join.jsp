@@ -181,5 +181,18 @@
 	<!-- footer  -->
 <c:import url="../temp_common/footer.jsp"></c:import>
 <!-- /footer  -->
+
+<script type="text/javascript">
+$('#join_email').change(function () {  			
+	var code = $('#join_email option:selected').val();  
+	//alert(code);
+	if (code == "etc") {  
+			$('#email_etc').val('');
+			$('#email_etc').focus();
+	} else {  
+			$('#email_etc').val(code);
+	}  
+}); 
+</script>
 </body>
 </html>
