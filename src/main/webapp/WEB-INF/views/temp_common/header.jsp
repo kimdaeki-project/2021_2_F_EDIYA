@@ -79,7 +79,7 @@
 			<li>
 				<a href="#">이디야 소식</a>
 				<ul class="dropdown">
-					<li><a href="${pageContext.request.contextPath}/board/news">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
 					<li><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
 					<li><a href="${pageContext.request.contextPath}/board/homecafe">홈카페 레시피</a></li>
 					<li><a href="${pageContext.request.contextPath}/board/manycoupon">대량쿠폰구매</a></li>

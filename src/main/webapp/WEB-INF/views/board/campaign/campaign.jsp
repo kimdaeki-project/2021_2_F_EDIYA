@@ -52,14 +52,14 @@
 				</div>
 				
 				<div class="board_list">
-					<c:forEach items="${campaign_list}" var="list">
+					<c:forEach begin="1" end="5">
 						<div class="board_list_item">
 							<div class="list_item_img">
 								<img alt="thumb" src="${pageContext.request.contextPath}/images/temp/IMG_1511156632684.png">
 							</div>
 							<div class="list_item_txt">
 								<a href="#">
-									<h5>${list}</h5>
+									<h5>aaaa</h5>
 									<p>여러분이 구입하는 비프렌드 팔찌가 남아공 결식아동에게 큰 힘이 됩니다.</p>
 								</a>
 							</div>
