@@ -263,53 +263,32 @@
               					<a href="#c" onclick="show_nutri('484')"><img src="../images/product/bread/IMG_1633651286416.png" alt="">
               					<span>토피넛 꽈루아상</span></a>
             				</li>
-            				
-			            <li>
-            	<div class="pro_detail" style="display:none; " id="nutri_483">
-              	<div class="detail_con">
-                	<h2>플레인 크로플                  <span>Plain Croiffle</span></h2>
-                  <div class="detail_close"><a href="#c" onclick="hide_nutri('483')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  <p>크루아상을 와플 모양으로 찍어 만든 크로플 위에 메이플 시럽과 슈가파우더가 올라간 기본 타입 크로플</p>
-                </div>
-                
-                <div class="detail_sns">
-                	<!-- <a href="#c"><img src="../images/menu/pro_sns01.png" width="26" height="26" alt="페이스북" /></a>
-                  <a href="#c"><img src="../images/menu/pro_sns02.png" width="26" height="26" alt="인스타그램" /></a> -->
-                </div> 
-				<div class="pro_comp">
-        			<!--pro_nutri div추가 180327-->
-        			<div class="pro_nutri">
-											<dl>
-						<dt>칼로리</dt>
-						<dd>(265kcal)</dd>
-						</dl>							
-											<dl>
-						<dt> 당류</dt>
-						<dd>(8g)</dd>
-						</dl>							
-											<dl>
-						<dt> 단백질</dt>
-						<dd>(5g)</dd>
-						</dl>							
-											<dl>
-						<dt> 포화지방</dt>
-						<dd>(6g)</dd>
-						</dl>							
-											<dl>
-						<dt> 나트륨</dt>
-						<dd>(220mg)</dd>
-						</dl>							
+            				<!-- 플레인 크로플 -->
+            				<li>
+            					<div class="pro_detail" style="display:none; " id="nutri_483">
+            						<div class="detail_con">
+            							<h2>플레인 크로플<span>Plain Croiffle</span></h2>
+            							<div class="detail_close"><a href="#c" onclick="hide_nutri('483')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
+                  						<p>크루아상을 와플 모양으로 찍어 만든 크로플 위에 메이플 시럽과 슈가파우더가 올라간 기본 타입 크로플</p>
+                  					</div>
+									<div class="pro_comp">
+										<!-- 영양정보 -->
+										<div class="pro_nutri">
+											<dl><dt>칼로리</dt><dd>(265kcal)</dd></dl>							
+											<dl><dt> 당류</dt><dd>(8g)</dd></dl>							
+											<dl><dt> 단백질</dt><dd>(5g)</dd></dl>							
+											<dl><dt> 포화지방</dt><dd>(6g)</dd></dl>							
+											<dl><dt> 나트륨</dt><dd>(220mg)</dd></dl>							
 										</div>
-         	 		<!--//pro_nutri div추가 180327-->
-										<!--알레르기 추가 180327-->
-					<div class="pro_allergy">알레르기 성분 정보 :밀, 우유</div>
-					<!--//알레르기 추가 180327-->
-					                </div>				
-              </div>              
-              <a href="#c" onclick="show_nutri('483')"><img src="../images/product/bread/IMG_1633651297107.png" alt="">
-              <span>플레인 크로플</span></a>
-            </li>
-			            <li>
+										<!-- 알레르기 성분 -->
+										<div class="pro_allergy">알레르기 성분 정보 :밀, 우유</div>
+									</div>
+								</div>
+								<a href="#c" onclick="show_nutri('483')"><img src="../images/product/bread/IMG_1633651297107.png" alt="">
+								<span>플레인 크로플</span></a>
+							</li>
+							<!-- 플레인 꽈루아상 -->
+							<li>
             	<div class="pro_detail" style="display:none; " id="nutri_485">
               	<div class="detail_con">
                 	<h2>플레인 꽈루아상                  <span>Plain Twisted Croissant</span></h2>
