@@ -1,0 +1,364 @@
+@charset "UTF-8";
+
+/* 사진 화면 */
+.bakery_visual {
+    background: url(https://ediya.com/images/menu/bakery_visual.jpg) no-repeat center;
+    background-size: cover;
+}
+.sub_visual {
+    width: 100%;
+    height: 460px;
+    position: relative;
+}
+
+/* 베이커리 글자 */
+.sub_visual h1.con_tt {
+    padding: 116px 0 19px;
+    font-size: 48px;
+    font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+    text-align: center;
+    font-weight: lighter;
+    color: #202023;
+    line-height: 1.2em;
+}
+
+/* 중간 메뉴 글자 */
+.sub_visual .menu_txt {
+    display: block;
+    width: auto;
+    margin: -10px auto 0;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    font-size: 26px;
+    color: #202023;
+}
+
+/* 메뉴 (음료, 베이커리, 원두) */
+.lnb {
+    position: absolute;
+    top: 431px;
+    text-align: center;
+    width: 100%;
+}
+
+.lnb li {
+    width: 178px;
+    display: inline-block;
+    border: solid 1px #98989e;
+    opacity: 0.7;
+    box-sizing: border-box;
+    margin-bottom: -1px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.lnb li a {
+    display: block;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+}
+
+.lnb li:first-child {
+    border-left: solid 1px #98989e;
+}
+
+.lnb li:hover a, .lnb li.on a {
+    color: #FFF;
+    font-weight: 500;
+}
+
+.lnb li:hover, .lnb li.on {
+    background: #84847c;
+    border: solid 1px #84847c;
+    opacity: 1;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Noto Sans KR', '나눔고딕', NanumGothic, '맑은 고딕', MalgunGothic, '돋움', Dotum, sans-serif;
+    font-size: 13px;
+    color: #464646;
+    line-height: 1.7em;
+    cursor: pointer;
+}
+
+a:-webkit-any-link {
+    cursor: pointer;
+}
+
+/* 우측 소메뉴 */
+
+.location {
+    display: block;
+    max-width: 1180px;
+    text-align: right;
+    margin: 0 auto;
+    padding-top: 38px;
+    color: #898989;
+    font-size: 12px;
+}
+
+.location span {
+    background: url(../images/common/icon_loc.png) right no-repeat;
+    margin-right: 8px;
+    padding-right: 15px;
+}
+
+/* 상품 */
+
+.block_new ul.pro_n {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.block_new ul.pro_n {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.con_align {
+    padding: 0;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.block_new h3 {
+    margin-bottom: 50px;
+    width: 100%;
+    background: url(https://ediya.com/images/common/menu_line.gif) no-repeat center center;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #202023;
+}
+
+h3 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.nunito {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.block_new .new_pro {
+    width: 100%;
+    position: relative;
+}
+
+.block_new .new_pro .pro_detail {
+    width: 36%;
+    margin-left: -18%;
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    border: solid 1px #e7e7e7;
+    top: 0;
+}
+
+.block_new .new_pro .pro_detail .detail_con h2 {
+    font-size: 20px;
+    color: #202023;
+    font-weight: 600;
+    font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+    border-bottom: solid 2px #202023;
+    padding: 27px 0 14px;
+}
+
+h2 {
+	margin: 0px;
+    display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.block_new .new_pro .pro_detail .detail_con h2 span {
+    display: block;
+    font-size: 15px;
+    color: #939394;
+    font-weight: 400;
+    font-family: 'Nunito Sans', sans-serif;
+    margin-top: 3px;
+}
+
+.block_new .new_pro .pro_detail .detail_con .detail_close {
+    position: absolute;
+    top: 12px;
+    right: -10%;
+    z-index: 9;
+}
+
+img {
+    border: 0px;
+    vertical-align: top;
+    width: 17px;
+    aspect-ratio: auto 17 / 16;
+    height: 16px;
+}
+
+.block_new .new_pro .pro_detail .detail_con p {
+    line-height: 1.4em;
+    margin-top: 15px;
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.block_new .new_pro .pro_detail .pro_comp {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: table;
+    z-index: 10;
+    background: #f8f8f8;
+    padding: 14px 0;
+}
+
+.block_new .new_pro .pro_detail .pro_comp .pro_nutri {
+    overflow: hidden;
+    background: url(../images/menu/pro_detail_line.gif) no-repeat center #f8f8f8;
+}
+
+.block_new .new_pro .pro_detail .pro_comp dl {
+    float: left;
+    width: 38.32%;
+    margin-left: 11.49%;
+    font-size: 13px;
+    line-height: 2em;
+}
+
+dl {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.block_new .new_pro .pro_detail .pro_comp dt {
+    display: inline-block;
+    font-weight: 300;
+}
+
+dt {
+    margin: 0px;
+    padding: 0px;
+}
+
+.block_new .new_pro .pro_detail .pro_comp dd {
+    display: inline-block;
+    font-weight: 600;
+}
+
+dd {
+    margin: 0px;
+    padding: 0px;
+    margin-inline-start: 40px;
+}
+
+.block_new .new_pro .pro_detail .pro_comp dl:nth-child(even) {
+    width: 42.16%;
+    margin-left: 8.01%;
+}
+
+.bx-wrapper {
+    margin: 0 auto;
+}
+
+.block_new ul.pro_n {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.block_new ul.pro_n li {
+    width: 320px !important;
+    margin: 0 37px !important;
+}
+
+.block_new ul.pro_n li {
+    width: 280px !important;
+    margin: 0 20px !important;
+}
+
+.block_new ul.pro_n li a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.block_new ul.pro_n li a span.new_icon {
+    right: 45px;
+    top: 35px;
+}
+
+.block_new ul.pro_n li .new_icon {
+    position: absolute;
+    width: 24%;
+}
+
+
+.block_new ul.pro_n li:nth-child(2) {
+    display: block;
+}
+
+.bx-wrapper img {
+    display: block;
+}
+
+.block_new ul.pro_n li a img {
+    margin: auto;
+}
+
+.block_new ul.pro_n li .new_icon img {
+    height: auto;
+    max-width: 66px;
+}
+
+.bx-wrapper .bx-controls-direction a {
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    outline: 0;
+    width: 50px;
+    height: 50px;
+    text-indent: -9999px;
+}
+
+.bx-wrapper .bx-prev {
+    left: 0px;
+    background: url(../images/common/new_btn_arrow01.gif);
+    background-size: cover;
+}
+
+.bx-wrapper .bx-next {
+    right: 0px;
+    background: url(../images/common/new_btn_arrow02.gif);
+    background-size: cover;
+}
+
+a:-webkit-any-link {
+    cursor: pointer;
+}
+
+
+
+.block_new .new_pro .pro_detail .pro_comp .pro_allergy {
+    width: 78.39%;
+    clear: left;
+    padding: 11px 0 3px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.4em;
+    word-break: break-all;
+    font-size: 13px;
+}
