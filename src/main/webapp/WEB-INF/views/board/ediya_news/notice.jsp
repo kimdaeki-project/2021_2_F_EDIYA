@@ -26,8 +26,8 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li class="on"><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
+				<li class="on"><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
 				<li><a href="#">대량쿠폰구매</a></li>
 			</ul>	
@@ -59,16 +59,16 @@
 				
 				<ul class="board_list">
 					<!-- event 게시판하고 다른곳 -->
-					<c:forEach begin="1" end="5" var="i">
+					<c:forEach items="${noticeAr}" var="ar">
 						<li>
 							<!-- 특별한 공지들은 board_notice 사용해서 아이콘 추가 -->
 							<div class="board_num">
-								${i}
+								${ar.board_id}
 							</div>
 							<div class="board_list_con">
-								<h5><a href="news_view?category=notice">이디야 멤버스 이용약관 공지</a></h5>
-								<p><a href="news_view?category=notice">개인정보처리방침 바로가기위치기반서비스 이용약관 바로가기</a></p>
-								<p class="board_date">2021.11.15</p>
+								<h5><a href="news_view?board_category=notice">${ar.board_title}</a></h5>
+								<p><a href="news_view?board_category=notice">${ar.board_contents}</a></p>
+								<p class="board_date">${ar.regDate}</p>
 							</div>
 						</li>
 					</c:forEach>

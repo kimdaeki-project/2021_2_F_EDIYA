@@ -27,8 +27,8 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
-				<li class="on"><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
+				<li class="on"><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
 				<li><a href="#">대량쿠폰구매</a></li>
 			</ul>	
@@ -59,19 +59,19 @@
 				</div>
 				
 				<ul class="board_list">
-					<c:forEach begin="1" end="5" var="i">
+					<c:forEach items="${eventAr}" var="ar">
 						<li>
 							<!-- event -->
 							<div class="board_e_img">
-								<a href="news_view?category=event">
+								<a href="news_view?board_category=event">
 									<img alt="temp" src="${pageContext.request.contextPath}/images/temp/IMG_1628640375152.thumb">
 								</a>
 							</div>
 							<dl class="board_e_con">
-								<dt><a href="news_view?category=event">이디야커피X로스트아크 리미티드 에디션</a></dt>
+								<dt><a href="news_view?board_category=event">${ar.board_title}</a></dt>
 								<dd>
 									<span class="blue_txt">기간 : </span>
-									2021년 11월 15일 ~ 2021년 11월 31일
+									${ar.startDate} ~ ${ar.endDate}
 								</dd>
 							</dl>
 							<div class="board_e_state">

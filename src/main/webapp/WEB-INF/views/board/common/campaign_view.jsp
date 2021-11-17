@@ -40,8 +40,8 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/notice">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
 				<li><a href="#">대량쿠폰구매</a></li>
 			</ul>	
@@ -94,7 +94,7 @@
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript">
 	/* category에 따른 lnb 적용 스크립트 */
-	let category = '${param.board_category}';
+	let category = '${param.category}';
 	if(category == 'notice'){
 		$(".lnb").children().eq(0).addClass("on");
 	}

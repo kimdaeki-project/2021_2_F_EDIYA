@@ -2,17 +2,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-  <mapper namespace="com.kjl.fp.board.campaign.CampaignRepository">
   
+  <mapper namespace="com.kjl.fp.board.BoardMapper">
   	<select id="getList" parameterType="BoardVO" resultType="BoardVO">
-  		SELECT *
-  		FROM
+  		select *
+  		from
   			board
-  		<if test="category_name != null">
-  		WHERE
-  			category_name = #{category_name}
-  		</if>
+  		where
+  			board_category = #{board_category}
   	</select>
-  	
   </mapper>
+  
