@@ -15,6 +15,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	// 공지사항, 이벤트, 캠페인
 	@GetMapping("notice")
 	public ModelAndView goNotice(BoardVO boardVO) throws Exception{
 		
@@ -45,10 +46,29 @@ public class BoardController {
 		return "board/campaign/campaign";
 	}
 	
+	// notice, event 부분 뷰 형식
 	@GetMapping("news_view")
-	public String goDetailView() throws Exception{
+	public ModelAndView goDetailView(BoardVO boardVO) throws Exception{
 		
-		return "board/common/news_view";
+		BoardVO getBoardVO = boardService.getSelectOne(boardVO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("view", getBoardVO);
+		mv.setViewName("board/common/news_view");
+		
+		return mv;
+	}
+	// campaign 부분 뷰 형식
+	@GetMapping("campaign_view")
+	public ModelAndView goCampaignView(BoardVO boardVO) throws Exception{
+		
+		BoardVO getBoardVO = boardService.getSelectOne(boardVO);
+
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("view", getBoardVO);
+		mv.setViewName("board/common/campaign_view");
+		
+		return mv;
 	}
 	
 }

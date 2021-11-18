@@ -63,12 +63,12 @@
 						<li>
 							<!-- event -->
 							<div class="board_e_img">
-								<a href="news_view?board_category=event">
+								<a href="news_view?board_category=event&board_id=${ar.board_id}">
 									<img alt="temp" src="${pageContext.request.contextPath}/images/temp/IMG_1628640375152.thumb">
 								</a>
 							</div>
 							<dl class="board_e_con">
-								<dt><a href="news_view?board_category=event">${ar.board_title}</a></dt>
+								<dt><a href="news_view?board_category=event&board_id=${ar.board_id}">${ar.board_title}</a></dt>
 								<dd>
 									<span class="blue_txt">기간 : </span>
 									${ar.startDate} ~ ${ar.endDate}

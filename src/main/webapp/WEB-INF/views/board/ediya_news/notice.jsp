@@ -66,8 +66,8 @@
 								${ar.board_id}
 							</div>
 							<div class="board_list_con">
-								<h5><a href="news_view?board_category=notice">${ar.board_title}</a></h5>
-								<p><a href="news_view?board_category=notice">${ar.board_contents}</a></p>
+								<h5><a href="news_view?board_category=notice&board_id=${ar.board_id}">${ar.board_title}</a></h5>
+								<p><a href="news_view?board_category=notice&board_id=${ar.board_id}">${ar.board_contents}</a></p>
 								<p class="board_date">${ar.regDate}</p>
 							</div>
 						</li>

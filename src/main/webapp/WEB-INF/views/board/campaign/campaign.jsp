@@ -88,7 +88,7 @@
 								</a>
 							</div>
 							<div class="list_item_more">
-								<a href="#">더 보기</a>
+								<a href="campaign_view?board_category=${param.board_category}&board_id=">더 보기</a>
 							</div>
 						</div>
 					</c:forEach>

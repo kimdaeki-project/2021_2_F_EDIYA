@@ -22,7 +22,7 @@
 	<section id="container">
 		<div class="notice_banner">
 			<c:choose>
-				<c:when test="${param.category eq 'notice'}">
+				<c:when test="${param.board_category eq 'notice'}">
 					<h1 class="banner_title">공지사항</h1>
 					<p class="banner_subtit">
 						<span>이디야는 국내 브랜드의 자부심을 지키며</span>
@@ -52,7 +52,7 @@
 				<span>HOME</span>
 				<span>이디야 소식</span>
 				<c:choose>
-					<c:when test="${param.category eq 'notice'}">
+					<c:when test="${param.board_category eq 'notice'}">
 						<span>공지사항</span>
 					</c:when>
 					<c:otherwise>
@@ -62,12 +62,14 @@
 			</div>
 			
 			<div class="board_view_title">
-				<p>이디야멤버스 이용약관 변경 공지</p>
-				<p>2021-11-17</p>
+				<p>${view.board_title}</p>
+				<p>${view.regDate}</p>
 			</div>
-			<div class="board_view_con"></div>
+			<div class="board_view_con">
+				${view.board_contents}
+			</div>
 			<div class="board_view_util">
-				<a href="#">목록보기</a>
+				<a href="./${param.board_category}?board_category=${param.board_category}">목록보기</a>
 			</div>
 			<div class="board_view_page">
 				<dl>

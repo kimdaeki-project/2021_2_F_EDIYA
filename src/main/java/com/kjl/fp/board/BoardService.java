@@ -16,5 +16,16 @@ public class BoardService {
 		
 		return boardMapper.getList(boardVO);
 	}
+	
+	// 게시글 하나 가져오기
+	public BoardVO getSelectOne(BoardVO boardVO) throws Exception{
 		
+		return boardMapper.getSelectOne(boardVO);
+	}
+	
+	// 게시글 Insert
+	public int setInsert(BoardVO boardVO) throws Exception{
+		
+		return boardMapper.setInsert(boardVO);
+	}
 }
