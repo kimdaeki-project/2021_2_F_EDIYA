@@ -1,10 +1,13 @@
 package com.kjl.fp.board;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.kjl.fp.board.util.BoardPager;
 
 @Service
 public class BoardService {
@@ -19,9 +22,19 @@ public class BoardService {
 	}
 	
 	// 게시글 리스트 가져오기
-	public List<BoardVO> getList(BoardVO boardVO) throws Exception{
+	public List<BoardVO> getList(BoardVO boardVO, BoardPager boardPager) throws Exception{
 		
-		return boardMapper.getList(boardVO);
+		boardPager.makeRow();
+		Long totalCount = boardMapper.getTotalCount(boardVO);
+		boardPager.makeNum(totalCount);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("board_category", boardVO.getBoard_category());
+		map.put("pager", boardPager);
+		
+		
+		return boardMapper.getList(map);
 	}
 	
 	// 게시글 하나 가져오기

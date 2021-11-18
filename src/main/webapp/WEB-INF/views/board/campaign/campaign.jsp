@@ -13,6 +13,23 @@
 	<script type="text/javascript">
  	$(function(){
 		 history.replaceState({}, null, location.pathname);
+		 
+		 function noRefresh() { 
+			 /* CTRL + N키 막음. */ 
+			 if ((event.keyCode == 78) && (event.ctrlKey == true)) 
+			 { 
+			 	event.keyCode = 0; 
+			 	return false; 
+			 } 
+			 /* F5 번키 막음. */ 
+			 if(event.keyCode == 116) 
+			 { 
+			 	event.keyCode = 0;
+			 
+			 	return false; 
+			 	} 
+			 } 
+		 		document.onkeydown = noRefresh;
 	});
 	</script>
 </head>
@@ -32,17 +49,21 @@
 			</p>
 			
 			<!-- lnb : local navigation bar -->
+			
 			<ul class="lnb">
-				<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=메이트희망기금">메이트 희망기금</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=캠퍼스희망기금">캠퍼스 희망기금</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=식수위생캠페인">식수위생 캠페인</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=이디야의동행">이디야의 동행</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=기타활동">기타활동</a></li>
+				<li><a href="#" data-value="메이트희망기금" class="category">메이트 희망기금</a></li>
+				<li><a href="#" data-value="캠퍼스희망기금" class="category">캠퍼스 희망기금</a></li>
+				<li><a href="#" data-value="식수위생캠페인" class="category">식수위생 캠페인</a></li>
+				<li><a href="#" data-value="이디야의동행" class="category">이디야의 동행</a></li>
+				<li><a href="#" data-value="기타활동" class="category">기타활동</a></li>
 			</ul>
 				
 		</div>
 		
 		<div class="contents">
+			
+			<input type="hidden" value="${param.board_category}" id="category">
+			
 			<div class="location">
 				<span>HOME</span>
 				<span>사회공헌활동</span>
@@ -122,6 +143,7 @@
 	
 	/* category에 따른 lnb 적용 스크립트 */
 	let category = '${param.board_category}';
+					
 	if(category == '메이트희망기금'){
 		$(".lnb").children().eq(0).addClass("on");
 	}
@@ -137,6 +159,49 @@
 	if(category == '기타활동'){
 		$(".lnb").children().eq(4).addClass("on");
 	}
+	
+	
+	$(document).on('click', '.category', function () {
+		let board_category = $('.lnb').find(this).data("value");
+		
+		$.ajax({
+			type: 'get',
+			url: 'campaign?board_category=' + board_category,
+			success: function (data) {
+				let result = $(data).find(".contents").html();
+				$(".contents").html(result);
+				
+				let category = $("#category").val();
+				
+				
+				if(category == '메이트희망기금'){
+					$(".lnb").children().eq(0).addClass("on");
+					$(".lnb").children().not(":eq(0)").removeClass("on");
+				}
+				if(category == '캠퍼스희망기금'){
+					$(".lnb").children().eq(1).addClass("on");
+					$(".lnb").children().not(":eq(1)").removeClass("on");
+				}
+				if(category == '식수위생캠페인'){
+					$(".lnb").children().eq(2).addClass("on");
+					$(".lnb").children().not(":eq(2)").removeClass("on");
+				}
+				if(category == '이디야의동행'){
+					$(".lnb").children().eq(3).addClass("on");
+					$(".lnb").children().not(":eq(3)").removeClass("on");
+				}
+				if(category == '기타활동'){
+					$(".lnb").children().eq(4).addClass("on");
+					$(".lnb").children().not(":eq(4)").removeClass("on");
+				}
+			},
+			error: function () {
+				alert("실패!");
+			}
+		});
+		
+	});
+
 	</script>
 </body>
 </html>

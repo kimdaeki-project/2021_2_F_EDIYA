@@ -10,5 +10,6 @@
   		
   		<!-- 라이브러리 -->
   		<typeAlias type="java.util.Map" alias="Map"/>
+  		<typeAlias type="java.lang.Long" alias="Long"/>
   	</typeAliases>
   </configuration>

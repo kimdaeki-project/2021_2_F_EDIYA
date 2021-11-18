@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kjl.fp.board.util.BoardPager;
+
 @Controller
 @RequestMapping("/board/**")
 public class BoardController {
@@ -49,31 +51,33 @@ public class BoardController {
 	
 	// 공지사항, 이벤트, 캠페인
 	@GetMapping("notice")
-	public ModelAndView goNotice(BoardVO boardVO) throws Exception{
+	public ModelAndView goNotice(BoardVO boardVO, BoardPager boardPager) throws Exception{
 		
-		List<BoardVO> noticeAr = boardService.getList(boardVO);
+		List<BoardVO> noticeAr = boardService.getList(boardVO, boardPager);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("noticeAr", noticeAr);
+		mv.addObject("pager", boardPager);
 		mv.setViewName("board/ediya_news/notice");
 		
 		return mv;
 	}
 	
 	@GetMapping("event")
-	public ModelAndView goEvent(BoardVO boardVO) throws Exception{
+	public ModelAndView goEvent(BoardVO boardVO, BoardPager boardPager) throws Exception{
 		
-		List<BoardVO> eventAr = boardService.getList(boardVO);
+		List<BoardVO> eventAr = boardService.getList(boardVO, boardPager);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("eventAr", eventAr);
+		mv.addObject("pager", boardPager);
 		mv.setViewName("board/ediya_news/event");
 		
 		return mv;
 	}
 	
 	@GetMapping("campaign")
-	public String goCamp() throws Exception{
+	public String goCamp(BoardVO boardVO) throws Exception{
 		
 		return "board/campaign/campaign";
 	}
@@ -103,4 +107,12 @@ public class BoardController {
 		return mv;
 	}
 	
+	
+	
+	// 기타 페이지 쿠폰, 소개 등등
+	@GetMapping("coupon")
+	public String goCoupon() throws Exception{
+		
+		return "board/ediya_news/coupon";
+	}
 }

@@ -29,7 +29,7 @@
 				<li class="on"><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
 				<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
-				<li><a href="#">대량쿠폰구매</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/coupon">대량쿠폰구매</a></li>
 			</ul>	
 		</div>
 		
@@ -85,15 +85,22 @@
 				
 				<div class="board_pager">
 					<!-- 앞 -->
-					<span><a href="#"><img alt="이전" src="${pageContext.request.contextPath}/images/common/page_prev.gif"></a></span>
+					<span><a href="notice?board_category=notice&pn=${param.pn-1}"><img alt="이전" src="${pageContext.request.contextPath}/images/common/page_prev.gif"></a></span>
 					
 					<!-- 번호 -->
-					<c:forEach begin="1" end="9" var="i">
-						<a href="#">${i}</a>
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+						<c:choose>
+							<c:when test="${empty noticeAr}">
+								<a href="#1">1</a>
+							</c:when>
+							<c:otherwise>
+								<a href="notice?board_category=notice&pn=${i}">${i}</a>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 					
 					<!-- 뒤 -->
-					<span><a href="#"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
+					<span><a href="notice?board_category=notice&pn=${param.pn+1}"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
 				</div>
 			</div>
 		</div>

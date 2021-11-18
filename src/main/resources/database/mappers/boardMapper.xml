@@ -4,12 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.kjl.fp.board.BoardMapper">
-  	<select id="getList" parameterType="BoardVO" resultType="BoardVO">
+  
+  	<select id="getList" parameterType="Map" resultType="BoardVO">
   		select *
   		from
   			board
   		where
   			board_category = #{board_category}
+  		limit
+  			#{pager.startRow}, #{pager.perPage}
   	</select>
   	
   	<select id="getSelectOne" parameterType="BoardVO" resultType="BoardVO">
@@ -18,6 +21,16 @@
   			board
   		where
   			board_id = #{board_id}
+  	</select>
+  	
+  	<!-- for pager totalCount -->
+  	<select id="getTotalCount" parameterType="BoardVO" resultType="Long">
+  		select
+  			count(board_id)
+  		from
+  			board
+  		where
+  			board_category = #{board_category}
   	</select>
   	
   	<!-- search -->
