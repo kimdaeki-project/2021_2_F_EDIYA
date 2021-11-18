@@ -60,6 +60,13 @@
 				
 				<ul class="board_list">
 					<!-- event 게시판하고 다른곳 -->
+					<c:if test="${empty noticeAr}">
+						<li>
+							<div class="empty">
+								<p>-&nbsp;&nbsp;검색 결과가 없습니다.&nbsp;&nbsp;-</p>
+							</div>
+						</li>
+					</c:if>
 					<c:forEach items="${noticeAr}" var="ar">
 						<li>
 							<!-- 특별한 공지들은 board_notice 사용해서 아이콘 추가 -->

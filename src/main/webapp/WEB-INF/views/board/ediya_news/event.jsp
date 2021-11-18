@@ -60,6 +60,13 @@
 				</div>
 				
 				<ul class="board_list">
+					<c:if test="${empty eventAr}">
+						<li>
+							<div class="empty">
+								<p>-&nbsp;&nbsp;검색 결과가 없습니다.&nbsp;&nbsp;-</p>
+							</div>
+						</li>
+					</c:if>
 					<c:forEach items="${eventAr}" var="ar">
 						<li>
 							<!-- event -->
