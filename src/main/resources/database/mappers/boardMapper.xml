@@ -20,11 +20,29 @@
   			board_id = #{board_id}
   	</select>
   	
+  	<!-- search -->
+  	<select id="getSearch" parameterType="Map" resultType="BoardVO">
+  		select *
+  		from
+  			board
+  		where
+  			board_category = #{board_category} and
+  			<choose>
+  				<when test="kind == 'title'">
+  					board_title like concat('%',#{searchValue},'%')
+  				</when>
+  				<when test="kind == 'contents'">
+  					board_contents like concat('%',#{searchValue},'%')
+  				</when>
+  			</choose>
+  	</select>
+  	
   	<insert id="setInsert" parameterType="BoardVO">
   		insert into
   			board (board_id, board_category, member_id, board_title, board_contents, regDate, startDate, endDate)
   		values
   			(null, #{board_category}, #{member_id}, #{board_title}, #{board_contents}, #{regDate}, #{startDate}, #{endDate})
   	</insert>
+  	
   </mapper>
   

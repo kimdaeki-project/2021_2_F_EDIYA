@@ -45,14 +45,15 @@
 			
 				<div class="board_top">
 					<div class="board_search">
-						<form action="#" method="get" name="frm">
+						<form action="in_search" method="get" name="frm">
 							<select name="kind" class="search_kind">
-								<option value="">제목</option>
-								<option value="">내용</option>
+								<option value="title">제목</option>
+								<option value="contents">내용</option>
 							</select>
 							<div class="search_bar">
-								<input type="text" class="search_bar_input" name="">
-								<button type="button" class="search_bar_btn"></button>
+								<input type="hidden" name="board_category" value="${param.board_category}">
+								<input type="text" class="search_bar_input" name="searchValue">
+								<button type="submit" class="search_bar_btn"></button>
 							</div>
 						</form>
 					</div>

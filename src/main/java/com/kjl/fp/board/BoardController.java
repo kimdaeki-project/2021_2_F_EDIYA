@@ -1,11 +1,14 @@
 package com.kjl.fp.board;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -14,6 +17,35 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	// in_serach 공지사항, 이벤트 내부 검색
+	@GetMapping("in_search")
+	public ModelAndView goSearch(
+			@RequestParam(value = "searchValue", required = false) String searchValue,
+			@RequestParam(value = "kind", required = false) String kind,
+			@RequestParam(value = "board_category", required = false) String board_category) throws Exception{
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		// searchValue
+		if(searchValue.equals(null)) {
+			map.put("searchValue", "");
+		}else {
+			map.put("searchValue", searchValue);
+		}
+		// kind
+		map.put("kind", kind);
+		// board_category
+		map.put("board_category", board_category);
+		
+		List<BoardVO> searchAr = boardService.getSearch(map);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject(board_category + "Ar", searchAr);
+		mv.setViewName("board/ediya_news/" + board_category);
+		
+		return mv;
+	}
 	
 	// 공지사항, 이벤트, 캠페인
 	@GetMapping("notice")

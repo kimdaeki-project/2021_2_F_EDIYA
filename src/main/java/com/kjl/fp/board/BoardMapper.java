@@ -1,11 +1,15 @@
 package com.kjl.fp.board;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BoardMapper {
+	
+	// 게시글 검색 기능
+	public List<BoardVO> getSearch(Map<String, Object> map) throws Exception;
 	
 	// 게시글 리스트 가져오기
 	public List<BoardVO> getList(BoardVO boardVO) throws Exception;

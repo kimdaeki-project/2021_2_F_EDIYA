@@ -6,5 +6,9 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.kjl.fp.board.BoardVO" alias="BoardVO"/>
+  		
+  		
+  		<!-- 라이브러리 -->
+  		<typeAlias type="java.util.Map" alias="Map"/>
   	</typeAliases>
   </configuration>
