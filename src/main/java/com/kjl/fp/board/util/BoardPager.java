@@ -49,7 +49,7 @@ public class BoardPager {
 	
 	/*---------검증---------*/
 	public Integer getPn() {
-		if(this.pn==null || this.pn==0) {
+		if(this.pn==null || this.pn<=0) {
 			this.pn = 1;
 		}
 		
