@@ -353,16 +353,8 @@
 					<option value="daum.net">daum.net</option>
 					<option value="nate.com">nate.com</option>
 					<option value="hanmail.net">hanmail.net</option>
-					<option value="hotmail.com">hotmail.com</option>
 					<option value="yahoo.co.kr">yahoo.co.kr</option>
-					<option value="korea.com">korea.com</option>
 					<option value="gmail.com">gmail.com</option>
-					<option value="empal.com">empal.com</option>
-					<option value="freechal.com">freechal.com</option>
-					<option value="dreamwiz.com">dreamwiz.com</option>
-					<option value="netian.com">netian.com</option>
-					<option value="chol.net">chol.net</option>
-								                
               </select>
             </li>            
           </ul>

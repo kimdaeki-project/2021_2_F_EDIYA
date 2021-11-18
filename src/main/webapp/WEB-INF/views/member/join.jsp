@@ -66,7 +66,7 @@
 			<div class="join_con">
 				<h2 class="join_tt ns">서비스 이용약관</h2>
 				<h3 class="join_check_all on">
-				  <a href="#c" onclick="">전체동의</a>
+				  <a href="#c" onclick="join_check_all()">전체동의</a>
 				  ( ※선택동의 사항이 포함되어 있습니다. )
 				</h3>
 				<ul class="join_check_list">
@@ -193,6 +193,14 @@ $('#join_email').change(function () {
 			$('#email_etc').val(code);
 	}  
 }); 
+
+let result = true;
+
+function join_check_all(){
+	
+	$("#service_ck,#privacy_ck,#location_ck,#use_ck,#ad_ck").prop("checked",result);
+	result = !result;
+}
 </script>
 </body>
 </html>
