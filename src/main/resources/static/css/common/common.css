@@ -31,8 +31,9 @@ input[type="search"]{-webkit-appearance:textfield; box-sizing:content-box; outli
 /* 기본 틀 */
 #wrapper{
 	width: 100%;
+	height: auto;
 	display: flex;
-	min-height: 150vh;
+	min-height: 100vh;
 	flex-direction: column;
 }
 
