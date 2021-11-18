@@ -46,7 +46,7 @@
 }
 .lnb li:not(li:nth-child(1)){
 	border-left: none;
-	margin-left: -3px;
+	margin-left: -4px;
 }
 .lnb li.on{
 	background: #FFF;
@@ -59,6 +59,15 @@
 	line-height: 37px;
 	color: #FFF;
 	text-align: center;
+}
+.lnb li:hover{
+	opacity: 1;
+}
+.lnb li a:hover{
+	background: #FFF;
+	box-sizing: border-box;
+	color: #010101;
+	font-weight: 500;
 }
 .lnb li.on a{
 	color: #010101;
