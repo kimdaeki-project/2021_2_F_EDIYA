@@ -7,9 +7,14 @@
   	<typeAliases>
   		<typeAlias type="com.kjl.fp.board.BoardVO" alias="BoardVO"/>
   		
+  		<!-- 삼품 -->
+  		<typeAlias type="com.kjl.fp.product.bread.BreadVO" alias="BreadVO"/>
+  		<!-- <typeAlias type="com.kjl.fp.product.bread.DrinkVO" alias="DrinkVO"/> -->
   		
   		<!-- 라이브러리 -->
   		<typeAlias type="java.util.Map" alias="Map"/>
   		<typeAlias type="java.lang.Long" alias="Long"/>
+  		
+  		
   	</typeAliases>
   </configuration>

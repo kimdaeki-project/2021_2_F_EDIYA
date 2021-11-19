@@ -6,7 +6,7 @@
 <mapper namespace="com.kjl.fp.product.breadMapper">
 
 	
-	<select id="selectOne" parameterMap="breadVO">
+	<select id="breadSelectAll" parameterType="BreadVO" resultType="BreadVO">
 		select * from productbread
 	</select>
  
