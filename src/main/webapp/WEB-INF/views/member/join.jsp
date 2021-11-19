@@ -11,8 +11,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+<!-- nav -->
 <c:import url="../temp_common/header.jsp"></c:import>
+<!-- /nav -->
 
+
+<!-- popup  -->
+
+<!-- /popup  -->
+
+<!-- contents -->
 <section id="contentWrap" class="visual_big visual_txt_w">
 	<div class="sub_visual join_visual">
 		<h1 class="con_tt">
@@ -58,7 +66,7 @@
 			<div class="join_con">
 				<h2 class="join_tt ns">서비스 이용약관</h2>
 				<h3 class="join_check_all on">
-				  <a href="#c" onclick="">전체동의</a>
+				  <a href="#c" onclick="join_check_all()">전체동의</a>
 				  ( ※선택동의 사항이 포함되어 있습니다. )
 				</h3>
 				<ul class="join_check_list">
@@ -168,8 +176,31 @@
 	</div>
 
 </section>
-
+<!-- /contents -->
 	
+	<!-- footer  -->
 <c:import url="../temp_common/footer.jsp"></c:import>
+<!-- /footer  -->
+
+<script type="text/javascript">
+$('#join_email').change(function () {  			
+	var code = $('#join_email option:selected').val();  
+	//alert(code);
+	if (code == "etc") {  
+			$('#email_etc').val('');
+			$('#email_etc').focus();
+	} else {  
+			$('#email_etc').val(code);
+	}  
+}); 
+
+let result = true;
+
+function join_check_all(){
+	
+	$("#service_ck,#privacy_ck,#location_ck,#use_ck,#ad_ck").prop("checked",result);
+	result = !result;
+}
+</script>
 </body>
 </html>

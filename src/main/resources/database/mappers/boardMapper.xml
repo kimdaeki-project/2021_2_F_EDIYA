@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.kjl.fp.board.BoardMapper">
+  
+  	<select id="getList" parameterType="Map" resultType="BoardVO">
+  		select *
+  		from
+  			board
+  		where
+  			board_category = #{board_category}
+  		limit
+  			#{pager.startRow}, #{pager.perPage}
+  	</select>
+  	
+  	<select id="getSelectOne" parameterType="BoardVO" resultType="BoardVO">
+  		select *
+  		from
+  			board
+  		where
+  			board_id = #{board_id}
+  	</select>
+  	
+  	<!-- for pager totalCount -->
+  	<select id="getTotalCount" parameterType="BoardVO" resultType="Long">
+  		select
+  			count(board_id)
+  		from
+  			board
+  		where
+  			board_category = #{board_category}
+  	</select>
+  	
+  	<!-- search -->
+  	<select id="getSearch" parameterType="Map" resultType="BoardVO">
+  		select *
+  		from
+  			board
+  		where
+  			board_category = #{board_category} and
+  			<choose>
+  				<when test="kind == 'title'">
+  					board_title like concat('%',#{searchValue},'%')
+  				</when>
+  				<when test="kind == 'contents'">
+  					board_contents like concat('%',#{searchValue},'%')
+  				</when>
+  			</choose>
+  	</select>
+  	
+  	<insert id="setInsert" parameterType="BoardVO">
+  		insert into
+  			board (board_id, board_category, member_id, board_title, board_contents, regDate, startDate, endDate)
+  		values
+  			(null, #{board_category}, #{member_id}, #{board_title}, #{board_contents}, #{regDate}, #{startDate}, #{endDate})
+  	</insert>
+  	
+  </mapper>
+  

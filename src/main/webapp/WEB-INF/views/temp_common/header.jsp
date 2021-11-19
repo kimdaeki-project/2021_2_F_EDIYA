@@ -69,20 +69,20 @@
 			<li>
 				<a href="#">사회공헌</a>
 				<ul class="dropdown">
-					<li><a href="#">메이트 희망기금</a></li>
-					<li><a href="#">캠퍼스 희망기금</a></li>
-					<li><a href="#">식수위생 캠페인</a></li>
-					<li><a href="#">이디야의 동행</a></li>
-					<li><a href="#">기타 활동</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=메이트희망기금">메이트 희망기금</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=캠퍼스희망기금">캠퍼스 희망기금</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=식수위생캠페인">식수위생 캠페인</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=이디야의동행">이디야의 동행</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/campaign?board_category=기타활동">기타 활동</a></li>
 				</ul>
 			</li>
 			<li>
 				<a href="#">이디야 소식</a>
 				<ul class="dropdown">
-					<li><a href="${pageContext.request.contextPath}/board/news">공지사항</a></li>
-					<li><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
-					<li><a href="#">홈카페 레시피</a></li>
-					<li><a href="#">대량쿠폰구매</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/homecafe">홈카페 레시피</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/coupon">대량쿠폰구매</a></li>
 				</ul>
 			</li>
 		</ul>

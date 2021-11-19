@@ -27,10 +27,10 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li><a href="${pageContext.request.contextPath}/board/news">공지사항</a></li>
-				<li class="on"><a href="${pageContext.request.contextPath}/board/event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
+				<li class="on"><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
-				<li><a href="#">대량쿠폰구매</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/coupon">대량쿠폰구매</a></li>
 			</ul>	
 		</div>
 		
@@ -45,33 +45,41 @@
 			
 				<div class="board_top">
 					<div class="board_search">
-						<form action="#" method="get" name="frm">
+						<form action="in_search" method="get" name="frm">
 							<select name="kind" class="search_kind">
-								<option value="">제목</option>
-								<option value="">내용</option>
+								<option value="title">제목</option>
+								<option value="contents">내용</option>
 							</select>
 							<div class="search_bar">
-								<input type="text" class="search_bar_input" name="">
-								<button type="button" class="search_bar_btn"></button>
+								<input type="hidden" name="board_category" value="${param.board_category}">
+								<input type="text" class="search_bar_input" name="searchValue">
+								<button type="submit" class="search_bar_btn"></button>
 							</div>
 						</form>
 					</div>
 				</div>
 				
 				<ul class="board_list">
-					<c:forEach begin="1" end="5" var="i">
+					<c:if test="${empty eventAr}">
+						<li>
+							<div class="empty">
+								<p>-&nbsp;&nbsp;검색 결과가 없습니다.&nbsp;&nbsp;-</p>
+							</div>
+						</li>
+					</c:if>
+					<c:forEach items="${eventAr}" var="ar">
 						<li>
 							<!-- event -->
 							<div class="board_e_img">
-								<a href="#">
+								<a href="news_view?board_category=event&board_id=${ar.board_id}">
 									<img alt="temp" src="${pageContext.request.contextPath}/images/temp/IMG_1628640375152.thumb">
 								</a>
 							</div>
 							<dl class="board_e_con">
-								<dt><a href="#">이디야커피X로스트아크 리미티드 에디션</a></dt>
+								<dt><a href="news_view?board_category=event&board_id=${ar.board_id}">${ar.board_title}</a></dt>
 								<dd>
 									<span class="blue_txt">기간 : </span>
-									2021년 11월 15일 ~ 2021년 11월 31일
+									${ar.startDate} ~ ${ar.endDate}
 								</dd>
 							</dl>
 							<div class="board_e_state">
@@ -86,15 +94,22 @@
 				
 				<div class="board_pager">
 					<!-- 앞 -->
-					<span><a href="#"><img alt="이전" src="${pageContext.request.contextPath}/images/common/page_prev.gif"></a></span>
+					<span><a href="event?board_category=event&pn=${param.pn-1}"><img alt="이전" src="${pageContext.request.contextPath}/images/common/page_prev.gif"></a></span>
 					
 					<!-- 번호 -->
-					<c:forEach begin="1" end="9" var="i">
-						<a href="#">${i}</a>
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+						<c:choose>
+							<c:when test="${empty eventAr}">
+								<a href="#1">1</a>
+							</c:when>
+							<c:otherwise>
+								<a href="notice?board_category=notice&pn=${i}">${i}</a>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 					
 					<!-- 뒤 -->
-					<span><a href="#"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
+					<span><a href="event?board_category=event&pn=${param.pn+1}"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
 				</div>
 			</div>
 		</div>
