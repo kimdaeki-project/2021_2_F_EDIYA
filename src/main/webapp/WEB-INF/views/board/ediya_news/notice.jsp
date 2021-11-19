@@ -100,7 +100,15 @@
 					</c:forEach>
 					
 					<!-- 뒤 -->
-					<span><a href="notice?board_category=notice&pn=${param.pn+1}"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
+					<c:choose>
+						<c:when test="${not pager.lastCheck}">
+							<span><a href="notice?board_category=notice&pn=${param.pn+1}"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
+						</c:when>
+						<c:otherwise>
+							<span><a href="#"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
+						</c:otherwise>
+					</c:choose>
+					
 				</div>
 			</div>
 		</div>

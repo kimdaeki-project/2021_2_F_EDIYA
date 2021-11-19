@@ -31,7 +31,7 @@ public class BoardController {
 		
 		// searchValue
 		if(searchValue.equals(null)) {
-			map.put("searchValue", "");
+			map.put("searchValue", " ");
 		}else {
 			map.put("searchValue", searchValue);
 		}
