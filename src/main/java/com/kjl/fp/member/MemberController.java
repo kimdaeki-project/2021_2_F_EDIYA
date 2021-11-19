@@ -16,6 +16,13 @@ public class MemberController {
 	}
 	
 	
+	@GetMapping("joinCheck")
+	public String joinCheck() throws Exception{
+		
+		return "member/joinCheck";
+	}
+	
+	
 	@GetMapping("join")
 	public String join() throws Exception{
 		

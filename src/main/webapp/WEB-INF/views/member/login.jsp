@@ -425,7 +425,7 @@
 				<input type="submit" name="Submit" value="로그인" class="login_btn">
 				
 				<div class="join_btn">
-					<a href="./join">회원가입</a>
+					<a href="./joinCheck">회원가입</a>
 					<a href="#c" onclick="open_login_pop('email_find')">이메일 찾기</a>
 					<a href="#c" onclick="open_login_pop('passwd_find')">비밀번호 찾기</a>
 				</div>
@@ -450,16 +450,20 @@
 <!-- Script -->
 	<script type="text/javascript" src="../js/common.js"></script>
 	<script type="text/javascript">
+	
+		/* 팝업창 닫기  */
 		function close_login_pop() {
 			$(".popup_wrap").hide();
 		}
 		
+		/* 팝업창 열기 */
 		function open_login_pop(pop_id){
 			$(".popup_wrap").hide();
 			$("#"+pop_id).css({"top":(($(window).height()-$("#"+pop_id).outerHeight())/2+ $(window).scrollTop())+"px", 	"left":(($(window).width()-$("#"+pop_id).outerWidth())/2+ $(window).scrollLeft())+"px"}); 
 			$("#"+pop_id).show();	
 		}
 		
+		/* 이메일 select  */
 		$('#join_email').change(function () {  			
 			var code = $('#join_email option:selected').val();  
 			//alert(code);
@@ -470,6 +474,13 @@
 					$('#email_etc').val(code);
 			}  
 		});  
+		
+		/* 비밀번호 및 이메일 찾기 ajax?  */
+		function find_email() {
+			
+		}
+		
+		
 		
 	</script>
 </body>
