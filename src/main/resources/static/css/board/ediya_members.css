@@ -1,0 +1,350 @@
+@charset "UTF-8";
+
+.contents.members{
+	width: 100%;
+	max-width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/* ============================================================ */
+/* ======================= Members Main ======================= */
+/* ============================================================ */
+.members_wrap{
+	width: 100%;
+}
+.members_block_wrap{
+	width: 100%;
+	margin-top: 40px;
+	margin-bottom: 90px;
+	padding: 0 4%;
+	box-sizing: border-box;
+	background-color: #d1e6f7;
+	position: relative;
+}
+.members_block_wrap:after{
+	content: "";
+	position: absolute;
+	display: block;
+	bottom: -20px;
+	left: 0;
+	width: 100%;
+	height: 20px;
+	background: url("../../images/board/members/members_block_back.png") no-repeat center center;
+}
+.members_block_wrap .members_block{
+	max-width: 1180px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 80px 0 35px;
+	text-align: left;
+	overflow: hidden;
+	position: relative;
+}
+.members_block_wrap .members_block .object{
+	text-align: center;
+	float: left;
+	width: 35%;
+	top: 25px;
+	position: absolute;
+}
+.members_block_wrap .members_block .object img{
+	max-width: 100%;
+}
+.members_block dl{
+	padding-bottom: 120px;
+	width: 60%;
+	max-width: 710px;
+	float: right;
+}
+.members_block dl dt{
+	font-size: 35px;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	margin-bottom: 30px;
+	color: #293996;
+	font-weight: 900;
+	line-height: 1.0em;
+}
+.members_block dl dd{
+	font-size: 20px;
+	line-height: 1.5em;
+	color: #0f1a5d;
+	opacity: 0.6;
+}
+
+/* block 01 */
+.mem_block01{
+	padding: 0 17px 0 15px;
+	overflow: hidden;
+	max-width: 1180px;
+	margin: 0 auto;
+}
+.mem_block01 dl{
+	margin-bottom: 70px;
+	width: 33.3%;
+	float: left;
+	text-align: center;
+}
+.mem_block01 dl dt{
+	padding-top: 200px;
+	margin-bottom: 15px;
+	background-size: 170px;
+	font-weight: 700;
+	font-size: 18px;
+	color: #293996;
+}
+.mem_block01 dl dd{
+	font-size: 13px;
+	color: #7a7a7a;
+	line-height: 1.4em;
+	text-align: center;
+}
+.mem_block01 dl dt {
+	background: url("../../images/board/members/mem_block01_icon01.jpg") no-repeat center top;
+}
+.mem_block01 dl:nth-child(2) dt { background-image: url("../../images/board/members/mem_block01_icon02.jpg") }	
+.mem_block01 dl:nth-child(3) dt { background-image: url("../../images/board/members/mem_block01_icon03.jpg") }	
+.mem_block01 dl:nth-child(4) dt { background-image: url("../../images/board/members/mem_block01_icon04.jpg") }	
+.mem_block01 dl:nth-child(5) dt { background-image: url("../../images/board/members/mem_block01_icon05.jpg") }	
+.mem_block01 dl:nth-child(6) dt { background-image: url("../../images/board/members/mem_block01_icon06.jpg") }
+
+/* block 02 */
+.mem_block02{
+	padding: 65px 4% 90px 4%;
+	clear: left;
+	background-color: #f5f5f5;
+	word-break: keep-all;
+}
+.mem_block02 .max{
+	width: 100%;
+	max-width: 1180px;
+	margin: 0 auto;
+}
+.mem_block02 .max .object{
+	float: left;
+	width: 36.5%;
+	text-align: center;
+}
+.mem_block02 .max h3{
+	float: left;
+	margin: 25px 0;
+	width: 62%;
+	text-align: left;
+	font-size: 29px;
+	font-weight: 900;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: #293996;
+	line-height: 1.3em;
+}
+.mem_block02 .max p{
+	float: left;
+	margin: 0 auto 30px;
+	width: 54%;
+	text-align: left;
+	font-size: 18px;
+	line-height: 1.7em;
+}
+.mem_block02 .btn{
+	float: left;
+	width: 62%;
+	text-align: left;
+	padding-bottom: 26px;
+}
+.mem_block02 .btn li{
+	display: inline-block;
+}
+.mem_block02 .btn li:first-child {
+	margin-bottom: 0px;
+	margin-right: 25px;
+}
+.mem_block02 .note{
+	clear: none;
+	margin: 0 auto;
+	float: left;
+	width: 60%;
+	margin-bottom: 90px;
+	color: #7a7a7a;
+}
+.mem_block02 .note li{
+	padding-left: 10px;
+}
+
+/* block 03 */
+.mem_block03{
+	margin-top: 60px;
+	padding-top: 25px 4% 0 4%;
+	text-align: center;
+	overflow: hidden;
+}
+.mem_block03 .max{
+	width: 100%;
+	max-width: 1180px;
+	margin: 0 auto;
+}
+.mem_block03 .max h3{
+	font-size: 29px;
+	font-weight: 900;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	line-height: 1.3em;
+	color: #293996;
+	text-align: center;
+	margin: 25px 0;
+	padding-bottom: 30px;
+	background: url("../../images/board/members/members_tt.gif") no-repeat center bottom;
+}
+.mem_block03 .max p{
+	width: 90%;
+	font-size: 18px;
+	line-height: 1.7em;
+	color: #202023;
+	text-align: center;
+	margin: 0 auto 30px;
+}
+.mem_block03 .max .lv_box{
+	display: table;
+	width: 100%;
+	margin: 0 auto;
+}
+.lv_box .members_lv{
+	width: 23.3%;
+	margin-right: 2.2%;
+	margin-bottom: 0;
+	float: left;
+	box-sizing: border-box;
+	background: #eeeff0;
+	text-align: center;
+	padding: 20px;
+}
+.lv_box .members_lv.blue{
+	background: #e9f4fd;
+}
+.lv_box .members_lv.gold{
+	background: #fef6e5;
+}
+.lv_box .members_lv.vip{
+	background: #feeef0;
+}
+.lv_box .members_lv:last-child{
+	margin-right: 0;
+}
+.lv_box .members_lv dt{
+	margin-bottom: 25px;
+	padding-top: 142px;
+	font-size: 25px;
+	font-weight: 700;
+	color: #59606b;
+	background: url("../../images/board/members/members_lebel_family.png") no-repeat center top;
+}
+.lv_box .members_lv.blue dt{
+	background: url("../../images/board/members/members_lebel_blue.png") no-repeat center top;
+	color: #2396ef;
+}
+.lv_box .members_lv.gold dt{
+	background: url("../../images/board/members/members_lebel_gold.png") no-repeat center top;
+	color: #f7a300;
+}
+.lv_box .members_lv.vip dt{
+	background: url("../../images/board/members/members_lebel_vip.png") no-repeat center top;
+	color: #f65b6d;
+}
+.lv_box .members_lv dd{
+	font-size: 15px;
+	line-height: 1.3em;
+	color: #59606b;
+}
+.lv_box .members_lv dd span{
+	display: block;
+	width: 70px;
+	font-weight: 500;
+	line-height: 26px;
+	margin: 0 auto 15px;
+	padding: 0;
+	border-radius: 3px;
+	background: #d8dadc;
+}
+.lv_box .members_lv.blue dd span{
+	background: #cbe6fb;
+}
+.lv_box .members_lv.gold dd span{
+	background: #fdeac3;
+}
+.lv_box .members_lv.vip dd span{
+	background: #fdd8dc;
+}
+.mem_block03 .max .guide{
+	padding: 30px;
+	background-color: #f5f5f5;
+	margin-top: 26px;
+	margin-bottom: 0;
+	text-align: left;
+	clear: left;
+}
+.guide dt{
+	font-size: 15px;
+	color: #202023;
+	margin-bottom: 15px;
+}
+
+/* block 04 */
+.mem_block04{
+	padding: 70px 4% 0 4%;
+	margin-bottom: 0px;
+}
+.mem_block04 .max{
+	width: 100%;
+	max-width: 1180px;
+	margin: 0 auto;
+}
+.mem_block04 .max h3{
+	font-size: 29px;
+	font-weight: 900;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	line-height: 1.3em;
+	color: #293996;
+	text-align: center;
+	margin: 25px 0;
+	padding-bottom: 30px;
+	background: url("../../images/board/members/members_tt.gif") no-repeat center bottom;
+}
+.mem_block04 .max p{
+	width: 90%;
+	font-size: 18px;
+	line-height: 1.7em;
+	color: #202023;
+	text-align: center;
+	margin: 0 auto 30px;
+}
+.mem_block04 .max .list_btn{
+	margin-top: 40px;
+	margin-bottom: 100px;
+	overflow: hidden;
+}
+.mem_block04 .max .list_btn li{
+	width: 49.79%;
+	margin-right: 0.42%;
+	margin-bottom: 5px;
+	padding-left: 0;
+	float: left;
+	line-height: 50px;
+	background: #f5f5f5;
+	text-align: center;
+}
+.mem_block04 .max .list_btn li:nth-child(2n+2){
+	margin-right: 0;
+}
+.mem_block04 .max .list_btn li a{
+	display: inline-block;
+	width: 100%;
+	line-height: 50px;
+	font-size: 17px;
+	font-weight: 500;
+	color: #7a7a7a;
+	position: relative;
+}
+.mem_block04 .max .list_btn li a span{
+	display: block;
+	position: absolute;
+	z-index: 2;
+	right: 16px;
+	top: 18px;
+}

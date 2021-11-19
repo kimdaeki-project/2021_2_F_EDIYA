@@ -50,8 +50,8 @@
 			<li>
 				<a href="#">이디야멤버스</a>
 				<ul class="dropdown">
-					<li><a href="#">멤버스 소개</a></li>
-					<li><a href="#">이디야카드</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/ediya_members_main">멤버스 소개</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/ediya_members_card">이디야카드</a></li>
 					<li><a href="#">선물하기</a></li>
 					<li><a href="#">이디야오더</a></li>
 					<li><a href="#">FAQ</a></li>

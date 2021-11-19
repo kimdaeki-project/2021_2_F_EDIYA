@@ -115,4 +115,14 @@ public class BoardController {
 		
 		return "board/ediya_news/coupon";
 	}
+	@GetMapping("ediya_members_main")
+	public String goMembersMain() throws Exception{
+		
+		return "board/ediya_members/ediya_members_main";
+	}
+	@GetMapping("ediya_members_card")
+	public String goMembersCard() throws Exception{
+		
+		return "board/ediya_members/ediya_members_card";
+	}
 }
