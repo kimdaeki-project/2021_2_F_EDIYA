@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,8 @@
 	<!--  입력란  -->
 		<div class="join_box_bg">
 			<div class="join_box">
-			<form action="" name="join_form" id="join_form">
+			<form:form modelAttribute="memberVO" name="join_form" id="join_form">
+		
 				<div class="join_con">
 					<h2 class="join_tt ns">회원정보입력</h2>
 				<fieldset>
@@ -95,7 +97,7 @@
 							<label for="birthday">생년월일</label>
 						</dt>
 						<dd>
-							<input type="date" name="birthday" id="birthday">
+							<form:input path="birthday" id="birthday"/>
 						</dd>
 					</dl>
 					
@@ -110,7 +112,7 @@
 			</div>
 				
 				
-			</form>
+			</form:form>
 		</div>
 		</div>
 
