@@ -329,6 +329,19 @@
 	
 }
 
+#sex{
+	margin-top:15px;
+	width:13%;
+	height:30px;
+	float: left;
+	margin-right: 5px;
+}
+
+#sex_val{
+	display:inline-block;
+	float: left;
+	
+}
 
 
 .join_form.top_form{

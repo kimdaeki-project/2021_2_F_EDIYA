@@ -18,6 +18,11 @@ public class MemberService implements UserDetailsService {
 	private PasswordEncoder bCryptPasswordEncoder;
 	
 	
+	 public MemberVO getUsername(String userName) throws Exception{
+		
+		 return memberMapper.getUsername(userName);
+	 }
+	
 	
 
 	

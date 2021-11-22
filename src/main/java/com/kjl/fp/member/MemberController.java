@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -26,6 +28,23 @@ public class MemberController {
 	public String joinCheck() throws Exception{
 		
 		return "member/joinCheck";
+	}
+	
+	@PostMapping("joinCheck")
+	@ResponseBody
+	public boolean joinCheck(String userName) throws Exception{
+		boolean result = false;
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO = memberService.getUsername(userName);
+		
+		if(memberVO == null) {
+			result = true;
+		}
+		
+		return result;
+		
+		
 	}
 	
 	

@@ -49,7 +49,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.formLogin()
 							.loginPage("/member/login")
 							.defaultSuccessUrl("/")
-									
+							.and()
+				.logout()
+							.logoutUrl("/member/logout")
+							.logoutSuccessUrl("/")
+							.invalidateHttpSession(true)
+							.deleteCookies("JSESSIONID")
 									;
 										
 			

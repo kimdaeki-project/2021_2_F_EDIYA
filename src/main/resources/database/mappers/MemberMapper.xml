@@ -8,10 +8,10 @@
   	<select id="getSelectOne" parameterType="String" resultMap="getLoginResult">
   		select M.*,R.*
 		from member M inner join
-		member_role MR on (M.id=MR.id)
+		member_role MR on (M.userName=MR.userName)
 		inner join 
 		role R on(MR.num=R.num)
-		WHERE M.ID =#{username}
+		WHERE M.userName =#{username}
   	</select>
   	
   	<resultMap type="MemberVO" id="getLoginResult">
@@ -31,6 +31,15 @@
   		
   	
   	</resultMap>
+  	
+  	<select id="getUsername" parameterType="String" resultType="MemberVO">
+  		select * from member where userName=#{userName}
+  	</select>
+  	
+  	
+  	<insert id="setJoin" parameterType="MemberVO">
+  		insert into member values(#{userName},#{password},#{name},#{nickName},#{sex},#{phone},#{birthday},#{enabled})
+  	</insert>
   
   
   </mapper>

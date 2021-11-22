@@ -42,7 +42,7 @@ public class MemberVO implements UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.userName;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

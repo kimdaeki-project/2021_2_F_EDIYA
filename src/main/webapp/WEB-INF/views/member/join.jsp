@@ -76,6 +76,16 @@
 							</dd>
 						</dl>
 						<dl>
+						   <dt>
+							<label for="sex">성별</label>
+							</dt>
+							<dd>
+							<h3 id="sex_val">남자</h3>
+							<input type="radio" id="sex" name="sex" value="1">
+							<h3 id="sex_val">여자</h3>
+							<input type="radio" id="sex" name="sex" value="2">	
+						</dl>
+						<dl>
 							<dt>
 							<label for="phone">휴대폰</label>
 							</dt>

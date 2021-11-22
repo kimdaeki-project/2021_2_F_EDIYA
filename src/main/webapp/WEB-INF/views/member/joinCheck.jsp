@@ -32,7 +32,7 @@
 
 	<div class="join_box_bg">
 	<div class="join_box">
-		<form action="./join" method="POST" name="join_box" id="Join_box">
+		<form action="./join" method="get" name="join_box" id="Join_box">
 			<legend>Join</legend>
 			
 			<div class="join_con">
@@ -167,7 +167,7 @@
 				</ul>
 			</div>
 			<div class="box_btn">
-				<a href="#c" onclick="test()" class="blue_btn full_btn">가입하기</a>
+				<a href="#c" onclick="check()" class="blue_btn full_btn">가입하기</a>
 			</div>
 			
 		</form>
@@ -214,17 +214,42 @@ function join_check_all(){
 	
 }
 
-/* 필수동의 체크 */
-function test() {
+/* 필수동의 및 아이디 중복 체크 */
+function check() {
 	const service = $('#service_ck').is(':checked');
 	const privacy = $('#privacy_ck').is(':checked');
+	const email =	$('#email').val()+'@'+$('#email_etc').val();
+	let emailCh = false;
 	
-	if(service == true && privacy == true){
-		/* 폼하기. 폼하기 전 메세지 출력은 즐찾에 있음  */
-		alert('필수체크완료');
-	}else{
-		alert('체크하세요!');
-	}
+	$.ajax({
+		type:'POST',
+		url:'./joinCheck',
+		data: {userName:email},
+		success : function(data) {
+			alert(data);
+			emailCh= data;
+			
+			/* 필수 동의 체크  */
+			if(service == true && privacy == true){
+				/* 폼하기. 폼하기 전 메세지 출력은 즐찾에 있음  */
+				if(emailCh == true){
+					alert("성공");
+				}
+			}else{
+				alert('체크하세요!');
+			}
+			
+			
+		},
+		error:function(){
+			alert("에러입니다.");
+		}
+	
+	})
+	
+	
+	
+	
 	
 	
 }
