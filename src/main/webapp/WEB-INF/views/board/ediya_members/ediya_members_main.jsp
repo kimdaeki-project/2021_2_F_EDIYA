@@ -33,7 +33,7 @@
 				<li><a href="ediya_members_card" id="members02">이디야카드</a></li>
 				<li><a href="#3" id="members03">선물하기</a></li>
 				<li><a href="#4" id="members04">이디야오더</a></li>
-				<li><a href="#5" id="members05">FAQ</a></li>
+				<li><a href="ediya_members_faq" id="members05">FAQ</a></li>
 			</ul>	
 		</div>
 		
@@ -41,7 +41,7 @@
 		
 			<div class="location">
 				<span>HOME</span>
-				<span>이디야 소식</span>
+				<span>이디야 멤버스</span>
 				<span>멤버스 소개</span>
 			</div>
 			
@@ -53,7 +53,7 @@
 						<div class="object">
 							<img alt="members" src="${pageContext.request.contextPath}/images/board/members/members_block_img01.png">
 						</div>
-						<dl>
+						<dl class="no_circle">
 							<dt>이디야 멤버스란?</dt>
 							<dd>
 								음료 구매 시 스탬프 적립 및 FREE쿠폰의 혜택을 드리는

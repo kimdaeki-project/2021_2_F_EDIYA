@@ -54,7 +54,7 @@
 					<li><a href="${pageContext.request.contextPath}/board/ediya_members_card">이디야카드</a></li>
 					<li><a href="#">선물하기</a></li>
 					<li><a href="#">이디야오더</a></li>
-					<li><a href="#">FAQ</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/ediya_members_faq">FAQ</a></li>
 				</ul>
 			</li>
 			<li>

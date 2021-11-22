@@ -29,6 +29,13 @@
 	width: 100%;
 	height: 450px;
 }
+.notice_banner.members_faq{
+	position: relative;
+	background: url("../../../images/board/members/faq_visual.jpg") no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 450px;
+}
 .notice_banner h1.banner_title{
 	padding: 116px 0 19px;
 	font-size: 48px;
@@ -115,6 +122,9 @@
 	background: url("../../../images/common/icon_loc.png") right no-repeat;
 	margin-right: 8px;
 	padding-right: 15px;
+}
+.contents .location span:last-child{
+	background: none;
 }
 
 /* == board wrap == */

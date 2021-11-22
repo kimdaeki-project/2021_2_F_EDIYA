@@ -51,11 +51,22 @@
 .members_block_wrap .members_block .object img{
 	max-width: 100%;
 }
+.members_block{
+	max-width: 1180px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 80px 0 35px;
+	text-align: left;
+	overflow: hidden;
+	position: relative;
+}
 .members_block dl{
-	padding-bottom: 120px;
 	width: 60%;
 	max-width: 710px;
 	float: right;
+}
+.members_block dl.no_circle{
+	padding-bottom: 120px;
 }
 .members_block dl dt{
 	font-size: 35px;
@@ -348,3 +359,229 @@
 	right: 16px;
 	top: 18px;
 }
+
+/* ============================================================ */
+/* ======================= Members card ======================= */
+/* ============================================================ */
+.members_block.members_card{
+	padding: 80px 0 40px;
+}
+.members_block.members_card .object{
+	text-align: right;
+	width: 32%;
+	float: left;
+	position: relative;
+}
+.members_block .circle{
+	float: right;
+	width: 60%;
+	clear: none;
+	text-align: left;
+	padding-top: 30px;
+}
+.members_block .circle li{
+	max-width: 117px;
+	width: 23.5%;
+	margin-right: 12px;
+	display: inline-block;
+}
+.members_block .circle li dl{
+	position: relative;
+	padding-bottom: 120px;
+	width: 100%;
+	height: 0;
+	border-radius: 100%;
+	background: #1d92d5;
+}
+.members_block .circle li:nth-child(2) dl{
+	background: #257aca;
+}
+.members_block .circle li:nth-child(3) dl{
+	background: #2351ae;
+}
+.members_block .circle li:nth-child(4) dl{
+	background: #1f3a93;
+}
+.members_block .circle li dl dt{
+	display: block;
+	width: 100%;
+	height: 60%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.members_block .circle li dl dt.icon1{
+	background: url("../../images/board/members/members_block_icon01.gif") no-repeat center 70%;
+}
+.members_block .circle li dl dt.icon2{
+	background: url("../../images/board/members/members_block_icon02.gif") no-repeat center 70%;
+}
+.members_block .circle li dl dt.icon3{
+	background: url("../../images/board/members/members_block_icon03.gif") no-repeat center 70%;
+}
+.members_block .circle li dl dt.icon4{
+	background: url("../../images/board/members/members_block_icon04.gif") no-repeat center 70%;
+}
+.members_block .circle li dl dd{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 60%;
+	width: 100%;
+	height: 40%;
+	text-align: center;
+}
+.members_block .circle li dl dd span {
+	display: inline-block;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.7em;
+	vertical-align: top;
+}
+
+/* card~ul */
+.ul_wrap{
+	padding: 0 15px 100px;
+	margin: 0 auto;
+	max-width: 1180px;
+}
+.members_top{
+	width: 100%;
+	display: table;
+	max-width: 1180px;
+	overflow: hidden;
+	border-bottom: 2px solid #002f6c;
+	border-left: 1px solid #d9d9d9;
+	border-top: 0;
+}
+.members_top li{
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	margin-top: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+	border-top: 1px solid #d9d9d9;
+	border-right: 1px solid #d9d9d9;
+	box-sizing: border-box;
+	white-space: nowrap;
+}
+.members_top li:nth-child(2){
+	border-bottom: 0;
+}
+.members_top li a{
+	display: inline-block;
+	width: 100%;
+	color: #7a7a7a;
+	line-height: 50px;
+	font-size: 17px;
+	font-weight: 300;
+}
+.members_top li.on{
+	background-color: #002f6c;
+	border: 1px solid #002f6c;
+}
+.members_top li.on a{
+	color: #FFF;
+	font-weight: 400;
+}
+.members_top li:not(.on) a:hover{
+	background-color: #002f6c;
+	border: 1px solid #002f6c;
+	color: #FFF;
+	font-weight: 400;
+}
+.members_top .three{
+	width: 33.333%;
+}
+
+/* members_list */
+.members_list{
+	margin-bottom: 0;
+}
+.members_list li{
+	margin-bottom: 10px;
+	padding: 50px 30px;
+	overflow: hidden;
+}
+.members_list li dl dt{
+	padding-bottom: 25px;
+	background: url("../../images/board/members/members_list_bar.gif") no-repeat left bottom;
+	font-size: 20px;
+	font-weight: 300;
+	color: #202023;
+}
+.members_list li dl dd{
+	padding-top: 40px;
+	overflow: hidden;
+}
+.members_list li dl dd ul.list_icon{
+	overflow: hidden;
+}
+.members_list li dl dd ul.list_txt{
+	clear: both;
+}
+.members_list li dl dd ul.list_icon li{
+	display: block;
+	float: left;
+	width: 25%;
+	padding: 0 21px 0 9px;
+	box-sizing: border-box;
+	background: url("../../images/board/members/members_list_arrow.png") no-repeat right 75px;
+	margin-bottom: 0;
+	background-position: right 85px;
+}
+.members_list li dl dd ul.list_icon li:last-child{
+	background: none;
+}
+.members_list li dl dd ul.list_icon li div{
+	width: 170px;
+	height: 170px;
+	line-height: 170px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	text-align: center;
+	border-radius: 100%;
+	background: #FFF;
+	vertical-align: middle;
+}
+.members_list li dl dd ul.list_icon li div img{
+	width: auto;
+	vertical-align: middle;
+}
+.members_list li dl dd ul.list_icon li p{
+	display: block;
+	margin: 0 auto;
+	padding-left: 0;
+	text-indent: 0px;
+	font-size: 16px;
+	text-align: center;
+	color: #202023;
+}
+.members_list li dl dd ul.list_txt li{
+	padding: 0 0 0 10px;
+	margin-bottom: 5px;
+	background: url("../../images/board/members/member_list_dot.png") no-repeat left 9px;
+	font-size: 16px;
+	font-weight: 300;
+	color: #202023;
+}
+.members_list h3.list_title{
+	padding-bottom: 50px;
+	font-size: 20px;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	line-height: 1.7em;
+	color: #202023;
+}
+.members_list .box01{
+	background-color: #f5f5f5;
+}
+.members_list .box02{
+	border: 1px solid #f5f5f5;
+}
+
+/* ============================================================ */
+/* ======================= Members FAQ ======================= */
+/* ============================================================ */
