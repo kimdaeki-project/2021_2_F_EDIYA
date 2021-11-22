@@ -30,8 +30,6 @@
 			<ul class="lnb">
 				<li><a href="ediya_members_main" id="members01">멤버스소개</a></li>
 				<li class="on"><a href="ediya_members_card" id="members02">이디야카드</a></li>
-				<li><a href="#3" id="members03">선물하기</a></li>
-				<li><a href="#4" id="members04">이디야오더</a></li>
 				<li><a href="ediya_members_faq" id="members05">FAQ</a></li>
 			</ul>	
 		</div>
