@@ -61,7 +61,51 @@
 					</div>
 				</div>
 				
-				<div class="faq_list">
+				<div class="faq_board">
+					<ul class="members_top">
+						<li class="faq_li_7 on">
+							<a href="#c">전체</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">회원</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">회원등급</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">스탬프</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">쿠폰</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">이디야카드</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">이디야오더</a>
+						</li>
+					</ul>
+					<ul class="faq_list">
+						<c:forEach begin="1" end="10">
+							<li>
+								<dl class="faq_Q">
+									<dt>Q</dt>
+									<dd>
+										<a href="#c" class="btn_faq">쿠폰 선물 내역은 어디에서 확인할 수 있나요?</a>
+									</dd>
+									<dd class="down">
+										<a href="#c" class="btn_faq"></a>
+									</dd>
+								</dl>
+								<dl class="faq_A" style="display: none;">
+									<dt>A</dt>
+									<dd>
+										<p>이디야멤버스 App의 [선물하기]-[쿠폰선물]-[쿠폰선물내역]에서 볼 수 있습니다.</p>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
+					</ul>
 				</div>
 				
 				<div class="board_pager">
@@ -103,5 +147,33 @@
 
 <!-- Script -->
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			
+			// up.down
+			$(".btn_faq").on("click", function () {
+				
+				let state = $(this).parent().attr("class");
+				
+				if(state == "down"){
+					$(this).parents(".faq_Q").next().slideDown();
+					$(this).parent().attr("class", "up");
+				}else{
+					$(this).parents(".faq_Q").next().slideUp();
+					$(this).parent().attr("class", "down");
+				}
+				
+			});
+			
+			//top_menu
+			$(".faq_li_7").on("click", function () {
+				
+				$(this).siblings().removeClass("on");
+				$(this).addClass("on");
+				
+			});
+			
+		});
+	</script>
 </body>
 </html>

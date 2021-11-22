@@ -465,6 +465,7 @@
 	text-align: center;
 	border-top: 1px solid #d9d9d9;
 	border-right: 1px solid #d9d9d9;
+	border-left: none;
 	box-sizing: border-box;
 	white-space: nowrap;
 }
@@ -487,9 +488,11 @@
 	color: #FFF;
 	font-weight: 400;
 }
-.members_top li:not(.on) a:hover{
+.members_top li:not(.on):hover{
 	background-color: #002f6c;
 	border: 1px solid #002f6c;
+}
+.members_top li:not(.on) a:hover{
 	color: #FFF;
 	font-weight: 400;
 }
@@ -519,6 +522,14 @@
 }
 .members_list li dl dd ul.list_icon{
 	overflow: hidden;
+}
+.members_list li ul.list_icon li .bg_g{
+	background-color: #f5f5f5;
+}
+.members_list li ul.list_s{
+	float: right;
+	width: 78%;
+	margin-bottom: 50px;
 }
 .members_list li dl dd ul.list_txt{
 	clear: both;
@@ -568,6 +579,41 @@
 	font-weight: 300;
 	color: #202023;
 }
+.members_list li ul.list_charge{
+	width: 100%;
+	overflow: hidden;
+}
+.members_list li ul.list_charge li{
+	display: table;
+	float: left;
+	margin-bottom: 0;
+	width: 43%;
+}
+.members_list li ul.list_charge div{
+	width: 170px;
+	height: 170px;
+	border-radius: 100%;
+	background-color: #FFF;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.members_list li ul.list_charge dl{
+	display: table-cell;
+	padding-left: 25px;
+	vertical-align: middle;
+}
+.members_list li ul.list_charge dl dd{
+	font-size: 15px;
+	padding-top: 40px;
+	overflow: hidden;
+}
+.members_list li .card_mobile{
+	text-align: center;
+	padding-bottom: 20px;
+	float: left;
+	width: 17.9%;
+}
 .members_list h3.list_title{
 	padding-bottom: 50px;
 	font-size: 20px;
@@ -585,3 +631,78 @@
 /* ============================================================ */
 /* ======================= Members FAQ ======================= */
 /* ============================================================ */
+.faq_board{
+	padding: 0;
+}
+.faq_list{
+	width: 100%;
+}
+.members_top li.faq_li_7{
+	width: 14.28%;
+}
+.faq_list li{
+	border-bottom: 1px solid #d9d9d9;
+}
+.faq_list li .faq_Q{
+	padding: 0;
+	overflow: hidden;
+}
+.faq_list li .faq_A{
+	padding: 27px 40px;
+	background: #f5f5f5;
+	overflow: hidden;
+}
+.faq_list li .faq_Q dd.down{
+	background: url("../../images/common/btn_down.gif") no-repeat center center;
+}
+.faq_list li .faq_Q dd.up{
+	background: url("../../images/common/btn_up.gif") no-repeat center center;
+}
+.faq_list li .faq_Q dt{
+	float: left;
+	width: 3.38%;
+	padding-top: 0;
+	padding-left: 40px;
+	font-size: 24px;
+	font-weight: 900;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: #002f6c;
+	text-align: left;
+	line-height: 60px;
+	height: 60px;
+}
+.faq_list li .faq_Q dd:nth-child(2){
+	float: left;
+	width: 85.5%;
+	height: 60px;
+	line-height: 60px;
+}
+.faq_list li .faq_Q dd:nth-child(2) a{
+	font-size: 15px;
+	color: #002f6c;
+}
+.faq_list li .faq_Q dd:nth-child(3){
+	float: left;
+	width: 7.62%;
+	padding-top: 0;
+	height: 60px;
+	line-height: 60px;
+}
+.faq_list li .faq_Q dd:nth-child(3) a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+.faq_list li .faq_A dt{
+	float:left;
+	width: 3.38%;
+	font-size: 24px;
+	font-weight: 900;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: #898989;
+	text-align: left;
+}
+.faq_list li .faq_A dd{
+	float: left;
+	width: 80%;
+}
