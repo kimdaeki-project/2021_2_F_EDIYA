@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <header class="top_nav">
 	<div class="top_align">
 		<div class="top_util">
 			<ul class="top_members">
+				<sec:authorize access="isAuthenticated()">
+				<li><a href="${pageContext.request.contextPath}/member/mypage">마이페이지</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+				</sec:authorize>
+				<sec:authorize access="!isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+				</sec:authorize>
 				<li><a href="#">매장찾기</a></li>
 				<li><a href="#">고객의 소리</a></li>
 				<li><a href="#">이디야 공식몰</a></li>

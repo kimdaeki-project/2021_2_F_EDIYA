@@ -5,6 +5,32 @@
   
   <mapper namespace="com.kjl.fp.member.MemberMapper">
   
+  	<select id="getSelectOne" parameterType="String" resultMap="getLoginResult">
+  		select M.*,R.*
+		from member M inner join
+		member_role MR on (M.id=MR.id)
+		inner join 
+		role R on(MR.num=R.num)
+		WHERE M.ID =#{username}
+  	</select>
+  	
+  	<resultMap type="MemberVO" id="getLoginResult">
+  		<id column="userName" property="userName"/>
+  		<result column="password" property="password"/>
+  		<result column="name" property="name"/>
+  		<result column="nickName" property="nickName"/>
+  		<result column="sex" property="sex"/>
+  		<result column="phone" property="phone"/>
+  		<result column="birthday" property="birthday"/>
+  		<result column="enabled" property="enabled"/>
+  		<collection property="roles" javaType="List" ofType="RoleVO">
+  			<id column="num" property="num"/>
+  			<result column="roleName" property="roleName"/>
+  		</collection>
+  		
+  		
+  	
+  	</resultMap>
   
   
   </mapper>
