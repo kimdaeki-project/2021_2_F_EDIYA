@@ -36,6 +36,13 @@
 	width: 100%;
 	height: 450px;
 }
+.notice_banner.giftcard_main{
+	position: relative;
+	background: url("../../../images/board/giftcard/giftcard_visual.jpg") no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 450px;
+}
 .notice_banner h1.banner_title{
 	padding: 116px 0 19px;
 	font-size: 48px;
