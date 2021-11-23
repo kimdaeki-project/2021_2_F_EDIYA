@@ -218,34 +218,52 @@ function join_check_all(){
 function check() {
 	const service = $('#service_ck').is(':checked');
 	const privacy = $('#privacy_ck').is(':checked');
+	const emailF = $('#email').val();
+	const emailB = $('#email_etc').val();
 	const email =	$('#email').val()+'@'+$('#email_etc').val();
 	let emailCh = false;
 	
-	$.ajax({
-		type:'POST',
-		url:'./joinCheck',
-		data: {userName:email},
-		success : function(data) {
-			alert(data);
-			emailCh= data;
-			
-			/* 필수 동의 체크  */
-			if(service == true && privacy == true){
-				/* 폼하기. 폼하기 전 메세지 출력은 즐찾에 있음  */
-				if(emailCh == true){
-					alert("성공");
+	/* 이메일 null 체크  */
+	if(emailF=="" || emailB=="" ){
+		
+		alert("이메일을 입력해주세요")
+		
+	}else{
+		
+		$.ajax({
+			type:'POST',
+			url:'./joinCheck',
+			data: {userName:email},
+			success : function(data) {
+
+				emailCh= data;
+				/* 필수 동의 체크  */
+				if(service == true && privacy == true){
+					/* 폼하기. 폼하기 전 메세지 출력은 즐찾에 있음  */
+					if(emailCh == true){
+						$("#Join_box").submit();
+					}else{
+						alert("가입된 이메일입니다.");
+					}
+					
+				}else{
+					alert('체크하세요!');
 				}
-			}else{
-				alert('체크하세요!');
+				
+				
+			},
+			error:function(){
+				alert("에러입니다.");
 			}
-			
-			
-		},
-		error:function(){
-			alert("에러입니다.");
-		}
+		
+		})
+		
+		
+		
+	}
+
 	
-	})
+	
 	
 	
 	

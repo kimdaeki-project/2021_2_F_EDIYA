@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +25,8 @@
 	<!--  입력란  -->
 		<div class="join_box_bg">
 			<div class="join_box">
-			<form:form modelAttribute="memberVO" name="join_form" id="join_form">
+			<form action="./join" method="POST" name="join_form" id="join_form">
+			<input type="hidden" id="userName" name="userName" value="">
 		
 				<div class="join_con">
 					<h2 class="join_tt ns">회원정보입력</h2>
@@ -36,7 +36,9 @@
 							<dt>
 								<label for="id">아이디(이메일)</label>
 							</dt>
-							<dd>이메일넣기</dd>
+							<dd id="username">
+							이메일
+							</dd>
 						</dl>
 						<dl>
 							<dt>
@@ -81,7 +83,7 @@
 							</dt>
 							<dd>
 							<h3 id="sex_val">남자</h3>
-							<input type="radio" id="sex" name="sex" value="1">
+							<input type="radio" id="sex" name="sex" value="1" checked="checked">
 							<h3 id="sex_val">여자</h3>
 							<input type="radio" id="sex" name="sex" value="2">	
 						</dl>
@@ -90,7 +92,8 @@
 							<label for="phone">휴대폰</label>
 							</dt>
 							<dd>
-							<input type="tel" name="phone" id="phone" placeholder="-를 빼고 적어주세요">
+							<!-- <input type="tel" name="phone" id="phone" maxlength="11" placeholder="-를 빼고 적어주세요"> -->
+							<input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="phone" id="phone" maxlength="11" placeholder="-를 빼고 적어주세요"/>
 							</dd>
 						</dl>
 					<dl>
@@ -98,7 +101,7 @@
 							<label for="nickname">닉네임</label>
 						</dt>
 						<dd>
-							<input type="text" name="nickName" id="nickname" placeholder="한글,숫자 5지 이내로 입력하세요">
+							<input type="text" name="nickName" id="nickname" maxlength="5" placeholder="한글,숫자 5자 이내로 입력하세요">
 						</dd>
 					</dl>
 					<p class="info_txt">욕설 등 부적절한 단어는 제한을 받습니다.</p>
@@ -107,7 +110,7 @@
 							<label for="birthday">생년월일</label>
 						</dt>
 						<dd>
-							<form:input path="birthday" id="birthday"/>
+							<input type="date" name="birthday" id="birthday">
 						</dd>
 					</dl>
 					
@@ -118,11 +121,11 @@
 				</div>
 				
 				<div class="box_btn">
-				<a href="#c" onclick="" class="blue_btn full_btn">가입하기</a>
+				<a href="#c" onclick="checks()" class="blue_btn full_btn">가입하기</a>
 			</div>
 				
 				
-			</form:form>
+			</form>
 		</div>
 		</div>
 
@@ -138,6 +141,20 @@
 <c:import url="../temp_common/footer.jsp"></c:import>
 <script type="text/javascript">
 
+/* 파라미터 받기 위한 함수  */
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+let email = getParameterByName('email') + '@' +getParameterByName('email_etc');
+
+$("#username").html(email); 
+$("#userName").val(email);
+
 
 
 /* 비밀번호 확인 js  */
@@ -149,15 +166,27 @@ $("#password").blur(function() {
 	const pw = $("#password").val();
 	const pwCk =$("#pw_ck").val();
 	
-	if(pw == pwCk){
+	
+	if(pw == ""){
+		
 		$(".info_pwck").hide();	
-		$("#pw_ok").show();	
-		check = true;
-	}else{
 		$("#pw_ok").hide();	
-		$(".info_pwck").show();	
-		check = false;
+		
+	}else{
+		if(pw == pwCk){
+			$(".info_pwck").hide();	
+			$("#pw_ok").show();	
+			check = true;
+		}else{
+			$("#pw_ok").hide();	
+			$(".info_pwck").show();	
+			check = false;
+		}
+		
 	}
+	
+	
+	
 	
 })
 
@@ -179,6 +208,17 @@ $("#pw_ck").keyup(function() {
 	
 	
 })
+
+function checks() {
+	
+	if(confirm("가입하시겠습니까?")){
+		$("#join_form").submit();
+	}
+		
+	
+
+	
+}
 	
 	
 </script>
