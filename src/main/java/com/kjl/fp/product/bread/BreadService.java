@@ -13,8 +13,8 @@ public class BreadService implements productService{
 	@Autowired
 	private BreadMapper breadMapper;
 	
-	public List<BreadVO> breadSelectAll (BreadVO breadVO) throws Exception {
-		return breadMapper.breadSelectAll(breadVO);
+	public List<BreadVO> selectAll () throws Exception {
+		return breadMapper.selectAll();
 	}
 	
 	public BreadVO selectOne (BreadVO breadVO) throws Exception {

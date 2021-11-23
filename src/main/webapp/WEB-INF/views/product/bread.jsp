@@ -215,311 +215,46 @@
         			</div>
       			</div>
       			
+      			
+      			
+      			<c:forEach items="${bread}" var="bread">
+      			<h2>${bread.pdNameK}<span>${bread.pdNameE}</span></h2>
+      				<ul id="menu_ul">
+      					<li>
+      						<div class="pro_detail" style="display:none;" id="${bread.pdNum}">
+      							<div class="detail_con">
+      								<h2>${bread.pdNameK}<span>${bread.pdNameE}</span></h2>
+                  					<div class="detail_close"><a href="#c" onclick="hide_nutri('481')"><img src="../../images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
+                  					<p>${bread.pdInfo}</p>
+                				</div> 
+								<div class="pro_comp">
+	        						<div class="pro_nutri">
+										<dl><dt>칼로리</dt><dd>${bread.pdC}</dd></dl>							
+										<dl><dt> 당류</dt><dd>${bread.pdS}</dd></dl>							
+										<dl><dt> 단백질</dt><dd>${bread.pdP}</dd></dl>							
+										<dl><dt> 포화지방</dt><dd>${bread.pdF}</dd></dl>							
+										<dl><dt> 나트륨</dt><dd>${bread.pdN}</dd></dl>							
+									</div>
+									<div class="pro_allergy">${bread.pdAllergy}</div>
+								 </div>				
+              				</div>              
+              				<img src="../images/product/bread/IMG_${bread.pdImg}.png" onClick="name1(${bread.pdNum})">
+              				<span>토피넛 크로플</span>
+            			</li>
+      				</ul>
+      			</c:forEach>
+      			
+      			
+      			
       			<div class="block_hot">
       				<div class="con_align">
 						<input type="hidden" id="menu_page" value="2">
-          				<ul id="menu_ul">
-			            	<!-- 토피넛 크로플 -->
-			            	<li>
-            					<div class="pro_detail" style="display:none; " id="nutri_481">
-              						<div class="detail_con">
-                						<h2>토피넛 크로플<span>Toffee Nut Ice Cream Croiffle</span></h2>
-                  						<div class="detail_close"><a href="#c" onclick="hide_nutri('481')"><img src="../../images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  						<p>플레인 크로플과 토피넛베이스, 아몬드 브리틀과 아몬드 슬라이스, 아이스크림이 올라간 크로플을 추가하여 취향에 따라 즐길 수 있는 플레이팅 크로플</p>
-                					</div> 
-									<div class="pro_comp">
-	        							<div class="pro_nutri">
-											<dl><dt>칼로리</dt><dd>(605kcal)</dd></dl>							
-											<dl><dt> 당류</dt><dd>(20g)</dd></dl>							
-											<dl><dt> 단백질</dt><dd>(11g)</dd></dl>							
-											<dl><dt> 포화지방</dt><dd>(13g)</dd></dl>							
-											<dl><dt> 나트륨</dt><dd>(485mg)</dd></dl>							
-										</div>
-										<div class="pro_allergy">알레르기 성분 정보 :밀, 우유, 계란, 대두, 아황산류, 아몬드</div>
-									 </div>				
-              					</div>              
-              					<a href="#c" onclick="show_nutri('481')"><img src="../images/product/bread/IMG_1633651266647.png" alt="">
-              					<span>토피넛 크로플</span></a>
-            				</li>
-            				<!-- 토피넛 꽈루아상 -->
-			            	<li>
-            					<div class="pro_detail" style="display:none; " id="nutri_484">
-              						<div class="detail_con">
-              							<h2>토피넛 꽈루아상<span>Toffee Nut Twisted Croissant</span></h2>
-                  						<div class="detail_close"><a href="#c" onclick="hide_nutri('484')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  						<p>토피넛 베이스, 아몬드 브리틀과 아몬드 분태가 올라간 꽈루아상에 플로팅 크림을 곁들여 부어먹거나 찍어먹을 수 있는 달달하고 고소한 꽈루아상의 플러스 버전</p>
-                					</div>
-									<div class="pro_comp">
-										<div class="pro_nutri">
-											<dl><dt>칼로리</dt><dd>(389kcal)</dd></dl>							
-											<dl><dt> 당류</dt><dd>(21g)</dd></dl>							
-											<dl><dt> 단백질</dt><dd>(7g)</dd></dl>							
-											<dl><dt> 포화지방</dt><dd>(8g)</dd></dl>							
-											<dl><dt> 나트륨</dt><dd>(273mg)</dd></dl>							
-										</div>
-										<div class="pro_allergy">알레르기 성분 정보 :밀, 우유, 대두, 아황산류, 아몬드</div>
-									</div>				
-              					</div>              
-              					<a href="#c" onclick="show_nutri('484')"><img src="../images/product/bread/IMG_1633651286416.png" alt="">
-              					<span>토피넛 꽈루아상</span></a>
-            				</li>
-            				<!-- 플레인 크로플 -->
-            				<li>
-            					<div class="pro_detail" style="display:none; " id="nutri_483">
-            						<div class="detail_con">
-            							<h2>플레인 크로플<span>Plain Croiffle</span></h2>
-            							<div class="detail_close"><a href="#c" onclick="hide_nutri('483')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  						<p>크루아상을 와플 모양으로 찍어 만든 크로플 위에 메이플 시럽과 슈가파우더가 올라간 기본 타입 크로플</p>
-                  					</div>
-									<div class="pro_comp">
-										<!-- 영양정보 -->
-										<div class="pro_nutri">
-											<dl><dt>칼로리</dt><dd>(265kcal)</dd></dl>							
-											<dl><dt> 당류</dt><dd>(8g)</dd></dl>							
-											<dl><dt> 단백질</dt><dd>(5g)</dd></dl>							
-											<dl><dt> 포화지방</dt><dd>(6g)</dd></dl>							
-											<dl><dt> 나트륨</dt><dd>(220mg)</dd></dl>							
-										</div>
-										<!-- 알레르기 성분 -->
-										<div class="pro_allergy">알레르기 성분 정보 :밀, 우유</div>
-									</div>
-								</div>
-								<a href="#c" onclick="show_nutri('483')"><img src="../images/product/bread/IMG_1633651297107.png" alt="">
-								<span>플레인 크로플</span></a>
-							</li>
-							<!-- 플레인 꽈루아상 -->
-							<li>
-            	<div class="pro_detail" style="display:none; " id="nutri_485">
-              	<div class="detail_con">
-                	<h2>플레인 꽈루아상                  <span>Plain Twisted Croissant</span></h2>
-                  <div class="detail_close"><a href="#c" onclick="hide_nutri('485')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  <p>크루아상을 꽈배기처럼 꼬아 만든 꽈배기 크루아상 위에 슈가파우더를 토핑한 크루아상의 확장 디저트</p>
-                </div>
-                
-                <div class="detail_sns">
-                	<!-- <a href="#c"><img src="../images/menu/pro_sns01.png" width="26" height="26" alt="페이스북" /></a>
-                  <a href="#c"><img src="../images/menu/pro_sns02.png" width="26" height="26" alt="인스타그램" /></a> -->
-                </div> 
-				<div class="pro_comp">
-        			<!--pro_nutri div추가 180327-->
-        			<div class="pro_nutri">
-											<dl>
-						<dt>칼로리</dt>
-						<dd>(242kcal)</dd>
-						</dl>							
-											<dl>
-						<dt> 당류</dt>
-						<dd>(7g)</dd>
-						</dl>							
-											<dl>
-						<dt> 단백질</dt>
-						<dd>(5g)</dd>
-						</dl>							
-											<dl>
-						<dt> 포화지방</dt>
-						<dd>(6g)</dd>
-						</dl>							
-											<dl>
-						<dt> 나트륨</dt>
-						<dd>(220mg)</dd>
-						</dl>							
-										</div>
-         	 		<!--//pro_nutri div추가 180327-->
-										<!--알레르기 추가 180327-->
-					<div class="pro_allergy">알레르기 성분 정보 :밀, 우유</div>
-					<!--//알레르기 추가 180327-->
-					                </div>				
-              </div>              
-              <a href="#c" onclick="show_nutri('485')"><img src="../images/product/bread/IMG_1633651306610.png" alt="">
-              <span>플레인 꽈루아상</span></a>
-            </li>
-			            <li>
-            	<div class="pro_detail" style="display:none; " id="nutri_445">
-              	<div class="detail_con">
-                	<h2>그릴드 치킨 샐러드 &amp; 시저 드레싱                  <span>Grolled Chicken Salad</span></h2>
-                  <div class="detail_close"><a href="#c" onclick="hide_nutri('445')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  <p>구운 닭가슴살과 삶은 계란, 슈레드 치즈와 방울토마토, 블랙올리브가 시저드레싱과 어우러진 '깔끔한끼' 샐러드</p>
-                </div>
-                
-                <div class="detail_sns">
-                	<!-- <a href="#c"><img src="../images/menu/pro_sns01.png" width="26" height="26" alt="페이스북" /></a>
-                  <a href="#c"><img src="../images/menu/pro_sns02.png" width="26" height="26" alt="인스타그램" /></a> -->
-                </div> 
-				<div class="pro_comp">
-        			<!--pro_nutri div추가 180327-->
-        			<div class="pro_nutri">
-											<dl>
-						<dt>칼로리</dt>
-						<dd>(231kcal)</dd>
-						</dl>							
-											<dl>
-						<dt> 당류</dt>
-						<dd>(4g)</dd>
-						</dl>							
-											<dl>
-						<dt> 단백질</dt>
-						<dd>(17g)</dd>
-						</dl>							
-											<dl>
-						<dt> 포화지방</dt>
-						<dd>(3.5g)</dd>
-						</dl>							
-											<dl>
-						<dt> 나트륨</dt>
-						<dd>(650mg)</dd>
-						</dl>							
-										</div>
-         	 		<!--//pro_nutri div추가 180327-->
-										<!--알레르기 추가 180327-->
-					<div class="pro_allergy">알레르기 성분 정보 :알류(달걀),우유,대두,밀,토마토,닭고기</div>
-					<!--//알레르기 추가 180327-->
-					                </div>				
-              </div>              
-              <a href="#c" onclick="show_nutri('445')"><img src="../images/product/bread/IMG_1617847695527.png" alt="">
-              <span>그릴드 치킨 샐러드 &amp; 시저 드레싱</span></a>
-            </li>
-			            <li>
-            	<div class="pro_detail" style="display:none; " id="nutri_475">
-              	<div class="detail_con">
-                	<h2>두부텐더 콥샐러드                  <span>Tofu Tender Cobb Salad</span></h2>
-                  <div class="detail_close"><a href="#c" onclick="hide_nutri('475')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  <p>양상추, 양배추 등의 신선한 채소와 두부텐더, 고구마 큐브, 병아리콩, 방울토마토 등 건강한 식재료로 구성된 식단관리 콥샐러드</p>
-                </div>
-                
-                <div class="detail_sns">
-                	<!-- <a href="#c"><img src="../images/menu/pro_sns01.png" width="26" height="26" alt="페이스북" /></a>
-                  <a href="#c"><img src="../images/menu/pro_sns02.png" width="26" height="26" alt="인스타그램" /></a> -->
-                </div> 
-				<div class="pro_comp">
-        			<!--pro_nutri div추가 180327-->
-        			<div class="pro_nutri">
-											<dl>
-						<dt>칼로리</dt>
-						<dd>(187kcal)</dd>
-						</dl>							
-											<dl>
-						<dt> 당류</dt>
-						<dd>(15g)</dd>
-						</dl>							
-											<dl>
-						<dt> 단백질</dt>
-						<dd>(5g)</dd>
-						</dl>							
-											<dl>
-						<dt> 포화지방</dt>
-						<dd>(7g)</dd>
-						</dl>							
-											<dl>
-						<dt> 나트륨</dt>
-						<dd>(220mg)</dd>
-						</dl>							
-										</div>
-         	 		<!--//pro_nutri div추가 180327-->
-										<!--알레르기 추가 180327-->
-					<div class="pro_allergy">알레르기 성분 정보 :대두, 밀, 토마토</div>
-					<!--//알레르기 추가 180327-->
-					                </div>				
-              </div>              
-              <a href="#c" onclick="show_nutri('475')"><img src="../images/product/bread/IMG_1631083477637.png" alt="">
-              <span>두부텐더 콥샐러드</span></a>
-            </li>
-			            <li>
-            	<div class="pro_detail" style="display:none; " id="nutri_462">
-              	<div class="detail_con">
-                	<h2>클래식 미니 스콘                  <span>CLASSIC MINI SCONE </span></h2>
-                  <div class="detail_close"><a href="#c" onclick="hide_nutri('462')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  <p>바스러지는 식감이 매력적인 스콘.
-진한 버터의 풍미와 은은한 달콤함을 자랑하는 스콘을 미니사이즈로 만들어 음료와 가볍게 즐기기 좋은 제품 </p>
-                </div>
-                
-                <div class="detail_sns">
-                	<!-- <a href="#c"><img src="../images/menu/pro_sns01.png" width="26" height="26" alt="페이스북" /></a>
-                  <a href="#c"><img src="../images/menu/pro_sns02.png" width="26" height="26" alt="인스타그램" /></a> -->
-                </div> 
-				<div class="pro_comp">
-        			<!--pro_nutri div추가 180327-->
-        			<div class="pro_nutri">
-											<dl>
-						<dt>칼로리</dt>
-						<dd>(518kcal)</dd>
-						</dl>							
-											<dl>
-						<dt> 당류</dt>
-						<dd>(14g)</dd>
-						</dl>							
-											<dl>
-						<dt> 단백질</dt>
-						<dd>(7g)</dd>
-						</dl>							
-											<dl>
-						<dt> 포화지방</dt>
-						<dd>(14g)</dd>
-						</dl>							
-											<dl>
-						<dt> 나트륨</dt>
-						<dd>(310mg)</dd>
-						</dl>							
-										</div>
-         	 		<!--//pro_nutri div추가 180327-->
-										<!--알레르기 추가 180327-->
-					<div class="pro_allergy">알레르기 성분 정보 :계란, 우유, 대두, 밀</div>
-					<!--//알레르기 추가 180327-->
-					                </div>				
-              </div>              
-              <a href="#c" onclick="show_nutri('462')"><img src="../images/product/bread/IMG_1625185169414.png" alt="">
-              <span>클래식 미니 스콘</span></a>
-            </li>
-			            <li>
-            	<div class="pro_detail" style="display:none; " id="nutri_464">
-              	<div class="detail_con">
-                	<h2>초콜릿 브라우니                  <span>CHOCOLATE BROWNIE</span></h2>
-                  <div class="detail_close"><a href="#c" onclick="hide_nutri('464')"><img src="/images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  <p>초콜릿의 달콤한 맛을 느낄 수 있는 묵직한 식감의 브라우니</p>
-                </div>
-                
-                <div class="detail_sns">
-                	<!-- <a href="#c"><img src="../images/menu/pro_sns01.png" width="26" height="26" alt="페이스북" /></a>
-                  <a href="#c"><img src="../images/menu/pro_sns02.png" width="26" height="26" alt="인스타그램" /></a> -->
-                </div> 
-				<div class="pro_comp">
-        			<!--pro_nutri div추가 180327-->
-        			<div class="pro_nutri">
-											<dl>
-						<dt>칼로리</dt>
-						<dd>(505kcal)</dd>
-						</dl>							
-											<dl>
-						<dt> 당류</dt>
-						<dd>(39g)</dd>
-						</dl>							
-											<dl>
-						<dt> 단백질</dt>
-						<dd>(6g)</dd>
-						</dl>							
-											<dl>
-						<dt> 포화지방</dt>
-						<dd>(14g)</dd>
-						</dl>							
-											<dl>
-						<dt> 나트륨</dt>
-						<dd>(140mg)</dd>
-						</dl>							
-										</div>
-         	 		<!--//pro_nutri div추가 180327-->
-										<!--알레르기 추가 180327-->
-					<div class="pro_allergy">알레르기 성분 정보 :계란, 우유, 대두, 밀</div>
-					<!--//알레르기 추가 180327-->
-					                </div>				
-              </div>              
-              <a href="#c" onclick="show_nutri('464')"><img src="../images/product/bread/IMG_1625186510366.png" alt="">
-              <span>초콜릿 브라우니</span></a>
-            </li>
-			          </ul>
-          <div class="con_btn">
-            <a class="line_btn" onclick="show_more()" style="cursor:pointer">더보기<span>+</span></a>
-          </div>
-        </div>
-      </div>
+          				
+         			 	<div class="con_btn">
+           			 		<a class="line_btn" onclick="show_more()" style="cursor:pointer">더보기<span>+</span></a>
+          				</div>
+        			</div>
+      			</div>
       			
       			
 				
@@ -541,6 +276,7 @@
 
 <!-- Script -->
 	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/product/list.js"></script>
 
 </body>
 </html>
