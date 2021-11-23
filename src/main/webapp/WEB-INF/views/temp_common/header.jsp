@@ -63,12 +63,10 @@
 				</ul>
 			</li>
 			<li>
-				<a href="#">기프트카드</a>
+				<a href="#">이디야 예약</a>
 				<ul class="dropdown">
-					<li><a href="${pageContext.request.contextPath}/board/ediya_giftcard_main">기프트카드 소개</a></li>
-					<li><a href="#">잔액 조회</a></li>
-					<li><a href="#">분실신고/환불신청</a></li>
-					<li><a href="#">자주하는 질문</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/ediya_reservation_main">예약시스템 소개</a></li>
+					<li><a href="#">예약하기</a></li>
 				</ul>
 			</li>
 			<li>
