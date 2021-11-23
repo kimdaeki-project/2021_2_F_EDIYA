@@ -110,9 +110,29 @@ public class BoardController {
 	
 	
 	// 기타 페이지 쿠폰, 소개 등등
+	@GetMapping("ediya_giftcard_main")
+	public String goGiftcardMain() throws Exception{
+		
+		return "board/ediya_giftcard/ediya_giftcard_main";
+	}
+	@GetMapping("ediya_members_faq")
+	public String goFaq() throws Exception{
+		
+		return "board/ediya_members/ediya_members_faq";
+	}
 	@GetMapping("coupon")
 	public String goCoupon() throws Exception{
 		
 		return "board/ediya_news/coupon";
+	}
+	@GetMapping("ediya_members_main")
+	public String goMembersMain() throws Exception{
+		
+		return "board/ediya_members/ediya_members_main";
+	}
+	@GetMapping("ediya_members_card")
+	public String goMembersCard() throws Exception{
+		
+		return "board/ediya_members/ediya_members_card";
 	}
 }

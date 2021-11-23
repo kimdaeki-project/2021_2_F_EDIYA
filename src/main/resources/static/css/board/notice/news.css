@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* 전체 페이지 공통사용 css */
 /* ================ notice_banner ================ */
 .notice_banner{
 	position: relative;
@@ -8,6 +9,34 @@
 	height: 450px;
 }
 .notice_banner.coupon_banner{
+	position: relative;
+	background: url("../../../images/board/giftcard/giftcard_visual.jpg") no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 450px;
+}
+.notice_banner.members_main{
+	position: relative;
+	background: url("../../../images/board/members/members_visual.jpg") no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 450px;
+}
+.notice_banner.members_card{
+	position: relative;
+	background: url("../../../images/board/members/card_visual.jpg") no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 450px;
+}
+.notice_banner.members_faq{
+	position: relative;
+	background: url("../../../images/board/members/faq_visual.jpg") no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 450px;
+}
+.notice_banner.giftcard_main{
 	position: relative;
 	background: url("../../../images/board/giftcard/giftcard_visual.jpg") no-repeat center;
 	background-size: cover;
@@ -100,6 +129,9 @@
 	background: url("../../../images/common/icon_loc.png") right no-repeat;
 	margin-right: 8px;
 	padding-right: 15px;
+}
+.contents .location span:last-child{
+	background: none;
 }
 
 /* == board wrap == */
