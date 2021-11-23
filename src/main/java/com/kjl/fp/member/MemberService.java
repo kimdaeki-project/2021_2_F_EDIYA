@@ -18,13 +18,16 @@ public class MemberService implements UserDetailsService {
 	private PasswordEncoder bCryptPasswordEncoder;
 	
 	
-	 public MemberVO getUsername(MemberVO memberVO) throws Exception{
+	 public MemberVO getUsername(MemberVO memberVO) throws Exception{ 
 		
 		 return memberMapper.getUsername(memberVO);
 	 }
 	 
 	 
 	 public int setJoin(MemberVO memberVO) throws Exception{
+		 
+		
+		memberVO.setPassword(bCryptPasswordEncoder.encode(memberVO.getPassword()));
 		 
 		 int result = memberMapper.setJoin(memberVO);
 		 result = memberMapper.setRoleMember(memberVO);
