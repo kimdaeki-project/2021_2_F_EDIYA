@@ -1,27 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="../css/common/common.css">
 <link type="text/css" rel="stylesheet" href="../css/member/join.css">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<!-- nav -->
 <c:import url="../temp_common/header.jsp"></c:import>
-<!-- /nav -->
 
-
-<!-- popup  -->
-
-<!-- /popup  -->
-
-<!-- contents -->
-<section id="contentWrap" class="visual_big visual_txt_w">
+	<section id="contentWrap" class="visual_big visual_txt_w">
 	<div class="sub_visual join_visual">
 		<h1 class="con_tt">
 			<img alt="회원가입" src="${pageContext.request.contextPath}/images/member/join/join_tt.png" width="302" height="78">
@@ -29,178 +22,165 @@
 		<p class="visual_mt">Join Us, Ediya Coffee</p>
 		<p class="visual_txt">이디야멤버스 가입을 위한 약관 동의 및 본인 인증단계입니다.</p>
 	</div>
-
-	<div class="join_box_bg">
-	<div class="join_box">
-		<form action="./join" method="POST" name="join_box" id="Join_box">
-			<legend>Join</legend>
-			
-			<div class="join_con">
-				<h2 class="join_tt ns">이메일을 입력해주세요</h2>
-				<p class="join_txt">이메일은 멤버스 로그인 시 아이디로 사용됩니다.</p>
-				<ul class="join_email_form">
-					<li class="join_email01">
-					<label for="join_email01" class="blind"></label>
-					<input type="text" name="email" id="email" placeholder="이메일">
-					</li>
-					<li class="join_at">@</li>
-					<li class="join_email02">
-						<label for="email_etc" class="blind"></label>
-						<input type="text" name="email_etc" id="email_etc">
-					</li>
-					<li class="join_select">
-						<select name="join_email" id="join_email">
-							<option value="etc">직접입력</option>
-							<option value="naver.com">naver.com</option>
-							<option value="daum.net">daum.net</option>
-							<option value="nate.com">nate.com</option>
-							<option value="hanmail.net">hanmail.net</option>
-							<option value="gmail.com">gmail.com</option>
-							<option value="yahoo.co.kr">yahoo.co.kr</option>
-						
-						</select>
-				</ul>
-			</div>
-			
-			
-			<div class="join_con">
-				<h2 class="join_tt ns">서비스 이용약관</h2>
-				<h3 class="join_check_all on">
-				  <a href="#c" onclick="join_check_all()">전체동의</a>
-				  ( ※선택동의 사항이 포함되어 있습니다. )
-				</h3>
-				<ul class="join_check_list">
-					<li>
+	
+	<!--  입력란  -->
+		<div class="join_box_bg">
+			<div class="join_box">
+			<form:form modelAttribute="memberVO" name="join_form" id="join_form">
+		
+				<div class="join_con">
+					<h2 class="join_tt ns">회원정보입력</h2>
+				<fieldset>
+					<div class="join_form top_form">
 						<dl>
-						<dt>
-						<p class="check_tt">
-							이디야 멤버스 서비스 이용약관 동의
-							<span class="blue_txt">(필수)</span>
+							<dt>
+								<label for="id">아이디(이메일)</label>
+							</dt>
+							<dd>이메일넣기</dd>
+						</dl>
+						<dl>
+							<dt>
+								<label for="password">
+									비밀번호
+								</label>
+							</dt>
+							<dd>
+								<input type="password" name="password" id="password" placeholder="비밀번호">
+							</dd>
+						</dl>
+						<p class="info_txt">
+							안전한 비밀번호를 위해 숫자, 문자 조합하여 10~16자 이상으로 입력해주세요.
 						</p>
-						<input type="checkbox" class="check_btn" id="service_ck">
+					<dl>
+						<dt>
+						<label for="pw_ck">
+							비밀번호 확인
+						</label>
 						</dt>
 						<dd>
-							<div class="agree_con">
-								<h4 class="agree_con_tt">이디야커피는 고객님의 정보를 소중히 생각합니다.</h4>
-								<div class="agreement">
-								<c:import url="./agreement/agreement1.jsp"></c:import>
-								</div>
-							</div>
+						<input type="password" id="pw_ck">
 						</dd>
-						</dl>
-					</li>
-					<li>
+					</dl>
+					<p class="info_pwck" id="pw_error" style="display:none;">
+						비밀번호가 일치하지 않습니다.
+					</p>
+					<p class="info_txt" id="pw_ok" style="display:none;">
+						비밀번호가 일치합니다!
+					</p>
 						<dl>
-							<dt>
-								<p class="check_tt">
-								개인정보 수집 및 이용 동의
-								<span class="blue_txt">(필수)</span>
-								</p>
-								<input type="checkbox" class="check_btn" id="privacy_ck">
+						   <dt>
+							<label for="name">이름</label>
 							</dt>
 							<dd>
-								<div class="agree_con agree_con_s">
-									<c:import url="./agreement/agreement2.jsp"></c:import>
-								</div>
+							<input type="text" name="name" id="name" placeholder="이름을 적어주세요">
 							</dd>
 						</dl>
-					</li>
-					
-					<li>
 						<dl>
-							<dt>
-								<p class="check_tt">
-									위치기반서비스 이용약관 동의
-									<em class="blue_txt">(선택)</em>
-								</p>
-								<input type="checkbox" class="check_btn" id="location_ck" name="location_ck">
+						   <dt>
+							<label for="sex">성별</label>
 							</dt>
 							<dd>
-								<div class="agree_con agree_con_s">
-									<c:import url="./agreement/agreement3.jsp"></c:import>
-								</div>
-								
-							</dd>
+							<h3 id="sex_val">남자</h3>
+							<input type="radio" id="sex" name="sex" value="1">
+							<h3 id="sex_val">여자</h3>
+							<input type="radio" id="sex" name="sex" value="2">	
 						</dl>
-					</li>
-					<li>
 						<dl>
 							<dt>
-								<p class="check_tt">
-									마케팅 활용 수신 동의
-										<em class="blue_txt">(선택)</em>
-									</p>
-								<input type="checkbox" class="check_btn" id="use_ck" name="use_ck">
+							<label for="phone">휴대폰</label>
 							</dt>
 							<dd>
-								<div class="agree_con2">
-									<c:import url="./agreement/agreement4.jsp"></c:import>
-								</div>
+							<input type="tel" name="phone" id="phone" placeholder="-를 빼고 적어주세요">
 							</dd>
 						</dl>
+					<dl>
+						<dt>
+							<label for="nickname">닉네임</label>
+						</dt>
+						<dd>
+							<input type="text" name="nickName" id="nickname" placeholder="한글,숫자 5지 이내로 입력하세요">
+						</dd>
+					</dl>
+					<p class="info_txt">욕설 등 부적절한 단어는 제한을 받습니다.</p>
+					<dl>
+						<dt>
+							<label for="birthday">생년월일</label>
+						</dt>
+						<dd>
+							<form:input path="birthday" id="birthday"/>
+						</dd>
+					</dl>
 					
-					</li>
+					</div>
 					
-					<li>
-						<dl>
-							<dt>
-								<p class="check_tt">
-									광고성 정보 수신 동의
-									<em class="blue_txt">(선택)</em>
-								</p>
-								<input type="checkbox" class="check_btn" id="ad_ck" name="ad_ck">
-							</dt>
-							<dd>
-								<div class="agree_con2">
-									<c:import url="./agreement/agreement5.jsp"></c:import>
-								</div>
-								
-							</dd>
-						</dl>
-					</li>
 					
-					<li>
-						<dl style="color:red">
-							※ 선택 사항에 동의하지 않으셔도 서비스 가입 및 이용이 가능하나, 동의하지 않을 경우 제공 가능한 관련 편의 사항 등(주변매장찾기, 맞춤형 쿠폰, 기타 각종 혜택 등)이 제한될 수 있습니다.
-						</dl>
-					</li>	
-				</ul>
-			</div>
-			<div class="box_btn">
+				</fieldset>
+				</div>
+				
+				<div class="box_btn">
 				<a href="#c" onclick="" class="blue_btn full_btn">가입하기</a>
 			</div>
-			
-		</form>
-	</div>
-	
-	</div>
+				
+				
+			</form:form>
+		</div>
+		</div>
 
-</section>
-<!-- /contents -->
-	
-	<!-- footer  -->
+
+	</section>
+
+
+
+
+
+
+
 <c:import url="../temp_common/footer.jsp"></c:import>
-<!-- /footer  -->
-
 <script type="text/javascript">
-$('#join_email').change(function () {  			
-	var code = $('#join_email option:selected').val();  
-	//alert(code);
-	if (code == "etc") {  
-			$('#email_etc').val('');
-			$('#email_etc').focus();
-	} else {  
-			$('#email_etc').val(code);
-	}  
-}); 
 
-let result = true;
 
-function join_check_all(){
+
+/* 비밀번호 확인 js  */
+
+const check = false;
+
+$("#password").blur(function() {
 	
-	$("#service_ck,#privacy_ck,#location_ck,#use_ck,#ad_ck").prop("checked",result);
-	result = !result;
-}
+	const pw = $("#password").val();
+	const pwCk =$("#pw_ck").val();
+	
+	if(pw == pwCk){
+		$(".info_pwck").hide();	
+		$("#pw_ok").show();	
+		check = true;
+	}else{
+		$("#pw_ok").hide();	
+		$(".info_pwck").show();	
+		check = false;
+	}
+	
+})
+
+
+$("#pw_ck").keyup(function() {
+	const pw = $("#password").val();
+	const pwCk =$("#pw_ck").val();
+	
+	if(pw == pwCk){
+		$(".info_pwck").hide();	
+		$("#pw_ok").show();	
+		check = true;
+	}else{
+		$("#pw_ok").hide();	
+		$(".info_pwck").show();	
+		check = false;
+		
+	}
+	
+	
+})
+	
+	
 </script>
 </body>
 </html>

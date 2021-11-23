@@ -157,7 +157,7 @@
 	display:inline-block;
 	padding-left: 37px;
 	font-size: 20px;
-	background: url(../../images/member/join/join_check_on.gif) no-repeat center left; 
+	background: url(../../images/member/join/join_check.gif) no-repeat center left; 
 
 }
 
@@ -256,3 +256,95 @@
 	
 	
 }
+
+
+/* join Page  */
+
+.join_form{
+	width: 100%;
+	margin: auto;
+}
+
+.join_form dl{
+	display: table;
+	width: 100%;
+	margin:auto;
+	padding-bottom: 15px;
+	
+}
+
+.join_form dt{
+	width:21%;
+	font-size:15px;
+	max-width: 140px;
+	height: 58px;
+	line-height: 58px;
+	float: left;
+	margin-bottom: 0;
+}
+
+.join_form dd{
+	width: 540px;
+	height: 58px;
+	line-height: 58px;
+	float: left;
+	color: #202023;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.join_form dd input{
+	width:100%;
+	height: 58px;
+	padding-left: 20px;
+	font-size: 15px;
+	border: solid 1px #cccccc;
+	border-radius:3px 3px;
+	box-sizing: border-box;
+	color: #707070; 
+}
+
+.join_form p{
+	margin: -9px 0 18px 21%;
+	color: #707070;
+	line-height: 1.4em;
+	
+}
+
+.join_form p.info_txt{
+	padding-left: 20px;
+	background: url("../../images/member/pop/pop_info_icon.gif") no-repeat 0 2px;
+	color: #003f6c;
+}
+
+.info_pwck{
+	margin: -9px 0 18px 21%;
+	color: red;
+	line-height: 1.4em;
+}
+
+
+#birthday{
+	width:30%;
+	
+}
+
+#sex{
+	margin-top:15px;
+	width:13%;
+	height:30px;
+	float: left;
+	margin-right: 5px;
+}
+
+#sex_val{
+	display:inline-block;
+	float: left;
+	
+}
+
+
+.join_form.top_form{
+	margin-top: 42px;
+}
+
