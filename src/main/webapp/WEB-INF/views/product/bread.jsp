@@ -224,7 +224,7 @@
       						<div class="pro_detail" style="display:none;" id="${bread.pdNum}">
       							<div class="detail_con">
       								<h2>${bread.pdNameK}<span>${bread.pdNameE}</span></h2>
-                  					<div class="detail_close"><a href="#c" onclick="hide_nutri('481')"><img src="../../images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
+                  					<div class="detail_close"><a href="#c" onClick="name1(${bread.pdNum})"><img src="../../images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
                   					<p>${bread.pdInfo}</p>
                 				</div> 
 								<div class="pro_comp">
