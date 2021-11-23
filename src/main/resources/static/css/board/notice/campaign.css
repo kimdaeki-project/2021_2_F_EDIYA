@@ -94,6 +94,10 @@
 	margin-right: 8px;
 	padding-right: 15px;
 }
+.contents .location span:last-child{
+	background: none;
+}
+
 
 /* == board wrap == */
 .contents .board_wrap{

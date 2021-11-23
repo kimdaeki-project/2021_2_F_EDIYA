@@ -9,6 +9,8 @@
 	<c:import url="../../temp_common/head_common.jsp"></c:import>
 	<!-- 이디야 소식 css -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/notice/news.css">
+	<!-- ediya_members css -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/ediya_members.css">
 </head>
 <body>
 <!-- Start -->
@@ -17,27 +19,26 @@
 	<c:import url="../../temp_common/header.jsp"></c:import>
 	
 	<section id="container">
-		<div class="notice_banner">
-			<h1 class="banner_title">공지사항</h1>
+	
+		<div class="notice_banner members_faq">
+			<h1 class="banner_title">자주하는 질문</h1>
 			<p class="banner_subtit">
-				<span>이디야는 국내 브랜드의 자부심을 지키며</span>
-				대한민국 커피 문화를 이끌어 나갑니다.
+				<span>이디야를 이용하시는 고객님들이 자주 질문하시는 내용입니다.</span>
 			</p>
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li class="on"><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
-				<li><a href="#">홈카페 레시피</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/coupon">대량쿠폰구매</a></li>
+				<li><a href="ediya_members_main" id="members01">멤버스소개</a></li>
+				<li><a href="ediya_members_card" id="members02">이디야카드</a></li>
+				<li class="on"><a href="ediya_members_faq" id="members05">FAQ</a></li>
 			</ul>	
 		</div>
 		
 		<div class="contents">
 			<div class="location">
 				<span>HOME</span>
-				<span>이디야 소식</span>
-				<span>공지사항</span>
+				<span>이디야 멤버스</span>
+				<span>FAQ</span>
 			</div>
 			
 			<div class="board_wrap">
@@ -58,30 +59,52 @@
 					</div>
 				</div>
 				
-				<ul class="board_list">
-					<!-- event 게시판하고 다른곳 -->
-					<c:if test="${empty noticeAr}">
-						<li>
-							<div class="empty">
-								<p>-&nbsp;&nbsp;검색 결과가 없습니다.&nbsp;&nbsp;-</p>
-							</div>
+				<div class="faq_board">
+					<ul class="members_top">
+						<li class="faq_li_7 on">
+							<a href="#c">전체</a>
 						</li>
-					</c:if>
-					<c:forEach items="${noticeAr}" var="ar">
-						<li>
-							<!-- 특별한 공지들은 board_notice 사용해서 아이콘 추가 -->
-							<div class="board_num">
-								${ar.board_id}
-							</div>
-							<div class="board_list_con">
-								<h5><a href="news_view?board_category=notice&board_id=${ar.board_id}">${ar.board_title}</a></h5>
-								<p><a href="news_view?board_category=notice&board_id=${ar.board_id}">${ar.board_contents}</a></p>
-								<p class="board_date">${ar.regDate}</p>
-							</div>
+						<li class="faq_li_7">
+							<a href="#c">회원</a>
 						</li>
-					</c:forEach>
-					<!-- event 게시판하고 다른곳 -->
-				</ul>
+						<li class="faq_li_7">
+							<a href="#c">회원등급</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">스탬프</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">쿠폰</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">이디야카드</a>
+						</li>
+						<li class="faq_li_7">
+							<a href="#c">이디야오더</a>
+						</li>
+					</ul>
+					<ul class="faq_list">
+						<c:forEach begin="1" end="10">
+							<li>
+								<dl class="faq_Q">
+									<dt>Q</dt>
+									<dd>
+										<a href="#c" class="btn_faq">쿠폰 선물 내역은 어디에서 확인할 수 있나요?</a>
+									</dd>
+									<dd class="down">
+										<a href="#c" class="btn_faq"></a>
+									</dd>
+								</dl>
+								<dl class="faq_A" style="display: none;">
+									<dt>A</dt>
+									<dd>
+										<p>이디야멤버스 App의 [선물하기]-[쿠폰선물]-[쿠폰선물내역]에서 볼 수 있습니다.</p>
+									</dd>
+								</dl>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
 				
 				<div class="board_pager">
 					<!-- 앞 -->
@@ -122,5 +145,33 @@
 
 <!-- Script -->
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			
+			// up.down
+			$(".btn_faq").on("click", function () {
+				
+				let state = $(this).parent().attr("class");
+				
+				if(state == "down"){
+					$(this).parents(".faq_Q").next().slideDown();
+					$(this).parent().attr("class", "up");
+				}else{
+					$(this).parents(".faq_Q").next().slideUp();
+					$(this).parent().attr("class", "down");
+				}
+				
+			});
+			
+			//top_menu
+			$(".faq_li_7").on("click", function () {
+				
+				$(this).siblings().removeClass("on");
+				$(this).addClass("on");
+				
+			});
+			
+		});
+	</script>
 </body>
 </html>

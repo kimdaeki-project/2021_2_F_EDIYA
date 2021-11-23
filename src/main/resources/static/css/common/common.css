@@ -60,6 +60,7 @@ header{
 }
 header h1.top_logo{
 	position: relative;
+	float: left;
 	top: 30px;
 	left: 50%;
 	clear: both;
