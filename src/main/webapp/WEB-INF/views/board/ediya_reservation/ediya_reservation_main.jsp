@@ -42,32 +42,33 @@
 			
 			<div class="reservation_wrap">
 				
-				<div class="reservation_block_wrap">
 				
-					<div class="reservation_block reservation_card">
-						<div class="object">
-							<img alt="reservation" src="${pageContext.request.contextPath}/images/board/reservation/giftcard_img.png">
-						</div>
-						<dl>
-							<dt>기프트카드란?</dt>
-							<dd>
-								이디야카드는 금액충전을 통해 언제 어디서나 이디야커피를 구입할 수 있는
-								<span style="display: block;">충전형 모바일 상품권입니다.</span>
-								이디야카드, 선물하기, 이디야오더 등 다양한 서비스를 지금 경험하세요!
-							</dd>
-						</dl>
-					</div>
+				<div class="reservation_block_wrap">
 					
-					<div>
-						키워드 : <input type="text" id="keyword" value="">
-						<input type="button" id="find_btn" value="찾기">
-					</div>
-								
+					
+					
 				</div>
 				
+				
+				
+				<div class="no_border">
+				
+					<div>
+						<input type="button" id="find_btn" value="내 주변 이디야커피">
+						<input type="hidden" id="keyword" value="이디야커피">
+					</div>
+					<div>
+						지점명: <input type="text" id="place_name">
+						전화번호 : <input type="text" id="phone">
+						주소 : <input type="text" id="road_address">
+						상세주소 : <a href="#" id="place_url" target="_blank">상세보기</a>
+					</div>
+					
+				</div>
+				
+				<div id="map" style="width:500px;height:400px;position:relative;overflow:hidden;"></div>
+				
 			</div>
-			
-		    <div id="map" style="width:500px;height:400px;position:relative;overflow:hidden;"></div>
 		    
 		</div>
 		
@@ -85,6 +86,7 @@
 		
 	
 		$(function () {
+			
 			/* ====================================================================== */
 			/* ========================== 위치, 맵 관련 함수들 ========================== */
 			/* ====================================================================== */
@@ -126,7 +128,7 @@
 						// 맵 기준
 						center : new kakao.maps.LatLng(lat, lon),
 						// 확대
-						level : 4,
+						level : 3,
 						// y좌표
 						y: lat,
 						// x
@@ -183,10 +185,45 @@
 				// 마커 클릭 이벤트
 				kakao.maps.event.addListener(marker, 'click', function () {
 					
+					const moveLatLon = new kakao.maps.LatLng(place.y, place.x);
+					const level = map.getLevel();
+					
+					if(level == 1) {
+						alert("더이상 축소 할 수 없습니다!")
+					}else{
+						map.setLevel(level-2);
+						map.panTo(moveLatLon);
+					}
+					
+					sendInfo(place);
+				});
+				
+				// 마커 마우스 온 이벤트
+				kakao.maps.event.addListener(marker, 'mouseover', function () {
+					
 					// 각 커스텀 오버레이 생성
 					makeCustomOverlay(place);
 					
-				});
+				})
+				
+				// 마커 마우스 아웃
+				kakao.maps.event.addListener(marker, 'mouseout', function () {
+					
+					overLay.setMap(null);
+					
+				})
+				
+			}
+			
+			// 마커 클릭 시 정보 전달
+			function sendInfo(each_marker) {
+				
+				console.log(each_marker);
+				
+				$("#place_name").val(each_marker.place_name);
+				$("#phone").val(each_marker.phone);
+				$("#road_address").val(each_marker.road_address_name);
+				$("#place_url").attr("href", each_marker.place_url);
 				
 			}
 			
@@ -199,11 +236,9 @@
 				let getX = each_marker.x;
 				let getY = each_marker.y;
 				
-				console.log(getX);
 				
 				let iwContent = 
 					'<div style="background-color: white; padding: 3px; width: 100px; heigh: 50px; text-align: center; border-radius: 20px;">' +
-					'<button type="button" data-place="'+ each_marker +'" class="close_btn">닫기</button><br>' +
 					'<span style="font-weight: 700; font-size: 7px;">' + each_marker.place_name + '</span>' +
 					'</div>',
 		  			iwPosition = new kakao.maps.LatLng(getY, getX);
@@ -213,7 +248,7 @@
 					map : map,
 					position : iwPosition,
 					content : iwContent,
-					yAnchor : 0.5
+					yAnchor : 2.5
 				});
 				
 				overLay.setMap(map);
