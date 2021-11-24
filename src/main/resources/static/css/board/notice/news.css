@@ -10,7 +10,7 @@
 }
 .notice_banner.coupon_banner{
 	position: relative;
-	background: url("../../../images/board/giftcard/giftcard_visual.jpg") no-repeat center;
+	background: url("../../../images/board/reservation/giftcard_visual.jpg") no-repeat center;
 	background-size: cover;
 	width: 100%;
 	height: 450px;
@@ -36,9 +36,9 @@
 	width: 100%;
 	height: 450px;
 }
-.notice_banner.giftcard_main{
+.notice_banner.reservation_main{
 	position: relative;
-	background: url("../../../images/board/giftcard/giftcard_visual.jpg") no-repeat center;
+	background: url("../../../images/board/reservation/giftcard_visual.jpg") no-repeat center;
 	background-size: cover;
 	width: 100%;
 	height: 450px;
