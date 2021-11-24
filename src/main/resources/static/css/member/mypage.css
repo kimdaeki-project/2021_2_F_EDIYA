@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+#contentWrap{
+
+
+	word-break: keep-all;
+	position: relative;
+}
+
+.status_visual{
+	background: url(../../images/member/mypage/status_bg.jpg) no-repeat center;
+	background-size: cover;
+}
+
+.visual_big .sub_visual{
+	width: 100%;
+	height: 850px;
+	position: relative;
+}
+
+.visual_big .sub_visual h1.con_tt{
+	padding: 226px 0 75px;
+	font-size: 48px;
+	color: #FFF;
+	text-align: center;
+	font-weight: lighter;
+}
+
+.visual_mt{
+	display:block;
+	width:auto;
+	color: #FFF;
+	letter-spacing: 0;
+	margin: -10px auto 4px;
+	text-align: center;
+	font-size: 38px;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+}
+
+.visual_txt{
+	display:block;
+	width: auto;
+	margin: auto;
+	color: #b9b8b8;
+	text-align:center;
+	font-size:18px;
+	line-height:1.3em;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+	
+}
+
+.status_wrap{
+	width: 100%;
+	padding: 100px 0;
+	
+}
+.status_con{
+	width:100%;
+	padding-top: 100px;
+	max-width:1180px;
+	margin: 0 auto;
+}
+
+.status_con:first-child{
+	width:100%;
+	padding-top: 0;
+	max-width: 1180px;
+	margin: 0 auto;
+}
+

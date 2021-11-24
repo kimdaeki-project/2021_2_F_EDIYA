@@ -20,6 +20,15 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
+	
+	@GetMapping("mypage")
+	public String mypage() throws Exception{
+		
+		return "member/mypage";
+	}
+	
+	
+	
 	@GetMapping("login")
 	public String login() throws Exception {
 		
