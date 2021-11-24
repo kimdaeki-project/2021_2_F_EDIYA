@@ -38,7 +38,11 @@
   	
   	
   	<insert id="setJoin" parameterType="MemberVO">
-  		insert into member values(#{userName},#{password},#{name},#{nickName},#{sex},#{phone},#{birthday},#{enabled})
+  		insert into member values(#{userName},#{password},#{name},#{nickName},#{sex},#{phone},#{birthday},1)
+  	</insert>
+  	
+  	<insert id="setRoleMember" parameterType="MemberVO">
+  		insert into member_role values(#{userName},2)
   	</insert>
   
   

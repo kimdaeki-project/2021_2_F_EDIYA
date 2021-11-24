@@ -1,7 +1,10 @@
 package com.kjl.fp.member;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,13 +35,14 @@ public class MemberController {
 	
 	@PostMapping("joinCheck")
 	@ResponseBody
-	public boolean joinCheck(String userName) throws Exception{
+	public boolean joinCheck(MemberVO memberVO) throws Exception{
 		boolean result = false;
 		
-		MemberVO memberVO = new MemberVO();
-		memberVO = memberService.getUsername(userName);
 		
-		if(memberVO == null) {
+		MemberVO memberVO1 = new MemberVO();
+		memberVO1 = memberService.getUsername(memberVO);
+		
+		if(memberVO1 == null) {
 			result = true;
 		}
 		
@@ -49,10 +53,23 @@ public class MemberController {
 	
 	
 	@GetMapping("join")
-	public String join(@ModelAttribute MemberVO memberVO) throws Exception{
+	public String join() throws Exception{
 		
 		return "member/join";
 	}
+	
+	@PostMapping("join")
+	public String join(MemberVO memberVO) throws Exception{
+		
+		int result = memberService.setJoin(memberVO);
+		
+		
+		
+		
+		
+		return "redirect:../";
+	}
+	
 	
 
 }

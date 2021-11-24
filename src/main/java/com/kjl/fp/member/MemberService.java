@@ -18,24 +18,37 @@ public class MemberService implements UserDetailsService {
 	private PasswordEncoder bCryptPasswordEncoder;
 	
 	
-	 public MemberVO getUsername(String userName) throws Exception{
+	 public MemberVO getUsername(MemberVO memberVO) throws Exception{ 
 		
-		 return memberMapper.getUsername(userName);
+		 return memberMapper.getUsername(memberVO);
+	 }
+	 
+	 
+	 public int setJoin(MemberVO memberVO) throws Exception{
+		 
+		
+		memberVO.setPassword(bCryptPasswordEncoder.encode(memberVO.getPassword()));
+		 
+		 int result = memberMapper.setJoin(memberVO);
+		 result = memberMapper.setRoleMember(memberVO);
+		 
+		 return result;
 	 }
 	
 	
 
 	
-	  @Override public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { 
-		  MemberVO memberVO =null;
+	  @Override 
+	  public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException { 
+		  MemberVO memberVO1 =null;
 		  
 		  try {
-			memberVO = memberMapper.getSelectOne(username);
+			memberVO1 = memberMapper.getSelectOne(userName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		  return memberVO;
+		  return memberVO1;
 		  
 		  }
 	  
