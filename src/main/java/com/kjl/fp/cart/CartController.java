@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/cart/**")
 public class CartController {
 	
-	
+	// 11/24
 	// cartList
 	@GetMapping("cartList")
 	public String goCartList() throws Exception{
