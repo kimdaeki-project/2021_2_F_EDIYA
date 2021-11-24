@@ -58,7 +58,31 @@
 							</div>
 						</div>
 						<div class="inform_con con_last">
-						
+							<ul>
+								<li class="status_now">
+									<div class="now_icon">
+										<img src="${pageContext.request.contextPath}/images/member/mypage/status_stamp_icon.png">
+									</div>
+									<dl class="now_con">
+										<dt class="now_tt">스탬프 현황</dt>
+										<dd class="now_txt">
+											<span class="status_blue_txt status_bold_txt">0</span>
+											/12
+										</dd>
+									</dl>
+								</li>
+								<li class="status_now">
+									<div class="now_icon">
+										<img src="${pageContext.request.contextPath}/images/member/mypage/status_coupon_icon.png">
+									</div>
+									<dl class="now_con">
+										<dt class="now_tt">보유 쿠폰</dt>
+										<dd class="now_txt">
+											<span class="status_blue_txt status_bold_txt">0</span>
+										</dd>
+									</dl>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
