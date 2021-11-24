@@ -31,7 +31,37 @@
 	
 		<div class="status_con">
 			<div class="con_align">
-			
+				<div class="status_inform_bg">
+					<div class="status_inform">
+						<div class="inform_con_wrap">
+							<div class="inform_con">
+								<div class="level_logo">
+									<img src="${pageContext.request.contextPath}/images/member/mypage/level_family.png">
+								</div>
+								<p class="ns level_txt">
+									<span class="status_bold_txt">이름</span>
+									회원님은 <br>
+									<span class="status_family_txt status_exbold_txt">회원레벨</span>
+									입니다.
+								</p>
+							</div>
+							<div class="inform_con inform_modify">
+								<ul class="inform_txt">
+									<li>아이디 : </li>
+									<li>닉네임 : </li>
+									<li>휴대폰 : </li>
+									<li>수신동의 : </li>
+								</ul>
+								<a href="" class="status_btn_b">
+									회원정보 수정
+								</a>
+							</div>
+						</div>
+						<div class="inform_con con_last">
+						
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		
