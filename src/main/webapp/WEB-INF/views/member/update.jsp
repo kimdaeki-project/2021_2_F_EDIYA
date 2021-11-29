@@ -47,7 +47,7 @@
                     
           <dl>
             <dt><label for="nickname">닉네임</label></dt>
-            <dd><input type="text" name="nickname" id="nickname" value="" placeholder="닉네임"></dd>
+            <dd><input type="text" name="nickname" id="nickname" value="<sec:authentication property="principal.nickName"/>" placeholder="닉네임"></dd>
           </dl>
           <p class="info_txt">욕설 등 부적절한 단어는 제한을 받습니다.</p>
           
