@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,12 +48,12 @@
 							</div>
 							<div class="inform_con inform_modify">
 								<ul class="inform_txt">
-									<li>아이디 : </li>
-									<li>닉네임 : </li>
-									<li>휴대폰 : </li>
+									<li>아이디 : 	<sec:authentication property="principal.username"/> </li>
+									<li>닉네임 :  <sec:authentication property="principal.nickName"/></li>
+									<li>휴대폰 :  <sec:authentication property="principal.phone"/></li>
 									<li>수신동의 : </li>
 								</ul>
-								<a href="" class="status_btn_b">
+								<a href="./update" class="status_btn_b">
 									회원정보 수정
 								</a>
 							</div>
@@ -66,7 +67,7 @@
 									<dl class="now_con">
 										<dt class="now_tt">스탬프 현황</dt>
 										<dd class="now_txt">
-											<span class="status_blue_txt status_bold_txt">0</span>
+											<span class="status_blue_txt status_bold_txt">0</span> <!-- 수정하기 -->
 											/12
 										</dd>
 									</dl>
@@ -78,7 +79,7 @@
 									<dl class="now_con">
 										<dt class="now_tt">보유 쿠폰</dt>
 										<dd class="now_txt">
-											<span class="status_blue_txt status_bold_txt">0</span>
+											<span class="status_blue_txt status_bold_txt">0</span> <!-- 수정하기  -->
 										</dd>
 									</dl>
 								</li>
@@ -91,13 +92,108 @@
 		
 		<div class="status_con">
 			<div class="con_align">
-			
+				<div class="status_condition_top">
+					<h3 class="ns">
+					스탬프 적립 현황
+					<span>스탬프 12개를 적립하면 아메리카노(R) Free 쿠폰을 발급해 드립니다.</span>
+					</h3>
+					<a href="#c" class="status_btn_b stamp_status" onclick="">
+						스탬프 적립내역
+					</a>
+					<a href="#c" class="status_btn_b stamp_history" onclick="" style="display: none">
+						스탬프 현황판
+					</a>
+				</div>
+				<div class="stamp_status">
+					<ul class="stamp_list">
+					<!-- 이부분 js나 JSTL로 작업을 해야할 듯? 총 12개  -->
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
+						</li>
+					</ul>
+				
+				</div>
+				<!-- 스탬프 적립내역  -->
+				<div class="stamp_history" style="display: none">
+					<ul class="status_list">
+						<li class="list_td list_tt">
+							<div class="box_w01">번호</div>
+							<div class="box_w02">구분</div>
+							<div class="box_w03">포인트</div>
+							<div class="box_w04">매장명</div>
+							<div class="box_w05">적립일</div>
+							<div class="box_w06">유효기간</div>
+						</li>
+					</ul>
+				</div>
+				<dl class="stamp_notice">
+					<dt>유의사항</dt>
+					<dd>음료1잔당 1개의 스탬프를 적립해드립니다.</dd>
+					<dd>발행된 스탬프의 유효기간은 발행일로부터 1년입니다.</dd>
+					<dd>스탬프 12개를 적립하시면 3,200원의 아메리카노(R) Free 쿠폰을 발급해 드립니다.</dd>
+					<dd>발행된 쿠폰의 유효기간은 발행일로부터 1개월입니다.</dd>
+				</dl>
 			</div>
 		</div>
 		
 		<div class="status_con">
 			<div class="con_align">
-			
+				<div class="status_condition_top">
+					<h3 class="ns" id="coupon_status_text">보유 쿠폰 현황</h3>
+					<a href="#c" class="status_btn_b coupon_status" onclick="">쿠폰 사용 내역</a>
+					<a href="#c" class="status_btn_b coupon_history" style="display: none" onclick="">보유 쿠폰 현황</a>
+				</div>
+				
+				<div class="coupon_status">
+					<ul class="coupon_visual" id="coupon_status">
+						<!-- 쿠폰 없을 시 -->
+						<dl class="coupon_no">
+							<dt>사용 가능한 쿠폰이 없습니다.</dt>
+							<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
+						</dl>
+					</ul>
+				</div>
+				
+				<div class="coupon_history" style="display: none" id="coupon_history">
+					<dl class="coupon_no">
+						<dt>사용 가능한 쿠폰이 없습니다.</dt>
+						<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
+					</dl>
+				
+				</div>
 			</div>
 		</div>
 	

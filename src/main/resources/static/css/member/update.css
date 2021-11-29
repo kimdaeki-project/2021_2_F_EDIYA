@@ -1,0 +1,219 @@
+@charset "UTF-8";
+
+#contentWrap{
+	word-spacing: keep-all;
+	position: relative;
+}
+
+.sub_visual{
+	width:100%;
+	height: 850px;
+	position: relative;
+	
+}
+
+.join_edit_visual{
+	background: url(../../images/member/update/join_edit_bg.jpg) no-repeat center;
+	background-size: cover; 
+	
+}
+
+.sub_visual h1.con_tt{
+	padding: 226px 0 75px;
+	font-size: 48px;
+	color: #FFF;
+	text-align: center;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+	font-weight: lighter;
+	line-height: 1.2em;
+}
+
+.sub_visual h1.con_tt img{
+	width: auto;
+	height: auto;
+}
+
+.visual_mt{
+	display: block;
+	width: auto;
+	margin: -10px auto 4px;
+	color: #FFF;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+	text-align:center;
+	font-size:38px;
+	letter-spacing: 0;
+}
+
+.visual_txt{
+	color: #b9b8b8;
+	display: block;
+	width: auto;
+	margin: auto;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+	text-align: center;
+	font-size: 18px;
+	line-height: 1.3em;
+}
+
+.join_box_bg{
+	padding: 0;
+	max-width: 1180px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.join_box{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	border: 1px solid #ebebeb;
+	box-sizing:  border-box;
+	width: 100%;
+	max-width: 1180px;
+	overflow: hidden;
+	padding: 30px 0 70px; 
+}
+
+.join_con{
+	padding: 44px 0 50px;
+	width: 100%;
+	max-width: 680px;
+	margin: 0 auto;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.join_con h2.join_tt{
+	font-size: 28px;
+	text-align: center;
+	color: #202022;
+	line-height: 1.4em;
+}
+
+.info_btn{
+	display: table;
+	width: 100%;
+	
+}
+
+
+
+.status_btn_g{
+	
+	float: right;
+	display: block;
+	width: 140px;
+	margin: 20px auto 0;
+	padding-left: 20px;
+	height: 30px;
+	line-height: 30px;
+	background: url(../../images/member/update/status_btn_arrow_g.gif) right center no-repeat #acacac;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: 500;
+	box-sizing: border-box;
+}
+
+.info_btn a.status_btn_g{
+	margin-top: -34px;
+}
+
+.top_form{
+	
+	width: 100%;
+	margin: auto;
+	margin-top: 42px;
+}
+
+.top_form dl{
+	width: 100%;
+	display: table;
+	margin: auto;
+	padding-bottom: 10px;
+	
+}
+
+.top_form dt{
+	width: 140px;
+	height: 58px;
+	line-height: 58px;
+	float: left;
+	margin-bottom: 0;
+	font-size: 15px;
+	
+}
+
+.top_form dd{
+	width: 540px;
+	height: 58px;
+	line-height: 58px;
+	float: left;
+	color: #202023;
+	font-size: 15px;
+	font-weight: 500;
+	
+}
+
+.top_form dd input{
+	width: 100%;
+	height: 58px;
+	padding-left: 20px;
+	font-size: 15px;
+	border: solid 1px #cccccc;
+	border-radius:3px 3px;
+	box-sizing: border-box;
+	color: #707070; 
+	
+}
+
+.top_form dd.birthday{
+	width: 314px;
+	
+}
+
+.join_form a.edit_btn{
+	margin-top: 16px;
+	float: right;
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 9px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #acacac;
+	font-weight: 500; 
+}
+
+.info_txt{
+	margin: -2px 0 18px 21%;
+	margin-left: 140px;
+	padding-left: 20px;
+	background: url(../../images/member/update/pop_info_icon.gif) no-repeat 0 2px;
+	color: #002f6c;
+	line-height: 1.4em;
+}
+
+.join_radio{
+	display: table;
+	width: 206px !important;
+	margin: 0 0 0 20px;
+}
+
+.box_btn{
+	margin: auto;
+	margin-top: 50px;
+	max-width: 500px;
+	width: 100%;
+}
+
+.submit_btn{
+	width: 100%;
+	height: 68px;
+	border: solid 1px #002f6c;
+	background: #002f6c;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer; 
+	
+}

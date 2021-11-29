@@ -34,16 +34,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
 		
 			http
-				.cors()
-				.and()
-				.csrf().disable()
+				.cors() 		   //위변조 방지
+				.and()  		   //위변조 방지
+				.csrf().disable()  //암호코드를 사용하지 않겠다는 뜻 나중에 허용해햐함.
+				
 				.authorizeRequests()
 									.antMatchers("/").permitAll()
 									.antMatchers("/borad/**").permitAll()
 									.antMatchers("/product/**").permitAll()
-									.antMatchers("/member/**").permitAll()
-									//.antMatchers("Member이 들어갈 수 있는 링크").hasRole("MEMBER")
-									//.antMatchers("Admin이 들어갈 수 있는 링크").hasRole("ADMIN")
+									.antMatchers("/member/login", "/member/joinCheck","/member/join").permitAll()
+									.antMatchers("/member/mypage").hasRole("MEMBER")
+									.antMatchers("/member/admin").hasRole("ADMIN")
 									.and()
 									
 				.formLogin()
