@@ -7,6 +7,7 @@
 <head>
 <link type="text/css" rel="stylesheet" href="../css/common/common.css">
 <link type="text/css" rel="stylesheet" href="../css/member/mypage.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -97,10 +98,10 @@
 					스탬프 적립 현황
 					<span>스탬프 12개를 적립하면 아메리카노(R) Free 쿠폰을 발급해 드립니다.</span>
 					</h3>
-					<a href="#c" class="status_btn_b stamp_status" onclick="">
+					<a href="#c" class="status_btn_b stamp_status" onclick="stamp_list_v('history');">
 						스탬프 적립내역
 					</a>
-					<a href="#c" class="status_btn_b stamp_history" onclick="" style="display: none">
+					<a href="#c" class="status_btn_b stamp_history" onclick="stamp_list_v('status');" style="display: none">
 						스탬프 현황판
 					</a>
 				</div>
@@ -173,8 +174,8 @@
 			<div class="con_align">
 				<div class="status_condition_top">
 					<h3 class="ns" id="coupon_status_text">보유 쿠폰 현황</h3>
-					<a href="#c" class="status_btn_b coupon_status" onclick="">쿠폰 사용 내역</a>
-					<a href="#c" class="status_btn_b coupon_history" style="display: none" onclick="">보유 쿠폰 현황</a>
+					<a href="#c" class="status_btn_b coupon_status" onclick="coupons_list_v('history');">쿠폰 사용 내역</a>
+					<a href="#c" class="status_btn_b coupon_history" style="display: none" onclick="coupons_list_v('status');">보유 쿠폰 현황</a>
 				</div>
 				
 				<div class="coupon_status">
@@ -210,5 +211,22 @@
 <c:import url="../temp_common/footer.jsp"></c:import>
 <!-- /footer  -->
 
+<script type="text/javascript">
+
+function stamp_list_v(id){
+	$(".stamp_history,.stamp_status").hide();
+	$(".stamp_"+id).show();
+}
+
+function coupons_list_v(id){
+	$(".coupon_history,.coupon_status").hide();
+	$(".coupon_"+id).show();
+	if(id == "history"){
+		$("#coupon_status_text").html('쿠폰 사용내역');
+	}else{
+		$("#coupon_status_text").html('보유 쿠폰 현황');
+	}
+}
+</script>
 </body>
 </html>
