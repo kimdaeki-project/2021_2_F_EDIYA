@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.kjl.fp.product.bread.BreadMapper;
 import com.kjl.fp.product.bread.BreadVO;
+import com.kjl.fp.product.bread.StarBreadVO;
 
 @SpringBootTest
 public class BreadTest {
@@ -17,9 +18,14 @@ public class BreadTest {
 	@Autowired
 	private BreadMapper breadMapper;
 
-	@Test
+	//@Test
 	void selectAllTest () throws Exception {
 		List<BreadVO> ar = breadMapper.selectAll();
+		assertNotEquals(0, ar.size());
+	}
+	@Test
+	void starbreadTest () throws Exception {
+		List<StarBreadVO> ar = breadMapper.starbread();
 		assertNotEquals(0, ar.size());
 	}
 }

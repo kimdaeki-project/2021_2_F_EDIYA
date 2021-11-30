@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kjl.fp.product.Pager;
 import com.kjl.fp.product.productMapper;
 
 @Mapper
@@ -12,7 +13,6 @@ public interface BreadMapper extends productMapper {
 	//리스트 불러오기
 	public List<BreadVO> selectAll () throws Exception;
 	
-	//삼품 불러오기
-	public BreadVO selectOne (BreadVO breadVO) throws Exception;
+	public List<StarBreadVO> starbread () throws Exception;
 	
 }

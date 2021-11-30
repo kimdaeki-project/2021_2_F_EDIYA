@@ -6,13 +6,6 @@
 <head>
 <meta charset="UTF-8">
 	<title>EDIYA COFFEE</title>
-	
-	<!-- bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/common/common.css">
 
@@ -27,8 +20,12 @@
 	<link rel="stylesheet" type="text/css" href="../css/product/swiper.css">
 	
 	<link rel="stylesheet" type="text/css" href="../css/product/commons.css">
-	<link rel="stylesheet" type="text/css" href="../css/product/smaple.css">
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+  
 </head>
 <body>
 <!-- Start -->
@@ -54,34 +51,35 @@
 <!-- 우측 소메뉴 -->
 <div class="location"><span>HOME</span><span>메뉴</span>베이커리</div>
 		
-<!-- 상품 -->
-<div class="block_new ">
-	<div class="con_align">
-		<h3 class="nunito">추천 상품</h3>
-		<div class="new_pro">
-    
-    <!-- 제품 상세 Popup -->
+	<!-- 상품 -->
+	<div class="block_new ">
+		<div class="con_align">
+			<h3 class="nunito">추천 상품</h3>
+				<div class="new_pro">
+      			
+	<!-- //제품 상세 Popup -->
 	<div id="demo" class="carousel slide" data-bs-ride="carousel">
-	
-  	<div class="carousel-inner sto">
-  	<div class="sto1">
+  
+  	<!-- The slideshow/carousel -->
+  	<div class="new_pro">
+  	
+  	<div class="carousel-inner">
   	<div class="carousel-item active">
-  		<a href="#c" class="sw1">
-			<span class="swon"><img src="../images/common/best_icon.png" alt="new"></span>
+  		<a href="#c" onclick="show_slide_detail('257')">
+			<span class="new_icon"><img src="../images/common/best_icon.png" alt="new"></span>
 			<img src="../images/product/bread/IMG_1527143944548.png" alt="초코 티라미수">
 		</a>
-	<p><a class="sw2" href="#c">초코 티라미수</a></p>
+	<p><a href="#c" onclick="show_slide_detail('257')">초코 티라미수</a></p>
     </div>
     <c:forEach items="${star}" var="star">
-		<div class="carousel-item">	
-			<a href="#c" class="sw1">
-			<span><img class="swon" src="../images/common/best_icon.png" alt="new"></span>
+		<div class="carousel-item" style="float: none; list-style: none; position: relative; width: 393px;">	
+			<a href="#c" onclick="show_slide_detail('257')">
+			<span class="new_icon"><img src="../images/common/best_icon.png" alt="new"></span>
 			<img src="../images/product/bread/IMG_${star.pdImg}.png">
 			</a>
-			<p><a class="sw2" href="#c">${star.pdNameK}</a></p>
+			<p><a href="#c" onclick="show_slide_detail('257')">${star.pdNameK}</a></p>
 		</div>
 	</c:forEach>
-	</div>
   </div>
   
   <!-- Left and right controls/icons -->
@@ -92,22 +90,29 @@
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
-		<div class="block_cate" id="blockcate">
-			<div class="con_align">
-				<div class="menu_sch">
-				<h4>메뉴 검색</h4>
-				<div class="search_bar">
-					<input type="text" class="sch_txt" name="keyword" id="skeyword" value=""><button onclick="search_keyword()"></button>
-				</div>
-		
-	<!-- 메뉴 검색 -->
-		<ul>
-			<li><input type="checkbox" name="chkList" id="BREAD" value="17" onclick="change_cate()"><label for="BREAD">BREAD</label></li>
-			<li><input type="checkbox" name="chkList" id="DESSERT" value="18" onclick="change_cate()"><label for="DESSERT">DESSERT</label></li>
-			<li><input type="checkbox" name="chkList" id="COOKIE &amp; ETC" value="19" onclick="change_cate()"><label for="COOKIE &amp; ETC">COOKIE &amp; ETC</label></li>
-		</ul>
-	</div>
-</div></div></div>      			
+</div>
+
+
+
+
+				
+				<div class="block_cate" id="blockcate">
+      				<div class="con_align">
+						<div class="menu_sch">
+							<h4>메뉴 검색</h4>
+								<div class="search_bar">
+									<input type="text" class="sch_txt" name="keyword" id="skeyword" value=""><button onclick="search_keyword()"></button>
+								</div>
+								<!-- 메뉴 검색 -->
+			  					<ul>
+									<li><input type="checkbox" name="chkList" id="BREAD" value="17" onclick="change_cate()"><label for="BREAD">BREAD</label></li>
+									<li><input type="checkbox" name="chkList" id="DESSERT" value="18" onclick="change_cate()"><label for="DESSERT">DESSERT</label></li>
+									<li><input type="checkbox" name="chkList" id="COOKIE &amp; ETC" value="19" onclick="change_cate()"><label for="COOKIE &amp; ETC">COOKIE &amp; ETC</label></li>
+							  </ul>
+						</div>
+        			</div>
+      			</div>
+      			
       			
 
 		<div class="con_align">
@@ -139,16 +144,23 @@
       		</div>
 
       			
-      	<div class="block_hot">
-      		<div class="con_align">
-			<input type="hidden" id="menu_page" value="2">
-          		<div class="con_btn">
-          			<a class="line_btn" onclick="more" style="cursor:pointer">더보기<span>+</span></a>
-          		</div>
-        	</div>
-      	</div>
-	</div>		
-</div>
+      			<div class="block_hot">
+      				<div class="con_align">
+						<input type="hidden" id="menu_page" value="2">
+          				
+         			 	<div class="con_btn">
+           			 		<a class="line_btn" onclick="show_more()" style="cursor:pointer">더보기<span>+</span></a>
+          				</div>
+        			</div>
+      			</div>
+      			
+      			
+				
+				
+				<!-- <a href="#" class="arrow_right"><img src="../images/common/new_btn_arrow02.gif" alt="오른쪽으로"/></a> -->
+			</div>		
+		</div>
+	</div>
 
 	
 	</section>

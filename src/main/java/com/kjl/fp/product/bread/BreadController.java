@@ -20,8 +20,10 @@ public class BreadController {
 	@GetMapping("bread")
 	public ModelAndView selectAll (ModelAndView mv) throws Exception {
 		List<BreadVO> ar = breadService.selectAll();
+		List<StarBreadVO> br = breadService.starbread();
 		mv.setViewName("product/bread");
 		mv.addObject("bread", ar);
+		mv.addObject("star", br);
 		return mv;
 	}
 	
@@ -29,6 +31,17 @@ public class BreadController {
 	public String selectAll (Model model, BreadVO breadVO) throws Exception {
 		model.addAttribute("breadInfo", breadVO);
 		return "redirect:product/bread";
+	}
+	
+	@PostMapping("starbread")
+	public String starbread (Model model, StarBreadVO starBreadVO) throws Exception {
+		model.addAttribute("starbread", starBreadVO);
+		return "redirect:product/bread";
+	}
+	
+	@GetMapping("bread2")
+	public String bread2 () throws Exception {
+		return "product/bread2";
 	}
 	
 }

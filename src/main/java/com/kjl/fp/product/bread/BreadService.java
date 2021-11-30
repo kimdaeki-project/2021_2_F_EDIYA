@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kjl.fp.product.Pager;
 import com.kjl.fp.product.productService;
 
 @Service
@@ -17,10 +18,8 @@ public class BreadService implements productService{
 		return breadMapper.selectAll();
 	}
 	
-	public BreadVO selectOne (BreadVO breadVO) throws Exception {
-		return breadMapper.selectOne(breadVO);
+	public List<StarBreadVO> starbread () throws Exception {
+		return breadMapper.starbread();
 	}
-	
-	
 
 }

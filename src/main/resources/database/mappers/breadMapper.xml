@@ -8,5 +8,8 @@
 	<select id="selectAll" resultType="BreadVO">
 		select * from productbread
 	</select>
- 
+	
+	<select id="starbread" resultType="StarBreadVO">
+		select * from starbread
+	</select>
  </mapper>

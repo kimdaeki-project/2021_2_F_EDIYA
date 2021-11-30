@@ -3,10 +3,9 @@ package com.kjl.fp.product.bread;
 import lombok.Data;
 
 @Data
-public class BreadVO {
-	
+public class StarBreadVO {
+
 	private int pdNum;
-	private int rule;
 	private String pdNameK;
 	private String pdNameE;
 	private String pdInfo;
@@ -17,5 +16,5 @@ public class BreadVO {
 	private int pdN;
 	private String pdImg;
 	private String pdAllergy;
-
+	
 }

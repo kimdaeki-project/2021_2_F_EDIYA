@@ -9,6 +9,7 @@
 
   		<!-- 상품 -->
   		<typeAlias type="com.kjl.fp.product.bread.BreadVO" alias="BreadVO"/>
+  		<typeAlias type="com.kjl.fp.product.bread.StarBreadVO" alias="StarBreadVO"/>
   		
   		<typeAlias type="com.kjl.fp.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.kjl.fp.member.RoleVO" alias="RoleVO"/>
