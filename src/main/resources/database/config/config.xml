@@ -6,6 +6,7 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.kjl.fp.board.BoardVO" alias="BoardVO"/>
+  		<typeAlias type="com.kjl.fp.cart.CartVO" alias="CartVO"/>
   		<typeAlias type="com.kjl.fp.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.kjl.fp.member.RoleVO" alias="RoleVO"/>
   		

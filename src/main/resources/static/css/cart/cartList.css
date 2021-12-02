@@ -1,30 +1,21 @@
 @charset "UTF-8";
 
-.hide{
-	display: none;
-}
-.underline{
-	width: 1180px;
-	border: 2px solid #003399;
-	box-sizing: border-box;
-	margin-top: 30px;
-}
-.underline.down{
-	margin-top: 5px;
-	margin-bottom: 100px;
+.cart_banner{
+	position: relative;
+	background: url("../../images/cart/drink_visual.jpg") no-repeat top;
+	background-size: cover;
+	width: 100%;
+	height: 250px;
 }
 
-/* =============================================================== */
-.contents .banner{
-	width: 100%;
-	height: 150px;
-}
-.contents.cartList{
+/* ===================== Cart Body ===================== */
+.cart_body{
 	width: 1180px;
-	max-width: 1180px;
-	margin: 0 auto;
+	margin: 0 auto 150px auto;
 }
-.contents .location{
+
+/* location */
+.cart_body .location{
 	display: block;
 	max-width: 1180px;
 	text-align: right;
@@ -33,277 +24,243 @@
 	color: #898989;
 	font-size: 12px;
 }
-.contents .location span{
-	background: url("../../../images/common/icon_loc.png") right no-repeat;
+.cart_body .location span{
+	background: url("../../images/common/icon_loc.png") right no-repeat;
 	margin-right: 8px;
 	padding-right: 15px;
 }
-.contents .location span:last-child{
+.cart_body .location span:last-child{
 	background: none;
 }
 
-/* =============================================================== */
-/* ========================== cart_body ========================== */
-/* =============================================================== */
-.cart_body{
+/* top_tit */
+.cart_body .top_tit{
 	width: 100%;
-	margin-top: 60px;
-}
-.cart_tit{
-	display: block;
-	font-size: 36px;
-	font-weight: 500;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-	color: #213e84;
-	width: 200px;
+	margin-top: 70px;
 	text-align: left;
-	padding-left: 20px;
 }
-
-/* ====== Progress Bar ====== */
-progress{
-	-webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+.cart_body .top_tit.total{
+	text-align: right;
+	margin-top: 20px;
+	margin-bottom: 10px;
 }
-progress[value]{
-	-webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+.cart_body .top_tit h1{
+	font-size: 36px;
+	font-weight: 700;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: #002f6c;
 }
-progress::-webkit-progress-bar{
-	background: #d9d9d9;
-	box-shadow: 0 2px 3px;
-	border-radius: 10px;
-}
-progress::-webkit-progress-value{
-	transition: width 0.5s;
-	background-color: #213e84;
-	border-radius: 10px;
-}
-.cart_progress_wrap{
-	width: 700px;
-	height: 40px;
-	margin: 40px auto 0 auto;
-	position: relative;
-}
-.cart_progress{
-	display: block;
-	width: 700px;
-	height: 40px;
-}
-.cart_progress_wrap .progress_ul{
-	position: absolute;
-	width: 100%;
-	top: 10px;
-	left: 1px;
-}
-.cart_progress_wrap .progress_ul li{
-	display: inline-block;
-	font-size: 16px;
+.cart_body .top_tit h2{
+	font-size: 24px;
 	font-weight: 500;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-	text-align: center;
-	width: 24.6%;
-}
-.cart_progress_wrap .progress_ul li.on{
-	color: #FFF;
+	color: #002f6c;
 }
 
-/* ====== Cart List ====== */
-.cart_list_wrap{
-	margin: 40px auto 40px auto;
-	position: relative;
+/* cart_list */
+.cart_body .cart_list_wrap{
+	width: 100%;
+	border-top: 2px solid #002f6c;
+	margin-top: 30px;
 }
-.prev_btn{
-	width: 100px;
-	height: 100px;
-	border: none;
-	border-radius: 100%;
-	background: #213e84;
-	position: absolute;
-	z-index: 2;
-	top: 50%;
-	left: -150px;
-	transform: translate(0, -70%);
+.cart_body .cart_list_wrap .cart_list_title{
+	width: 100%;
+	height: 50px;
+	background: #D9E5FF;
+	border-radius: 0 0 10px 10px;
+	margin-bottom: 50px;
+}
+.cart_body .cart_list_wrap .cart_list_title div{
+	display: inline-block;
 	text-align: center;
-	cursor: pointer;
+	line-height: 50px;
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	margin-left: 3px;
 }
-.prev_btn:hover{
-	box-shadow: 2px 1px 5px black;
-}
-.prev_btn span{
-	display: block;
-	margin-top: 40px;
-	margin-right: 5px;
-	font-size: 48px;
-	font-weight: 900;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-	color: #FFF;
-}
-.next_btn{
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(1){
 	width: 100px;
-	height: 100px;
-	border: none;
-	border-radius: 100%;
-	background: #213e84;
-	position: absolute;
-	z-index: 2;
-	top: 50%;
-	right: -150px;
-	transform: translate(0, -70%);
-	text-align: center;
-	cursor: pointer;
 }
-.next_btn:hover{
-	box-shadow: -2px 1px 5px black;
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(2){
+	width: 150px;
+	margin-left: 20px;
 }
-.next_btn span{
-	display: block;
-	margin-top: 40px;
-	margin-left: 5px;
-	font-size: 48px;
-	font-weight: 900;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-	color: #FFF;
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(3){
+	width: 400px;
 }
-.slider_container{
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(4){
+	width: 200px;
+	margin-left: 0;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(5){
+	width: 200px;
+	margin-left: 0;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(6){
+	width: 100px;
+}
+.cart_body .cart_list_wrap .cart_list{
+	width: 100%;
+	min-height: 300px;
+	height: auto;
+}
+.cart_list .cart_item_wrap{
 	display: flex;
-	width: 1080px;
-	margin: 40px auto 40px auto;
+	width: 100%;
+	height: 150px;
+	margin: 5px auto;
+	border-top: 1px solid #002f6c;
+	border-bottom: 1px solid #002f6c;
+	border-radius: 8px;
+	justify-content: space-around;
+}
+.cart_item_wrap .box{
+	box-sizing: border-box;
+	height: 150px;
+}
+.cart_item_wrap .item_chk{
+	width: 100px;
 	position: relative;
 }
-.cart_list{
-	width: 64.5%;
-	height: 500px;
-	position: relative;
-	overflow: scroll;
-}
-.cart_list::-webkit-scrollbar{
+.cart_item_wrap .item_chk input[type="checkbox"]{
 	display: none;
 }
-.cart_list .item_wrap{
-	width: 95%;
-}
-.cart_list .item_wrap .item{
-	display: flex;
-	background: #EBF7FF; /* #D9E5FF */
-	border-radius: 10px;
-	height: 100px;
-	padding: 0 20px;
-	justify-content: space-between;
-}
-.cart_list .item_wrap:nth-child(2n+2) .item{
-	background:	#FFF;
-}
-/* items == */
-.item_align{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-}
-.cart_list .item_wrap .item .cart_chkbox{
-	margin-top: 45px;
-}
-/* img */
-.cart_list .item_wrap .item .cart_img{
-	margin-left: 40px;
-	width: 100px;
-}
-/* name */
-.cart_list .item_wrap .item .item_name{
-	width: 300px;
-	font-size: 16px;
-	font-weight: 700;
-}
-/* price */
-.cart_list .item_wrap .item .item_price{
-	width: 100px;
-	font-size: 16px;
-	font-weight: 700;
-}
-.cart_list .item_wrap .item .item_option{
-	width: 50px;
-}
-.cart_list .item_wrap .item .item_option button{
-	border: none;
-	border-radius: 10px;
-	background: #213e84;
-	padding: 10px;
-	font-weight: 700;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-	color: white;
+.cart_item_wrap .item_chk input[type="checkbox"] + label {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25px;
+	height: 25px;
+	border: 2px solid #002f6c;
+	border-radius: 100%;
 	cursor: pointer;
 }
-.cart_list_wrap .info_wrap{
-	width: 34.5%;
-	height: 500px;
-	position: relative;
-	box-sizing: border-box;
-	border: 1px solid #EAEAEA;
-	border-radius: 10px;
-	text-align: right;
-	padding-top: 50px;
-	padding-right: 30px;
-	padding-left: 30px;
+.cart_item_wrap .item_chk input[type="checkbox"] + label:hover{
+	background: #AEC9FA;
+	border: 2px solid #0B1E6B; 
 }
-.cart_list_wrap .info_wrap .totalPrice_tit{
+.cart_item_wrap .item_chk input[type="checkbox"]:checked + label{
+	background: #002f6c;
+	border: 2px solid #AEC9FA;
+}
+.cart_item_wrap .item_img{
+	width: 150px;
+	margin-left: 30px;
+}
+.cart_item_wrap .item_img img{
+	width: 100%;
+	height: 100%;
+}
+.cart_item_wrap .item_name{
+	width: 400px;
+	text-align: center;
+}
+.cart_item_wrap .item_name span{
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 150px;
+}
+.cart_item_wrap .item_count{
+	width: 200px;
+	text-align: center;
+	position: relative;
+}
+.cart_item_wrap .item_count .count_box{
+	display: flex;
+	width: 120px;
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid #002f6c;
+	border-radius: 8px;
+}
+.count_box .cnt{
+	width: 40px;
+}
+.count_box .cnt span{
+	font-size: 18px;
+	line-height: 40px;
+}
+.count_box .cnt_btn{
+	width: 40px; height: 40px;
+	border: none;
+	border-radius: 8px;
 	font-size: 24px;
 	font-weight: 700;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-	color: #213e84;
+	color: #002f6c;
+	cursor: pointer;
 }
-.cart_list_wrap .info_wrap .totalPrice{
+.count_box .cnt_btn.plus{
+	background: #8DB3FA;
+	opacity: 0.6;
+}
+.count_box .cnt_btn.minus{
+	background: #AEC9FA;
+	opacity: 0.6;
+}
+.count_box .cnt_btn.plus:hover{
+	opacity: 1;
+}
+.count_box .cnt_btn.minus:hover{
+	opacity: 1;
+}
+.count_box .cnt_btn span{
+	line-height: 40px;
+}
+.cart_item_wrap .item_price{
+	width: 200px;
+	text-align: center;
+}
+.cart_item_wrap .item_price span{
 	font-size: 18px;
-	font-weight: 900;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
-	color: #F15F5F;
-	margin-top: 40px;
-	border-bottom: 2px solid #8C8C8C;
+	font-weight: 500;
+	line-height: 150px;
 }
-.cart_list_wrap .info_wrap .selectList{
-	width: 100%;
-	height: 300px;
-	position: relative;
-	overflow: scroll;
-	margin-top: 20px;
+.cart_item_wrap .item_delete{
+	width: 100px;
+	text-align: center;
 }
-.cart_list_wrap .info_wrap .selectList::-webkit-scrollbar{
-	display: none;
+.cart_item_wrap .item_delete .del_btn{
+	width: 50px;
+	height: 50px;
+	margin-top: 50px;
+	background: #002f6c;
+	border-radius: 100%;
+	opacity: 0.8;
+	cursor: pointer;
 }
-.cart_list_wrap .info_wrap .selectList .selectOne{
-	border-bottom: 1px solid #d9d9d9;
+.cart_item_wrap .item_delete .del_btn:hover{
+	opacity: 1;
 }
-.cart_list_wrap .info_wrap .selectList .selectOne .select{
-	display: inline-block;
-	padding: 5px;
-	margin-right: 10px;
-	height: 28px;
+.cart_item_wrap .item_delete .del_btn span{
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #FFF;
 }
 
-.cart_list_wrap .info_wrap .selectList .selectOne .select > span{
-	display: block;
-	line-height: 28px;
-	font-size: 12px;
-	font-weight: 500;
-	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+/* Cart_check_option */
+.cart_body .cart_check_option{
+	margin-top: 20px;
+	width: 100%;
+	height: 25px;
 }
-.cart_list_wrap .info_wrap .selectList .selectOne .select.button{
-	display: block;
+/* Cart_total */
+.cart_body .cart_total_wrap{
+	width: 100%;
+	height: 100px;
+	border-top: 2px solid #002f6c;
+	border-radius: 0 0 10px 10px;
+	background: #D9E5FF;
+	margin-top: 5px;
+	padding-top: 20px;
 }
-.cart_list_wrap .info_wrap .selectList .selectOne .select.button .cnt_btn{
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 12px;
+.cart_total_wrap .total_price{
+	text-align: right;
+	font-size: 36px;
 	font-weight: 500;
-	background: #213e84;
-	color: white;
-	border: none;
-	border-radius: 100%;
-	text-align: center;
-	cursor: pointer;
-	margin-left: 10px;
+	color: red;
+	margin: 20px 20px 0 0;
 }

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,141 +20,120 @@
 	<c:import url="../temp_common/header.jsp"></c:import>
 	
 	<section id="container">
+	
+		<div class="cart_banner">
+			
+		</div>
 		
-		<div class="contents cartList">
-			
-			<div class="banner">
-			
-			</div>
-			
+		<div class="cart_body">
+		
 			<div class="location">
 				<span>HOME</span>
 				<span>장바구니</span>
 			</div>
 			
-			<div class="cart_body">
+			<div class="top_tit">
+				<h1>▶ EDIYA 장바구니</h1>
+			</div>
 			
-				<h1 class="cart_tit">장바구니</h1>
-				<div class="cart_progress_wrap">
-					<progress max="100" value="25" class="cart_progress"></progress>
-					<ul class="progress_ul">
-						<li class="progress_li on">장바구니</li>
-						<li class="progress_li">결제정보입력</li>
-						<li class="progress_li">결제완료</li>
-						<li class="progress_li">결제내역</li>
-					</ul>
+			<div class="cart_list_wrap">
+				
+				<div class="cart_list_title">
+					<div>
+						선택
+					</div>
+					<div>
+						상품 이미지
+					</div>
+					<div>
+						상품명
+					</div>
+					<div>
+						수량
+					</div>
+					<div>
+						가격
+					</div>
+					<div>
+						
+					</div>
 				</div>
-				
-				<div class="underline"><span class="hide">경계선</span></div>
-				
-				<div class="cart_list_wrap">
-						
-					<!-- 이전 다음 버튼 -->
-					<div class="prev_btn">
-						<span>＜</span>
-					</div>
-					<div class="next_btn">
-						<span>＞</span>
-					</div>
+			
+				<div class="cart_list">
 					
-					<div class="slider_container">
-					
-						<div class="cart_list">
-							
-							<c:forEach begin="1" end="1">
-								<div class="item_wrap">
-									<div class="item">
-										
-										<input type="hidden" id="prd_num" value="1">
-										<input type="checkbox" id="" class="cart_chkbox item_align">
-										
-										<div class="cart_img item_align">
-											<img alt="cart_img" src="${pageContext.request.contextPath}/images/product/bread/IMG_1510912318685.png" width="100px" height="100px">
-										</div>
-										
-										<div class="item_name item_align" data-name="핫치킨 브리또">
-											핫치킨 브리또
-										</div>
-										
-										<div class="item_price item_align" data-price="5000">
-											5,000원
-										</div>
-															 
-										<div class="item_option item_align">
-											<button type="button" class="item_del">삭제</button>
-										</div>
-										
-									</div>
-								</div>
-								<div class="item_wrap">
-									<div class="item">
-										
-										<input type="hidden" id="prd_num" value="2">
-										<input type="checkbox" id="" class="cart_chkbox item_align">
-										
-										<div class="cart_img item_align">
-											<img alt="cart_img" src="${pageContext.request.contextPath}/images/product/bread/IMG_1510912426297.png" width="100px" height="100px">
-										</div>
-										
-										<div class="item_name item_align" data-name="게맛살 브리또">
-											게맛살 브리또
-										</div>
-										
-										<div class="item_price item_align" data-price="4500">
-											4,500원
-										</div>
-															 
-										<div class="item_option item_align">
-											<button type="button" class="item_del">삭제</button>
-										</div>
-										
-									</div>
-								</div>
-								<div class="item_wrap">
-									<div class="item">
-										
-										<input type="hidden" id="prd_num" value="3">
-										<input type="checkbox" id="" class="cart_chkbox item_align">
-										
-										<div class="cart_img item_align">
-											<img alt="cart_img" src="${pageContext.request.contextPath}/images/product/bread/IMG_1527143944548.png" width="100px" height="100px">
-										</div>
-										
-										<div class="item_name item_align" data-name="티라미수 케이크 1조각">
-											티라미수 케이크 1조각
-										</div>
-										
-										<div class="item_price item_align" data-price="6500">
-											6,500원
-										</div>
-															 
-										<div class="item_option item_align">
-											<button type="button" class="item_del">삭제</button>
-										</div>
-										
-									</div>
-								</div>
-							</c:forEach>
-							
-						</div>
+					<c:forEach items="${cartList}" var="list" varStatus="i">
 						
-						<div class="info_wrap">
-							<h2 class="totalPrice_tit">총 상품금액</h2>
-							<h3 class="totalPrice" data-total="0">0원</h3>
+						<div class="cart_item_wrap" data-pdnum="${list.cart_id}">
 							
-							<div class="selectList">
-								<!-- append -->
-								
+							<div class="box item_chk">
+								<input type="checkbox" id="check${i.count}" class="chk" data-price="${list.pdPrice * list.pdCnt}">
+								<label for="check${i.count}"></label>
 							</div>
 							
+							<div class="box item_img">
+								<img alt="temp" src="${pageContext.request.contextPath}/images/product/bread/IMG_1510912318685.png">
+							</div>
+							
+							<div class="box item_name">
+								<span>${list.pdName}</span>
+							</div>
+							
+							<div class="box item_count">
+								<div class="count_box">
+								
+									<button class="cnt_btn minus" data-kind="-"><span>－</span></button>
+									
+									<div class="cnt"><span>${list.pdCnt}</span></div>
+									
+									<button class="cnt_btn plus" data-kind="+"><span>＋</span></button>
+									
+								</div>
+							</div>
+							
+							<div class="box item_price">
+								<span>
+									<fmt:formatNumber>${list.pdPrice * list.pdCnt}</fmt:formatNumber>
+								</span>
+									원	
+							</div>
+							
+							<div class="box item_delete">
+								<div class="del_btn" id="delete">
+									<span>
+										×
+									</span>
+								</div>
+							</div>
 							
 						</div>
 					
-					</div>
+					</c:forEach>
 					
 				</div>
 				
-				<div class="underline down"><span class="hide">경계선</span></div>
+			</div>
+			
+			<div class="cart_check_option">
+			
+				<button type="button" class="check_option_btn" id="check_all">전체 선택</button>
+				<span>( <span id="count_select">0</span> / ${fn:length(cartList)} )</span>
+				
+				<button type="button" class="check_option_btn" id="check_delete">선택 삭제</button>
+				
+			</div>
+			
+			<div class="top_tit total">
+				<h2>총 금액</h2>
+			</div>
+			
+			<div class="cart_total_wrap">
+				
+				<div>
+				</div>
+				
+				<div class="total_price">
+					0원
+				</div>
 				
 			</div>
 			
@@ -167,240 +149,165 @@
 <!-- Script -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
 <script type="text/javascript">
-	$(function () {
+	
+	// 선택물품 카운팅 함수
+	function countSelect() {
 		
-		// 주문표안에 넣을 배열값
-		let alreadyIn = [];
-		// 이미 안에 있는지 없는지 판단할 인수
-		let hasValue = false;
+		let count = 0;
 		
-		$(".cart_chkbox").on("click", function () {
-				
-			// 장바구니 리스트에서 값 가져오기
-			let prd_num = $(this).siblings("#prd_num").val();
-			let prd_name = $(this).siblings(".item_name").data("name");
-			let prd_price = $(this).siblings(".item_price").data("price");
-			const prd_count = 1;
+		$(".cart_item_wrap").each(function () {
 			
-			//console.log(prd_name);
-			//console.log(prd_price);
+			let isCheck = $(this).find(".item_chk").children(".chk").is(":checked");
 			
-			// chkbox 체크 여부
-			let isCheck = $(this).is(":checked");
+			if(isCheck){
+				count++;
+			}
 			
-			//console.log(isCheck);
+		});
+		
+		$("#count_select").text(count);
+		
+	}
+	
+	// 총 계산한 값 세팅 함수
+	function setTotalPrice() {
+		let getTotal = getTotalPrice();
+		
+		getTotal = addComma(getTotal) + "원";
+		$(".total_price").text(getTotal);
+	}
+	
+	// 천단위 , 함수
+	function addComma(value) {
+		
+		value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		return value;
+		
+	}
+	
+	// totalPrice 계산 함수
+	function getTotalPrice() {
+		
+		let totalPrice = 0;
+		
+		$(".cart_item_wrap").each(function () {
 			
-			if(isCheck == true){
-				
-				// 
-				
-				// 주문표안에 넣기 위한 element요소 정의
-				const setItem =
-				'<div class="selectOne" data-' + prd_num + '="' + prd_num + '">' +
-					'<div class="select name"><span>' + prd_name + '</span></div>' +
-					'<div class="select price" data-price="' + prd_price + '" data-prdprice="0">' +
-						'<span>' + prd_price + '원</span></div>' +
-					'<div class="select count" data-count="' + prd_count + '">' +
-						'<span>' + prd_count + '개</span>' +
-					'</div>' +
-					'<div class="select button">' +
-						'<div class="cnt_btn plus">＋</div>' +
-						'<div class="cnt_btn minus">－</div>' +
-						//'<div class="cnt_btn delete">×</div>' +
-					'</div>' +
-				'</div>';
-				
-				//console.log(setItem);
-				
-				// 추가
-				$(".selectList").append(setItem);
-				
-				// 주문표 배열안에 값 넣기
-				alreadyIn.push(prd_num);
+			let isCheck = $(this).find(".item_chk").children(".chk").is(":checked");
 			
-				// 총합 계산기
-				calculateTotal(prd_price, "plus");
+			if(isCheck){
 				
-			}else{
+				let eachPrice =  $(this).find(".item_chk").children(".chk").data("price");
+				totalPrice = totalPrice + eachPrice;
 				
-				$.each(alreadyIn, function (index, value) {
+			}
+			
+		});
+		
+		return totalPrice;
+	}
+	
+	// + - 버튼 이벤트
+	$(".cnt_btn").on("click", function () {
+		
+		let kind = $(this).data("kind");
+		let cur_id = $(this).parents(".cart_item_wrap").data("pdnum");
+		let cur_count = Number($(this).siblings(".cnt").text());
+		
+		if(kind == "+"){
+			
+			cur_count++;
+			
+		}else if(kind == "-"){
+			
+			if(cur_count <= 1){
+				alert("1개 이하는 불가능합니다.")
+				return false;
+			}
+			
+			cur_count--;
+			
+		}else{
+			console.log("error!");
+		}
+		
+		//ajax
+		$.ajax({
+			url: "updateCount",
+			type: "GET",
+			data: {
+				pdNum: cur_id,
+				pdCnt: cur_count
+			},
+			success: function (result) {
+				result = $.trim(result);
+				
+				$(result).find(".cart_item_wrap").each(function () {
 					
-					if(value == prd_num){
+					if(cur_id == $(this).data("pdnum")){
 						
-						// 같은 배열의 값은 삭제시키기
-						alreadyIn.splice(index, 1);
+						// 바뀌는 html 선택자 (수량 과 가격부분만 새로고침)
+						let ch_count = $(this).find(".item_count").html();
+						let ch_price = $(this).find(".item_price").html();
+						// 체크박스의 data-price값도 바꿔야 해서 체크박스 div도 바꾸기
+						let ch_chk = $(this).find(".item_chk").children(".chk").data("price");
+			
+						$(".cart_item_wrap[data-pdnum=" + cur_id + "]").find(".item_count").html();
+						$(".cart_item_wrap[data-pdnum=" + cur_id + "]").find(".item_price").html(ch_price);
+						$(".cart_item_wrap[data-pdnum=" + cur_id + "]").find(".item_chk").children(".chk").data("price", ch_chk);
 						
-						// 상품의 현재 값 가져오기
-						let perPrd = $('.selectOne[data-' + prd_num + '=' + prd_num + ']').children('.price').data("prdprice");
-						let curPrice = 0;
-						if(perPrd != 0){
-							curPrice = $('.selectOne[data-' + prd_num + '=' + prd_num + ']').children('.price').data("prdprice");
-						}else{
-							curPrice = prd_price;
+						// 수량이 바뀌어도 체크박스는 유지되므로 총합 자동계산되어야함
+						if($(".cart_item_wrap[data-pdnum=" + cur_id + "]").find(".item_chk").children(".chk").is(":checked")){
+							setTotalPrice();
 						}
-						
-						console.log(curPrice);
-						
-						// 총합 계산기
-						calculateTotal(curPrice, "minus");
-						
-						$('.selectOne[data-' + prd_num + '=' + prd_num + ']').remove();
-						
+														
+						return false;
 					}
 					
 				});
-
-			}
-		
-		})
-		
-		// 아이템 삭제버튼 
-		$(".item_del").on("click", function () {
-			
-			let answer = confirm("해당 아이템을 삭제 하시겠습니까?");
-			
-			if(answer == true){
 				
-				// 데이터베이스 연동 후 ajax 처리해줄거임.
-				//$.ajax({
-					
-				//});
-				
-			}else{
-				return false;
 			}
-		})
+		});
 		
-		// +, - 버튼
-		// 동적으로 생성된거여서 document.on해야함
-		$(document).on("click", ".plus", function () {
-			
-			// 클릭 했을때 자신의 prd_count, price가져오기
-			let getPrice = $(this).parent().siblings(".price").data("price");
-			let getCount = $(this).parent().siblings(".count").data("count");
-			
-			getCount = getCount + 1;
-			// 상품별 합 가격
-			let perPrdPrice = getPrice * getCount;
-			
-			$(this).parent().siblings(".count").data("count", getCount);
-			$(this).parent().siblings(".price").data("prdprice", perPrdPrice);
-			$(this).parent().siblings(".count").children().text(getCount + "개");
-			$(this).parent().siblings(".price").children().text(perPrdPrice + "원");
-			
-			calculateTotal(getPrice, "plus");
-			
-		})
-		$(document).on("click", ".minus", function () {
-			
-			// 클릭 했을때 자신의 prd_count, price가져오기
-			let getPrice = $(this).parent().siblings(".price").data("price");
-			let getCount = $(this).parent().siblings(".count").data("count");
-			
-			// 1개 미만으로 선택 불가능
-			if(getCount <= 1){
-				alert("1개 이상 부터 가능합니다.")
-				return false;
-			}
-			
-			getCount = getCount - 1;
-			// 상품별 합 가격
-			let perPrdPrice = getPrice * getCount;
-			
-			$(this).parent().siblings(".count").data("count", getCount);
-			$(this).parent().siblings(".price").data("prdprice", perPrdPrice);
-			$(this).parent().siblings(".count").children().text(getCount + "개");
-			$(this).parent().siblings(".price").children().text(perPrdPrice + "원");
-			
-			calculateTotal(getPrice, "minus");
-			
-		})
-		
-		//
-		stepBar();
-		
-		// click next_btn
-		$(".next_btn").on("click", function () {
-			
-			let percent = $(".cart_progress").attr("value");
-			console.log(percent);
-			percent = Number(percent) + 25;
-			
-			let step = $(".progress_li.on").index();
-			step = step + 1;
-			$(".progress_li").eq(step).addClass("on");
-			$(".progress_li:not(:eq(" + step+ "))").removeClass("on");
-			
-			$(".cart_progress").attr("value", percent);
-			
-			stepBar();
-			
-		})
-		// click prev_btn
-		$(".prev_btn").on("click", function () {
-			
-			let percent = $(".cart_progress").attr("value");
-			percent = Number(percent) - 25;
-			
-			let step = $(".progress_li.on").index();
-			step = step - 1;
-			$(".progress_li").eq(step).addClass("on");
-			$(".progress_li:not(:eq(" + step+ "))").removeClass("on");
-			
-			$(".cart_progress").attr("value", percent);
-			
-			stepBar();
-			
-		})
-		
+		$(this).siblings(".cnt").children("span").text(cur_count);
 		
 	})
 	
-	// 총 가격 계산하는 함수
-	function calculateTotal(price, kind) {
+	// 체크박스 클릭 이벤트
+	$(document).on("click", ".chk", function () {
 		
-		let totalPrice = $(".totalPrice").data("total");
+		// 체크된 항목들의 총합 구하기
+		setTotalPrice();
+		// 선택물품 카운팅 하기
+		countSelect();
 		
-		if(kind == "plus"){
-			
-			totalPrice = totalPrice + price;
-			
-		}else{
-			
-			totalPrice = totalPrice - price;
-			
-		}
+	})
 	
-		//console.log(totalPrice);
+	// 전체선택 버튼 이벤트
+	$("#check_all").on("click", function () {
 		
-		$(".totalPrice").data("total", totalPrice);
-		$(".totalPrice").text(totalPrice + "원");
+		$(".cart_item_wrap").each(function () {
+			
+			let isCheck = $(this).find(".item_chk").children(".chk").is(":checked");
+			
+			if(!isCheck){
+				$(this).find(".item_chk").children(".chk").prop("checked", true);
+				
+				// 전체선택 이후 자동계산
+				setTotalPrice();
+				// 선택물품 카운팅 하기
+				countSelect();
+			}
+			
+		});
 		
-	}
+		console.log("clcik");
+	})
 	
-	//  progress bar 값 이용 버튼 생성 함수
-	function stepBar() {
+	// 선택삭제 버튼 이벤트
+	$("#check_delete").on("click", function () {
 		
-		if($(".cart_progress").attr("value") <= 25){
-			
-			$(".prev_btn").css("display", "none");
-			
-		}else{
-			
-			$(".prev_btn").css("display", "block");
-			
-			
-		}
-		if($(".cart_progress").attr("value") >= 100){
-			
-			$(".next_btn").css("display", "none");
-			
-		}else{
-			
-			$(".next_btn").css("display", "block");
-			
-		}
-	}
+		console.log("click");
+	})
 	
 </script>
 
