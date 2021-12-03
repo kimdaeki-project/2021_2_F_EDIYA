@@ -61,13 +61,13 @@
 			
 				<div class="cart_list">
 					
-					<c:forEach items="${cartList}" var="list" varStatus="i">
+					<c:forEach items="${cartList}" var="list">
 						
-						<div class="cart_item_wrap" data-pdnum="${list.cart_id}">
+						<div class="cart_item_wrap" data-pdnum="${list.pdNum}">
 							
 							<div class="box item_chk">
-								<input type="checkbox" id="check${i.count}" class="chk" data-price="${list.pdPrice * list.pdCnt}">
-								<label for="check${i.count}"></label>
+								<input type="checkbox" id="check${list.cart_id}" class="chk" data-price="${list.pdPrice * list.pdCnt}">
+								<label for="check${list.cart_id}"></label>
 							</div>
 							
 							<div class="box item_img">
@@ -128,11 +128,16 @@
 			
 			<div class="cart_total_wrap">
 				
-				<div>
+				<div class="total_coupon">
+					<button type="button" id="modal_coupon">쿠폰 사용</button>
 				</div>
 				
 				<div class="total_price">
-					0원
+					<span class="step1">0원</span>
+					<span>-</span>
+					<span class="step2">0원</span>
+					<span>=</span>
+					<span class="step3">0원</span>
 				</div>
 				
 			</div>
@@ -143,6 +148,48 @@
 	
 	<c:import url="../temp_common/footer.jsp"></c:import>
 	
+</div>
+
+<div class="modal">
+	<div class="coupon_wrap">
+		<div class="coupon_contents">
+		
+			<div class="coupon_title">
+				<h1>userName 님의 쿠폰함입니다.</h1>
+			</div>
+			
+			<!-- 적용한 쿠폰 -->
+			<input type="hidden" class="using_coupon" value="0" data-coupon-id="">
+			
+			<div class="coupon_body">
+	
+					<c:forEach begin="1" end="3" varStatus="i">
+					
+						<div class="coupon_item_wrap">
+							
+							<div class="coupon_item">
+								
+								<div class="coupon_kind">
+									<h1><span class="percent">${i.index}0</span> %</h1>
+								</div>
+								
+								<div class="coupon_state">
+									<h3>기한: 2021.12.03 ~ 2021.12.31</h3>
+								</div>
+								
+								<div class="coupon_useBtn">
+									<button type="button" class="coupon_btn" data-sale-percent="${i.index}0" data-coupon-id="${i.index}">사용</button>
+								</div>
+								
+							</div>
+							
+						</div>	
+						
+					</c:forEach>
+				
+			</div>
+		</div>
+	</div>
 </div>
 <!-- Finish -->
 
@@ -169,12 +216,38 @@
 		
 	}
 	
+	// 할인 쿠폰 적용시 계산 함수
+	function onCoupon() {
+		
+		// 총합 계산값 가져오기
+		let total = getTotalPrice();
+		
+		// 할인 비율 가져오기
+		let salePercent = $(".using_coupon").val();
+		
+		if(salePercent != 0){
+			
+			// 할인 값 계산
+			let salePrice = total * (salePercent/100);
+			
+			$(".total_price").children(".step2").text(addComma(salePrice) + "원");
+		}
+	}
+	
 	// 총 계산한 값 세팅 함수
 	function setTotalPrice() {
 		let getTotal = getTotalPrice();
 		
+		//할인 전
+		$(".total_price").children(".step1").text(addComma(getTotal) + "원");
+		
+		// 할인 금액 가져오기
+		let salePrice = Number($(".total_price").children(".step2").text().replace("원", "").replace(",",""));
+		getTotal = getTotal - salePrice;
+		
+		// 할인 후
 		getTotal = addComma(getTotal) + "원";
-		$(".total_price").text(getTotal);
+		$(".total_price").children(".step3").text(getTotal);
 	}
 	
 	// 천단위 , 함수
@@ -248,6 +321,7 @@
 						// 바뀌는 html 선택자 (수량 과 가격부분만 새로고침)
 						let ch_count = $(this).find(".item_count").html();
 						let ch_price = $(this).find(".item_price").html();
+
 						// 체크박스의 data-price값도 바꿔야 해서 체크박스 div도 바꾸기
 						let ch_chk = $(this).find(".item_chk").children(".chk").data("price");
 			
@@ -257,6 +331,7 @@
 						
 						// 수량이 바뀌어도 체크박스는 유지되므로 총합 자동계산되어야함
 						if($(".cart_item_wrap[data-pdnum=" + cur_id + "]").find(".item_chk").children(".chk").is(":checked")){
+							onCoupon();
 							setTotalPrice();
 						}
 														
@@ -276,6 +351,7 @@
 	$(document).on("click", ".chk", function () {
 		
 		// 체크된 항목들의 총합 구하기
+		onCoupon();
 		setTotalPrice();
 		// 선택물품 카운팅 하기
 		countSelect();
@@ -307,6 +383,72 @@
 	$("#check_delete").on("click", function () {
 		
 		console.log("click");
+	})
+	
+	// Modal Coupon 버튼 이벤트
+	$("#modal_coupon").on("click", function () {
+		
+		$(".modal").fadeIn();
+	})
+	
+	// Modal 바깥 영역 클릭 시 이벤트
+	$(document).on("mouseup", function (e) {
+		
+		let modal = $(".modal");
+		if(modal.has(e.target).length === 0){
+			modal.fadeOut();
+		}
+		
+	})
+	
+	// 쿠폰 사용 버튼 이벤트
+	$(".coupon_btn").on("click", function () {
+		
+		// 선택 된게 없으면 실행 X
+		let isZero = getTotalPrice();
+		if(isZero <= 0){
+			
+			alert("먼저 상품을 선택해주세요!");
+			return false;
+			
+		}
+		
+		else{
+			
+			// 쿠폰 키값
+			let thisID = $(this).data("couponId");
+			
+			// 선택 된 버튼은 선택 됨으로 바꾸고 비활성화
+			$(".coupon_item_wrap").each(function () {
+				
+				let thisFind = $(this).find(".coupon_btn").data("couponId");
+				let isUse = $(this).find(".coupon_btn").prop("disabled");
+				
+				if(isUse == false && thisID == thisFind){
+					$(this).find(".coupon_btn").prop("disabled", true);
+					$(this).find(".coupon_btn").addClass("off");
+					$(this).find(".coupon_btn").text("사용중")
+				}else{
+					$(this).find(".coupon_btn").prop("disabled", false);
+					$(this).find(".coupon_btn").removeClass("off");
+					$(this).find(".coupon_btn").text("사용")
+				}
+			})
+			
+			// 쿠폰 할인 퍼센트 값 저장
+			let salePercent = Number($(this).data("salePercent"));
+			$(".using_coupon").val(salePercent);
+			$(".using_coupon").data("couponId", thisID);
+			
+			// 할인 값 적용
+			onCoupon();
+			setTotalPrice();
+	
+			// 모달창 빠져나가기
+			let modal = $(".modal");
+			modal.fadeOut();
+			
+		}
 	})
 	
 </script>

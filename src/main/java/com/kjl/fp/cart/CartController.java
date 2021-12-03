@@ -38,7 +38,7 @@ public class CartController {
 	@GetMapping("updateCount")
 	public String updateCount(CartVO cartVO, Model model) throws Exception{
 		
-		cartService.updateCount(cartVO);
+		int result = cartService.updateCount(cartVO);
 		
 		List<CartVO> cartList = cartService.getCartList();
 		model.addAttribute("cartList", cartList);
