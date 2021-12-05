@@ -27,6 +27,7 @@
     <h2 class="pop_con_tt">회원탈퇴 안내</h2>
     
     <form name="drawalForm" id="drawalForm" action="./delete" method="post">
+    <input type="hidden" name="userName" id="dw_username" value="<sec:authentication property="principal.username"/>" >
     <fieldset>
     <div class="certify_form">
     	<div class="leave_info">
@@ -39,14 +40,14 @@
         
         <h3><em>정말로 탈퇴하시겠습니까?</em></h3>
         <p>탈퇴를 하시면 회원님의 스탬프 및 쿠폰사용이 불가하며, <span class="block_txt">이미 결제하신 스마트오더 에 대한 결제취소 및 결제수단 변경이 불가능합니다.</span></p>        
-        <div class="leave_pw"><input type="password" name="dw_password" id="dw_password" placeholder="비밀번호를 입력하세요" /></div>
+        <div class="leave_pw"><input type="password" name="password" id="dw_password" placeholder="비밀번호를 입력하세요" /></div>
         <div class="leave_agree"><input type="checkbox" id="leave_agree" /> <label for="leave_agree">동의하고 탈퇴합니다.</label></div>
       </div>
     </div>
         
     <div class="form_btn">
     	<a href="#c" class="gray_btn">취소</a>
-      <input type="button" onClick="" value="탈퇴하기" class="submit_btn submit_half_btn" />
+      <input type="button" onClick="deleteId();" value="탈퇴하기" class="submit_btn submit_half_btn" />
     </div>
     </fieldset>
     </form>
@@ -197,8 +198,46 @@ function open_join_pop(pop_id){
 }
 
 
-/* 동의 체크후 비밀번호 체크까지 한후 탈퇴하겠냐고 물어본후 삭제  */
- 
+/* 회원 탈퇴  */
+ function deleteId() {
+	 const checked = $('#leave_agree').is(':checked');
+	 const dw_password = $('#dw_password').val();
+	 const dw_username = $('#dw_username').val();
+	 
+
+	 if(checked == true){
+		 if(dw_password == ""){
+			 alert("비밀번호를 입력해주세요");
+		 }else{
+			 
+			 $.ajax({
+					type : 'POST',
+					url : './passwordCheck',
+					data : { userName : dw_username , password : dw_password},
+					success: function(data){
+						if(data == true){
+							if(confirm("삭제하시겠습니까?")){
+							 	$("#drawalForm").submit(); 
+							}
+						}else{
+							alert("비밀번호가 틀립니다!");
+						}
+					} 
+					 
+					 })
+			 
+		 }
+		 
+		 
+	 }else{
+		 alert("동의를 해주세요");
+	 } 
+	 
+	 
+	
+	
+	
+}
  
 </script>
 </body>

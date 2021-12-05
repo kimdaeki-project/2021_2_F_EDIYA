@@ -82,11 +82,37 @@ public class MemberController {
 		return "member/update";
 	}
 	
+	
+	@PostMapping("delete")
+	public String delete(MemberVO memberVO) throws Exception{
+		
+		
+		int result = memberService.setDeleteUser(memberVO);
+		
+		if(result == 0) {
+			System.out.println("오류발생");
+			return "memeber/update";
+		}else {
+			return "redirect:./logout";
+		}
+		
+		
+	}
+	
+	
 	@GetMapping("admin")
 	public String admin() throws Exception{
 		return "member/adminpage";
 	}
 	
+	@PostMapping("passwordCheck")
+	@ResponseBody
+	public boolean passwordCheck(MemberVO memberVO) throws Exception{
+		
+		 return memberService.passwordCheck(memberVO);
+		
+		
+	}
 	
 	
 	
