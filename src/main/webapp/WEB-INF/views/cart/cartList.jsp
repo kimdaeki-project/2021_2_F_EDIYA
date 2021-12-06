@@ -66,8 +66,8 @@
 						<div class="cart_item_wrap" data-pdnum="${list.pdNum}">
 							
 							<div class="box item_chk">
-								<input type="checkbox" id="check${list.cart_id}" class="chk" data-price="${list.pdPrice * list.pdCnt}">
-								<label for="check${list.cart_id}"></label>
+								<input type="checkbox" id="${list.cart_id}" class="chk" data-price="${list.pdPrice * list.pdCnt}">
+								<label for="${list.cart_id}"></label>
 							</div>
 							
 							<div class="box item_img">
@@ -130,6 +130,7 @@
 				
 				<div class="total_coupon">
 					<button type="button" id="modal_coupon">쿠폰 사용</button>
+					<button type="button" id="add_orderinfo" class="off" disabled="disabled">결제 하기</button>
 				</div>
 				
 				<div class="total_price">
@@ -150,6 +151,7 @@
 	
 </div>
 
+<!-- 쿠폰 모달 창 -->
 <div class="modal">
 	<div class="coupon_wrap">
 		<div class="coupon_contents">
@@ -191,11 +193,38 @@
 		</div>
 	</div>
 </div>
+<!-- 결제 모달 창 -->
+<div class="modal">
+	<div class="payment_wrap">
+		
+		
+	</div>
+</div>
 <!-- Finish -->
 
 <!-- Script -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">	
+	// 결제 하기 버튼 활성화 함수
+	function enabledPayBtn() {
+		
+		$(".cart_item_wrap").each(function () {		
+			let isCheck = $(this).find(".item_chk").children(".chk").is(":checked");
+			
+			if(isCheck == true){
+				$("#add_orderinfo").attr("disabled", false);
+				$("#add_orderinfo").removeClass("off");
+				
+				return false;		
+			}
+			else{
+				$("#add_orderinfo").attr("disabled", true);
+				$("#add_orderinfo").addClass("off");
+			}
+			
+		});
+		
+	}
 	
 	// 선택물품 카운팅 함수
 	function countSelect() {
@@ -355,6 +384,8 @@
 		setTotalPrice();
 		// 선택물품 카운팅 하기
 		countSelect();
+		// 결제 하기 버튼 활성화
+		enabledPayBtn();
 		
 	})
 	
@@ -388,7 +419,23 @@
 	// Modal Coupon 버튼 이벤트
 	$("#modal_coupon").on("click", function () {
 		
-		$(".modal").fadeIn();
+		// 만약 쿠폰 선택 후 물품변경 시 선택 상태가 남아있으면 초기화
+		let isZero = getTotalPrice();
+		if(isZero <= 0){
+			
+			$(".coupon_item_wrap").each(function () {
+				
+				$(this).find(".coupon_btn").prop("disabled", false);
+				$(this).find(".coupon_btn").removeClass("off");
+				$(this).find(".coupon_btn").text("사용")
+				
+			});
+		}
+		
+		$(".using_coupon").val(0);
+		$(".using_coupon").data("couponId", "");
+		
+		$(".modal").eq(0).fadeIn();
 	})
 	
 	// Modal 바깥 영역 클릭 시 이벤트
@@ -401,13 +448,24 @@
 		
 	})
 	
+	// 첫 화면 체크박스 모두 비활성화: 뒤로가기 하면 체크되어있어서
+	$(document).ready(function () {
+		
+		$(".cart_item_wrap").each(function () {
+			
+			$(this).find(".item_chk").children(".chk").prop("checked", false);
+			
+		});
+		
+	})
+	
 	// 쿠폰 사용 버튼 이벤트
 	$(".coupon_btn").on("click", function () {
 		
 		// 선택 된게 없으면 실행 X
 		let isZero = getTotalPrice();
 		if(isZero <= 0){
-			
+		
 			alert("먼저 상품을 선택해주세요!");
 			return false;
 			
@@ -450,6 +508,44 @@
 			
 		}
 	})
+	
+	// 결제 하기 버튼
+	$("#add_orderinfo").on("click", function () {
+		
+		// 선택된 아이템들 모아놓는 배열
+		let selectItem = new Array();
+		
+		$(".cart_item_wrap").each(function () {
+			
+			let isCheck = $(this).find(".chk").is(":checked");
+			
+			if(isCheck){
+				
+				selectItem.push($(this).find(".chk").attr("id"));
+				
+			}
+			
+		});
+		
+		$.ajax({
+			url: "getSelectList",
+			type: "POST",
+			data: {
+				// couponId: 쿠폰 키값
+				selected: selectItem
+			},
+			success: function (result) {
+				result = result.trim();
+				$(".payment_wrap").html(result);
+			},
+			error: function (xhr, status, error) {
+				console.log(error);
+			}
+		});
+		
+		$(".modal").eq(1).fadeIn();
+	})
+	
 	
 </script>
 

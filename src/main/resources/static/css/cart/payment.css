@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+.payment_body_wrap{
+	display: flex;
+	position: relative;
+	width: 1160px; height: 760px;
+	margin: 0 auto;
+	top: 20px;
+	border: 1px solid #002f6c;
+	border-radius: 10px;
+}
+
+.payment_body_wrap .payment_insert_info{
+	position: relative;
+	top: 10px;
+	margin-left: 7px;
+	padding-left: 10px;
+	width: 69%; height: 740px;
+	border: 1px solid #EAEAEA;
+	border-radius: 10px;
+}
+.payment_insert_info h1{
+	font-size: 36px;
+	font-weight: 500;
+	color: #002f6c;
+	margin-top: 20px;
+}
+.payment_insert_info h3{
+	margin-top: 30px;
+}
+.payment_kind_wrap{
+	margin-top: 10px;
+	width: 98%;
+	border: 1px solid #002f6c;
+	border-radius: 7px;
+	display: flex;
+}
+.payment_kind_wrap .payment_kind{
+	flex-grow: 1;
+	position: relative;
+	height: 50px;
+	border-right: 1px solid #002f6c;
+}
+.payment_kind_wrap .payment_kind:last-child{
+	border: none;
+}
+.payment_kind_wrap .payment_kind:hover{
+	background: #002f6c;
+	cursor: pointer;
+}
+.payment_kind_wrap .payment_kind:first-child:hover{
+	border-radius: 6px 0 0 6px;
+}
+.payment_kind_wrap .payment_kind:last-child:hover{
+	border-radius: 0px 6px 6px 0;
+}
+.payment_kind_wrap .payment_kind:hover .kind_txt{
+	color: white;
+	font-weight: 700;
+}
+.payment_kind_wrap .payment_kind .kind_txt{
+	position: absolute;
+	width: 120px;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 16px;
+	font-weight: 500;
+	color: #002f6c;
+	text-align: center;
+}
+
+/* 결제정보 입력 */
+.payment_insert_info .insert_box{
+	display: none;
+	width: 98%;
+}
+.payment_insert_info .insert_box h2{
+	font-size: 24px;
+	font-weight: 500;
+	margin-top: 20px;
+	color: #002f6c;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #002f6c;
+}
+.payment_insert_info .insert_box h3.terms_use{
+	position: relative;
+	width: 65%;
+	margin: 10px auto 0 auto;
+	border-bottom: 1px solid #EAEAEA;
+}
+.payment_insert_info .insert_box h3.terms_use #all_check{
+	position: absolute;
+	right: 60px;
+	top: 5px;
+}
+.payment_insert_info .insert_box h3.terms_use #all_check + label{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.payment_insert_info .insert_box.on{
+	display: block;
+}
+
+/* =========================================== */
+.payment_body_wrap .payment_item_info{
+	position: relative;
+	top: 10px;
+	width: 29.5%; height: 740px;
+	background: #D9E5FF;
+	border-radius: 10px;
+	text-align: right;
+}
+.payment_item_info h1{
+	display: block;
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	padding: 10px 10px 0 0;
+}
+.payment_item_info h1.total_txt{
+	margin-top: 30px;
+}
+
+/* List */
+.payment_item_info .item_list_wrap{
+	width: 96%;
+	min-height: 500px;
+	margin: 20px auto 0 auto;
+	border: 1px solid #B2CCFF;
+	border-radius: 10px;
+	background: #002f6c;
+}
+.payment_item_info .item_list_wrap span{
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 500;
+	color: white;
+	padding: 10px;
+	margin-top: 7px;
+	margin-right: 5px;
+	border-top-color: #B2CCFF;
+	border-right-color: #B2CCFF;
+	border-left-color: #DAD9FF;
+	border-bottom: 1px solid #002f6c;
+	border-style: outset;
+	border-radius: 5px;
+}
+
+/* Total */
+.payment_item_info .item_total{
+	font-size: 36px;
+	font-weight: 700;
+	color: red;
+	margin-top: 20px;
+}

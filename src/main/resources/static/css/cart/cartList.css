@@ -278,14 +278,22 @@
 	opacity: 0.8;
 	
 }
+.cart_total_wrap .total_coupon button.off{
+	background: #BDBDBD;
+	border: none;
+	opacity: 1;
+}
 .cart_total_wrap .total_coupon button:hover{
 	opacity: 1;
 	cursor: pointer;
 }
+.cart_total_wrap .total_coupon button.off:hover{
+	cursor: default;
+}
 .cart_total_wrap .total_price span{
 	display: inline-block;
 	text-align: right;
-	font-size: 36px;
+	font-size: 32px;
 	font-weight: 500;
 	line-height: 36px;
 	margin: 20px 50px 0 0;
@@ -412,4 +420,14 @@
 .coupon_item .coupon_useBtn .coupon_btn:hover {
 	opacity: 1;
 	cursor: pointer;
+}
+/* 모달 결제 */
+.modal .payment_wrap{
+	position: fixed;
+	width: 1200px;
+	height: 800px;
+	background: white;
+	border-radius: 10px;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
 }

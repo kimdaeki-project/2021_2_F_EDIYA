@@ -12,6 +12,15 @@
   			cart
   	</select>
   	
+  	<!-- Cart Select List -->
+  	<select id="getSelectList" parameterType="CartVO" resultType="CartVO">
+  		SELECT *
+  		FROM
+  			cart
+  		WHERE
+  			cart_id = #{cart_id}
+  	</select>
+  	
   	<!-- Update Count -->
   	<update id="updateCount" parameterType="CartVO">
   		UPDATE
