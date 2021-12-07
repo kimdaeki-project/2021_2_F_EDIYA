@@ -107,36 +107,38 @@
 			<li><input type="checkbox" name="chkList" id="COOKIE &amp; ETC" value="19" onclick="change_cate()"><label for="COOKIE &amp; ETC">COOKIE &amp; ETC</label></li>
 		</ul>
 	</div>
-</div></div></div>      			
+</div></div>      			
       			
 
-		<div class="con_align">
-			<input type="hidden" id="menu_page" value="2">
-      		<ul id="menu_ul">
-      			<li>
-      			<c:forEach items="${bread}" var="bread">
-      				<div class="pro_detail" style="display:none;" id="${bread.pdNum}">
-      					<div class="detail_con">
-      						<h2>${bread.pdNameK}<span>${bread.pdNameE}</span></h2>
-      						<div class="detail_close"><a onClick="name1(${bread.pdNum})"><img src="../../images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
-                  				<p>${bread.pdInfo}</p>
-                			</div> 
-							<div class="pro_comp">
-	        					<div class="pro_nutri">
-									<dl><dt> 칼로리 : </dt><dd>${bread.pdC}</dd></dl>							
-									<dl><dt> 당류 : </dt><dd>${bread.pdS}</dd></dl>							
-									<dl><dt> 단백질 : </dt><dd>${bread.pdP}</dd></dl>							
-									<dl><dt> 포화지방 : </dt><dd>${bread.pdF}</dd></dl>							
-									<dl><dt> 나트륨 : </dt><dd>${bread.pdN}</dd></dl>							
-								</div>
-								<div class="pro_allergy">알러르기 정보 : ${bread.pdAllergy}</div>
-								</div>				
-              			</div>
-	              		<a href="#" onClick="name1(${bread.pdNum})"><img src="../images/product/bread/IMG_${bread.pdImg}.png"><span class="setting1">${bread.pdNameK}</span></a>
-              		</c:forEach>
-            		</li>
-      			</ul>
+<div class="listfirst">    			
+<div class="lists">
+	<input type="hidden" id="menu_page" value="2">
+     <ul class="listsul">
+     	<c:forEach items="${bread}" var="bread">
+      	<li class="listsli">
+      		<div class="list1" id="${bread.pdNum}">
+      		<div class="list2">
+      			<h2 class="list3">${bread.pdNameK}<span class="list4">${bread.pdNameE}</span></h2>
+      			<div class="list5"><a class="list6" onClick="name1(${bread.pdNum})"><img class="list7" src="../../images/menu/pro_detail_close.gif" alt="창닫기"></a></div>
+      			<p class="list8">${bread.pdInfo}</p>
+      		</div> 
+      		<div class="list9">
+      		<div class="list10">
+      			<dl class="dl1"><dt class="dt"> 칼로리 : </dt><dd class="dd">${bread.pdC}</dd></dl>	
+      			<dl class="dl2"><dt class="dt"> 당류 : </dt><dd class="dd">${bread.pdS}</dd></dl>							
+      			<dl class="dl1"><dt class="dt"> 단백질 : </dt><dd class="dd">${bread.pdP}</dd></dl>
+      			<dl class="dl2"><dt class="dt"> 포화지방 : </dt><dd class="dd">${bread.pdF}</dd></dl>
+      			<dl class="dl1"><dt class="dt"> 나트륨 : </dt><dd class="dd">${bread.pdN}</dd></dl>
       		</div>
+      		<button type="button" onclick="">장바구니 담기</button>
+      		</div>
+            </div>
+            <a href="#" onClick="name1(${bread.pdNum})" class="list11"><img class="listimg" src="../images/product/bread/IMG_${bread.pdImg}.png"><span class="listspan">${bread.pdNameK}</span></a>
+           </li>
+           </c:forEach>
+         </ul>
+      	</div>
+      </div>
 
       			
       	<div class="block_hot">
@@ -149,7 +151,7 @@
       	</div>
 	</div>		
 </div>
-
+</div>
 	
 	</section>
 	

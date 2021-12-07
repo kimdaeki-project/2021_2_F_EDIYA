@@ -40,8 +40,13 @@ public class BreadController {
 	}
 	
 	@GetMapping("bread2")
-	public String bread2 () throws Exception {
-		return "product/bread2";
+	public ModelAndView bread2 (ModelAndView mv) throws Exception {
+		List<BreadVO> ar = breadService.selectAll();
+		List<StarBreadVO> br = breadService.starbread();
+		mv.setViewName("product/bread2");
+		mv.addObject("bread", ar);
+		mv.addObject("star", br);
+		return mv;
 	}
 	
 }

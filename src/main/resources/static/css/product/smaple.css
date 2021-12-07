@@ -1,32 +1,160 @@
 @charset "UTF-8";
 
-.cname{
-	color: blue;
+/* 추천 메뉴 */
+.cname{color: blue;}
+.sto{background-color: currentColor;}
+.sto1 {width: 280px; margin: 0 auto; position: relative;}
+.sw1 {text-align: center;}
+.swon{position: absolute; right: 0px; top : 32px;}
+.sw2{text-align: center; display: inline-block; width: 100%; height: 50px; color: white;}
+
+/* 검색 */
+.samu1 {margin: 80px 0 40px; display: block;}
+.samu2 {max-width: 1180px; padding: 0 4%;}
+.schtop {padding: 23px 40px 25px; display: table; width: 100%; border: 1px solid #d9d9d9; box-sizing: border-box;}
+.schk {float: left; margin-top: 8px; text-align: center; font-size: 16px; font-weight: 700; margin: 0px; padding: 0px;}
+.schbar {float: right; margin-bottom: 15px; width: 100%; max-width: 250px; height: 38px; margin: auto; border: solid 1px #d9d9d9; border-radius: 3px;}
+.schtxt{ width: 81%; height: 38px;border: none;}
+.schbtn {width: 34px;height: 5px; background: url("https://ediya.com/images/common/icon_search.gif") no-repeat 10px center; float: right; border: none; outline: none; cursor: pointer;}
+.schul{padding-top: 20px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border: none; display: table; width: 100%; list-style: none; border-top: 1px solid #d9d9d9; margin-top: 70px;}
+.schli {width: 20%; float: left; height: 30px;line-height: 30px;}
+
+/* 전체 메뉴 */
+.listfirst {
+	margin-bottom: 100px;
+	width: 100%;
+	overflow: hidden;
 }
 
-.sto{
-	background-color: currentColor;
-}
-
-.sto1 {
-	width: 280px;
+.lists{
 	margin: 0 auto;
-	position: relative;
+	padding: 0 4%;
+	box-sizing: border-box;
 }
 
-.sw1 {
-	text-align: center;
-	
+.listsul{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 60px;
+	list-style-type: none;
 }
-.swon{
+
+.listsli {
+	width: 24.4%;
+	padding: 10px 10px 16px;
+	margin: 0 0.8% 10px 0;
+	position: relative;
+	float: left;
+	background: #f5f5f5;
+	box-sizing: border-box;
+}
+
+.list1 {
+	display: none;
 	position: absolute;
-	right: 0px;
-	top : 32px;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	margin: 0 0;
+	border: solid 1px #e7e7e7;
+	left: 0;
+	box-sizing: border-box;
+	z-index: 10;
 }
-.sw2{
-	text-align: center;
+.list2{
+	position: relative;
+	width: 78.39%;
+	margin: auto;
+	z-index: 10;
+}
+
+.list3 {
+	font-size: 20px;
+	color: #202023;
+	font-weight: 600;
+	font-family: '나눔스퀘어', NanumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', Dotum;
+	border-bottom : solid 2px #202023;
+	padding: 27px 0 14px;
+	margin: 0;
+}
+
+.list4{
+	display: block;
+    font-size: 15px;
+    color: #939394;
+    font-weight: 400;
+    font-family: 'Nunito Sans', sans-serif;
+    margin-top: 3px;
+}
+
+.list5 {
+	right: -9%;
+	position: absolute;
+	top: 12px;
+}
+
+.list6 {
+	display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #464646;
+}
+
+.list7 {
+	width : 17px;
+	height : 16px;
+	max-width: 100%;
+	border: 0px;
+    vertical-align: top;
+}
+
+.list8 {
+	line-height: 1.6em;
+    font-size: 13px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.list9 {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+    display: table;
+    z-index: 10;
+    background: #f8f8f8;
+    padding: 14px 0;
+}
+
+.list10 {
+	overflow: hidden;
+    background: url(../../images/menu/pro_detail_line.gif) no-repeat center #f8f8f8;
+}
+
+.dl1 {font-size: 12px; float: left; width: 38.32%; margin-left: 11.49%; line-height: 2em; list-style-type: none;}
+.dl2 {font-size: 12px; float: left; width: 42.16%; margin-left: 8.01%; line-height: 2em; list-style-type: none;}
+.dt {display: inline-block; font-weight: 300; margin: 0px; padding: 0px;}
+.dd {display: inline-block; font-weight: 600;}
+
+.list11{
 	display: inline-block;
 	width: 100%;
-	height: 50px;
-	color: white;
+	text-align: center;
+}
+
+.listimg {
+	padding: 0;
+	max-width: 100%;
+}
+
+.listspan {
+	font-size: 16px;
+	line-height: 34px;
+	display: block;
+	text-align: center;
+	width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
