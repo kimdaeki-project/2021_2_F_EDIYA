@@ -48,6 +48,13 @@
 	background: #002f6c;
 	cursor: pointer;
 }
+.payment_kind_wrap .payment_kind.on{
+	background: #002f6c;
+}
+.payment_kind_wrap .payment_kind.on .kind_txt{
+	color: white;
+	font-weight: 700;
+}
 .payment_kind_wrap .payment_kind:first-child:hover{
 	border-radius: 6px 0 0 6px;
 }
@@ -85,8 +92,16 @@
 .payment_insert_info .insert_box h3.terms_use{
 	position: relative;
 	width: 65%;
-	margin: 10px auto 0 auto;
+	margin-left: 10px;
 	border-bottom: 1px solid #EAEAEA;
+}
+.payment_insert_info .insert_box .terms_use_each{
+	width: 65%;
+	margin-top: 30px;
+	margin-left: 10px;
+}
+.payment_insert_info .insert_box .terms_use_each input{
+	margin-left: 10px;
 }
 .payment_insert_info .insert_box h3.terms_use #all_check{
 	position: absolute;
@@ -100,6 +115,29 @@
 }
 .payment_insert_info .insert_box.on{
 	display: block;
+}
+
+/* Card */
+.card_grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 2px;
+	margin-top: 30px;
+}
+.card_grid .card_item{
+	border: 1px solid #002f6c;
+	text-align: center;
+	line-height: 50px;
+	height: 50px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #002f6c
+}
+.card_grid .card_item:hover{
+	background: #002f6c;
+	color: white;
+	font-weight: 700;
+	cursor: pointer;
 }
 
 /* =========================================== */

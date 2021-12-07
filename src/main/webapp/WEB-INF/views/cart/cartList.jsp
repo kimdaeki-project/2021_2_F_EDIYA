@@ -309,7 +309,7 @@
 	}
 	
 	// + - 버튼 이벤트
-	$(".cnt_btn").on("click", function () {
+	$(document).on("click", ".cnt_btn", function () {
 		
 		let kind = $(this).data("kind");
 		let cur_id = $(this).parents(".cart_item_wrap").data("pdnum");
@@ -390,7 +390,7 @@
 	})
 	
 	// 전체선택 버튼 이벤트
-	$("#check_all").on("click", function () {
+	$(document).on("click", "#check_all", function () {
 		
 		$(".cart_item_wrap").each(function () {
 			
@@ -410,10 +410,117 @@
 		console.log("clcik");
 	})
 	
-	// 선택삭제 버튼 이벤트
-	$("#check_delete").on("click", function () {
+	// 삭제 버튼 이벤트
+	$(document).on("click", ".del_btn", function () {
 		
-		console.log("click");
+		let cart_id = $(this).parents(".item_delete").siblings(".item_chk").children(".chk").attr("id");
+		let checkArray = new Array();
+		
+		// 체크된 아이디들 배열에 넣기
+		$(".cart_item_wrap").each(function () {
+			
+			let isCheck = $(this).find(".item_chk").children(".chk").is(":checked");
+			let checkId = $(this).find(".item_chk").children(".chk").attr("id");
+			
+			if(isCheck == true && cart_id != checkId){
+				checkArray.push(checkId);
+			}
+		})
+		
+		const answer = confirm("해당 상품을 삭제하시겠습니까?");
+		if(answer){
+			$.ajax({
+				url: "deleteOne",
+				type: "GET",
+				data: {
+					cart_id: cart_id
+				},
+				success: function (result) {
+					result_list = $(result).find(".cart_list").html();
+					$(".cart_list").html(result_list);
+					
+					result_option = $(result).find(".cart_check_option").html();
+					$(".cart_check_option").html(result_option);
+					
+					// 불러온뒤에 그전에 체크되어있던 값들 다시 체크해주기
+					for(let i=0; i<checkArray.length; i++){
+						$(".chk[id=" + checkArray[i] + "]").prop("checked", true);
+					}
+					
+					// 다시 불러온뒤에 계산값이랑 카운트수 다시세기
+					onCoupon();
+					setTotalPrice();
+					countSelect();
+				},
+				error: function (xhr, status, error) {
+					console.log(error);
+				}
+			});
+		}
+	})
+	
+	// 선택삭제 버튼 이벤트
+	$(document).on("click", "#check_delete", function () {
+		
+		let count = 0;
+		
+		$(".cart_item_wrap").each(function () {
+			
+			if($(this).find(".item_chk").children(".chk").is(":checked") != false){
+				count++;
+			}
+			
+		});
+		
+		let result_data;
+		
+		if(count > 0){
+			
+			let answer = confirm("선택한 상품들을 삭제하시겠습니까?");
+			
+			if(answer){
+			
+				$(".cart_item_wrap").each(function () {
+					
+					let isCheck = $(this).find(".item_chk").children(".chk").is(":checked");
+					let checkId = $(this).find(".item_chk").children(".chk").attr("id");
+					
+					if(isCheck == true){
+						
+						$.ajax({
+							url: "deleteOne",
+							type: "GET",
+							async: false,
+							data: {
+								cart_id: checkId
+							},
+							success: function (result) {
+								result_data = result.trim();
+							},
+							error: function (xhr, status, error) {
+								console.log(error);
+							}
+						});
+						
+					}
+					
+				});
+				
+				result_list = $(result_data).find(".cart_list").html();
+				$(".cart_list").html(result_list);
+				
+				result_option = $(result_data).find(".cart_check_option").html();
+				$(".cart_check_option").html(result_option);
+				
+				// 다시 불러온뒤에 계산값이랑 카운트수 다시세기
+				onCoupon();
+				setTotalPrice();
+				countSelect();
+			
+			}
+		}else{
+			alert("선택한 물품이 없습니다.")
+		}
 	})
 	
 	// Modal Coupon 버튼 이벤트

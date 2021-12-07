@@ -21,6 +21,15 @@
   			cart_id = #{cart_id}
   	</select>
   	
+  	<!-- Delete One -->
+  	<delete id="deleteOne" parameterType="CartVO">
+  		DELETE
+  		FROM
+  			cart
+  		WHERE
+  			cart_id = #{cart_id}
+  	</delete>
+  	
   	<!-- Update Count -->
   	<update id="updateCount" parameterType="CartVO">
   		UPDATE

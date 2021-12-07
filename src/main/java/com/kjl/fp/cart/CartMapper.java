@@ -14,6 +14,9 @@ public interface CartMapper {
 	// CartSelectList 가져오기
 	public CartVO getSelectList(CartVO cartVO) throws Exception;
 	
+	// Delete One
+	public int deleteOne(CartVO cartVO) throws Exception;
+	
 	// Update Count
 	public int updateCount(CartVO cartVO) throws Exception;
 	

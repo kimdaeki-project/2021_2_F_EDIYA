@@ -37,6 +37,17 @@ public class CartController {
 		return mv;
 	}
 	
+	// deleteOne
+	@GetMapping("deleteOne")
+	public String deleteOne(CartVO cartVO, Model model) throws Exception{
+		
+		cartService.deleteOne(cartVO);
+		
+		List<CartVO> cartList = cartService.getCartList();
+		model.addAttribute("cartList", cartList);
+		
+		return "cart/cartList";
+	}
 	
 	// updateCount
 	@GetMapping("updateCount")

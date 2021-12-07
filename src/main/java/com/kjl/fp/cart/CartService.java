@@ -53,6 +53,12 @@ public class CartService {
 		return map;
 	}
 	
+	// Delete One
+	public int deleteOne(CartVO cartVO) throws Exception{
+		
+		return cartMapper.deleteOne(cartVO);
+	}
+	
 	// Update Count
 	public int updateCount(CartVO cartVO) throws Exception{
 		

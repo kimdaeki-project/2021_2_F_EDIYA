@@ -55,29 +55,71 @@
 						<h2>◇ 카드 결제</h2>
 						<h3 class="terms_use">
 							이용약관
-							<input type="checkbox" id="all_check">
+							<input type="checkbox" id="all_check" class="payment_check">
 							<label for="all_check">전체동의</label>
 						</h3>
-						전자금융거래 이용약관
-						개인정보의 수집 및 이용안내
-						개인정보 제공 및 위탁안내
+						
+						<div class="terms_use_each">
+						
+							<input type="checkbox" class="payment_check" id="agree1">
+							<label for="agree1">전자금융거래 이용약관</label>
+							
+							<input type="checkbox" class="payment_check" id="agree2">
+							<label for="agree2">개인정보의 수집 및 이용안내</label>
+							
+							<input type="checkbox" class="payment_check" id="agree3">
+							<label for="agree3">게인정보 제공 및 위탁안내</label>
+						
+						</div>
 						
 						<!-- 카드 그리드 -->
-						NH농협
-						KB국민
-						신한카드
-						하나카드
-						BC카드
-						롯데카드
-						삼성카드
-						현대카드
+						<div class="card_grid">
+							<div class="card_item">
+								NH농협
+							</div>
+							<div class="card_item">
+								KB국민
+							</div>
+							<div class="card_item">
+								신한카드
+							</div>
+							<div class="card_item">
+								하나카드
+							</div>
+							<div class="card_item">
+								BC카드
+							</div>
+							<div class="card_item">
+								롯데카드
+							</div>
+							<div class="card_item">
+								삼성카드
+							</div>
+							<div class="card_item">
+								현대카드
+							</div>
+						</div>
 						
 						<!-- ===== 카드 선택 후 정보입력 ===== -->
-						<!-- 카드번호 -->
-						<!-- 유효기간 -->
-						<!-- 이름 -->
-						<!-- 성 -->
-						<!-- 생년월일 -->
+						<div class="card_info">
+							<!-- 카드번호 -->
+							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							-
+							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							-
+							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							-
+							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							<!-- 유효기간 -->
+							<select>
+								<c:forEach begin="1" end="12" var="i">
+									<option value="${i}월">${i}월</option>
+								</c:forEach>
+							</select>
+							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+							<!-- cvc 번호 -->
+							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+						</div>
 						
 					</div>
 					<!-- 휴대폰 -->
@@ -137,6 +179,9 @@
 			let index = $(this).index();
 			
 			// 해당 index 번호의 insert_box addClass
+			$(".payment_kind").eq(index).addClass("on");
+			$(".payment_kind").not(":eq(" + index + ")").removeClass("on");
+			
 			$(".insert_box").eq(index).addClass("on");
 			$(".insert_box").not(":eq(" + index + ")").removeClass("on");
 			
