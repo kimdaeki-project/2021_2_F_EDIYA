@@ -5,6 +5,9 @@
 	<div class="top_align">
 		<div class="top_util">
 			<ul class="top_members">
+				<sec:authorize access="hasRole('ADMIN')">
+				<li><a href="${pageContext.request.contextPath}/member/admin">관리자페이지</a></li>
+				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/member/mypage">마이페이지</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>

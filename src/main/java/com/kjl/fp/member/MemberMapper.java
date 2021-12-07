@@ -17,6 +17,10 @@ public interface MemberMapper {
 	//role member set
 	public int setRoleMember(MemberVO memberVO)throws Exception;
 	
+	//delete
+	public int setDeleteUser(MemberVO memberVO)throws Exception;
 	
+	//updatePassword
+	public int setUpdatePassword(MemberVO memberVO)throws Exception;
 
 }

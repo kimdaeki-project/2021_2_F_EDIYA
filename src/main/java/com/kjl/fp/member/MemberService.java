@@ -18,6 +18,30 @@ public class MemberService implements UserDetailsService {
 	private PasswordEncoder bCryptPasswordEncoder;
 	
 	
+	
+	
+	public int setDeleteUser(MemberVO memberVO) throws Exception{
+		
+		return memberMapper.setDeleteUser(memberVO);
+	}
+	
+	
+	public boolean passwordCheck(MemberVO memberVO) throws Exception{
+		MemberVO memberVO2 = new MemberVO();
+		memberVO2 = memberMapper.getUsername(memberVO);
+		boolean passwordCheck = false;
+		
+		if(bCryptPasswordEncoder.matches(memberVO.getPassword(), memberVO2.getPassword())) {
+			passwordCheck= true;
+		}else {
+			passwordCheck=false;
+		}
+		
+		return passwordCheck;
+		
+	}
+	
+	
 	 public MemberVO getUsername(MemberVO memberVO) throws Exception{ 
 		
 		 return memberMapper.getUsername(memberVO);
@@ -34,6 +58,7 @@ public class MemberService implements UserDetailsService {
 		 
 		 return result;
 	 }
+	 
 	
 	
 

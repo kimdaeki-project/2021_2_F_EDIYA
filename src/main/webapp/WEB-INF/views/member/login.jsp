@@ -248,7 +248,7 @@
       </dl>
       <dl>
         <dt><label for="findEmailMobileNo">휴대폰</label></dt>
-        <dd><input id="findEmailMobileNo" placeholder="가입 시 입력한 휴대폰 번호를 '-'없이 입력하세요" /></dd>
+        <dd><input id="findEmailMobileNo" placeholder="가입 시 입력한 휴대폰 번호를 '-'없이 입력하세요" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="11" /></dd>
       </dl>
       
       <p class="info_txt" id="mem_error" style="display:none">입력하신 정보와 일치하는 회원정보가 없습니다.<br />
@@ -302,11 +302,11 @@
     
     <ul class="certify_list">
     	<li>
-      	<a href="javascript:ajax_checkplus_pw_find();new_pop();"><em>휴대폰 인증</em>
+      	<a href=""><em>휴대폰 인증</em>
         <span>본인 명의의 휴대폰을</span> 이용해 찾습니다.</a>
       </li>
       <li>
-      	<a href="javascript:ajax_ipin_pw_find();new_Ipop();"><em>아이핀 인증</em>
+      	<a href=""><em>아이핀 인증</em>
         <span>아이핀ID를 이용해</span> 찾습니다.</a>
       </li>
       <li>
@@ -362,7 +362,7 @@
       </dl>
       <dl>
         <dt><label for="phone">휴대폰</label></dt>
-        <dd><input id="phone" placeholder="가입시 입력한 휴대폰 번호를 '-' 없이 입력하세요" /></dd>
+        <dd><input id="phone" placeholder="가입시 입력한 휴대폰 번호를 '-' 없이 입력하세요" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="11"/></dd>
       </dl>
       
       <p class="info_txt" id="passwd_info_txt" style="display:none">입력하신 정보와 일치하는 회원정보가 없습니다.<br />
