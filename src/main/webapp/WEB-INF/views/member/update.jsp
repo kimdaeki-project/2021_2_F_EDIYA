@@ -65,7 +65,8 @@
     
     <h2 class="pop_con_tt">새로운 비밀번호를 설정해 주세요.</h2>
     
-    <form method="" action="" name="" onSubmit="" target="">
+    <form method="POST" action="./passwordUpdate" id="passwordUpdate">
+    <input type="hidden" id="userNameID" name="userName"  value="<sec:authentication property="principal.username"/>">
     <fieldset>
     <div class="certify_form">	
 					
@@ -78,7 +79,7 @@
       <dl>
         <dt><label for="">신규 비밀번호</label></dt>
         <dd>
-        	<input type="password" id="newpwd" placeholder="변경할 비밀번호를 입력하세요"  class="ck_input" />
+        	<input type="password" id="newpwd" name ="password" placeholder="변경할 비밀번호를 입력하세요"  class="ck_input" />
         </dd>
       </dl>
       <dl>
@@ -93,7 +94,7 @@
 		
     <div class="form_btn">
     	<a href="#c" onClick="close_login_pop();" class="gray_btn">취소</a>
-      <input type="button" onClick="" value="변경 하기" class="submit_btn submit_half_btn" />
+      <input type="button" onClick="passwordUpdate();" value="변경 하기" class="submit_btn submit_half_btn" />
     </div>
     </fieldset>
     </form>
@@ -116,6 +117,7 @@
   <div class="join_box_bg">
     <div class="join_box">
     	<form method="POST" action="./update" name="info_form" id="info_form" onSubmit="">			
+    		<input type="hidden" name="userName" id="userName" value="<sec:authentication property="principal.username"/>"/>
 			<input type="hidden" name="mobileNo" id="mobileNo" value="<sec:authentication property="principal.phone"/>"/>
 			<input type="hidden" name="name" id="name" value="<sec:authentication property="principal.name"/>"/>
       <div class="join_con">
@@ -132,7 +134,7 @@
                     
           <dl>
             <dt><label for="nickname">닉네임</label></dt>
-            <dd><input type="text" name="nickname" id="nickname" value="<sec:authentication property="principal.nickName"/>" placeholder="닉네임"></dd>
+            <dd><input type="text" name="nickName" id="nickname" value="<sec:authentication property="principal.nickName"/>" placeholder="닉네임"></dd>
           </dl>
           <p class="info_txt">욕설 등 부적절한 단어는 제한을 받습니다.</p>
           
@@ -238,7 +240,41 @@ function open_join_pop(pop_id){
 	
 	
 }
- 
+
+/* 비밀번호 변경  */
+function passwordUpdate() {
+	const oldPassword = $('#oldpwd').val();
+	const userName = $('#userNameID').val();
+	const newpasswordCheck = $('#newpwd_ck').val();
+	const newpassword = $('#newpwd').val();
+	
+	/* 비밀번호가 같다면  */
+	if(newpasswordCheck == newpassword){
+	
+		 $.ajax({
+				type : 'POST',
+				url : './passwordCheck',
+				data : { userName : userName , password : oldPassword},
+				success: function(data){
+					if(data == true){
+						$("#passwordUpdate").submit();
+					}else{
+						alert('예전 비밀번호를 확인해주세요!');
+					}
+					
+				}
+		 })
+	 
+	 
+	}else{
+		
+		alert('비밀번호 재확인 확인해주세요!');
+		
+		
+	}
+	
+	
+}
 </script>
 </body>
 </html>

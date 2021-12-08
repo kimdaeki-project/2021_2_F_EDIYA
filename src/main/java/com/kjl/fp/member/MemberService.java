@@ -20,6 +20,20 @@ public class MemberService implements UserDetailsService {
 	
 	
 	
+	public int setUpdateNickName(MemberVO memberVO) throws Exception{
+		
+		return memberMapper.setUpdateNickName(memberVO);
+	}
+	
+	
+	public int setUpdatePassword(MemberVO memberVO) throws Exception{
+		
+		memberVO.setPassword(bCryptPasswordEncoder.encode(memberVO.getPassword()));
+		
+		return memberMapper.setUpdatePassword(memberVO);
+	}
+	
+	
 	public int setDeleteUser(MemberVO memberVO) throws Exception{
 		
 		return memberMapper.setDeleteUser(memberVO);

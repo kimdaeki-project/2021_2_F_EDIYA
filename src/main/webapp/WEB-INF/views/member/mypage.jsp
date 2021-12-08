@@ -41,7 +41,7 @@
 									<img src="${pageContext.request.contextPath}/images/member/mypage/level_family.png">
 								</div>
 								<p class="ns level_txt">
-									<span class="status_bold_txt">이름</span>
+									<span class="status_bold_txt"><sec:authentication property="principal.name"/></span>
 									회원님은 <br>
 									<span class="status_family_txt status_exbold_txt">회원레벨</span>
 									입니다.

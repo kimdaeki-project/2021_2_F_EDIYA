@@ -22,5 +22,11 @@ public interface MemberMapper {
 	
 	//updatePassword
 	public int setUpdatePassword(MemberVO memberVO)throws Exception;
+	
+	//updateNickName
+	public int setUpdateNickName(MemberVO memberVO) throws Exception;
+	
+	//couponCount
+	public Long getCountCoupon(MemberVO memberVO)throws Exception;
 
 }
