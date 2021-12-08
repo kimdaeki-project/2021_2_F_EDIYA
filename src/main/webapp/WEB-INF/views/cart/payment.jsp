@@ -52,75 +52,94 @@
 				
 					<!-- 카드 -->
 					<div class="insert_box card">
-						<h2>◇ 카드 결제</h2>
-						<h3 class="terms_use">
-							이용약관
-							<input type="checkbox" id="all_check" class="payment_check">
-							<label for="all_check">전체동의</label>
-						</h3>
-						
-						<div class="terms_use_each">
-						
-							<input type="checkbox" class="payment_check" id="agree1">
-							<label for="agree1">전자금융거래 이용약관</label>
+							<h2>◇ 카드 결제</h2>
+							<h3 class="terms_use">
+								이용약관
+								<input type="checkbox" id="all_check">
+								<label for="all_check">전체동의</label>
+							</h3>
 							
-							<input type="checkbox" class="payment_check" id="agree2">
-							<label for="agree2">개인정보의 수집 및 이용안내</label>
+							<div class="terms_use_each">
 							
-							<input type="checkbox" class="payment_check" id="agree3">
-							<label for="agree3">게인정보 제공 및 위탁안내</label>
-						
-						</div>
-						
-						<!-- 카드 그리드 -->
-						<div class="card_grid">
-							<div class="card_item">
-								NH농협
+								<input type="checkbox" class="payment_check" id="agree1">
+								<label for="agree1">전자금융거래 이용약관</label>
+								
+								<input type="checkbox" class="payment_check" id="agree2">
+								<label for="agree2">개인정보의 수집 및 이용안내</label>
+								
+								<input type="checkbox" class="payment_check" id="agree3">
+								<label for="agree3">게인정보 제공 및 위탁안내</label>
+							
 							</div>
-							<div class="card_item">
-								KB국민
+							
+							<!-- 카드 그리드 -->
+							<div class="card_grid">
+								<div class="card_item">
+									NH농협
+								</div>
+								<div class="card_item">
+									KB국민
+								</div>
+								<div class="card_item">
+									신한카드
+								</div>
+								<div class="card_item">
+									하나카드
+								</div>
+								<div class="card_item">
+									BC카드
+								</div>
+								<div class="card_item">
+									롯데카드
+								</div>
+								<div class="card_item">
+									삼성카드
+								</div>
+								<div class="card_item">
+									현대카드
+								</div>
 							</div>
-							<div class="card_item">
-								신한카드
+							
+							<!-- ===== 카드 선택 후 정보입력 ===== -->
+							<div class="card_info">
+								<h2>정보 입력</h2>
+								<!-- 카드번호 -->
+								<span class="card_info_txt">카드번호</span>
+								<div class="card_number">
+								
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block01">
+									-
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block02">
+									-
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block03">
+									-
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block04">
+									
+								</div>
+								<!-- 유효기간 -->
+								<span class="card_info_txt">유효기간</span>
+								<div class="card_date">
+									
+									<select id="card_month">
+										<c:forEach begin="1" end="12" var="i">
+											<option value="${i}">${i}월</option>
+										</c:forEach>
+									</select>
+									
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_year">
+									
+								</div>
+								<!-- cvc 번호 -->
+								<span class="card_info_txt">CVC번호</span>
+								<div class="card_cvc">
+								
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_cvc_number">
+									
+								</div>
 							</div>
-							<div class="card_item">
-								하나카드
-							</div>
-							<div class="card_item">
-								BC카드
-							</div>
-							<div class="card_item">
-								롯데카드
-							</div>
-							<div class="card_item">
-								삼성카드
-							</div>
-							<div class="card_item">
-								현대카드
-							</div>
-						</div>
-						
-						<!-- ===== 카드 선택 후 정보입력 ===== -->
-						<div class="card_info">
-							<!-- 카드번호 -->
-							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-							-
-							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-							-
-							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-							-
-							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-							<!-- 유효기간 -->
-							<select>
-								<c:forEach begin="1" end="12" var="i">
-									<option value="${i}월">${i}월</option>
-								</c:forEach>
-							</select>
-							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-							<!-- cvc 번호 -->
-							<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-						</div>
-						
+							
+							<button type="button" class="payment_btn card">결제 하기</button>
+							
 					</div>
 					<!-- 휴대폰 -->
 					<div class="insert_box phone">
@@ -148,7 +167,7 @@
 					<c:forEach items="${selectList}" var="list">
 						
 						
-						<span>
+						<span class="item_list_select">
 							${list.pdName} / 
 							<fmt:formatNumber>${list.pdPrice * list.pdCnt}</fmt:formatNumber> 원
 							/ ${list.pdCnt} 개
@@ -171,8 +190,7 @@
 	</body>
 	
 	<!-- Script -->
-	<script type="text/javascript">
-	
+	<script type="text/javascript">		
 		$(".payment_kind").on("click", function () {
 		
 			// 클릭한 div index 번호 가져오기
@@ -187,6 +205,104 @@
 			
 		})
 		
-	
+		/* =================================== 카드결제 =================================== */
+		// 전체동의 버튼
+		$("#all_check").on("click", function () {
+			
+			let allCheck = $(this).is(":checked");
+			
+			if(allCheck == true){
+			
+				$(".payment_check").each(function () {
+					
+					let isCheck = $(this).is(":checked");
+					
+					if(isCheck == false){
+						
+						$(this).prop("checked", true);
+					}
+					
+				});
+			
+			}else{
+				
+				$(".payment_check").each(function () {
+					
+					let isCheck = $(this).is(":checked");
+					
+					if(isCheck == true){
+						
+						$(this).prop("checked", false);
+					}
+					
+				});
+				
+			}
+			
+		})
+		
+		// 약관 동의 버튼
+		$(".payment_check").on("click", function () {
+			
+			let isCheck = true;
+			
+			$(".payment_check").each(function () {
+				isCheck = isCheck && $(this).is(":checked");
+			});
+			
+			$("#all_check").prop("checked", isCheck);
+			
+		})
+		
+		// 카드사 선택 후 나오는 정보 입력
+		$(".card_item").on("click", function () {
+			
+			// 클릭한 div index 번호 가져오기
+			let index = $(this).index();
+			
+			$(this).addClass("on");
+			$(".card_item").not(":eq(" + index + ")").removeClass("on");
+			
+			$(".card_info").css("display", "block");
+			$(".payment_btn").css("display", "block");
+			
+		})
+		
+		// 카드결제하기 버튼
+		$(".payment_btn.card").on("click", function () {
+			
+			let payment_type = "카드";
+			let card_kind = $(".card_item.on").text();
+			card_kind = card_kind.trim();
+			let cardNum1 = $(".card_num.block01").val();
+			let cardNum2 = $(".card_num.block02").val();
+			let cardNum3 = $(".card_num.block03").val();
+			let cardNum4 = $(".card_num.block04").val();
+			let card_number = cardNum1 + "-" + cardNum2 + "-" + cardNum3 + "-" + cardNum4;
+			let month = $("#card_month").val();
+			let year = $(".card_year").val();
+			let card_date = year + "년" + month + "월";
+			let card_cvc = $(".card_cvc_number").val();
+			let item_list = new Array();
+			$(".item_list_select").each(function () {
+				item_list.push($(this).text().trim());	
+			})
+			
+			console.log(item_list);
+			
+			$.ajax({
+				url: "../payment/paymentCard",
+				type: "POST",
+				
+				
+			});
+			
+		})
+		
+		/* ============================================================================ */
+		/* =================================== 휴대폰결제 =================================== */
+		
+		
+		/* ================================================================================ */
 	</script>
 </html>
