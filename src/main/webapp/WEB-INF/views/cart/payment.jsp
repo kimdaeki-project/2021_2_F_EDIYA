@@ -109,31 +109,27 @@
 								
 									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block01">
 									-
-									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block02">
+									<input type="password" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block02">
 									-
 									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block03">
 									-
-									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block04">
+									<input type="password" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_num block04">
 									
 								</div>
 								<!-- 유효기간 -->
 								<span class="card_info_txt">유효기간</span>
 								<div class="card_date">
 									
-									<select id="card_month">
-										<c:forEach begin="1" end="12" var="i">
-											<option value="${i}">${i}월</option>
-										</c:forEach>
-									</select>
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="2" maxlength="2" class="card_month" placeholder="01">
 									
-									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_year">
+									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_year" placeholder="2020">
 									
 								</div>
 								<!-- cvc 번호 -->
 								<span class="card_info_txt">CVC번호</span>
 								<div class="card_cvc">
 								
-									<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_cvc_number">
+									<input type="password" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" size="4" maxlength="4" class="card_cvc_number">
 									
 								</div>
 							</div>
@@ -167,7 +163,7 @@
 					<c:forEach items="${selectList}" var="list">
 						
 						
-						<span class="item_list_select">
+						<span class="item_list_select" data-cart-id="${list.cart_id}">
 							${list.pdName} / 
 							<fmt:formatNumber>${list.pdPrice * list.pdCnt}</fmt:formatNumber> 원
 							/ ${list.pdCnt} 개
@@ -271,7 +267,7 @@
 		// 카드결제하기 버튼
 		$(".payment_btn.card").on("click", function () {
 			
-			let payment_type = "카드";
+			let payment_type = "card";
 			let card_kind = $(".card_item.on").text();
 			card_kind = card_kind.trim();
 			let cardNum1 = $(".card_num.block01").val();
@@ -279,22 +275,37 @@
 			let cardNum3 = $(".card_num.block03").val();
 			let cardNum4 = $(".card_num.block04").val();
 			let card_number = cardNum1 + "-" + cardNum2 + "-" + cardNum3 + "-" + cardNum4;
-			let month = $("#card_month").val();
+			let month = $(".card_month").val();
 			let year = $(".card_year").val();
-			let card_date = year + "년" + month + "월";
+			let card_date = year + "-" + month;
 			let card_cvc = $(".card_cvc_number").val();
-			let item_list = new Array();
-			$(".item_list_select").each(function () {
-				item_list.push($(this).text().trim());	
-			})
 			
-			console.log(item_list);
+			// 카트 ID List
+			let id_list = new Array();
+			$(".item_list_select").each(function () {
+				let getOne = $(this).data("cartId");
+				id_list.push(getOne);
+			});
+			
+			console.log(id_list);
 			
 			$.ajax({
 				url: "../payment/paymentCard",
 				type: "POST",
-				
-				
+				data: {
+					payment_type: payment_type,
+					card_kind: card_kind,
+					card_number: card_number,
+					card_date: card_date,
+					card_cvc: card_cvc,
+					item_list: id_list
+				},
+				success: function () {
+					
+				},
+				error: function (xhr, status ,error) {
+					console.log(error);
+				}
 			});
 			
 		})
