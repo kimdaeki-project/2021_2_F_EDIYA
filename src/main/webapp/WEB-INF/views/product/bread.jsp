@@ -130,7 +130,7 @@
       			<dl class="dl2"><dt class="dt"> 포화지방 : </dt><dd class="dd">${bread.pdF}</dd></dl>
       			<dl class="dl1"><dt class="dt"> 나트륨 : </dt><dd class="dd">${bread.pdN}</dd></dl>
       		</div>
-      		<button type="button" onclick="">장바구니 담기</button>
+      		<button type="button" id="pas">장바구니 담기</button>
       		</div>
             </div>
             <a href="#" onClick="name1(${bread.pdNum})" class="list11"><img class="listimg" src="../images/product/bread/IMG_${bread.pdImg}.png"><span class="listspan">${bread.pdNameK}</span></a>

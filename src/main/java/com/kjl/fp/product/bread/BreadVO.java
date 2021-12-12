@@ -16,6 +16,6 @@ public class BreadVO {
 	private int pdF;
 	private int pdN;
 	private String pdImg;
-	private String pdAllergy;
+	private int pdPrice;
 
 }

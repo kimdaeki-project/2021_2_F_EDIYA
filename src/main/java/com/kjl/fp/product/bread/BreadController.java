@@ -2,13 +2,20 @@ package com.kjl.fp.product.bread;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 @Controller
 @RequestMapping("/product/**")
@@ -27,26 +34,48 @@ public class BreadController {
 		return mv;
 	}
 	
-	@PostMapping("breadInfo")
-	public String selectAll (Model model, BreadVO breadVO) throws Exception {
-		model.addAttribute("breadInfo", breadVO);
-		return "redirect:product/bread";
-	}
-	
+	//위에 있는 상품
 	@PostMapping("starbread")
 	public String starbread (Model model, StarBreadVO starBreadVO) throws Exception {
 		model.addAttribute("starbread", starBreadVO);
 		return "redirect:product/bread";
 	}
 	
-	@GetMapping("bread2")
-	public ModelAndView bread2 (ModelAndView mv) throws Exception {
-		List<BreadVO> ar = breadService.selectAll();
-		List<StarBreadVO> br = breadService.starbread();
-		mv.setViewName("product/bread2");
-		mv.addObject("bread", ar);
-		mv.addObject("star", br);
-		return mv;
+	@PostMapping("breadInfo")
+	public String selectAll (Model model, BreadVO breadVO) throws Exception {
+		model.addAttribute("breadInfo", breadVO);
+		return "redirect:product/bread";
 	}
+	
+	@PostMapping("pdcarts")
+	public @ResponseBody String pdcarts (HttpSession session, @RequestBody String pram) throws Exception {
+		String result = "0";
+		int sqlresult = 0;
+		BreadVO breadVO = new BreadVO();
+		
+		JSONParser parser = new JSONParser();
+		Object object = parser.parse(pram);
+		JSONObject jsonObject = (JSONObject) object;
+		
+		String pdName = (String) jsonObject.get("pdName");
+		int pdNum = Integer.parseInt((String) jsonObject.get("pdNum"));
+		int pdPrice = Integer.parseInt((String) jsonObject.get("pdPrice"));
+		
+		
+		breadVO.setPdNum(pdNum);
+		breadVO.setPdNameE(pdName);
+		breadVO.setPdPrice(pdPrice);
+		
+		sqlresult = breadService.pdcarts(breadVO);
+		
+		
+		
+		
+		
+		return result;
+	}
+	
+	
+	
 	
 }

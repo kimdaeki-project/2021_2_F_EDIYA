@@ -21,5 +21,9 @@ public class BreadService implements productService{
 	public List<StarBreadVO> starbread () throws Exception {
 		return breadMapper.starbread();
 	}
+	
+	public int pdcarts(BreadVO breadVO) throws Exception {
+		return 0;
+	}
 
 }
