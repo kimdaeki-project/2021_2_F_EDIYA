@@ -36,9 +36,21 @@
   		select * from member where userName=#{userName}
   	</select>
   	
+  	<delete id="setDeleteUser" parameterType="MemberVO">
+  		delete from member where userName=#{userName}
+  	</delete>
+  	
+  	<update id="setUpdatePassword" parameterType="MemberVO">
+  		update member set password=#{password} where userName={userName}
+  	</update>
+  	
   	
   	<insert id="setJoin" parameterType="MemberVO">
-  		insert into member values(#{userName},#{password},#{name},#{nickName},#{sex},#{phone},#{birthday},#{enabled})
+  		insert into member values(#{userName},#{password},#{name},#{nickName},#{sex},#{phone},#{birthday},1)
+  	</insert>
+  	
+  	<insert id="setRoleMember" parameterType="MemberVO">
+  		insert into member_role values(#{userName},2)
   	</insert>
   
   

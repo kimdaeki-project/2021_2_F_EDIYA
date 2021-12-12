@@ -18,24 +18,62 @@ public class MemberService implements UserDetailsService {
 	private PasswordEncoder bCryptPasswordEncoder;
 	
 	
-	 public MemberVO getUsername(String userName) throws Exception{
+	
+	
+	public int setDeleteUser(MemberVO memberVO) throws Exception{
 		
-		 return memberMapper.getUsername(userName);
+		return memberMapper.setDeleteUser(memberVO);
+	}
+	
+	
+	public boolean passwordCheck(MemberVO memberVO) throws Exception{
+		MemberVO memberVO2 = new MemberVO();
+		memberVO2 = memberMapper.getUsername(memberVO);
+		boolean passwordCheck = false;
+		
+		if(bCryptPasswordEncoder.matches(memberVO.getPassword(), memberVO2.getPassword())) {
+			passwordCheck= true;
+		}else {
+			passwordCheck=false;
+		}
+		
+		return passwordCheck;
+		
+	}
+	
+	
+	 public MemberVO getUsername(MemberVO memberVO) throws Exception{ 
+		
+		 return memberMapper.getUsername(memberVO);
 	 }
+	 
+	 
+	 public int setJoin(MemberVO memberVO) throws Exception{
+		 
+		
+		memberVO.setPassword(bCryptPasswordEncoder.encode(memberVO.getPassword()));
+		 
+		 int result = memberMapper.setJoin(memberVO);
+		 result = memberMapper.setRoleMember(memberVO);
+		 
+		 return result;
+	 }
+	 
 	
 	
 
 	
-	  @Override public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { 
-		  MemberVO memberVO =null;
+	  @Override 
+	  public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException { 
+		  MemberVO memberVO1 =null;
 		  
 		  try {
-			memberVO = memberMapper.getSelectOne(username);
+			memberVO1 = memberMapper.getSelectOne(userName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		  return memberVO;
+		  return memberVO1;
 		  
 		  }
 	  

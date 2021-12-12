@@ -1,0 +1,433 @@
+@charset "UTF-8";
+
+.cart_banner{
+	position: relative;
+	background: url("../../images/cart/drink_visual.jpg") no-repeat top;
+	background-size: cover;
+	width: 100%;
+	height: 250px;
+}
+
+/* ===================== Cart Body ===================== */
+.cart_body{
+	width: 1180px;
+	margin: 0 auto 150px auto;
+}
+
+/* location */
+.cart_body .location{
+	display: block;
+	max-width: 1180px;
+	text-align: right;
+	margin: 0 auto;
+	padding-top: 38px;
+	color: #898989;
+	font-size: 12px;
+}
+.cart_body .location span{
+	background: url("../../images/common/icon_loc.png") right no-repeat;
+	margin-right: 8px;
+	padding-right: 15px;
+}
+.cart_body .location span:last-child{
+	background: none;
+}
+
+/* top_tit */
+.cart_body .top_tit{
+	width: 100%;
+	margin-top: 70px;
+	text-align: left;
+}
+.cart_body .top_tit.total{
+	text-align: right;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.cart_body .top_tit h1{
+	font-size: 36px;
+	font-weight: 700;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: #002f6c;
+}
+.cart_body .top_tit h2{
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+}
+
+/* cart_list */
+.cart_body .cart_list_wrap{
+	width: 100%;
+	border-top: 2px solid #002f6c;
+	margin-top: 30px;
+}
+.cart_body .cart_list_wrap .cart_list_title{
+	width: 100%;
+	height: 50px;
+	background: #D9E5FF;
+	border-radius: 0 0 10px 10px;
+	margin-bottom: 50px;
+}
+.cart_body .cart_list_wrap .cart_list_title div{
+	display: inline-block;
+	text-align: center;
+	line-height: 50px;
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	margin-left: 3px;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(1){
+	width: 100px;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(2){
+	width: 150px;
+	margin-left: 20px;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(3){
+	width: 400px;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(4){
+	width: 200px;
+	margin-left: 0;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(5){
+	width: 200px;
+	margin-left: 0;
+}
+.cart_body .cart_list_wrap .cart_list_title div:nth-child(6){
+	width: 100px;
+}
+.cart_body .cart_list_wrap .cart_list{
+	width: 100%;
+	min-height: 300px;
+	height: auto;
+}
+.cart_list .cart_item_wrap{
+	display: flex;
+	width: 100%;
+	height: 150px;
+	margin: 5px auto;
+	border-top: 1px solid #002f6c;
+	border-bottom: 1px solid #002f6c;
+	border-radius: 8px;
+	justify-content: space-around;
+}
+.cart_item_wrap .box{
+	box-sizing: border-box;
+	height: 150px;
+}
+.cart_item_wrap .item_chk{
+	width: 100px;
+	position: relative;
+}
+.cart_item_wrap .item_chk input[type="checkbox"]{
+	display: none;
+}
+.cart_item_wrap .item_chk input[type="checkbox"] + label {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25px;
+	height: 25px;
+	border: 2px solid #002f6c;
+	border-radius: 100%;
+	cursor: pointer;
+}
+.cart_item_wrap .item_chk input[type="checkbox"] + label:hover{
+	background: #AEC9FA;
+	border: 2px solid #0B1E6B; 
+}
+.cart_item_wrap .item_chk input[type="checkbox"]:checked + label{
+	background: #002f6c;
+	border: 2px solid #AEC9FA;
+}
+.cart_item_wrap .item_img{
+	width: 150px;
+	margin-left: 30px;
+}
+.cart_item_wrap .item_img img{
+	width: 100%;
+	height: 100%;
+}
+.cart_item_wrap .item_name{
+	width: 400px;
+	text-align: center;
+}
+.cart_item_wrap .item_name span{
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 150px;
+}
+.cart_item_wrap .item_count{
+	width: 200px;
+	text-align: center;
+	position: relative;
+}
+.cart_item_wrap .item_count .count_box{
+	display: flex;
+	width: 120px;
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid #002f6c;
+	border-radius: 8px;
+}
+.count_box .cnt{
+	width: 40px;
+}
+.count_box .cnt span{
+	font-size: 18px;
+	line-height: 40px;
+}
+.count_box .cnt_btn{
+	width: 40px; height: 40px;
+	border: none;
+	border-radius: 8px;
+	font-size: 24px;
+	font-weight: 700;
+	color: #002f6c;
+	cursor: pointer;
+}
+.count_box .cnt_btn.plus{
+	background: #8DB3FA;
+	opacity: 0.6;
+}
+.count_box .cnt_btn.minus{
+	background: #AEC9FA;
+	opacity: 0.6;
+}
+.count_box .cnt_btn.plus:hover{
+	opacity: 1;
+}
+.count_box .cnt_btn.minus:hover{
+	opacity: 1;
+}
+.count_box .cnt_btn span{
+	line-height: 40px;
+}
+.cart_item_wrap .item_price{
+	width: 200px;
+	text-align: center;
+}
+.cart_item_wrap .item_price span{
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 150px;
+}
+.cart_item_wrap .item_delete{
+	width: 100px;
+	text-align: center;
+}
+.cart_item_wrap .item_delete .del_btn{
+	width: 50px;
+	height: 50px;
+	margin-top: 50px;
+	background: #002f6c;
+	border-radius: 100%;
+	opacity: 0.8;
+	cursor: pointer;
+}
+.cart_item_wrap .item_delete .del_btn:hover{
+	opacity: 1;
+}
+.cart_item_wrap .item_delete .del_btn span{
+	line-height: 50px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #FFF;
+}
+
+/* Cart_check_option */
+.cart_body .cart_check_option{
+	margin-top: 20px;
+	width: 100%;
+	height: 25px;
+}
+/* Cart_total */
+.cart_body .cart_total_wrap{
+	text-align: right;
+	width: 100%;
+	height: 100px;
+	border-top: 2px solid #002f6c;
+	border-radius: 0 0 10px 10px;
+	background: #D9E5FF;
+	margin-top: 5px;
+	padding-top: 20px;
+	position: relative;
+}
+.cart_total_wrap .total_coupon{
+	position: absolute;
+	top: 35px;
+	left: 50px;
+}
+.cart_total_wrap .total_coupon button{
+	width: 200px;
+	height: 50px;
+	font-size: 24px;
+	font-weight: 300;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: white;
+	word-spacing: 10px;
+	background: #002f6c;
+	border: none;
+	border-radius: 10px;
+	opacity: 0.8;
+	
+}
+.cart_total_wrap .total_coupon button.off{
+	background: #BDBDBD;
+	border: none;
+	opacity: 1;
+}
+.cart_total_wrap .total_coupon button:hover{
+	opacity: 1;
+	cursor: pointer;
+}
+.cart_total_wrap .total_coupon button.off:hover{
+	cursor: default;
+}
+.cart_total_wrap .total_price span{
+	display: inline-block;
+	text-align: right;
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 36px;
+	margin: 20px 50px 0 0;
+}
+.cart_total_wrap .total_price .step3{
+	display: inline-block;
+	text-align: right;
+	font-size: 36px;
+	font-weight: 500;
+	color: red;
+}
+
+
+/* Modal 전체 */
+.modal{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	top: 0; left: 0;
+	display: none;
+	z-index: 99;
+}
+.modal .coupon_wrap{
+	position: fixed;
+	width: 500px;
+	height: 600px;
+	background: white;
+	border-radius: 10px;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+}
+.coupon_wrap .coupon_contents{
+	position: relative;
+	top: 15px;
+	width: 470px;
+	height: 570px;
+	margin: auto;
+	border: 1px solid #002f6c;
+	border-radius: 10px;
+	overflow: scroll;
+}
+.coupon_wrap .coupon_contents::-webkit-scrollbar{
+	display: none;
+}
+.coupon_wrap .coupon_contents .coupon_title{
+	padding: 10px 10px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #002f6c;
+}
+.coupon_contents .coupon_title h1{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #002f6c;
+}
+.coupon_contents .coupon_body{
+	width: 100%;
+	display: table;
+}
+.coupon_contents .coupon_body .coupon_item_wrap{
+	width: 100%;
+	height: auto;
+	display: table-row;
+}
+.coupon_item_wrap .coupon_item{
+	width: 100%;
+	height: 100px;
+	display: table-cell;
+	border-top: 1px solid #002f6c;
+	position: relative;
+}
+.coupon_item_wrap:last-child .coupon_item {
+	border-bottom: 1px solid #002f6c;
+}
+.coupon_item .coupon_kind{
+	position: absolute;
+	display: table-cell;
+	text-align: center;
+	width: 150px;
+	height: 70px;
+	top: 13px;
+	left: 20px;
+	border: 2px solid #002f6c;
+	background: #D9E5FF;
+}
+.coupon_item .coupon_kind h1{
+	display: inline-block;
+	margin-top: 20px;
+	word-spacing: 10px;
+	font-size: 18px;
+}
+.coupon_item .coupon_kind h1 .percent{
+	font-size: 42px;
+	font-weight: 700;
+	color: #002f6c;
+}
+.coupon_item .coupon_state{
+	position: absolute;
+	font-size: 10px;
+	top: 40px;
+	left: 190px;
+}
+.coupon_item .coupon_useBtn{
+	position: absolute;
+	top: 35px;
+	right: 20px;
+}
+.coupon_item .coupon_useBtn .coupon_btn{
+	width: 70px;
+	height: 30px;
+	border: 1px solid #002f6c;
+	border-radius: 10px;
+	background: #002f6c;
+	font-size: 14px;
+	font-weight: 500;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: white;
+	opacity: 0.8;
+}
+.coupon_item .coupon_useBtn .coupon_btn.off{
+	background: #BDBDBD;
+	border: none;
+}
+.coupon_item .coupon_useBtn .coupon_btn:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+/* 모달 결제 */
+.modal .payment_wrap{
+	position: fixed;
+	width: 1200px;
+	height: 800px;
+	background: white;
+	border-radius: 10px;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+}

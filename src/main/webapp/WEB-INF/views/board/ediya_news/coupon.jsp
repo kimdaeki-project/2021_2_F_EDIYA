@@ -47,11 +47,11 @@
 				</h3>
 				<ul class="giftcard_img">
 					<li>
-						<img alt="coupon" src="${pageContext.request.contextPath}/images/board/giftcard/coupon_card.png">
+						<img alt="coupon" src="${pageContext.request.contextPath}/images/board/reservation/coupon_card.png">
 						<span class="card_name">모바일 상품권</span>
 					</li>
 					<li>
-						<img alt="coupon" src="${pageContext.request.contextPath}/images/board/giftcard/giftcard01.png">
+						<img alt="coupon" src="${pageContext.request.contextPath}/images/board/reservation/giftcard01.png">
 						<span class="card_name">기프트 카드</span>
 					</li>
 				</ul>
@@ -99,6 +99,5 @@
 <!-- Finish -->
 
 <!-- Script -->
-	<script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>

@@ -5,6 +5,9 @@
 	<div class="top_align">
 		<div class="top_util">
 			<ul class="top_members">
+				<sec:authorize access="hasRole('ADMIN')">
+				<li><a href="${pageContext.request.contextPath}/member/admin">관리자페이지</a></li>
+				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/member/mypage">마이페이지</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
@@ -12,7 +15,7 @@
 				<sec:authorize access="!isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
 				</sec:authorize>
-				<li><a href="#">매장찾기</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/ediya_findplace">매장찾기</a></li>
 				<li><a href="#">고객의 소리</a></li>
 				<li><a href="#">이디야 공식몰</a></li>
 			</ul>
@@ -60,15 +63,6 @@
 					<li><a href="${pageContext.request.contextPath}/board/ediya_members_main">멤버스 소개</a></li>
 					<li><a href="${pageContext.request.contextPath}/board/ediya_members_card">이디야카드</a></li>
 					<li><a href="${pageContext.request.contextPath}/board/ediya_members_faq">FAQ</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">기프트카드</a>
-				<ul class="dropdown">
-					<li><a href="${pageContext.request.contextPath}/board/ediya_giftcard_main">기프트카드 소개</a></li>
-					<li><a href="#">잔액 조회</a></li>
-					<li><a href="#">분실신고/환불신청</a></li>
-					<li><a href="#">자주하는 질문</a></li>
 				</ul>
 			</li>
 			<li>

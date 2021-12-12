@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,7 @@ import lombok.Data;
 
 @Data
 public class MemberVO implements UserDetails{
+	
 	
 	private String userName;
 	private String password;

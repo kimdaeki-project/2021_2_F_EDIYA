@@ -110,10 +110,10 @@ public class BoardController {
 	
 	
 	// 기타 페이지 쿠폰, 소개 등등
-	@GetMapping("ediya_giftcard_main")
-	public String goGiftcardMain() throws Exception{
+	@GetMapping("ediya_findplace")
+	public String goFindPlace() throws Exception{
 		
-		return "board/ediya_giftcard/ediya_giftcard_main";
+		return "board/ediya_findplace";
 	}
 	@GetMapping("ediya_members_faq")
 	public String goFaq() throws Exception{

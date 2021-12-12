@@ -12,10 +12,15 @@ public interface MemberMapper {
 	public int setJoin(MemberVO memberVO) throws Exception;
 	
 	//idCheck
-	public MemberVO getUsername(String userName) throws Exception;
+	public MemberVO getUsername(MemberVO memberVO) throws Exception;
 	
+	//role member set
+	public int setRoleMember(MemberVO memberVO)throws Exception;
 	
+	//delete
+	public int setDeleteUser(MemberVO memberVO)throws Exception;
 	
-	
+	//updatePassword
+	public int setUpdatePassword(MemberVO memberVO)throws Exception;
 
 }

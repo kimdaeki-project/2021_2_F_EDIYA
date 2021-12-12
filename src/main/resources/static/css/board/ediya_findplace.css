@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.contents.reservation{
+	width: 100%;
+	max-width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/* ============================================================ */
+/* ======================= reservation Main ======================= */
+/* ============================================================ */
+.reservation_wrap{
+	width: 1180px;
+	max-width: 1180px;
+	margin: 0 auto;
+}
+.reservation_block_wrap{
+	width: 100%;
+	margin: 40px auto 0 auto;
+	padding: 10px 4%;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.btn_wrap{
+	position: absolute;
+	z-index: 2;
+	top: 30px;
+	left: 100px;
+}
+.btn_wrap input[type=button]{
+	border: 2px solid #002f6c;
+	border-radius: 10px;
+	background: #FFF;
+	width: 150px;
+	height: 50px;
+	font-weight: 500;
+	font-size: 16px;
+	cursor: pointer;
+}
+.btn_wrap input[type=button]:hover{
+	background: #D9E5FF;
+}
+
+#map{
+	margin-bottom: 100px;
+}
+
+
+
