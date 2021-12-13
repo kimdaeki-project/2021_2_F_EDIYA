@@ -1,8 +1,9 @@
 $(function(){
 	$('.pas').on("click", function() {		
 		var id = $(this).attr('id').substring(3,6);
+		var pr = $(this);
 		
-		var jsontmp = { pdNum:id , pdName: $("#NK" + id).text(), pdPrice: "0"};
+		var jsontmp = { pdNum:id , pdName: $("#NK" + id).text(), pdPrice: $("#PR" + id).text()};
 
 		//ajax
 		$.ajax({

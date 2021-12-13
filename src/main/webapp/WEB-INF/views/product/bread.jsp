@@ -131,6 +131,7 @@
       			<dl class="dl2"><dt class="dt"> 포화지방 : </dt><dd class="dd">${bread.pdF}</dd></dl>
       			<dl class="dl1"><dt class="dt"> 나트륨 : </dt><dd class="dd">${bread.pdN}</dd></dl>
       			<dl class="dl2"><dt class="dt"> 가격 : </dt><dd class="dd">${bread.pdPrice} 원</dd></dl>
+      			<div style="display: none;" id="PR${bread.pdNum}">${bread.pdPrice}</div>
       		</div>
       		<button type="button" class="pas" id="pas${bread.pdNum}">장바구니 담기</button>
       		</div>
