@@ -6,21 +6,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>EDIYA COFFEE</title>
-	<c:import url="../../temp_common/head_common.jsp"></c:import>
+	<c:import url="../temp_common/head_common.jsp"></c:import>
 	<!-- 이디야 소식 css -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/notice/news.css">
 	<!-- ediya_reservation css -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/ediya_reservation.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/ediya_findplace.css">
 </head>
 <body>
 <!-- Start -->
 	<div id="wrapper">
 	
-	<c:import url="../../temp_common/header.jsp"></c:import>
+	<c:import url="../temp_common/header.jsp"></c:import>
 	
 	<section id="container">
 		<div class="notice_banner reservation_main">
-			<h1 class="banner_title">이디야 예약</h1>
+			<h1 class="banner_title">매장검색</h1>
 			<p class="banner_subtit">
 				<span></span>
 			</p>
@@ -36,37 +36,21 @@
 		
 			<div class="location">
 				<span>HOME</span>
-				<span>이디야 멤버스</span>
-				<span>기프트카드 소개</span>
+				<span>매장찾기</span>
 			</div>
 			
 			<div class="reservation_wrap">
-				
-				
+						
 				<div class="reservation_block_wrap">
 					
-					
-					
-				</div>
-				
-				
-				
-				<div class="no_border">
-				
-					<div>
-						<input type="button" id="find_btn" value="내 주변 이디야커피">
+					<div class="btn_wrap">
+						<input type="button" id="find_btn" value="우리집 이디야 찾기">
 						<input type="hidden" id="keyword" value="이디야커피">
 					</div>
-					<div>
-						지점명: <input type="text" id="place_name">
-						전화번호 : <input type="text" id="phone">
-						주소 : <input type="text" id="road_address">
-						상세주소 : <a href="#" id="place_url" target="_blank">상세보기</a>
-					</div>
 					
-				</div>
-				
-				<div id="map" style="width:500px;height:400px;position:relative;overflow:hidden;"></div>
+					<div id="map" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
+					
+				</div>			
 				
 			</div>
 		    
@@ -74,7 +58,7 @@
 		
 	</section>
 	
-	<c:import url="../../temp_common/footer.jsp"></c:import>
+	<c:import url="../temp_common/footer.jsp"></c:import>
 	
 	</div>
 <!-- Finish -->
@@ -90,10 +74,14 @@
 			/* ====================================================================== */
 			/* ========================== 위치, 맵 관련 함수들 ========================== */
 			/* ====================================================================== */
-			
+				
 			// 전역 변수
 			let map; // map!@2345
 			let overLay = []; // 검색 건당의 오버레이 현 위치 오버레이아님..
+			
+			
+			// 이디야 커피랩 위치 기본
+			makeMap(37.5105206834077, 127.03314103979302, "이디야 커피랩");
 			
 			$("#find_btn").on("click", function () {
 				
@@ -130,9 +118,9 @@
 						// 확대
 						level : 3,
 						// y좌표
-						y: lat,
-						// x
-						x: lon,
+						y : lat,
+						// x좌표
+						x : lon,
 						// 범위
 						radius : 5000,
 						// 기준 결정
@@ -219,11 +207,16 @@
 			function sendInfo(each_marker) {
 				
 				console.log(each_marker);
+				/* $("#place_url").attr("href", each_marker.place_url);
+				$("#place_url").attr("target", "_blank"); */
+				aa(each_marker.place_url);
 				
-				$("#place_name").val(each_marker.place_name);
-				$("#phone").val(each_marker.phone);
-				$("#road_address").val(each_marker.road_address_name);
-				$("#place_url").attr("href", each_marker.place_url);
+			}
+			
+			//
+			function aa(url) {
+				
+				open(url, "", "width=300, height=200");
 				
 			}
 			

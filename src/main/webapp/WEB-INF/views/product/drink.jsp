@@ -19,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/product/product.bxslider.css">
 	<link rel="stylesheet" type="text/css" href="../css/product/swiper.css">
 	
+	
 	<link rel="stylesheet" type="text/css" href="../css/product/commons.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -32,9 +33,9 @@
 	<section id="container">
 	
 	<div class="sub_visual drink_visual">
-    <h1 class="con_tt">음료</h1>
-    <p class="menu_txt">ALWAYS BESIDE YOU, <strong>EDIYA COFFEE</strong></p>
-  </div>
+    	<h1 class="con_tt">음료</h1>
+    	<p class="menu_txt">ALWAYS BESIDE YOU, <strong>EDIYA COFFEE</strong></p>
+    </div>
   <!-- LNB 영역입니다. -->
   	<ul class="lnb">
     	<!--li와 li Enter 하지 마시오!! -->
@@ -44,32 +45,6 @@
       <div class="location"><span>HOME</span><span>메뉴</span>음료</div>
 			<!-- 제품 상세정보 추가 200327 -->
 
-<script src="/js/product/jquery.bxslider.js"></script>
-<script>
-var menu_slider;
-var filter = "win16|win32|win64|mac";
-if (navigator.platform && filter.indexOf(navigator.platform.toLowerCase()) >= 0) {
-	var pc = false;
-}else{
-	var pc = true;
-}
-$(document).ready(function(){
-		menu_slider = $('.bxSlider').bxSlider({
-		touchEnabled: pc,
-		mode: 'horizontal',// 가로 방향 수평 슬라이드 ‘horizontal’ ‘horizontal’‘vertical’‘fade’ 슬라이드 이동 방향 설정
-		speed: 500,        // 이동 속도를 설정
-		pager: false,      // 현재 위치 페이징 표시 여부 설정
-		moveSlides: 1,     // 슬라이드 이동시 개수
-		slideWidth: 393,   // 슬라이드 너비
-		minSlides: 2,      // 최소 노출 개수
-		maxSlides: 3,      // 최대 노출 개수
-		slideMargin: 0,    // 슬라이드간의 간격
-		auto: true,        // 자동 실행 여부
-		autoHover: true,   // 마우스 호버시 정지 여부
-		controls: true    // 이전 다음 버튼 노출 여부
-	});
-});
-</script>
 <div class="block_new ">
 	<div class="con_align">
 		<h3 class="nunito">추천 상품</h3>
@@ -81,11 +56,6 @@ $(document).ready(function(){
           <span>Caffe Americano</span></h2>
           <div class="detail_close"><a href="#c" onclick="hide_slide_detail()"><img src="../images/menu/pro_detail_close.gif" width="17" height="16" alt="창닫기"></a></div>
           <p id="new_pro_detail_con">이디야의 스모키한 맛과 풍부한 바디감을 느낄 수 있는 이디야 대표 음료</p>
-        </div>
-                
-        <div class="detail_sns">
-<!--        <a href="#"><img src="../images/menu/pro_sns01.png" width="26" height="26" alt="페이스북" /></a>
-			<a href="#"><img src="../images/menu/pro_sns02.png" width="26" height="26" alt="인스타그램" /></a> -->
         </div>
                 
       	<div class="pro_comp" id="new_pro_detail_nutri">
@@ -125,8 +95,8 @@ $(document).ready(function(){
       <!-- //제품 상세 Popup -->
     
 			<!--a href="#" class="arrow_left"><img src="../images/common/new_btn_arrow01.gif" alt="왼쪽으로"/></a-->
-			<div class="bx-wrapper" style="max-width: 1179px;"><div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 356px;"><ul class="pro_n bxSlider" style="width: 29215%; position: relative; transition-duration: 0s; transform: translate3d(-1181.95px, 0px, 0px);"><li style="float: left; list-style: none; position: relative; width: 393px;" class="bx-clone" aria-hidden="true">
-						<a href="#c" onclick="show_slide_detail('184')"><span class="new_icon"><img src="/images/common/best_icon.png" alt="new"></span><img src="/files/menu/IMG_1523869208680.png" alt="콜드브루 니트로"></a>
+			<div class="bx-wrapper" style="max-width: 1179px;"><div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 363px;"><ul class="pro_n bxSlider" style="width: 29215%; position: relative; transition-duration: 0s; transform: translate3d(-785.993px, 0px, 0px);"><li style="float: left; list-style: none; position: relative; width: 393px;" class="bx-clone" aria-hidden="true">
+						<a href="#c" onclick="show_slide_detail('184')"><span class="new_icon"><img src="../images/common/best_icon.png" alt="new"></span><img src="/files/menu/IMG_1523869208680.png" alt="콜드브루 니트로"></a>
 						<p><a href="#c" onclick="show_slide_detail('184')">콜드브루 니트로</a></p>
 				</li><li style="float: left; list-style: none; position: relative; width: 393px;" class="bx-clone" aria-hidden="true">
 						<a href="#c" onclick="show_slide_detail('238')"><span class="new_icon"><img src="/images/common/best_icon.png" alt="new"></span><img src="/files/menu/IMG_1511829699286.png" alt="제주청귤 블라썸"></a>
@@ -143,7 +113,7 @@ $(document).ready(function(){
 						<a href="#c" onclick="show_slide_detail('320')"><span class="new_icon"><img src="/images/common/best_icon.png" alt="new"></span><img src="/files/menu/IMG_1564379279645.png" alt="이디야 콤부차 복숭아망고"></a>
 						<p><a href="#c" onclick="show_slide_detail('320')">이디야 콤부차 복숭아망고</a></p>
 				</li>
-								<li style="float: left; list-style: none; position: relative; width: 393px;" aria-hidden="false">
+								<li style="float: left; list-style: none; position: relative; width: 393px;" aria-hidden="true">
 						<a href="#c" onclick="show_slide_detail('321')"><span class="new_icon"><img src="/images/common/best_icon.png" alt="new"></span><img src="/files/menu/IMG_1564379353475.png" alt="이디야 콤부차 청포도레몬"></a>
 						<p><a href="#c" onclick="show_slide_detail('321')">이디야 콤부차 청포도레몬</a></p>
 				</li>
@@ -704,7 +674,6 @@ $(document).ready(function(){
 <!-- Finish -->
 
 <!-- Script -->
-	<script type="text/javascript" src="js/common.js"></script>
-	<script src="/js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>

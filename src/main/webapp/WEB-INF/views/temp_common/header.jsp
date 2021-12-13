@@ -15,7 +15,7 @@
 				<sec:authorize access="!isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
 				</sec:authorize>
-				<li><a href="#">매장찾기</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/ediya_findplace">매장찾기</a></li>
 				<li><a href="#">고객의 소리</a></li>
 				<li><a href="#">이디야 공식몰</a></li>
 			</ul>
@@ -43,9 +43,9 @@
 			<li>
 				<a href="#">메뉴</a>
 				<ul class="dropdown">
-					<li><a href="#">음료</a></li>
-					<li><a href="#">베이커리</a></li>
-					<li><a href="#">원두</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/drink">음료</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/bread">베이커리</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/coffee">원두</a></li>
 				</ul>
 			</li>
 			<li>
@@ -63,13 +63,6 @@
 					<li><a href="${pageContext.request.contextPath}/board/ediya_members_main">멤버스 소개</a></li>
 					<li><a href="${pageContext.request.contextPath}/board/ediya_members_card">이디야카드</a></li>
 					<li><a href="${pageContext.request.contextPath}/board/ediya_members_faq">FAQ</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">이디야 예약</a>
-				<ul class="dropdown">
-					<li><a href="${pageContext.request.contextPath}/board/ediya_reservation_main">예약시스템 소개</a></li>
-					<li><a href="#">예약하기</a></li>
 				</ul>
 			</li>
 			<li>

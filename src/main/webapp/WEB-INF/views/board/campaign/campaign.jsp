@@ -138,7 +138,6 @@
 <!-- Finish -->
 
 <!-- Script -->
-	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript">
 	
 	/* category에 따른 lnb 적용 스크립트 */

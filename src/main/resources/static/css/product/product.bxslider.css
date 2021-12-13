@@ -95,6 +95,7 @@ ul.bxslider {
   background: url('../../images/common/new_btn_arrow01.gif');
 	background-size:cover;
 }
+
 .bx-wrapper .bx-prev:hover,
 .bx-wrapper .bx-prev:focus {
   background-position: 0 0;
@@ -105,6 +106,7 @@ ul.bxslider {
 	background: url('../../images/common/new_btn_arrow02.gif');
 	background-size:cover;
 }
+
 .bx-wrapper .bx-next:hover,
 .bx-wrapper .bx-next:focus {
  /* background-position: -43px 0;*/
