@@ -41,6 +41,10 @@ public class MemberVO implements UserDetails{
 		
 		return authorities;
 	}
+	
+	
+	
+	
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
@@ -65,6 +69,13 @@ public class MemberVO implements UserDetails{
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return this.enabled;
+	}
+
+
+
+
+	public String getUserName() {
+		return userName;
 	}
 	
 	

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.contents_box{
+	padding: 0;
+	max-width: 1180px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.contents_list{
+	padding: 30px 0 70px;
+	width: 100%;
+	max-width: 1180px;
+	overflow: hidden;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	box-sizing: border-box;
+	text-align: center;
+}
