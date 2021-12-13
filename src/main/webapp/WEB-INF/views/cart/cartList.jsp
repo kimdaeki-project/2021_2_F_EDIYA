@@ -400,9 +400,11 @@
 				$(this).find(".item_chk").children(".chk").prop("checked", true);
 				
 				// 전체선택 이후 자동계산
+				onCoupon();
 				setTotalPrice();
 				// 선택물품 카운팅 하기
 				countSelect();
+				enabledPayBtn();
 			}
 			
 		});

@@ -18,6 +18,7 @@
 	width: 69%; height: 740px;
 	border: 1px solid #EAEAEA;
 	border-radius: 10px;
+	overflow: scroll;
 }
 .payment_insert_info h1{
 	font-size: 36px;
@@ -117,6 +118,27 @@
 	display: block;
 }
 
+/* Payment Button 공통 css */
+.payment_btn{
+	display: none;
+	border: 1px solid #002f6c;
+	background: #FFF;
+	border-radius: 5px;
+	font-size: 24px;
+	font-weight: 500;
+	font-family: '나눔스퀘어', NannumSquare, NS, '맑은 고딕', MalgunGothic, '돋움', 'Dotum';
+	color: #002f6c;
+	padding: 10px 30px 10px 30px;
+	margin-top: 30px;
+	float: right;
+	cursor: pointer;
+}
+.payment_btn:hover{
+	background: #002f6c;
+	font-weight: 700;
+	color: white;
+}
+
 /* Card */
 .card_grid{
 	display: grid;
@@ -131,13 +153,86 @@
 	height: 50px;
 	font-size: 16px;
 	font-weight: 500;
-	color: #002f6c
+	color: #002f6c;
+}
+.card_grid .card_item.on{
+	background: #002f6c;
+	font-weight: 700;
+	color: white;
 }
 .card_grid .card_item:hover{
 	background: #002f6c;
 	color: white;
 	font-weight: 700;
 	cursor: pointer;
+}
+
+.card_info{
+	display: none;
+	margin-top: 30px;
+}
+.card_info .card_info_txt{
+	font-size: 24px;
+	font-weight: 500;
+	letter-spacing: 5px;
+	color: black;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.card_info .card_number{
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 500;
+	margin-top: 30px;
+	margin-left: 10px;
+}
+.card_info .card_number input{
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	border: 1px solid #002f6c;
+	border-radius: 5px;
+	text-align: center;
+}
+.card_info .card_number input:focus{
+	outline: none;
+}
+.card_info .card_date{
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 10px;
+}
+.card_info .card_date select{
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	padding: 2px 0 2px 20px;
+	border: 1px solid #002f6c;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+.card_info .card_date input{
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	border: 1px solid #002f6c;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+.card_info .card_cvc{
+	display: inline-block;
+	margin-left: 10px;
+}
+.card_info .card_cvc input{
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	border: 1px solid #002f6c;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
 }
 
 /* =========================================== */
