@@ -11,5 +11,25 @@
 	
 	<select id="starbread" resultType="StarBreadVO">
 		select * from starbread
-	</select>
+	</select>	
+	
+	<insert id="pdcarts"  parameterType="CartVO">
+		INSERT INTO CART (userName, pdNum, pdName, pdPrice, pdCnt)
+		VALUES(#{userName} ,#{pdNum} ,#{pdName} ,#{pdPrice}, '0')
+	<!-- 	MERGE INTO CART C
+			USING DUAL
+				ON(C.CART_ID = #{CART_ID})
+		WHEN MATCHED THEN (
+			UPDATE SET
+				  userName = #{userName}
+				, pdNum = #{pdNum}
+				, pdName = #{pdName}
+				, pdPrice = #{pdPrice}
+				, pdCnt = NULL
+		)
+		WHEN NOT MATCHED THEN (
+			INSERT (cart_id, userName, pdNum, pdName, pdPrice, pdCnt)
+			VALUES (#{CART_ID} , #{userName} ,#{pdNum} ,#{pdName} ,#{pdPrice}, pdCnt = NULL)
+		) -->
+	</insert>
  </mapper>

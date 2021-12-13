@@ -118,6 +118,7 @@
       	<li class="listsli">
       		<div class="list1" id="${bread.pdNum}">
       		<div class="list2">
+      			<h2 style="display:none" id="NK${bread.pdNum}">${bread.pdNameK}</h2>
       			<h2 class="list3">${bread.pdNameK}<span class="list4">${bread.pdNameE}</span></h2>
       			<div class="list5"><a class="list6" onClick="name1(${bread.pdNum})"><img class="list7" src="../../images/menu/pro_detail_close.gif" alt="창닫기"></a></div>
       			<p class="list8">${bread.pdInfo}</p>
@@ -130,7 +131,7 @@
       			<dl class="dl2"><dt class="dt"> 포화지방 : </dt><dd class="dd">${bread.pdF}</dd></dl>
       			<dl class="dl1"><dt class="dt"> 나트륨 : </dt><dd class="dd">${bread.pdN}</dd></dl>
       		</div>
-      		<button type="button" id="pas">장바구니 담기</button>
+      		<button type="button" class="pas" id="pas${bread.pdNum}">장바구니 담기</button>
       		</div>
             </div>
             <a href="#" onClick="name1(${bread.pdNum})" class="list11"><img class="listimg" src="../images/product/bread/IMG_${bread.pdImg}.png"><span class="listspan">${bread.pdNameK}</span></a>

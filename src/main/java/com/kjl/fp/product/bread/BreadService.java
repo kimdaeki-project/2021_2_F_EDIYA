@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kjl.fp.cart.CartVO;
 import com.kjl.fp.product.Pager;
 import com.kjl.fp.product.productService;
 
@@ -22,8 +23,12 @@ public class BreadService implements productService{
 		return breadMapper.starbread();
 	}
 	
-	public int pdcarts(BreadVO breadVO) throws Exception {
-		return 0;
+	public int pdcarts(CartVO cartVO) throws Exception {
+		return breadMapper.pdcarts(cartVO);
 	}
+	
+	public int selectSeq(CartVO cartVO) throws Exception {
+		return breadMapper.selectSeq(cartVO);
+	}	
 
 }

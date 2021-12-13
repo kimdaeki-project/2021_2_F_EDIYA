@@ -1,10 +1,13 @@
 package com.kjl.fp.product.bread;
 
+import java.security.Principal;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kjl.fp.cart.CartVO;
+import com.kjl.fp.member.MemberVO;
+
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
 
 @Controller
 @RequestMapping("/product/**")
@@ -23,6 +31,7 @@ public class BreadController {
 	
 	@Autowired
 	private BreadService breadService; 
+	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(BreadController.class);
 
 	@GetMapping("bread")
 	public ModelAndView selectAll (ModelAndView mv) throws Exception {
@@ -48,10 +57,18 @@ public class BreadController {
 	}
 	
 	@PostMapping("pdcarts")
-	public @ResponseBody String pdcarts (HttpSession session, @RequestBody String pram) throws Exception {
+	public @ResponseBody String pdcarts (Principal principal, @RequestBody String pram) throws Exception {
 		String result = "0";
 		int sqlresult = 0;
-		BreadVO breadVO = new BreadVO();
+		CartVO cartVO = new CartVO();
+		
+		//MemberVO a = new MemberVO();
+		
+		//Collection<? extends GrantedAuthority> b = a.getAuthorities();
+		
+		//logger.debug("Auth:" + principal.getName());
+		logger.info("AAAAAAAAAAAAAAAAAAAa");
+		logger.info("JSON:" + pram) ;
 		
 		JSONParser parser = new JSONParser();
 		Object object = parser.parse(pram);
@@ -60,17 +77,28 @@ public class BreadController {
 		String pdName = (String) jsonObject.get("pdName");
 		int pdNum = Integer.parseInt((String) jsonObject.get("pdNum"));
 		int pdPrice = Integer.parseInt((String) jsonObject.get("pdPrice"));
+		String username = "";
 		
+		if(principal != null) {
+			username = principal.getName();
+		}else {
+			return "2";
+		}
+
+		cartVO.setPdNum(pdNum);
+		cartVO.setPdName(pdName);
+		cartVO.setPdPrice(pdPrice);
+		cartVO.setUserName(username);
 		
-		breadVO.setPdNum(pdNum);
-		breadVO.setPdNameE(pdName);
-		breadVO.setPdPrice(pdPrice);
+		//int seqNo = breadService.selectSeq(cartVO);
 		
-		sqlresult = breadService.pdcarts(breadVO);
+		sqlresult = breadService.pdcarts(cartVO);
 		
-		
-		
-		
+		if (sqlresult !=0) {
+			result = "1";
+		} else {
+			result = "0";
+		}
 		
 		return result;
 	}
