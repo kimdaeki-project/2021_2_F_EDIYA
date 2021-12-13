@@ -25,9 +25,6 @@
    
    
    
-   
-   
-   
   <select id="getUsers" resultMap="getUsersResult">
   		select *
 		FROM
@@ -39,6 +36,16 @@
 		WHERE RNUM=1
   
   </select>
+  
+  
+  
+  <insert id="setAdmin" parameterType="MemberVO">
+  	insert into member_role values(#{userName},1)
+  </insert>
+  
+  <delete id="deleteAdmin" parameterType="MemberVO">
+  	delete from member_role where userName = #{userName} and num = 1
+  </delete>
    
    
    

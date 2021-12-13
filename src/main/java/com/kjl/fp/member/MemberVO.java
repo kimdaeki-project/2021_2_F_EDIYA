@@ -28,6 +28,7 @@ public class MemberVO implements UserDetails{
 	private boolean enabled;
 	
 	private List<RoleVO> roles;
+	private List<CouponVO> coupons;
 	
 	
 	@Override

@@ -7,6 +7,35 @@
   
   
   
+  <resultMap type="MemberVO" id="getCouponResult">
+  	<id column="userName" property="userName"/>
+  		<result column="password" property="password"/>
+  		<result column="name" property="name"/>
+  		<result column="nickName" property="nickName"/>
+  		<result column="sex" property="sex"/>
+  		<result column="phone" property="phone"/>
+  		<result column="birthday" property="birthday"/>
+  		<result column="enabled" property="enabled"/>
+  		
+  	<collection property="coupons" javaType="List" ofType="CouponVO">
+  			<id column="couponNum" property="couponNum"/>
+		  	<result column="couponName" property="couponName"/>
+		  	<result column="validity" property="validity"/>
+  	</collection>
+  
+  </resultMap>
+  
+  
+  
+  <select id="getCoupon" parameterType="MemberVO" resultMap="getCouponResult">
+  		select M.*,C.*
+		from member M left join
+		member_coupon MC on (M.userName = MC.userName)
+		left join coupon C on(MC.couponNum = C.couponNum)
+		where M.userName = #{username}
+  </select>  
+  
+  
   <select id="getCountCoupon" parameterType="MemberVO" resultType="Long">
   	select count(*) from member_coupon where userName=#{userName}
   </select>

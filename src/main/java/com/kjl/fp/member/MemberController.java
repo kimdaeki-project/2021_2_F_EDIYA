@@ -2,6 +2,7 @@ package com.kjl.fp.member;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,8 @@ public class MemberController {
 	public String mypage() throws Exception{
 		
 		//modelAndView 사용하기 쿠폰 count 갯수 뿌려주기
+		
+		
 		
 		return "member/mypage";
 	}
