@@ -140,6 +140,7 @@
 					<!-- 휴대폰 -->
 					<div class="insert_box phone">
 						<h2>◇ 휴대폰 결제</h2>
+						
 					</div>
 					<!-- 카카오페이 -->
 					<div class="insert_box kakao">
@@ -287,8 +288,6 @@
 				id_list.push(getOne);
 			});
 			
-			console.log(id_list);
-			
 			$.ajax({
 				url: "../payment/paymentCard",
 				type: "POST",
@@ -300,8 +299,9 @@
 					card_cvc: card_cvc,
 					item_list: id_list
 				},
-				success: function () {
-					
+				dataType: "html",
+				success: function (result) {
+					$(".payment_body_wrap").html(result);
 				},
 				error: function (xhr, status ,error) {
 					console.log(error);

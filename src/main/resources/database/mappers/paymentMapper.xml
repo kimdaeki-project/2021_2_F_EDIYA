@@ -3,9 +3,50 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.kjl.fp.PaymentMapper">
+  <mapper namespace="com.kjl.fp.payment.PaymentMapper">
   	
-  	<!-- Total Price -->
+  	<!-- 결제 후 결제 정보 가져오기 -->
+  	<select id="selectPaymentOne" parameterType="PaymentInfoVO" resultType="PaymentInfoVO">
+  		SELECT
+  			payment_type,
+  			payment_date,
+  			payment_price
+  		FROM
+  			payment
+  		WHERE
+  			payment_id = #{payment_id}	
+  	</select>
   	
-  		
+  	<!-- 기본 결제 정보 저장 -->
+  	<insert id="insertPaymentInfo" parameterType="PaymentInfoVO" useGeneratedKeys="true" keyProperty="payment_id">
+  		INSERT INTO
+  			payment	(payment_id, payment_type, userName, payment_date, payment_price)
+  		VALUES
+  			(null, #{payment_type}, #{userName}, NOW(), #{payment_price})
+  	</insert>
+  	
+  	<!-- 카드 결제 정보 저장 -->
+  	<insert id="insertPaymentCard" parameterType="PaymentCardVO">
+  		INSERT INTO
+  			payment_card (id, payment_id, card_kind, card_number, card_date, card_cvc)
+  		VALUES
+  			(null, #{payment_id}, #{card_kind}, #{card_number}, #{card_date}, #{card_cvc})
+  	</insert>
+  	
+  	<!-- 결제 아이템 리스트 저장 -->
+  	<insert id="insertPaymentItem" parameterType="PaymentItemListVO">
+  		INSERT INTO
+  			payment_item (list_id, payment_id, pdNum, pdName, pdPrice, pdCnt)
+  		VALUES
+  			(null, #{payment_id}, #{pdNum}, #{pdName}, #{pdPrice}, #{pdCnt})
+  	</insert>
+  	
+  	<!-- 결제 후 장바구니에서 삭제 -->
+  	<delete id="deletePaymentAfter" parameterType="CartVO">
+  		DELETE FROM
+  			cart
+  		WHERE
+  			cart_id = #{cart_id}
+  	</delete>
+  	
   </mapper>

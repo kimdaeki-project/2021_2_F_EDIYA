@@ -14,7 +14,12 @@
 
   		<typeAlias type="com.kjl.fp.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.kjl.fp.member.RoleVO" alias="RoleVO"/>
-
+		
+		<!-- 결제 -->
+		<typeAlias type="com.kjl.fp.payment.PaymentInfoVO" alias="PaymentInfoVO"/>
+		<typeAlias type="com.kjl.fp.payment.PaymentCardVO" alias="PaymentCardVO"/>
+		<typeAlias type="com.kjl.fp.payment.PaymentItemListVO" alias="PaymentItemListVO"/>
+		
   		
   		<!-- 라이브러리 -->
   		<typeAlias type="java.lang.String" alias="String"/>
