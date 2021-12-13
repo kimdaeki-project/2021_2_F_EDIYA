@@ -22,6 +22,8 @@ public class MemberController {
 	@GetMapping("mypage")
 	public String mypage() throws Exception{
 		
+		//modelAndView 사용하기 쿠폰 count 갯수 뿌려주기
+		
 		return "member/mypage";
 	}
 	
@@ -76,13 +78,6 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("update")
-	public String update() throws Exception{
-		
-		return "member/update";
-	}
-	
-	
 	@PostMapping("delete")
 	public String delete(MemberVO memberVO) throws Exception{
 		
@@ -100,10 +95,21 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("admin")
-	public String admin() throws Exception{
-		return "member/adminpage";
+	@GetMapping("update")
+	public String update() throws Exception{
+		
+		return "member/update";
 	}
+	
+	@PostMapping("update")
+	public String update(MemberVO memberVO)throws Exception{
+		
+		memberService.setUpdateNickName(memberVO);
+		
+		return "redirect:./logout";
+	}
+	
+	
 	
 	@PostMapping("passwordCheck")
 	@ResponseBody
@@ -113,6 +119,16 @@ public class MemberController {
 		
 		
 	}
+	
+	@PostMapping("passwordUpdate")
+	public String setUpdatePassword(MemberVO memberVO) throws Exception{
+		
+		memberService.setUpdatePassword(memberVO);
+		
+		return "redirect:./logout";
+	}
+	
+	
 	
 	
 	

@@ -5,6 +5,12 @@
   
   <mapper namespace="com.kjl.fp.member.MemberMapper">
   
+  
+  
+  <select id="getCountCoupon" parameterType="MemberVO" resultType="Long">
+  	select count(*) from member_coupon where userName=#{userName}
+  </select>
+  
   	<select id="getSelectOne" parameterType="String" resultMap="getLoginResult">
   		select M.*,R.*
 		from member M inner join
@@ -41,8 +47,13 @@
   	</delete>
   	
   	<update id="setUpdatePassword" parameterType="MemberVO">
-  		update member set password=#{password} where userName={userName}
+  		update member set password=#{password} where userName=#{userName}
   	</update>
+  	
+  	<update id="setUpdateNickName" parameterType="MemberVO">
+  		update member set nickName=#{nickName} where userName=#{userName}
+  	</update>
+  	
   	
   	
   	<insert id="setJoin" parameterType="MemberVO">
