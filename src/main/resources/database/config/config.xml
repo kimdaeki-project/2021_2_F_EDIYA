@@ -6,9 +6,15 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.kjl.fp.board.BoardVO" alias="BoardVO"/>
+  		
+  		<!-- 상품 -->
+  		<typeAlias type="com.kjl.fp.product.bread.BreadVO" alias="BreadVO"/>
+  		<typeAlias type="com.kjl.fp.product.bread.StarBreadVO" alias="StarBreadVO"/>
   		<typeAlias type="com.kjl.fp.cart.CartVO" alias="CartVO"/>
+
   		<typeAlias type="com.kjl.fp.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.kjl.fp.member.RoleVO" alias="RoleVO"/>
+
   		
   		<!-- 라이브러리 -->
   		<typeAlias type="java.lang.String" alias="String"/>
@@ -16,5 +22,6 @@
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		<typeAlias type="java.lang.Integer" alias="Integer"/>
   		<typeAlias type="java.util.List" alias="List"/>
+
   	</typeAliases>
   </configuration>

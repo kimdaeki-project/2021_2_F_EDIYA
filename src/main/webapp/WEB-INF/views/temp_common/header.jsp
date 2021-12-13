@@ -43,9 +43,9 @@
 			<li>
 				<a href="#">메뉴</a>
 				<ul class="dropdown">
-					<li><a href="#">음료</a></li>
-					<li><a href="#">베이커리</a></li>
-					<li><a href="#">원두</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/drink">음료</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/bread">베이커리</a></li>
+					<li><a href="${pageContext.request.contextPath}/product/coffee">원두</a></li>
 				</ul>
 			</li>
 			<li>
