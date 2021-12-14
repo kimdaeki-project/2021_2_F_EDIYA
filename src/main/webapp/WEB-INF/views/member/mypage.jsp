@@ -80,7 +80,7 @@
 									<dl class="now_con">
 										<dt class="now_tt">보유 쿠폰</dt>
 										<dd class="now_txt">
-											<span class="status_blue_txt status_bold_txt">0</span> <!-- 수정하기  -->
+											<span class="status_blue_txt status_bold_txt">${couponCount}</span> <!-- 수정하기  -->
 										</dd>
 									</dl>
 								</li>
@@ -179,18 +179,37 @@
 				</div>
 				
 				<div class="coupon_status">
-					<ul class="coupon_visual" id="coupon_status">
+					<div class="coupon_visual" id="coupon_status">
+					<table class="coupon_table">
+					<tr>
+							<th>쿠폰번호</th> <th>쿠폰이름</th> <th>유효기간</th>
+						</tr>
+					<c:forEach items="${memberVO.coupons}" var="coupons">
+					<c:if test="${empty coupons}">
 						<!-- 쿠폰 없을 시 -->
 						<dl class="coupon_no">
 							<dt>사용 가능한 쿠폰이 없습니다.</dt>
 							<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
 						</dl>
-					</ul>
+					</c:if>
+					<c:if test="${not empty coupons}">
+			
+						<tr>
+						<td>${coupons.couponNum}</td> <td>${coupons.couponName}</td> <td>${coupons.validity}</td>
+						</tr>
+				
+					</c:if>
+					
+					</c:forEach>
+					</table>
+					
+					
+					</div>
 				</div>
 				
 				<div class="coupon_history" style="display: none" id="coupon_history">
 					<dl class="coupon_no">
-						<dt>사용 가능한 쿠폰이 없습니다.</dt>
+						<dt>사용내역이 없습니다.</dt>
 						<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
 					</dl>
 				

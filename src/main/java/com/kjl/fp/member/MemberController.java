@@ -3,12 +3,15 @@ package com.kjl.fp.member;
 
 
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -21,13 +24,20 @@ public class MemberController {
 	
 	
 	@GetMapping("mypage")
-	public String mypage() throws Exception{
-		
-		//modelAndView 사용하기 쿠폰 count 갯수 뿌려주기
+	public ModelAndView mypage(Principal principal, ModelAndView modelAndView) throws Exception{
 		
 		
+		  MemberVO memberVO = new MemberVO();
+		  memberVO.setUserName(principal.getName());
+		  memberVO =  memberService.getCoupon(memberVO);
+		  Long couponCount = memberService.getCouponCount(memberVO);
+		 
+		  
+		modelAndView.addObject("memberVO", memberVO);
+		modelAndView.addObject("couponCount", couponCount);
+		modelAndView.setViewName("member/mypage");
 		
-		return "member/mypage";
+		return modelAndView;
 	}
 	
 	

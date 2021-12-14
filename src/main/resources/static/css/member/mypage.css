@@ -390,3 +390,15 @@
 	color: #7a7a7a;
 	
 	}
+	
+.coupon_table {
+	margin-top: 5px;
+	border-collapse: separate;
+	border-spacing: 0 10px;
+	 
+}
+
+.coupon_table td{
+	text-align: center;
+	
+}

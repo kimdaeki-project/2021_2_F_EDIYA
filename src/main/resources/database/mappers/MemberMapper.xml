@@ -28,7 +28,7 @@
   
   
   <select id="getCoupon" parameterType="MemberVO" resultMap="getCouponResult">
-  		select M.*,C.*
+  		select M.userName,MC.used,C.*
 		from member M left join
 		member_coupon MC on (M.userName = MC.userName)
 		left join coupon C on(MC.couponNum = C.couponNum)
@@ -82,7 +82,6 @@
   	<update id="setUpdateNickName" parameterType="MemberVO">
   		update member set nickName=#{nickName} where userName=#{userName}
   	</update>
-  	
   	
   	
   	<insert id="setJoin" parameterType="MemberVO">
