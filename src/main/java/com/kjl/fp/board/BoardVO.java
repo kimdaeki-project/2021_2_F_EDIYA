@@ -1,6 +1,6 @@
 package com.kjl.fp.board;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.Data;
 
@@ -8,12 +8,15 @@ import lombok.Data;
 public class BoardVO {
 	
 	private Integer board_id;
-	private String board_category;
-	private Integer member_id;
 	private String board_title;
-	private String board_contents;
-	private Date regDate;
-	private Date startDate;
-	private Date endDate;
+	private String board_writer;
+	private String board_content;
+	private Date board_regdate;
+	private String board_type;
+	private Integer board_hit;
+	
+	//Only Event
+	private Date board_start_date;
+	private Date board_end_date;
 	
 }

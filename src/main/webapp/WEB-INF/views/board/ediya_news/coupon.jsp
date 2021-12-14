@@ -26,8 +26,8 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/notice?board_type=notice">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/event?board_type=event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
 				<li class="on"><a href="${pageContext.request.contextPath}/board/coupon">대량쿠폰구매</a></li>
 			</ul>	

@@ -10,28 +10,6 @@
 	<!-- 이디야 소식 css -->
 	<!-- event.jsp도 같은 css 사용 -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/notice/campaign.css">
-	<script type="text/javascript">
- 	$(function(){
-		 history.replaceState({}, null, location.pathname);
-		 
-		 function noRefresh() { 
-			 /* CTRL + N키 막음. */ 
-			 if ((event.keyCode == 78) && (event.ctrlKey == true)) 
-			 { 
-			 	event.keyCode = 0; 
-			 	return false; 
-			 } 
-			 /* F5 번키 막음. */ 
-			 if(event.keyCode == 116) 
-			 { 
-			 	event.keyCode = 0;
-			 
-			 	return false; 
-			 	} 
-			 } 
-		 		document.onkeydown = noRefresh;
-	});
-	</script>
 </head>
 <body>
 <!-- Start -->
@@ -51,46 +29,46 @@
 			<!-- lnb : local navigation bar -->
 			
 			<ul class="lnb">
-				<li><a href="#" data-value="메이트희망기금" class="category">메이트 희망기금</a></li>
-				<li><a href="#" data-value="캠퍼스희망기금" class="category">캠퍼스 희망기금</a></li>
-				<li><a href="#" data-value="식수위생캠페인" class="category">식수위생 캠페인</a></li>
-				<li><a href="#" data-value="이디야의동행" class="category">이디야의 동행</a></li>
-				<li><a href="#" data-value="기타활동" class="category">기타활동</a></li>
+				<li><a href="#" data-value="social_mate" class="category">메이트 희망기금</a></li>
+				<li><a href="#" data-value="social_campus" class="category">캠퍼스 희망기금</a></li>
+				<li><a href="#" data-value="social_sanitation" class="category">식수위생 캠페인</a></li>
+				<li><a href="#" data-value="social_accompany" class="category">이디야의 동행</a></li>
+				<li><a href="#" data-value="social_etc" class="category">기타활동</a></li>
 			</ul>
 				
 		</div>
 		
 		<div class="contents">
 			
-			<input type="hidden" value="${param.board_category}" id="category">
+			<input type="hidden" value="${param.board_type}" id="category">
 			
 			<div class="location">
 				<span>HOME</span>
 				<span>사회공헌활동</span>
-				<span>${param.board_category}</span>
+				<span>${param.board_type}</span>
 			</div>
 			
 			<div class="board_wrap">
 				
 				<div class="board_title">
 					<c:choose>
-						<c:when test="${param.board_category eq '메이트희망기금'}">
+						<c:when test="${param.board_type eq 'social_mate'}">
 							<h2>이디야 메이트 희망기금 사업</h2>
 							<p>이디야커피는 대한민국 청년의 미래를 후원합니다.</p>
 						</c:when>
-						<c:when test="${param.board_category eq '캠퍼스희망기금'}">
+						<c:when test="${param.board_type eq 'social_campus'}">
 							<h2>이디야 가맹점주 자녀 캠퍼스 희망기금</h2>
 							<p>가맹점주님과 자녀들의 미래와 희망을 함께 그려나가고자 합니다.</p>
 						</c:when>
-						<c:when test="${param.board_category eq '식수위생캠페인'}">
+						<c:when test="${param.board_type eq 'social_sanitation'}">
 							<h2>식수위생 캠페인</h2>
 							<p>이디야커피는 식수위생 캠페인을 통해 식수부족국가를 위한 정수시설 설치 및 인식개선 사업을 후원합니다.</p>
 						</c:when>
-						<c:when test="${param.board_category eq '이디야의동행'}">
+						<c:when test="${param.board_type eq 'social_accompany'}">
 							<h2>이디야의 동행</h2>
 							<p>이디야커피는 따뜻한 마음과 기쁨을 나누기 위해 먼저 실천합니다.</p>
 						</c:when>
-						<c:when test="${param.board_category eq '기타활동'}">
+						<c:when test="${param.board_type eq 'social_etc'}">
 							<h2>그 외 사회공헌활동</h2>
 						</c:when>
 					</c:choose>
@@ -109,7 +87,7 @@
 								</a>
 							</div>
 							<div class="list_item_more">
-								<a href="campaign_view?board_category=${param.board_category}&board_id=">더 보기</a>
+								<a href="campaign_view?board_category=${param.board_type}&board_id=">더 보기</a>
 							</div>
 						</div>
 					</c:forEach>
@@ -139,67 +117,6 @@
 
 <!-- Script -->
 	<script type="text/javascript">
-	
-	/* category에 따른 lnb 적용 스크립트 */
-	let category = '${param.board_category}';
-					
-	if(category == '메이트희망기금'){
-		$(".lnb").children().eq(0).addClass("on");
-	}
-	if(category == '캠퍼스희망기금'){
-		$(".lnb").children().eq(1).addClass("on");
-	}
-	if(category == '식수위생캠페인'){
-		$(".lnb").children().eq(2).addClass("on");
-	}
-	if(category == '이디야의동행'){
-		$(".lnb").children().eq(3).addClass("on");
-	}
-	if(category == '기타활동'){
-		$(".lnb").children().eq(4).addClass("on");
-	}
-	
-	
-	$(document).on('click', '.category', function () {
-		let board_category = $('.lnb').find(this).data("value");
-		
-		$.ajax({
-			type: 'get',
-			url: 'campaign?board_category=' + board_category,
-			success: function (data) {
-				let result = $(data).find(".contents").html();
-				$(".contents").html(result);
-				
-				let category = $("#category").val();
-				
-				
-				if(category == '메이트희망기금'){
-					$(".lnb").children().eq(0).addClass("on");
-					$(".lnb").children().not(":eq(0)").removeClass("on");
-				}
-				if(category == '캠퍼스희망기금'){
-					$(".lnb").children().eq(1).addClass("on");
-					$(".lnb").children().not(":eq(1)").removeClass("on");
-				}
-				if(category == '식수위생캠페인'){
-					$(".lnb").children().eq(2).addClass("on");
-					$(".lnb").children().not(":eq(2)").removeClass("on");
-				}
-				if(category == '이디야의동행'){
-					$(".lnb").children().eq(3).addClass("on");
-					$(".lnb").children().not(":eq(3)").removeClass("on");
-				}
-				if(category == '기타활동'){
-					$(".lnb").children().eq(4).addClass("on");
-					$(".lnb").children().not(":eq(4)").removeClass("on");
-				}
-			},
-			error: function () {
-				alert("실패!");
-			}
-		});
-		
-	});
 
 	</script>
 </body>

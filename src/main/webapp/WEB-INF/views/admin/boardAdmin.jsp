@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link type="text/css" rel="stylesheet" href="../css/common/common.css">
-<link type="text/css" rel="stylesheet" href="../css/admin/admin.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="../css/common/common.css">
+	<link type="text/css" rel="stylesheet" href="../css/admin/admin.css">
+	<link type="text/css" rel="stylesheet" href="../css/admin/adminBoard.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <!-- nav  -->
@@ -33,8 +34,23 @@
 		
 	</div>
 
-
-<h3>admin Page</h3>
+	
+	<h1>게시판 관리 페이지입니다.</h1>
+	
+	<div class="adminBoard_container">
+		<ul class="board_ctg_wrap">
+			<li class="board_ctg">
+				<span class="board_ctg_title">FaQ 게시판</span>
+			</li>
+			<li class="board_ctg">
+				<span class="board_ctg_title">사회공헌 게시판</span>
+			</li>
+			<li class="board_ctg">
+				<span class="board_ctg_title">이디야소식 게시판</span>
+			</li>
+		</ul>
+	</div>
+	
 
 </section>
 

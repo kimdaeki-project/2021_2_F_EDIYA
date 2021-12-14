@@ -26,8 +26,8 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li class="on"><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
+				<li class="on"><a href="${pageContext.request.contextPath}/board/notice?board_type=notice">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/event?board_type=event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
 				<li><a href="${pageContext.request.contextPath}/board/coupon">대량쿠폰구매</a></li>
 			</ul>	
@@ -75,8 +75,8 @@
 							</div>
 							<div class="board_list_con">
 								<h5><a href="news_view?board_category=notice&board_id=${ar.board_id}">${ar.board_title}</a></h5>
-								<p><a href="news_view?board_category=notice&board_id=${ar.board_id}">${ar.board_contents}</a></p>
-								<p class="board_date">${ar.regDate}</p>
+								<p><a href="news_view?board_category=notice&board_id=${ar.board_id}">${ar.board_content}</a></p>
+								<p class="board_date">${ar.board_regdate}</p>
 							</div>
 						</li>
 					</c:forEach>
