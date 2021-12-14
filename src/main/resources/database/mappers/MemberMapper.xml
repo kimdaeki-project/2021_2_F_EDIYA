@@ -19,8 +19,8 @@
   		
   		
   	<collection property="cmVO" javaType="List" ofType="CmVO">
-  		<id column="couponNum" property="couponNum"/>
-  		<id column="userName" property="userName"/>
+  		<result column="couponNum" property="couponNum"/>
+  		<result column="userName" property="userName"/>
   		<result column="used" property="used"/>
   	</collection>
   		
@@ -52,7 +52,7 @@
   
   
   <select id="getCountCoupon" parameterType="MemberVO" resultType="Long">
-  	select count(*) from member_coupon where userName=#{userName}
+  	select count(*) from member_coupon where userName=#{userName} and used = 0
   </select>
   
   	<select id="getSelectOne" parameterType="String" resultMap="getLoginResult">
