@@ -28,6 +28,10 @@ public class MemberService implements UserDetailsService {
 		return memberMapper.getCoupon(memberVO);
 	}
 	
+	public MemberVO getUsedCoupons(MemberVO memberVO) throws Exception{
+		return memberMapper.getUsedCoupon(memberVO);
+	}
+	
 	
 	
 	public int setUpdateNickName(MemberVO memberVO) throws Exception{

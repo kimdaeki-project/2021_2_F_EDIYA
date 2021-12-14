@@ -183,8 +183,7 @@
 					<table class="coupon_table">
 					<tr>
 							<th>쿠폰번호</th> <th>쿠폰이름</th> <th>유효기간</th>
-						</tr>
-					<c:forEach items="${memberVO.coupons}" var="coupons">
+						</tr>				
 					<c:if test="${empty coupons}">
 						<!-- 쿠폰 없을 시 -->
 						<dl class="coupon_no">
@@ -193,14 +192,15 @@
 						</dl>
 					</c:if>
 					<c:if test="${not empty coupons}">
-			
+					<c:forEach items="${coupons.coupons}" var="cou">
 						<tr>
-						<td>${coupons.couponNum}</td> <td>${coupons.couponName}</td> <td>${coupons.validity}</td>
+						<td>${cou.couponNum}</td> <td>${cou.couponName}</td> <td>${cou.validity}</td>
 						</tr>
-				
-					</c:if>
 					
 					</c:forEach>
+						
+					</c:if>
+					
 					</table>
 					
 					
@@ -208,10 +208,30 @@
 				</div>
 				
 				<div class="coupon_history" style="display: none" id="coupon_history">
-					<dl class="coupon_no">
-						<dt>사용내역이 없습니다.</dt>
-						<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
-					</dl>
+				
+				<table class="coupon_table">
+					<tr>
+							<th>쿠폰번호</th> <th>쿠폰이름</th> <th>유효기간</th>
+						</tr>
+					
+					<c:if test="${empty Usecoupons}">
+						<!-- 쿠폰 없을 시 -->
+						<dl class="coupon_no">
+							<dt>사용내역이 없습니다.</dt>
+							<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
+						</dl>
+					</c:if>
+					<c:if test="${not empty Usecoupons}">
+						<c:forEach items="${Usecoupons.coupons}" var="ucou">
+						<tr>
+						<td>${ucou.couponNum}</td> <td>${ucou.couponName}</td> <td>${ucou.validity}</td>
+						</tr>
+							
+					</c:forEach>
+					</c:if>
+					
+					
+					</table> 
 				
 				</div>
 			</div>
@@ -231,6 +251,9 @@
 <!-- /footer  -->
 
 <script type="text/javascript">
+
+
+
 
 function stamp_list_v(id){
 	$(".stamp_history,.stamp_status").hide();

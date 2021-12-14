@@ -28,12 +28,17 @@ public class MemberController {
 		
 		
 		  MemberVO memberVO = new MemberVO();
+		  MemberVO memberVO2 = new MemberVO();
 		  memberVO.setUserName(principal.getName());
 		  memberVO =  memberService.getCoupon(memberVO);
+		  memberVO2 = memberService.getUsedCoupons(memberVO);
+		  
+		  
 		  Long couponCount = memberService.getCouponCount(memberVO);
 		 
 		  
-		modelAndView.addObject("memberVO", memberVO);
+		modelAndView.addObject("coupons", memberVO);
+		modelAndView.addObject("Usecoupons", memberVO2);
 		modelAndView.addObject("couponCount", couponCount);
 		modelAndView.setViewName("member/mypage");
 		

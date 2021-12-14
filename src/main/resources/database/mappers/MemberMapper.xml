@@ -17,6 +17,13 @@
   		<result column="birthday" property="birthday"/>
   		<result column="enabled" property="enabled"/>
   		
+  		
+  	<collection property="cmVO" javaType="List" ofType="CmVO">
+  		<id column="couponNum" property="couponNum"/>
+  		<id column="userName" property="userName"/>
+  		<result column="used" property="used"/>
+  	</collection>
+  		
   	<collection property="coupons" javaType="List" ofType="CouponVO">
   			<id column="couponNum" property="couponNum"/>
 		  	<result column="couponName" property="couponName"/>
@@ -28,11 +35,19 @@
   
   
   <select id="getCoupon" parameterType="MemberVO" resultMap="getCouponResult">
-  		select M.userName,MC.used,C.*
+  		select M.userName,C.*
 		from member M left join
 		member_coupon MC on (M.userName = MC.userName)
 		left join coupon C on(MC.couponNum = C.couponNum)
-		where M.userName = #{username}
+		where M.userName = #{username} and MC.used = 0
+  </select>  
+  
+    <select id="getUsedCoupon" parameterType="MemberVO" resultMap="getCouponResult">
+  		select M.userName,C.*
+		from member M left join
+		member_coupon MC on (M.userName = MC.userName)
+		left join coupon C on(MC.couponNum = C.couponNum)
+		where M.userName = #{username} and MC.used = 1
   </select>  
   
   

@@ -15,6 +15,7 @@
   		<typeAlias type="com.kjl.fp.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.kjl.fp.member.RoleVO" alias="RoleVO"/>
   		<typeAlias type="com.kjl.fp.member.CouponVO" alias="CouponVO"/>
+  		<typeAlias type="com.kjl.fp.member.Coupon_MemberVO" alias="CmVO"/>
 
   		
   		<!-- 라이브러리 -->
