@@ -12,4 +12,7 @@ public class CartVO {
 	private Integer pdPrice;
 	private Integer pdCnt;
 	
+	// img
+	private String pdImg;
+	
 }

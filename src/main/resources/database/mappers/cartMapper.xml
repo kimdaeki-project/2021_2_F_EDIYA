@@ -7,9 +7,13 @@
   	
   	<!-- Cart List -->
   	<select id="getCartList" parameterType="String" resultType="CartVO">
-  		SELECT *
+  		SELECT
+  			c.*,
+  			pd_bread.pdImg
   		FROM
-  			cart
+  			cart c INNER JOIN productbread pd_bread
+  		ON
+  			c.pdNum = pd_bread.pdNum
   		WHERE
   			userName = #{userName}
   	</select>

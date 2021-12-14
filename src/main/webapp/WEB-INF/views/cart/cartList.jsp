@@ -75,7 +75,7 @@
 							</div>
 							
 							<div class="box item_img">
-								<img alt="temp" src="${pageContext.request.contextPath}/images/product/bread/IMG_1510912318685.png">
+								<img alt="temp" src="../images/product/bread/IMG_${list.pdImg}.png">
 							</div>
 							
 							<div class="box item_name">
