@@ -9,7 +9,7 @@ public interface CartMapper {
 	
 	
 	// CartList 가져오기
-	public List<CartVO> getCartList() throws Exception;
+	public List<CartVO> getCartList(String userName) throws Exception;
 	
 	// CartSelectList 가져오기
 	public CartVO getSelectList(CartVO cartVO) throws Exception;

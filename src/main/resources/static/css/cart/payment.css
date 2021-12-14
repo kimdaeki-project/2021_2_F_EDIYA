@@ -139,6 +139,11 @@
 	color: white;
 }
 
+.payment_btn.kakao{
+	float: none;
+	margin: 30px auto 0 auto;
+}
+
 /* Card */
 .card_grid{
 	display: grid;
@@ -291,14 +296,64 @@
 /* ===================================== payment_success ===================================== */
 .payment_success{
 	text-align: center;
+	position: relative;
 }
 
 .payment_success .success_txt{
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 30px;
 }
 .payment_success .success_txt h1{
+	display: block;
+	line-height: 100px;
+	height: 100px;
 	font-size: 48px;
 	font-weight: 500;
 	color: #002f6c;
 }
+.payment_success .success_txt h3{
+	display: block;
+	height: 150px;
+	text-align: left;
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+}
+.payment_success .payment_btn.success_return{
+	display: block;
+	margin-top: 30px;
+}
+.loader { 
+	position: absolute; 
+	left: 50%; top: 50%; 
+	z-index: 1; 
+	width: 150px; height: 150px; 
+	margin: -75px 0 0 -75px; 
+	border: 16px solid #f3f3f3; 
+	border-radius: 50%; border-top: 16px solid #3498db; 
+	width: 120px; height: 120px; 
+	-webkit-animation: spin 2s linear infinite; 
+	animation: spin 2s linear infinite; 
+}
+/* 로딩바 애니메이션 */
+@-webkit-keyframes spin { 
+	0% { 
+		-webkit-transform: rotate(0deg);
+		opacity: 1; 
+	} 
+	100% { 
+		-webkit-transform: rotate(360deg); 
+		opacity: 0;
+	} 
+} 
+@keyframes spin { 
+	0% { 
+		transform: rotate(0deg);
+		opacity: 1;
+	} 
+	100% { 
+		transform: rotate(360deg); 
+		opacity: 0;
+	} 
+}
+

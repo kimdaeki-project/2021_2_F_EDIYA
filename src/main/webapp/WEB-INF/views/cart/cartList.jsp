@@ -61,6 +61,10 @@
 			
 				<div class="cart_list">
 					
+					<c:if test="${empty cartList}">
+						<h1 class="cart_noItem">장바구니에 담긴 상품이 없습니다.</h1>
+					</c:if>
+					
 					<c:forEach items="${cartList}" var="list">
 						
 						<div class="cart_item_wrap" data-pdnum="${list.pdNum}">
@@ -551,10 +555,11 @@
 	$(document).on("mouseup", function (e) {
 		
 		let modal = $(".modal");
-		if(modal.has(e.target).length === 0){
-			modal.fadeOut();
-		}
+		let isDo = Number($(".isPaymentDo").val());
 		
+		if(modal.has(e.target).length === 0){
+			modal.fadeOut();		
+		}	
 	})
 	
 	// 첫 화면 체크박스 모두 비활성화: 뒤로가기 하면 체크되어있어서

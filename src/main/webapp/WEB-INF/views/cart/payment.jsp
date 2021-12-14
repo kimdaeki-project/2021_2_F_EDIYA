@@ -2,12 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart/payment.css">
+		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	</head>
 	<body>
 		
@@ -145,6 +147,10 @@
 					<!-- 카카오페이 -->
 					<div class="insert_box kakao">
 						<h2>◇ 카카오페이 결제</h2>
+						<button type="button" class="payment_btn kakao" style="display: block;">
+							<img alt="kakao" src="${pageContext.request.contextPath}/images/cart/kakao_large.png">
+							카카오페이 결제
+						</button>
 					</div>
 					<!-- 네이버페이 -->
 					<div class="insert_box naver">
@@ -312,6 +318,57 @@
 		
 		/* ============================================================================ */
 		/* =================================== 휴대폰결제 =================================== */
+		
+		
+		/* ================================================================================ */
+		
+		/* =================================== 카카오페이 결제 =================================== */
+		
+		$(".payment_btn.kakao").on("click", function () {
+			
+			let payment_type = "kakaopay"
+			// 카트 ID List
+			let id_list = new Array();
+			$(".item_list_select").each(function () {
+				let getOne = $(this).data("cartId");
+				id_list.push(getOne);
+			});
+			
+			let IMP = window.IMP;
+			
+			IMP.init("imp74163699");
+			IMP.request_pay({
+				pg: "kakaopay",
+				pay_method: "card",
+				merchant_uid: "merchant_" + new Date().getTime(),
+				name: "클론코딩 이디야 홈페이지", 
+				amount: ${totalPrice}
+		        //m_redirect_url : 'redirect url'
+			}, function (rsp) {
+				if(rsp.success){
+					
+					$.ajax({
+						url: "../payment/paymentKakao",
+						type: "POST",
+						data: {
+							payment_type: payment_type,
+							item_list: id_list
+						},
+						dataType: "html",
+						success: function (result) {
+							$(".payment_body_wrap").html(result);
+						},
+						error: function (xhr, status, error) {
+							console.log(error);
+						}
+					});
+					
+				}else{
+					console.log("결제실패");
+				}
+			});
+			
+		})
 		
 		
 		/* ================================================================================ */

@@ -1,5 +1,6 @@
 package com.kjl.fp.cart;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kjl.fp.member.MemberVO;
+
 @Service
 public class CartService {
 	
@@ -15,9 +18,11 @@ public class CartService {
 	private CartMapper cartMapper;
 	
 	// Cart List
-	public List<CartVO> getCartList() throws Exception{
+	public List<CartVO> getCartList(Principal principal) throws Exception{
 		
-		return cartMapper.getCartList();
+		String userName = principal.getName();
+		
+		return cartMapper.getCartList(userName);
 	}
 	
 	// CartSelectList 가져오기

@@ -17,6 +17,12 @@ public class PaymentService {
 	@Autowired
 	private CartMapper cartMapper;
 	
+	// 결제 후 결제정보 가져오기
+	public PaymentInfoVO selectPaymentOne(PaymentInfoVO paymentInfoVO) throws Exception{
+		
+		return paymentMapper.selectPaymentOne(paymentInfoVO);
+	}
+	
 	// 카드
 	public int insertPaymentInfo(PaymentInfoVO paymentInfoVO, PaymentCardVO paymentCardVO, Principal principal) throws Exception{
 		
@@ -79,9 +85,32 @@ public class PaymentService {
 					paymentMapper.insertPaymentItem(itemListVO);
 					
 					// 장바구니에서는 삭제시키기
-					//payInfo_result = paymentMapper.deletePaymentAfter(cartVO);
+					payInfo_result = paymentMapper.deletePaymentAfter(cartVO);
 				}
 			
+			}else if(payment_type.equals("kakaopay")) {
+				
+				// 카카오페이 아이템 리스트 insert
+				for(Integer cart_id : paymentInfoVO.getItem_list()) {
+					
+					CartVO cartVO = new CartVO();
+					cartVO.setCart_id(cart_id);
+					
+					CartVO getVO = cartMapper.getSelectList(cartVO);
+					
+					PaymentItemListVO itemListVO = new PaymentItemListVO();
+					itemListVO.setPayment_id(payment_id);
+					itemListVO.setPdNum(getVO.getPdNum());
+					itemListVO.setPdName(getVO.getPdName());
+					itemListVO.setPdPrice(getVO.getPdPrice());
+					itemListVO.setPdCnt(getVO.getPdCnt());
+					
+					paymentMapper.insertPaymentItem(itemListVO);
+					
+					// 장바구니에서는 삭제시키기
+					payInfo_result = paymentMapper.deletePaymentAfter(cartVO);
+				}
+				
 			}
 			
 		}else {

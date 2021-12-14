@@ -1,5 +1,6 @@
 package com.kjl.fp.cart;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +27,9 @@ public class CartController {
 	// 11/24
 	// cartList
 	@GetMapping("cartList")
-	public ModelAndView goCartList() throws Exception{
+	public ModelAndView goCartList(Principal principal) throws Exception{
 		
-		List<CartVO> cartList = cartService.getCartList();
+		List<CartVO> cartList = cartService.getCartList(principal);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("cartList", cartList);
@@ -39,11 +40,11 @@ public class CartController {
 	
 	// deleteOne
 	@GetMapping("deleteOne")
-	public String deleteOne(CartVO cartVO, Model model) throws Exception{
+	public String deleteOne(CartVO cartVO, Model model, Principal principal) throws Exception{
 		
 		cartService.deleteOne(cartVO);
 		
-		List<CartVO> cartList = cartService.getCartList();
+		List<CartVO> cartList = cartService.getCartList(principal);
 		model.addAttribute("cartList", cartList);
 		
 		return "cart/cartList";
@@ -51,11 +52,11 @@ public class CartController {
 	
 	// updateCount
 	@GetMapping("updateCount")
-	public String updateCount(CartVO cartVO, Model model) throws Exception{
+	public String updateCount(CartVO cartVO, Model model, Principal principal) throws Exception{
 		
 		cartService.updateCount(cartVO);
 		
-		List<CartVO> cartList = cartService.getCartList();
+		List<CartVO> cartList = cartService.getCartList(principal);
 		model.addAttribute("cartList", cartList);
 		
 		return "cart/cartList";

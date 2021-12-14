@@ -22,7 +22,7 @@
   		INSERT INTO
   			payment	(payment_id, payment_type, userName, payment_date, payment_price)
   		VALUES
-  			(null, #{payment_type}, #{userName}, NOW(), #{payment_price})
+  			(null, #{payment_type}, #{userName}, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), #{payment_price})
   	</insert>
   	
   	<!-- 카드 결제 정보 저장 -->

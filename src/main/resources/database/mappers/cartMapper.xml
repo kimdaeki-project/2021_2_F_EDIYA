@@ -6,10 +6,12 @@
   <mapper namespace="com.kjl.fp.cart.CartMapper">
   	
   	<!-- Cart List -->
-  	<select id="getCartList" resultType="CartVO">
+  	<select id="getCartList" parameterType="String" resultType="CartVO">
   		SELECT *
   		FROM
   			cart
+  		WHERE
+  			userName = #{userName}
   	</select>
   	
   	<!-- Cart Select List -->
