@@ -77,7 +77,7 @@ public class BreadController {
 		String pdName = (String) jsonObject.get("pdName");
 		int pdNum = Integer.parseInt((String) jsonObject.get("pdNum"));
 		int pdPrice = Integer.parseInt((String) jsonObject.get("pdPrice"));
-		String username = "";
+		String username = principal.getName();
 		
 		if(principal != null) {
 			username = principal.getName();
