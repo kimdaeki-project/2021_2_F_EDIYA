@@ -68,7 +68,7 @@
 									<dl class="now_con">
 										<dt class="now_tt">스탬프 현황</dt>
 										<dd class="now_txt">
-											<span class="status_blue_txt status_bold_txt">0</span> <!-- 수정하기 -->
+											<span class="status_blue_txt status_bold_txt">${stamp}</span> <!-- 수정하기 -->
 											/12
 										</dd>
 									</dl>

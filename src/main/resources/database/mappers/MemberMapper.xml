@@ -7,6 +7,13 @@
   
   
   
+  <select id="getCountStamp" parameterType="MemberVO" resultType="Long">
+  	select count(*) from stamp where userName=#{userName}
+  </select>
+  
+  
+  
+  
   <resultMap type="MemberVO" id="getCouponResult">
   	<id column="userName" property="userName"/>
   		<result column="password" property="password"/>
