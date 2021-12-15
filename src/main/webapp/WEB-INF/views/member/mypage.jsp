@@ -108,42 +108,18 @@
 				<div class="stamp_status">
 					<ul class="stamp_list">
 					<!-- 이부분 js나 JSTL로 작업을 해야할 듯? 총 12개  -->
+					<c:forEach begin="1" end="${stamp}">
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon.jpg">
+						</li>
+					</c:forEach>
+					
+					<c:forEach begin="1" end="${unStamp}">
 						<li class="stamp_icon">
 							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
 						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
+					</c:forEach>
+						
 					</ul>
 				
 				</div>

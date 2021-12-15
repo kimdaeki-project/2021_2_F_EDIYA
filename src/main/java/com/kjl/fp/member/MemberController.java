@@ -36,8 +36,11 @@ public class MemberController {
 		  
 		  Long couponCount = memberService.getCouponCount(memberVO);
 		  Long stampCount = memberService.getCountStamp(memberVO);
+		  Long unStamp = 12L - stampCount;
 		  
-		modelAndView.addObject("stamp", stampCount);  
+		  
+		modelAndView.addObject("stamp", stampCount);
+		modelAndView.addObject("unStamp", unStamp);
 		modelAndView.addObject("coupons", memberVO);
 		modelAndView.addObject("Usecoupons", memberVO2);
 		modelAndView.addObject("couponCount", couponCount);
