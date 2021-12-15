@@ -98,9 +98,9 @@
 					스탬프 적립 현황
 					<span>스탬프 12개를 적립하면 아메리카노(R) Free 쿠폰을 발급해 드립니다.</span>
 					</h3>
-					<a href="#c" class="status_btn_b stamp_status" onclick="stamp_list_v('history');">
+					<!-- <a href="#c" class="status_btn_b stamp_status" onclick="stamp_list_v('history');">
 						스탬프 적립내역
-					</a>
+					</a> -->
 					<a href="#c" class="status_btn_b stamp_history" onclick="stamp_list_v('status');" style="display: none">
 						스탬프 현황판
 					</a>
@@ -108,11 +108,13 @@
 				<div class="stamp_status">
 					<ul class="stamp_list">
 					<!-- 이부분 js나 JSTL로 작업을 해야할 듯? 총 12개  -->
+					<c:if test="${stamp != 0}">
 					<c:forEach begin="1" end="${stamp}">
 						<li class="stamp_icon">
 							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon.jpg">
 						</li>
 					</c:forEach>
+					</c:if>
 					
 					<c:forEach begin="1" end="${unStamp}">
 						<li class="stamp_icon">
@@ -123,7 +125,7 @@
 					</ul>
 				
 				</div>
-				<!-- 스탬프 적립내역  -->
+				<!--   스탬프 적립내역  
 				<div class="stamp_history" style="display: none">
 					<ul class="status_list">
 						<li class="list_td list_tt">
@@ -135,7 +137,7 @@
 							<div class="box_w06">유효기간</div>
 						</li>
 					</ul>
-				</div>
+				</div>  -->
 				<dl class="stamp_notice">
 					<dt>유의사항</dt>
 					<dd>음료1잔당 1개의 스탬프를 적립해드립니다.</dd>

@@ -18,6 +18,8 @@ public class MemberService implements UserDetailsService {
 	private PasswordEncoder bCryptPasswordEncoder;
 	
 	
+	
+	
 	public Long getCountStamp(MemberVO memberVO) throws Exception{
 		return memberMapper.getCountStamp(memberVO);
 	}
