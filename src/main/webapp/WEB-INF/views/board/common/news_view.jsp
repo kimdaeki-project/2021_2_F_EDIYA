@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +41,8 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li><a href="${pageContext.request.contextPath}/board/notice?board_category=notice">공지사항</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/event?board_category=event">이벤트</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/notice?board_type=notice">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/event?board_type=event">이벤트</a></li>
 				<li><a href="#">홈카페 레시피</a></li>
 				<li><a href="${pageContext.request.contextPath}/board/coupon">대량쿠폰구매</a></li>
 			</ul>	
@@ -52,7 +53,7 @@
 				<span>HOME</span>
 				<span>이디야 소식</span>
 				<c:choose>
-					<c:when test="${param.board_category eq 'notice'}">
+					<c:when test="${post.board_type eq 'notice'}">
 						<span>공지사항</span>
 					</c:when>
 					<c:otherwise>
@@ -62,14 +63,14 @@
 			</div>
 			
 			<div class="board_view_title">
-				<p>${view.board_title}</p>
-				<p>${view.regDate}</p>
+				<p>${post.board_title}</p>
+				<p><fmt:formatDate value="${post.board_regdate}" pattern="yyyy-MM-dd"/></p>
 			</div>
 			<div class="board_view_con">
-				${view.board_contents}
+				${post.board_content}
 			</div>
 			<div class="board_view_util">
-				<a href="./${param.board_category}?board_category=${param.board_category}">목록보기</a>
+				<a href="./${post.board_type}?board_type=${post.board_type}">목록보기</a>
 			</div>
 			<div class="board_view_page">
 				<dl>
@@ -93,10 +94,10 @@
 <!-- Finish -->
 
 <!-- Script -->
-	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript">
 	/* category에 따른 lnb 적용 스크립트 */
-	let category = '${param.board_category}';
+	let category = '${post.board_type}';
+	
 	if(category == 'notice'){
 		$(".lnb").children().eq(0).addClass("on");
 	}

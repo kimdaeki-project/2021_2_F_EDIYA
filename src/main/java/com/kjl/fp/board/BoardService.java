@@ -15,4 +15,15 @@ public class BoardService {
 	@Autowired
 	private BoardMapper boardMapper;
 	
+	// 카테고리 별 게시판 리스트 불러오기
+	public List<BoardVO> getBoardList(BoardVO boardVO) throws Exception{
+		
+		return boardMapper.getBoardList(boardVO);
+	}
+	
+	// 하나의 게시글 불러오기
+	public BoardVO getSelectOne(BoardVO boardVO) throws Exception{
+
+		return boardMapper.getSelectOne(boardVO);
+	}
 }

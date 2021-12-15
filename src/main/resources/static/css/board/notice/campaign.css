@@ -50,7 +50,6 @@
 }
 .lnb li.on{
 	background: #FFF;
-	border: 1px solid #FFF;
 	opacity: 1;
 }
 .lnb li a{
@@ -62,10 +61,9 @@
 }
 .lnb li:hover{
 	opacity: 1;
-}
-.lnb li a:hover{
 	background: #FFF;
-	box-sizing: border-box;
+}
+.lnb li:hover a{
 	color: #010101;
 	font-weight: 500;
 }

@@ -5,5 +5,23 @@
   
   <mapper namespace="com.kjl.fp.board.BoardMapper">
   	
+  	<!-- 카테고리 별 게시판 리스트 불러오기 -->
+  	<select id="getBoardList" parameterType="BoardVO" resultType="BoardVO">
+  		SELECT *
+  		FROM
+  			board
+  		WHERE
+  			board_type = #{board_type}
+  	</select>
+  	
+  	<!-- 하나의 게시글 불러오기 -->
+  	<select id="getSelectOne" parameterType="BoardVO" resultType="BoardVO">
+  		SELECT *
+  		FROM
+  			board
+  		WHERE
+  			board_id = #{board_id}
+  	</select>
+  	
   </mapper>
   

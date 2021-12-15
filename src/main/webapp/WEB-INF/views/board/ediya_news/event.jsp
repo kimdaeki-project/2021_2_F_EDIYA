@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,26 +61,28 @@
 				</div>
 				
 				<ul class="board_list">
-					<c:if test="${empty eventAr}">
+					<c:if test="${empty eventList}">
 						<li>
 							<div class="empty">
 								<p>-&nbsp;&nbsp;검색 결과가 없습니다.&nbsp;&nbsp;-</p>
 							</div>
 						</li>
 					</c:if>
-					<c:forEach items="${eventAr}" var="ar">
+					<c:forEach items="${eventList}" var="list">
 						<li>
 							<!-- event -->
 							<div class="board_e_img">
-								<a href="news_view?board_category=event&board_id=${ar.board_id}">
+								<a href="getSelectOne?board_id=${list.board_id}">
 									<img alt="temp" src="${pageContext.request.contextPath}/images/temp/IMG_1628640375152.thumb">
 								</a>
 							</div>
 							<dl class="board_e_con">
-								<dt><a href="news_view?board_category=event&board_id=${ar.board_id}">${ar.board_title}</a></dt>
+								<dt><a href="getSelectOne?board_id=${list.board_id}">${list.board_title}</a></dt>
 								<dd>
 									<span class="blue_txt">기간 : </span>
-									${ar.board_start_date} ~ ${ar.board_end_date}
+									<fmt:formatDate value="${list.board_start_date}" pattern="yyyy-MM-dd"/>
+									~
+									<fmt:formatDate value="${list.board_end_date}" pattern="yyyy-MM-dd"/>
 								</dd>
 							</dl>
 							<div class="board_e_state">

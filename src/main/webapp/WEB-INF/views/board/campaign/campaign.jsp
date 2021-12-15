@@ -40,54 +40,54 @@
 		
 		<div class="contents">
 			
-			<input type="hidden" value="${param.board_type}" id="category">
+			<input type="hidden" value="${board_type}" id="category">
 			
 			<div class="location">
 				<span>HOME</span>
 				<span>사회공헌활동</span>
-				<span>${param.board_type}</span>
+				<span>${board_type}</span>
 			</div>
 			
 			<div class="board_wrap">
 				
 				<div class="board_title">
 					<c:choose>
-						<c:when test="${param.board_type eq 'social_mate'}">
+						<c:when test="${board_type eq 'social_mate'}">
 							<h2>이디야 메이트 희망기금 사업</h2>
 							<p>이디야커피는 대한민국 청년의 미래를 후원합니다.</p>
 						</c:when>
-						<c:when test="${param.board_type eq 'social_campus'}">
+						<c:when test="${board_type eq 'social_campus'}">
 							<h2>이디야 가맹점주 자녀 캠퍼스 희망기금</h2>
 							<p>가맹점주님과 자녀들의 미래와 희망을 함께 그려나가고자 합니다.</p>
 						</c:when>
-						<c:when test="${param.board_type eq 'social_sanitation'}">
+						<c:when test="${board_type eq 'social_sanitation'}">
 							<h2>식수위생 캠페인</h2>
 							<p>이디야커피는 식수위생 캠페인을 통해 식수부족국가를 위한 정수시설 설치 및 인식개선 사업을 후원합니다.</p>
 						</c:when>
-						<c:when test="${param.board_type eq 'social_accompany'}">
+						<c:when test="${board_type eq 'social_accompany'}">
 							<h2>이디야의 동행</h2>
 							<p>이디야커피는 따뜻한 마음과 기쁨을 나누기 위해 먼저 실천합니다.</p>
 						</c:when>
-						<c:when test="${param.board_type eq 'social_etc'}">
+						<c:when test="${board_type eq 'social_etc'}">
 							<h2>그 외 사회공헌활동</h2>
 						</c:when>
 					</c:choose>
 				</div>
 				
 				<div class="board_list">
-					<c:forEach begin="1" end="5">
+					<c:forEach items="${campaignList}" var="list">
 						<div class="board_list_item">
 							<div class="list_item_img">
 								<img alt="thumb" src="${pageContext.request.contextPath}/images/temp/IMG_1511156632684.png">
 							</div>
 							<div class="list_item_txt">
 								<a href="#">
-									<h5>aaaa</h5>
-									<p>여러분이 구입하는 비프렌드 팔찌가 남아공 결식아동에게 큰 힘이 됩니다.</p>
+									<h5>${list.board_title}</h5>
+									<p>${list.board_content}</p>
 								</a>
 							</div>
 							<div class="list_item_more">
-								<a href="campaign_view?board_category=${param.board_type}&board_id=">더 보기</a>
+								<a href="getSelectOne?board_category=${param.board_type}&board_id=">더 보기</a>
 							</div>
 						</div>
 					</c:forEach>
@@ -117,7 +117,52 @@
 
 <!-- Script -->
 	<script type="text/javascript">
+		/* category에 따른 lnb 적용 스크립트 */
+		$(document).ready(function () {
+			
+			let category = '${board_type}';
+			
+			if(category == 'social_mate'){
+				$(".lnb").children().eq(0).addClass("on");
+			}
+			if(category == 'social_campus'){
+				$(".lnb").children().eq(1).addClass("on");
+			}
+			if(category == 'social_sanitation'){
+				$(".lnb").children().eq(2).addClass("on");
+			}
+			if(category == 'social_accompany'){
+				$(".lnb").children().eq(3).addClass("on");
+			}
+			if(category == 'social_etc'){
+				$(".lnb").children().eq(4).addClass("on");
+			}
+			
+		})
+		
+		$(document).on("click", ".category", function () {
 
+			let board_type = $(this).data("value");
+			let index = $(this).parent().index();
+			
+			$(this).parent().addClass("on");
+			$(this).parent().not().eq(index).removeClass("on");
+			
+			$.ajax({
+				url: "campaign?board_type=" + board_type,
+				type: "GET",
+				dataType: "html",
+				success: function (result) {
+					result = $(result).find(".contents");
+					$(".contents").html(result);
+				},
+				error: function (xhr, status, error) {
+					console.log(error);
+				}
+			});
+			
+		})
+		
 	</script>
 </body>
 </html>
