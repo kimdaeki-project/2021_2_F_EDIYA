@@ -37,5 +37,9 @@ public interface MemberMapper {
 	
 	//getCountStamp
 	public Long getCountStamp(MemberVO memberVO) throws Exception;
+	
+	//findId
+	public String findId(MemberVO memberVO) throws Exception;
+	
 
 }
