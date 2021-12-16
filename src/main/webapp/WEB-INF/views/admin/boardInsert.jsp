@@ -17,7 +17,7 @@
 		제목 : <input type="text" name="board_title">
 		내용 : <div id="summernote"></div>
 		작성자 : <input type="text" name="board_writer">
-		첨부파일 : <input type="file" name="board_file">
+		<!-- 첨부파일 : <input type="file" name="board_file"> -->
 		
 	</form>
 </div>
