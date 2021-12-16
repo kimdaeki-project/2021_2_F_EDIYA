@@ -7,8 +7,59 @@
   
   
   
+  <select id="getCountStamp" parameterType="MemberVO" resultType="Long">
+  	select count(*) from stamp where userName=#{userName}
+  </select>
+  
+  
+  
+  
+  <resultMap type="MemberVO" id="getCouponResult">
+  	<id column="userName" property="userName"/>
+  		<result column="password" property="password"/>
+  		<result column="name" property="name"/>
+  		<result column="nickName" property="nickName"/>
+  		<result column="sex" property="sex"/>
+  		<result column="phone" property="phone"/>
+  		<result column="birthday" property="birthday"/>
+  		<result column="enabled" property="enabled"/>
+  		
+  		
+  	<collection property="cmVO" javaType="List" ofType="CmVO">
+  		<result column="couponNum" property="couponNum"/>
+  		<result column="userName" property="userName"/>
+  		<result column="used" property="used"/>
+  	</collection>
+  		
+  	<collection property="coupons" javaType="List" ofType="CouponVO">
+  			<id column="couponNum" property="couponNum"/>
+		  	<result column="couponName" property="couponName"/>
+		  	<result column="validity" property="validity"/>
+  	</collection>
+  
+  </resultMap>
+  
+  
+  
+  <select id="getCoupon" parameterType="MemberVO" resultMap="getCouponResult">
+  		select M.userName,C.*
+		from member M left join
+		member_coupon MC on (M.userName = MC.userName)
+		left join coupon C on(MC.couponNum = C.couponNum)
+		where M.userName = #{username} and MC.used = 0
+  </select>  
+  
+    <select id="getUsedCoupon" parameterType="MemberVO" resultMap="getCouponResult">
+  		select M.userName,C.*
+		from member M left join
+		member_coupon MC on (M.userName = MC.userName)
+		left join coupon C on(MC.couponNum = C.couponNum)
+		where M.userName = #{username} and MC.used = 1
+  </select>  
+  
+  
   <select id="getCountCoupon" parameterType="MemberVO" resultType="Long">
-  	select count(*) from member_coupon where userName=#{userName}
+  	select count(*) from member_coupon where userName=#{userName} and used = 0
   </select>
   
   	<select id="getSelectOne" parameterType="String" resultMap="getLoginResult">
@@ -53,7 +104,6 @@
   	<update id="setUpdateNickName" parameterType="MemberVO">
   		update member set nickName=#{nickName} where userName=#{userName}
   	</update>
-  	
   	
   	
   	<insert id="setJoin" parameterType="MemberVO">

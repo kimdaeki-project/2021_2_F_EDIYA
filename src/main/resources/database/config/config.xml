@@ -19,7 +19,9 @@
 		<typeAlias type="com.kjl.fp.payment.PaymentInfoVO" alias="PaymentInfoVO"/>
 		<typeAlias type="com.kjl.fp.payment.PaymentCardVO" alias="PaymentCardVO"/>
 		<typeAlias type="com.kjl.fp.payment.PaymentItemListVO" alias="PaymentItemListVO"/>
-		
+
+  		<typeAlias type="com.kjl.fp.member.CouponVO" alias="CouponVO"/>
+  		<typeAlias type="com.kjl.fp.member.Coupon_MemberVO" alias="CmVO"/>
   		
   		<!-- 라이브러리 -->
   		<typeAlias type="java.lang.String" alias="String"/>

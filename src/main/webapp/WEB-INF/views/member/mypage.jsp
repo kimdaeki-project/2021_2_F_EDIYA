@@ -68,7 +68,7 @@
 									<dl class="now_con">
 										<dt class="now_tt">스탬프 현황</dt>
 										<dd class="now_txt">
-											<span class="status_blue_txt status_bold_txt">0</span> <!-- 수정하기 -->
+											<span class="status_blue_txt status_bold_txt">${stamp}</span> <!-- 수정하기 -->
 											/12
 										</dd>
 									</dl>
@@ -80,7 +80,7 @@
 									<dl class="now_con">
 										<dt class="now_tt">보유 쿠폰</dt>
 										<dd class="now_txt">
-											<span class="status_blue_txt status_bold_txt">0</span> <!-- 수정하기  -->
+											<span class="status_blue_txt status_bold_txt">${couponCount}</span> <!-- 수정하기  -->
 										</dd>
 									</dl>
 								</li>
@@ -98,9 +98,9 @@
 					스탬프 적립 현황
 					<span>스탬프 12개를 적립하면 아메리카노(R) Free 쿠폰을 발급해 드립니다.</span>
 					</h3>
-					<a href="#c" class="status_btn_b stamp_status" onclick="stamp_list_v('history');">
+					<!-- <a href="#c" class="status_btn_b stamp_status" onclick="stamp_list_v('history');">
 						스탬프 적립내역
-					</a>
+					</a> -->
 					<a href="#c" class="status_btn_b stamp_history" onclick="stamp_list_v('status');" style="display: none">
 						스탬프 현황판
 					</a>
@@ -108,46 +108,24 @@
 				<div class="stamp_status">
 					<ul class="stamp_list">
 					<!-- 이부분 js나 JSTL로 작업을 해야할 듯? 총 12개  -->
+					<c:if test="${stamp != 0}">
+					<c:forEach begin="1" end="${stamp}">
+						<li class="stamp_icon">
+							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon.jpg">
+						</li>
+					</c:forEach>
+					</c:if>
+					
+					<c:forEach begin="1" end="${unStamp}">
 						<li class="stamp_icon">
 							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
 						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
-						<li class="stamp_icon">
-							<img src="${pageContext.request.contextPath}/images/member/mypage/stamp_icon_no.jpg">
-						</li>
+					</c:forEach>
+						
 					</ul>
 				
 				</div>
-				<!-- 스탬프 적립내역  -->
+				<!--   스탬프 적립내역  
 				<div class="stamp_history" style="display: none">
 					<ul class="status_list">
 						<li class="list_td list_tt">
@@ -159,7 +137,7 @@
 							<div class="box_w06">유효기간</div>
 						</li>
 					</ul>
-				</div>
+				</div>  -->
 				<dl class="stamp_notice">
 					<dt>유의사항</dt>
 					<dd>음료1잔당 1개의 스탬프를 적립해드립니다.</dd>
@@ -179,20 +157,59 @@
 				</div>
 				
 				<div class="coupon_status">
-					<ul class="coupon_visual" id="coupon_status">
+					<div class="coupon_visual" id="coupon_status">
+					<table class="coupon_table">
+					<tr>
+							<th>쿠폰번호</th> <th>쿠폰이름</th> <th>유효기간</th>
+						</tr>				
+					<c:if test="${empty coupons}">
 						<!-- 쿠폰 없을 시 -->
 						<dl class="coupon_no">
 							<dt>사용 가능한 쿠폰이 없습니다.</dt>
 							<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
 						</dl>
-					</ul>
+					</c:if>
+					<c:if test="${not empty coupons}">
+					<c:forEach items="${coupons.coupons}" var="cou">
+						<tr>
+						<td>${cou.couponNum}</td> <td>${cou.couponName}</td> <td>${cou.validity}</td>
+						</tr>
+					
+					</c:forEach>
+						
+					</c:if>
+					
+					</table>
+					
+					
+					</div>
 				</div>
 				
 				<div class="coupon_history" style="display: none" id="coupon_history">
-					<dl class="coupon_no">
-						<dt>사용 가능한 쿠폰이 없습니다.</dt>
-						<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
-					</dl>
+				
+				<table class="coupon_table">
+					<tr>
+							<th>쿠폰번호</th> <th>쿠폰이름</th> <th>유효기간</th>
+						</tr>
+					
+					<c:if test="${empty Usecoupons}">
+						<!-- 쿠폰 없을 시 -->
+						<dl class="coupon_no">
+							<dt>사용내역이 없습니다.</dt>
+							<dd>스탬프를 적립하시면 쿠폰을 받으실 수 있습니다.</dd>
+						</dl>
+					</c:if>
+					<c:if test="${not empty Usecoupons}">
+						<c:forEach items="${Usecoupons.coupons}" var="ucou">
+						<tr>
+						<td>${ucou.couponNum}</td> <td>${ucou.couponName}</td> <td>${ucou.validity}</td>
+						</tr>
+							
+					</c:forEach>
+					</c:if>
+					
+					
+					</table> 
 				
 				</div>
 			</div>
@@ -212,6 +229,9 @@
 <!-- /footer  -->
 
 <script type="text/javascript">
+
+
+
 
 function stamp_list_v(id){
 	$(".stamp_history,.stamp_status").hide();

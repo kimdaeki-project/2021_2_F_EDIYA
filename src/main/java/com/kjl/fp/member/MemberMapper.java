@@ -28,5 +28,14 @@ public interface MemberMapper {
 	
 	//couponCount
 	public Long getCountCoupon(MemberVO memberVO)throws Exception;
+	
+	//Member getCoupons
+	public MemberVO getCoupon(MemberVO memberVO) throws Exception;
+	
+	//Member getUsedCoupons
+	public MemberVO getUsedCoupon(MemberVO memberVO) throws Exception;
+	
+	//getCountStamp
+	public Long getCountStamp(MemberVO memberVO) throws Exception;
 
 }

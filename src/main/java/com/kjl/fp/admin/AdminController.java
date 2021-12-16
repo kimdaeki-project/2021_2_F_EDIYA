@@ -36,8 +36,6 @@ public class AdminController {
 		
 		ar = adminService.getUsers();
 		
-		
-		
 		modelAndView.addObject("memberList",ar);
 		modelAndView.setViewName("admin/adminpage");
 		

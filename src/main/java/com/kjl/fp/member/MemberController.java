@@ -2,12 +2,16 @@ package com.kjl.fp.member;
 
 
 
+
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -20,11 +24,29 @@ public class MemberController {
 	
 	
 	@GetMapping("mypage")
-	public String mypage() throws Exception{
+	public ModelAndView mypage(Principal principal, ModelAndView modelAndView) throws Exception{
 		
-		//modelAndView 사용하기 쿠폰 count 갯수 뿌려주기
 		
-		return "member/mypage";
+		  MemberVO memberVO = new MemberVO();
+		  MemberVO memberVO2 = new MemberVO();
+		  memberVO.setUserName(principal.getName());
+		  memberVO =  memberService.getCoupon(memberVO);
+		  memberVO2 = memberService.getUsedCoupons(memberVO);
+		  
+		  
+		  Long couponCount = memberService.getCouponCount(memberVO);
+		  Long stampCount = memberService.getCountStamp(memberVO);
+		  Long unStamp = 12L - stampCount;
+		  
+		  
+		modelAndView.addObject("stamp", stampCount);
+		modelAndView.addObject("unStamp", unStamp);
+		modelAndView.addObject("coupons", memberVO);
+		modelAndView.addObject("Usecoupons", memberVO2);
+		modelAndView.addObject("couponCount", couponCount);
+		modelAndView.setViewName("member/mypage");
+		
+		return modelAndView;
 	}
 	
 	

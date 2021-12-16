@@ -20,6 +20,26 @@ public class MemberService implements UserDetailsService {
 	
 	
 	
+	public Long getCountStamp(MemberVO memberVO) throws Exception{
+		return memberMapper.getCountStamp(memberVO);
+	}
+	
+	public Long getCouponCount(MemberVO memberVO) throws Exception{
+		return memberMapper.getCountCoupon(memberVO);
+	}
+	
+	
+	public MemberVO getCoupon(MemberVO memberVO) throws Exception{
+		
+		return memberMapper.getCoupon(memberVO);
+	}
+	
+	public MemberVO getUsedCoupons(MemberVO memberVO) throws Exception{
+		return memberMapper.getUsedCoupon(memberVO);
+	}
+	
+	
+	
 	public int setUpdateNickName(MemberVO memberVO) throws Exception{
 		
 		return memberMapper.setUpdateNickName(memberVO);
