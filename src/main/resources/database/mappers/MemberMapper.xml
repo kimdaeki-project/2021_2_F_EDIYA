@@ -7,6 +7,12 @@
   
   
   
+  
+  <select id="findId" parameterType="MemberVO" resultType="String">
+   select userName from member where birthday = #{birthday} and phone = #{phone}
+  </select>
+  
+  
   <select id="getCountStamp" parameterType="MemberVO" resultType="Long">
   	select count(*) from stamp where userName=#{userName}
   </select>

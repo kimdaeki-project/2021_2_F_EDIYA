@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/borad/**").permitAll()
 									.antMatchers("/product/**").permitAll()
 									.antMatchers("/api/**").permitAll()
-									.antMatchers("/member/login", "/member/joinCheck","/member/join","/member/updateCheck").permitAll()
+									.antMatchers("/member/login", "/member/joinCheck","/member/join","/member/updateCheck","/member/findId").permitAll()
 									.antMatchers("/member/mypage").hasRole("MEMBER")
 									.antMatchers("/admin/**").hasRole("ADMIN")
 									.and()

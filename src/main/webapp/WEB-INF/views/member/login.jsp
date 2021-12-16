@@ -257,7 +257,7 @@
     
     <div class="form_btn">
     	<a href="#c" class="gray_btn" onclick="open_login_pop('email_find')">이전화면</a>
-      <input type="button" onclick="open_login_pop('join_info_email')" value="이메일 찾기" class="submit_btn submit_half_btn" /> <!-- onclick 수정하기!!!!!!!! -->
+      <input type="button" onclick="find_email()" value="이메일 찾기" class="submit_btn submit_half_btn" /> <!-- onclick 수정하기!!!!!!!! -->
     </div>
     </fieldset>
     </form>
@@ -271,13 +271,13 @@
 <div class="popup_blind">
   <div class="login_popup">
     <h1 class="pop_tt">가입 정보 확인</h1>
-    <div class="pop_close"><a href="#c" onClick="close_login_pop()"><img src="../images/member/pop/mypage_pop_close.gif" width="17" height="16" alt="창닫기" /></a></div>
+    <div class="pop_close"><a href="#c" onClick="close_login_pop()"><img src="${pageContext.request.contextPath}/images/member/pop/mypage_pop_close.gif" width="17" height="16" alt="창닫기" /></a></div>
     
     <h2 class="pop_con_tt">회원님이 가입한 이메일 입니다.</h2>
     <fieldset>
     <div class="certify_form">
       <ul class="email_list">
-      	<li>test00******@test.com</li>
+      	<li id="userEmail">test00******@test.com</li>
       </ul> 
     </div>
     
@@ -294,7 +294,7 @@
 <div class="popup_blind">
   <div class="login_popup">
     <h1 class="pop_tt">회원확인 서비스</h1>
-    <div class="pop_close"><a href="#c" onClick="close_login_pop()"><img src="../images/member/pop/mypage_pop_close.gif" width="17" height="16" alt="창닫기" /></a></div>
+    <div class="pop_close"><a href="#c" onClick="close_login_pop()"><img src="${pageContext.request.contextPath}/images/member/pop/mypage_pop_close.gif" width="17" height="16" alt="창닫기" /></a></div>
     
     <h2 class="pop_con_tt">비밀번호를 찾을 방법을 선택해주세요.</h2>
     <p class="pop_txt">타인의 개인정보를 도용 할 경우<br />
@@ -324,7 +324,7 @@
 <div class="popup_blind">
   <div class="login_popup">
     <h1 class="pop_tt">가입 정보 확인</h1>
-    <div class="pop_close"><a href="#c" onClick="close_login_pop()"><img src="../images/member/pop/mypage_pop_close.gif" width="17" height="16" alt="창닫기" /></a></div>
+    <div class="pop_close"><a href="#c" onClick="close_login_pop()"><img src="${pageContext.request.contextPath}/images/member/pop/mypage_pop_close.gif" width="17" height="16" alt="창닫기" /></a></div>
     
     <h2 class="pop_con_tt">가입 시 입력한 정보를 입력하세요.</h2>
     <p class="pop_txt">타인의 개인정보를 도용 할 경우<br />
@@ -475,8 +475,46 @@
 			}  
 		});  
 		
-		/* 비밀번호 및 이메일 찾기 ajax?  */
+		/* 이메일 찾기   */
 		function find_email() {
+			var birth01 = $("#birth01").val();
+			var birth02 = $("#birth02").val();
+			var birth03 = $("#birth03").val();
+			var birthday = birth01 + "-" + birth02 + "-" + birth03;
+			var phone = $("#findEmailMobileNo").val();
+			
+			console.log(birthday);
+			console.log(phone);
+			
+			
+			
+			$.ajax({
+				type : "POST",
+				url : "./findId",
+				data : {birthday : birthday, phone : phone},
+				success : function(data) {
+					
+					
+					console.log(data);
+					
+					 if(data == "0"){
+						 var test12 = $("#userEmail").text("가입한 데이터가 없습니다.");
+						 open_login_pop("join_info_email");
+					
+					}else{
+						var test12 = $("#userEmail").text(data);
+						 open_login_pop("join_info_email");
+					} 
+		 
+					
+				}
+				
+				
+			})
+		
+			
+			
+			
 			
 		}
 		

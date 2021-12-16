@@ -21,6 +21,23 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@PostMapping("findId")
+	@ResponseBody
+	public String findId(MemberVO memberVO) throws Exception{
+		
+		 String userName = memberService.findId(memberVO);
+		 
+			if(userName.isEmpty()) {
+				return "0";
+			}else {
+				return userName;
+			}
+			
+			
+		
+		
+	}
+	
 	
 	
 	@GetMapping("mypage")

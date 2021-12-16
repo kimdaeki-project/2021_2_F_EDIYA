@@ -19,6 +19,20 @@ public class MemberService implements UserDetailsService {
 	
 	
 	
+	public String findId(MemberVO memberVO) throws Exception{
+		
+		String userName = memberMapper.findId(memberVO);
+		
+		if(userName == null) {
+			return "";
+		}else {
+			return userName;
+		}
+		
+	
+		
+	}
+	
 	
 	public Long getCountStamp(MemberVO memberVO) throws Exception{
 		return memberMapper.getCountStamp(memberVO);
