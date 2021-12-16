@@ -45,7 +45,25 @@
 			<div class="location">
 				<span>HOME</span>
 				<span>사회공헌활동</span>
-				<span>${board_type}</span>
+				<span>
+					<c:choose>
+						<c:when test="${board_type eq 'social_mate'}">
+							메이트 희망기금
+						</c:when>
+						<c:when test="${board_type eq 'social_campus'}">
+							캠퍼스 희망기금
+						</c:when>
+						<c:when test="${board_type eq 'social_sanitation'}">
+							식수위생 캠페인
+						</c:when>
+						<c:when test="${board_type eq 'social_accompany'}">
+							이디야의 동행
+						</c:when>
+						<c:when test="${board_type eq 'social_etc'}">
+							기타 활동
+						</c:when>
+					</c:choose>
+				</span>
 			</div>
 			
 			<div class="board_wrap">
@@ -81,13 +99,13 @@
 								<img alt="thumb" src="${pageContext.request.contextPath}/images/temp/IMG_1511156632684.png">
 							</div>
 							<div class="list_item_txt">
-								<a href="#">
+								<a href="getSelectOne?board_type=${param.board_type}&board_id=${list.board_id}">
 									<h5>${list.board_title}</h5>
 									<p>${list.board_content}</p>
 								</a>
 							</div>
 							<div class="list_item_more">
-								<a href="getSelectOne?board_category=${param.board_type}&board_id=">더 보기</a>
+								<a href="getSelectOne?board_type=${param.board_type}&board_id=${list.board_id}">더 보기</a>
 							</div>
 						</div>
 					</c:forEach>
@@ -118,40 +136,42 @@
 <!-- Script -->
 	<script type="text/javascript">
 		/* category에 따른 lnb 적용 스크립트 */
-		$(document).ready(function () {
 			
-			let category = '${board_type}';
-			
-			if(category == 'social_mate'){
-				$(".lnb").children().eq(0).addClass("on");
-			}
-			if(category == 'social_campus'){
-				$(".lnb").children().eq(1).addClass("on");
-			}
-			if(category == 'social_sanitation'){
-				$(".lnb").children().eq(2).addClass("on");
-			}
-			if(category == 'social_accompany'){
-				$(".lnb").children().eq(3).addClass("on");
-			}
-			if(category == 'social_etc'){
-				$(".lnb").children().eq(4).addClass("on");
-			}
-			
-		})
+		let category = '${board_type}';
+		
+		if(category == 'social_mate'){
+			$(".lnb").children().eq(0).addClass("on");
+		}
+		if(category == 'social_campus'){
+			$(".lnb").children().eq(1).addClass("on");
+		}
+		if(category == 'social_sanitation'){
+			$(".lnb").children().eq(2).addClass("on");
+		}
+		if(category == 'social_accompany'){
+			$(".lnb").children().eq(3).addClass("on");
+		}
+		if(category == 'social_etc'){
+			$(".lnb").children().eq(4).addClass("on");
+		}
 		
 		$(document).on("click", ".category", function () {
 
 			let board_type = $(this).data("value");
-			let index = $(this).parent().index();
 			
+			$(".category").each(function () {
+				$(this).parent().removeClass("on");
+			});
+
 			$(this).parent().addClass("on");
-			$(this).parent().not().eq(index).removeClass("on");
 			
 			$.ajax({
-				url: "campaign?board_type=" + board_type,
+				url: "campaign",
 				type: "GET",
 				dataType: "html",
+				data:{
+					board_type: board_type
+				},
 				success: function (result) {
 					result = $(result).find(".contents");
 					$(".contents").html(result);

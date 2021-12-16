@@ -97,6 +97,7 @@ public class BoardController {
 	}
 	// ===================================================== //
 	
+	
 	// 기타 페이지 쿠폰, 소개 등등
 	@GetMapping("ediya_findplace")
 	public String goFindPlace() throws Exception{

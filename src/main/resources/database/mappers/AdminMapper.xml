@@ -37,11 +37,8 @@
 		inner join role r
 		on (mr.num = r.num)) RN
 		WHERE RNUM=1
-  
   </select>
    
-   
-   
-   
+   <!-- 카테고리별 타입 가져오기 -->
    
    </mapper>
