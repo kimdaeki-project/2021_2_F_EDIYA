@@ -61,23 +61,23 @@
 				</div>
 				
 				<ul class="board_list">
-					<c:if test="${empty eventList}">
+					<c:if test="${empty boardList}">
 						<li>
 							<div class="empty">
 								<p>-&nbsp;&nbsp;검색 결과가 없습니다.&nbsp;&nbsp;-</p>
 							</div>
 						</li>
 					</c:if>
-					<c:forEach items="${eventList}" var="list">
+					<c:forEach items="${boardList}" var="list">
 						<li>
 							<!-- event -->
 							<div class="board_e_img">
-								<a href="getSelectOne?board_id=${list.board_id}">
+								<a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}">
 									<img alt="temp" src="${pageContext.request.contextPath}/images/temp/IMG_1628640375152.thumb">
 								</a>
 							</div>
 							<dl class="board_e_con">
-								<dt><a href="getSelectOne?board_id=${list.board_id}">${list.board_title}</a></dt>
+								<dt><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}">${list.board_title}</a></dt>
 								<dd>
 									<span class="blue_txt">기간 : </span>
 									<fmt:formatDate value="${list.board_start_date}" pattern="yyyy-MM-dd"/>

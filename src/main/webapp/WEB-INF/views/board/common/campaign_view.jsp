@@ -101,7 +101,7 @@
 				${post.board_content}
 			</div>
 			<div class="board_view_util">
-				<a href="./campaign?board_type=${post.board_type}">목록보기</a>
+				<a href="./campaign?board_type=${board_type}">목록보기</a>
 			</div>
 			<div class="board_view_page">
 				<dl>
@@ -128,7 +128,7 @@
 	<script type="text/javascript">
 		/* category에 따른 lnb 적용 스크립트 */
 		
-		let category = '${post.board_type}';
+		let category = '${board_type}';
 		
 		if(category == 'social_mate'){
 			$(".lnb").children().eq(0).addClass("on");

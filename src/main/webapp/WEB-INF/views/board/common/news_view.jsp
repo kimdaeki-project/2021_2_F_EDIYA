@@ -53,7 +53,7 @@
 				<span>HOME</span>
 				<span>이디야 소식</span>
 				<c:choose>
-					<c:when test="${post.board_type eq 'notice'}">
+					<c:when test="${board_type eq 'notice'}">
 						<span>공지사항</span>
 					</c:when>
 					<c:otherwise>
@@ -70,7 +70,7 @@
 				${post.board_content}
 			</div>
 			<div class="board_view_util">
-				<a href="./${post.board_type}?board_type=${post.board_type}">목록보기</a>
+				<a href="./${board_type}?board_type=${board_type}">목록보기</a>
 			</div>
 			<div class="board_view_page">
 				<dl>
@@ -96,7 +96,7 @@
 <!-- Script -->
 	<script type="text/javascript">
 	/* category에 따른 lnb 적용 스크립트 */
-	let category = '${post.board_type}';
+	let category = '${board_type}';
 	
 	if(category == 'notice'){
 		$(".lnb").children().eq(0).addClass("on");

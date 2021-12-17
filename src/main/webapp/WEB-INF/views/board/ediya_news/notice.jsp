@@ -61,22 +61,22 @@
 				
 				<ul class="board_list">
 					<!-- event 게시판하고 다른곳 -->
-					<c:if test="${empty noticeList}">
+					<c:if test="${empty boardList}">
 						<li>
 							<div class="empty">
 								<p>-&nbsp;&nbsp;검색 결과가 없습니다.&nbsp;&nbsp;-</p>
 							</div>
 						</li>
 					</c:if>
-					<c:forEach items="${noticeList}" var="list">
+					<c:forEach items="${boardList}" var="list">
 						<li>
 							<!-- 특별한 공지들은 board_notice 사용해서 아이콘 추가 -->
 							<div class="board_num">
 								${list.board_id}
 							</div>
 							<div class="board_list_con">
-								<h5><a href="getSelectOne?board_id=${list.board_id}">${list.board_title}</a></h5>
-								<p><a href="getSelectOne?board_id=${list.board_id}">${list.board_content}</a></p>
+								<h5><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}">${list.board_title}</a></h5>
+								<p><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}">${list.board_content}</a></p>
 								<p class="board_date">
 									<fmt:formatDate value="${list.board_regdate}" pattern="yyyy-MM-dd"/>
 								</p>

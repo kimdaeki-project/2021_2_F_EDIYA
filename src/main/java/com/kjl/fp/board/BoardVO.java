@@ -10,11 +10,11 @@ import lombok.Data;
 public class BoardVO {
 	
 	private Integer board_id;
+	private Integer board_ctg_id;
 	private String board_title;
 	private String board_writer;
 	private String board_content;
 	private Date board_regdate;
-	private String board_type;
 	private Integer board_hit;
 	
 	//Only Event
