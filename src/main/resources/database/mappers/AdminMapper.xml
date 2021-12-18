@@ -43,6 +43,31 @@
   		board_category
   </select>
   
+  <!-- 선택한 카테고리 리스트 가져오기 -->
+  <select id="getSelectCtgList" parameterType="BoardCtgVO" resultType="BoardVO">
+  	SELECT *
+  	FROM
+  		board
+  	WHERE
+  		board_ctg_id = #{board_ctg_id}
+  </select>
+  
+  <!-- 게시글 추가하기 -->
+  <insert id="insertPost" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="board_id">
+  	INSERT INTO
+  		board (board_id, board_ctg_id, board_title, board_writer, board_content, board_regdate, board_hit, board_start_date, board_end_date)
+  	VALUES
+  		(NULL, #{board_ctg_id}, #{board_title}, #{board_writer}, #{board_content}, NOW(), 0, #{board_start_date}, #{board_end_date})
+  </insert>
+  
+  <!-- 게시글의 파일추가하기 -->
+  <insert id="insertPostFile" parameterType="BoardFilesVO">
+  	INSERT INTO
+  		board_files (board_files_id, board_id, fileName, fileOriName)
+  	VALUES
+  		(NULL, #{board_id}, #{fileName}, #{fileOriName})
+  </insert>
+  
   <insert id="setAdmin" parameterType="MemberVO">
   	insert into member_role values(#{userName},1)
   </insert>

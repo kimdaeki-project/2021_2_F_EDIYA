@@ -24,7 +24,18 @@
   		<result property="board_hit" column="board_hit"/>
   		<result property="board_start_date" column="board_start_date"/>
   		<result property="board_end_date" column="board_end_date"/>
+  		<collection property="boardFilesVO" select="getPostFile" column="board_id">
+  		</collection>
   	</resultMap>
+  	
+  	<!-- 파일 불러오기 -->
+  	<select id="getPostFile" resultType="BoardFilesVO">
+  		SELECT *
+  		FROM
+  			board_files
+  		WHERE
+  			board_id = #{board_id}
+  	</select>
   	
   	<!-- 카테고리 별 게시판 리스트 불러오기 -->
   	<select id="getBoardList" parameterType="Map" resultMap="boardResultMap">

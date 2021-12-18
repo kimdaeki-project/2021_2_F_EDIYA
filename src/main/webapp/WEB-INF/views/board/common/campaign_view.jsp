@@ -164,7 +164,7 @@
 					board_type: board_type
 				},
 				success: function (result) {
-					result = $(result).find(".contents");
+					result = $(result).find(".contents").html();
 					$(".contents").html(result);
 				},
 				error: function (xhr, status, error) {

@@ -9,6 +9,7 @@
   		<!-- 게시판 -->
   		<typeAlias type="com.kjl.fp.board.BoardVO" alias="BoardVO"/>
   		<typeAlias type="com.kjl.fp.board.BoardCtgVO" alias="BoardCtgVO"/>
+  		<typeAlias type="com.kjl.fp.board.BoardFilesVO" alias="BoardFilesVO"/>
   		
   		<!-- 상품 -->
   		<typeAlias type="com.kjl.fp.product.bread.BreadVO" alias="BreadVO"/>

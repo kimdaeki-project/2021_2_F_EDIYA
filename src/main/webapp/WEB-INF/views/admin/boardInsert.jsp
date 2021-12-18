@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,29 +39,46 @@
 
 	<div class="admin_board_container">
 		
-		<!-- (1번: notice, 2번: event, 3번: social_mate, 4번: social_campus, 5번: social_sanitation, 6번: social_accompany, 7번: social_etc, .... 추가) -->
-		<div class="board_ctg">
-			
-			<select id="category" name="board_ctg_id">
-				<option value=""> == 카테고리 선택 == </option>
-				<c:forEach items="${ctg_list}" var="list">
-					<option value="${list.board_ctg_id}">
-						${list.board_type_k}
-					</option>
-				</c:forEach>
-			</select>
-			
-		</div>
+		<form action="insertPost" method="POST" enctype="multipart/form-data">
 		
-		<div class="board_list">
-		</div>
+			<!-- (1번: notice, 2번: event, 3번: social_mate, 4번: social_campus, 5번: social_sanitation, 6번: social_accompany, 7번: social_etc, .... 추가) -->
+			<div class="block">
+				카테고리 선택 :
+				<select id="category" name="board_ctg_id">
+					<option value=""> == 카테고리 선택 == </option>
+					<c:forEach items="${ctg_list}" var="list">
+						<option value="${list.board_ctg_id}">
+							${list.board_type_k}
+						</option>
+					</c:forEach>
+				</select>
+			</div>
+			
+			<div class="block">
+				제목 :
+				<input type="text" name="board_title">
+			</div>
+			
+			<div class="block">
+				작성자 :
+				<sec:authentication property="principal" var="user"/>
+				<input type="text" name="board_writer" readonly="readonly" value="${user.username}">
+			</div>
+			
+			<div class="block">
+				<textarea id="summernote" name="board_content"></textarea>
+			</div>
+			
+			<div class="block">
+				썸네일 이미지 :
+				<input type="file" name="board_file">
+			</div>
+			
+			<div class="block">
+				<button type="submit">게시글 추가</button>
+			</div>	
 		
-		<div class="board_button_box">
-			<!-- 게시글 추가 버튼 -->
-			<button class="board_button insert">
-				게시글 추가
-			</button>
-		</div>
+		</form>
 	</div>
 	
 </section>
@@ -94,12 +112,23 @@
 		});
 	})
 	
-	// 추가하기버튼
-	$(".board_button.insert").click(function () {
-		
-		location.href = "boardInsert";
-	})
-	
+	// summernote
+	$('#summernote').summernote({
+       placeholder: '본문 내용을 입력해 주세요.',
+       tabsize: 2,
+       height: 300,
+       toolbar: [
+         ['style', ['style']],
+         ['font', ['bold', 'underline', 'clear']],
+         ['color', ['color']],
+         ['para', ['ul', 'ol', 'paragraph']],
+         ['table', ['table']],
+         ['insert', ['link', 'picture', 'video']],
+         ['view', ['fullscreen', 'codeview', 'help']]
+       ]
+     })
+     
+     $('#summernote').summernote('backColor', '#B2CCFF');
 </script>
 </body>
 </html>

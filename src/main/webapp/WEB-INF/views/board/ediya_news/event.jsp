@@ -74,7 +74,8 @@
 							<!-- event -->
 							<div class="board_e_img">
 								<a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}">
-									<img alt="temp" src="${pageContext.request.contextPath}/images/temp/IMG_1628640375152.thumb">
+									<c:set value="${list.boardFilesVO}" var="file"></c:set>
+									<img alt="event_img" src="${pageContext.request.contextPath}/upload/boardImage/${file.fileName}">
 								</a>
 							</div>
 							<dl class="board_e_con">
