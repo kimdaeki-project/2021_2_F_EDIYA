@@ -27,7 +27,7 @@
   	</resultMap>
   	
   	<!-- 카테고리 별 게시판 리스트 불러오기 -->
-  	<select id="getBoardList" parameterType="BoardCtgVO" resultMap="boardResultMap">
+  	<select id="getBoardList" parameterType="Map" resultMap="boardResultMap">
   		SELECT
   			b.board_id,
   			b.board_ctg_id,
@@ -45,12 +45,38 @@
   		ON
   			b.board_ctg_id = b_ctg.board_ctg_id
   		WHERE
-  			b_ctg.board_type = #{board_type}
+  			<if test="boardPager.searchValue != null">
+	  			<choose>
+	  				<when test="boardPager.kind == 'title'">
+	  					board_title
+	  				</when>
+	  				<when test="boardPager.kind == 'contents'">
+	  					board_content
+	  				</when>
+	  			</choose>
+  				LIKE CONCAT('%', #{boardPager.searchValue}, '%') AND
+  			</if>
+  			b_ctg.board_type = #{boardCtgVO.board_type}
+  		ORDER BY
+  			board_id DESC
+  		LIMIT
+  			#{boardPager.startRow}, #{boardPager.perPage}
   	</select>
   	
   	<!-- board_type의 board_ctg 찾아오기 -->
   	<select id="getBoardCtg" parameterType="String" resultType="String">
   		SELECT
+  			board_ctg
+  		FROM
+  			board_category
+  		WHERE
+  			board_type = #{board_type}
+  	</select>
+  	
+  	<!-- board_type의 board_ctg_id, board_ctg 찾아오기 -->
+  	<select id="getBoardCtgId" parameterType="String" resultType="BoardCtgVO">
+  		SELECT
+  			board_ctg_id,
   			board_ctg
   		FROM
   			board_category
@@ -66,6 +92,35 @@
   		WHERE
   			board_id = #{board_id}
   	</select>
+  	
+  	<!-- 게시글 totalCount -->
+  	<select id="getTotalCount" parameterType="Map" resultType="Long">
+  		SELECT
+  			count(board_id)
+  		FROM
+  			board
+  		WHERE
+  			<if test="boardPager.searchValue != null">
+	  			<choose>
+	  				<when test="boardPager.kind == 'title'">
+	  					board_title
+	  				</when>
+	  				<when test="boardPager.kind == 'contents'">
+	  					board_content
+	  				</when>
+	  			</choose>
+  				LIKE CONCAT('%', #{boardPager.searchValue}, '%') AND
+  			</if>
+  			board_ctg_id = #{boardCtgVO.board_ctg_id}
+  	</select>
+  	
+  	<!-- 게시글 Insert -->
+  	<insert id="insertBoard" parameterType="BoardVO">
+  		INSERT INTO
+  			board (board_id, board_ctg_id, board_title, board_writer, board_content, board_regdate, board_hit, board_start_date, board_end_date)
+  		VALUES
+  			(NULL, #{board_ctg_id}, #{board_title}, #{board_writer}, #{board_content}, NOW(), 0, #{board_start_date}, #{board_end_date});
+  	</insert>
   	
   </mapper>
   

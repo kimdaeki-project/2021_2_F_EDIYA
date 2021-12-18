@@ -45,13 +45,14 @@
 			
 				<div class="board_top">
 					<div class="board_search">
-						<form action="in_search" method="get" name="frm">
+						<form action="in_search" method="GET" name="frm">
 							<select name="kind" class="search_kind">
 								<option value="title">제목</option>
 								<option value="contents">내용</option>
 							</select>
 							<div class="search_bar">
-								<input type="hidden" name="board_category" value="${param.board_category}">
+								<input type="hidden" name="board_type" value="${boardAttribute.board_type}">
+								<input type="hidden" name="board_ctg_id" value="${boardAttribute.board_ctg_id}">
 								<input type="text" class="search_bar_input" name="searchValue">
 								<button type="submit" class="search_bar_btn"></button>
 							</div>
@@ -75,8 +76,8 @@
 								${list.board_id}
 							</div>
 							<div class="board_list_con">
-								<h5><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}">${list.board_title}</a></h5>
-								<p><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}">${list.board_content}</a></p>
+								<h5><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}&pn=${param.pn}">${list.board_title}</a></h5>
+								<p><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}&pn=${param.pn}">${list.board_content}</a></p>
 								<p class="board_date">
 									<fmt:formatDate value="${list.board_regdate}" pattern="yyyy-MM-dd"/>
 								</p>
@@ -87,30 +88,33 @@
 				</ul>
 				
 				<div class="board_pager">
-					<!-- 앞 -->
-					<span><a href="notice?board_category=notice&pn=${param.pn-1}"><img alt="이전" src="${pageContext.request.contextPath}/images/common/page_prev.gif"></a></span>
 					
-					<!-- 번호 -->
-					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<c:if test="${not empty boardList}">
+						<!-- 앞 -->
+						<span><a href="notice?board_type=notice&pn=${pager.pn-1}"><img alt="이전" src="${pageContext.request.contextPath}/images/common/page_prev.gif"></a></span>
+						
+						<!-- 번호 -->
+						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+							<c:choose>
+								<c:when test="${empty boardList}">
+									<a href="#1">1</a>
+								</c:when>
+								<c:otherwise>
+									<a href="notice?board_type=notice&pn=${i}">${i}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
+						<!-- 뒤 -->
 						<c:choose>
-							<c:when test="${empty noticeAr}">
-								<a href="#1">1</a>
+							<c:when test="${pager.lastCheck}">
+								<span><a href="notice?board_type=notice&pn=${pager.pn+1}"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
 							</c:when>
 							<c:otherwise>
-								<a href="notice?board_category=notice&pn=${i}">${i}</a>
+								<span><a href="#"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
 							</c:otherwise>
 						</c:choose>
-					</c:forEach>
-					
-					<!-- 뒤 -->
-					<c:choose>
-						<c:when test="${not pager.lastCheck}">
-							<span><a href="notice?board_category=notice&pn=${param.pn+1}"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
-						</c:when>
-						<c:otherwise>
-							<span><a href="#"><img alt="다음" src="${pageContext.request.contextPath}/images/common/page_next.gif"></a></span>
-						</c:otherwise>
-					</c:choose>
+					</c:if>
 					
 				</div>
 			</div>

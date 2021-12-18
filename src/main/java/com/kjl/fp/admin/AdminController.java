@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.kjl.fp.board.BoardCtgVO;
 import com.kjl.fp.board.BoardService;
 import com.kjl.fp.board.BoardVO;
 import com.kjl.fp.member.MemberVO;
@@ -42,11 +43,6 @@ public class AdminController {
 		return modelAndView;
 	}
 	
-	@GetMapping("boardAdmin")
-	public String boardAdmin() throws Exception{
-		return "admin/boardAdmin";
-	}
-	
 	@GetMapping("menuAdmin")
 	public String menuAdmin() throws Exception{
 		return "admin/menuAdmin";
@@ -55,7 +51,18 @@ public class AdminController {
 	
 	// board_admin ========================================= //
 	
-	
+	// board_category 가져오기
+	@GetMapping("boardAdmin")
+	public ModelAndView getBoardCtg() throws Exception{
+		
+		List<BoardCtgVO> board_ctg_list = adminService.getBoardCtg();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("ctg_list", board_ctg_list);
+		mv.setViewName("admin/boardAdmin");
+		
+		return mv;
+	}
 	
 	// ===================================================== //
 	

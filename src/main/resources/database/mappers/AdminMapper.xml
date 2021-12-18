@@ -36,7 +36,12 @@
 		WHERE RNUM=1
   </select>
   
-  
+  <!-- 카테고리 가져오기 -->
+  <select id="getBoardCtg" resultType="BoardCtgVO">
+  	SELECT *
+  	FROM
+  		board_category
+  </select>
   
   <insert id="setAdmin" parameterType="MemberVO">
   	insert into member_role values(#{userName},1)
@@ -45,7 +50,6 @@
   <delete id="deleteAdmin" parameterType="MemberVO">
   	delete from member_role where userName = #{userName} and num = 1
   </delete>
-   
-   <!-- 카테고리별 타입 가져오기 -->
+
    
    </mapper>

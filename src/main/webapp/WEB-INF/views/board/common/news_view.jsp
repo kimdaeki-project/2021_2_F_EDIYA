@@ -70,7 +70,7 @@
 				${post.board_content}
 			</div>
 			<div class="board_view_util">
-				<a href="./${board_type}?board_type=${board_type}">목록보기</a>
+				<a href="./${board_type}?board_type=${board_type}&pn=${param.pn}">목록보기</a>
 			</div>
 			<div class="board_view_page">
 				<dl>

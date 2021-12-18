@@ -36,11 +36,24 @@
 		
 	</div>
 
+	<div class="admin_board_container">
+		
+		<!-- (1번: notice, 2번: event, 3번: social_mate, 4번: social_campus, 5번: social_sanitation, 6번: social_accompany, 7번: social_etc, .... 추가) -->
+		<div class="board_ctg">
+			
+			<select id="category">
+				<option value=""> == 카테고리 선택 == </option>
+				<c:forEach items="${ctg_list}" var="list">
+					<option value="${list.board_type}">
+						${list.board_type_k}
+					</option>
+				</c:forEach>
+			</select>
+			
+		</div>
+		
+	</div>
 	
-	
-
-	
-
 </section>
 
 
@@ -48,17 +61,10 @@
 <!-- footer  -->
 <c:import url="../temp_common/footer.jsp"></c:import>
 
-<!-- 모달 창 -->
-<div class="modal">
-	
-	<div class="admin_modal">
-	</div>
-	
-</div>
-
 <!-- /footer  -->
 <script type="text/javascript">
-
+	
+	// 카테고리 변경 할때마다 list 바뀌기
 	
 </script>
 </body>
