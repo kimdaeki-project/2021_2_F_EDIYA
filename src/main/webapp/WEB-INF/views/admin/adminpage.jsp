@@ -30,6 +30,7 @@
 				<li class="on"><a href="adminpage">회원관리</a></li>
 				<li><a href="boardAdmin">게시판관리</a></li>
 				<li><a href="menuAdmin">메뉴관리</a></li>
+				<li><a href="paymentAdmin">결제현황관리</a></li>
 			</ul>	
 		
 	</div>

@@ -52,6 +52,24 @@
   		board_ctg_id = #{board_ctg_id}
   </select>
   
+  <!-- 해당 board_ctg_id의 board_type 가져오기 -->
+  <select id="getBoardType" parameterType="BoardVO" resultType="BoardCtgVO">
+  	SELECT *
+  	FROM
+  		board_category
+  	WHERE
+  		board_ctg_id = #{board_ctg_id}
+  </select>
+  
+  <!-- 해당 board_id의 파일 가져오기 -->
+  <select id="getBoardFile" parameterType="BoardVO" resultType="BoardFilesVO">
+  	SELECT *
+  	FROM
+  		board_files
+  	WHERE
+  		board_id = #{board_id}
+  </select>
+  
   <!-- 게시글 추가하기 -->
   <insert id="insertPost" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="board_id">
   	INSERT INTO
@@ -71,6 +89,35 @@
   <insert id="setAdmin" parameterType="MemberVO">
   	insert into member_role values(#{userName},1)
   </insert>
+  
+  <!-- 게시글 업데이트 -->
+  <update id="updatePost" parameterType="BoardVO">
+  	UPDATE
+  		board
+  	SET
+  		board_title = #{board_title}, board_content = #{board_content}, board_start_date = #{board_start_date}, board_end_date = #{board_end_date}
+  	WHERE
+  		board_id = #{board_id}
+  </update>
+  
+  <!-- 게시글 파일 업데이트 -->
+  <update id="updatePostFile" parameterType="BoardFilesVO">
+  	UPDATE
+  		board_files
+  	SET
+  		fileName = #{fileName}
+  	WHERE
+  		board_id = #{board_id}
+  </update>
+  
+  <!-- 게시글 삭제 -->
+  <delete id="deletePost" parameterType="BoardVO">
+  	DELETE
+  	FROM
+  		board
+  	WHERE
+  		board_id = #{board_id}
+  </delete>
   
   <delete id="deleteAdmin" parameterType="MemberVO">
   	delete from member_role where userName = #{userName} and num = 1

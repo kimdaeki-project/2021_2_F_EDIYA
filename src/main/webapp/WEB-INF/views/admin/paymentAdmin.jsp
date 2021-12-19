@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="../css/common/common.css">
 <link type="text/css" rel="stylesheet" href="../css/admin/admin.css">
+<link type="text/css" rel="stylesheet" href="../css/admin/adminPayment.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
@@ -28,14 +29,15 @@
 		<ul class="lnb">
 				<li><a href="adminpage">회원관리</a></li>
 				<li><a href="boardAdmin">게시판관리</a></li>
-				<li class="on"><a href="menuAdmin">메뉴관리</a></li>
-				<li><a href="paymentAdmin">결제현황관리</a></li>
+				<li><a href="menuAdmin">메뉴관리</a></li>
+				<li class="on"><a href="paymentAdmin">결제현황관리</a></li>
 			</ul>	
 		
 	</div>
+	
+	<div class="admin_payment_container">
+	</div>
 
-
-<h3>admin Page</h3>
 
 </section>
 

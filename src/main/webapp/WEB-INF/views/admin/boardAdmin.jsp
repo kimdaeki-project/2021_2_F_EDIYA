@@ -32,6 +32,7 @@
 				<li><a href="adminpage">회원관리</a></li>
 				<li  class="on"><a href="boardAdmin">게시판관리</a></li>
 				<li><a href="menuAdmin">메뉴관리</a></li>
+				<li><a href="paymentAdmin">결제현황관리</a></li>
 			</ul>	
 		
 	</div>
@@ -98,6 +99,42 @@
 	$(".board_button.insert").click(function () {
 		
 		location.href = "boardInsert";
+	})
+	
+	// 수정,삭제 버튼
+	$(document).on("click", ".update_btn", function () {
+		// 해당 게시글 번호
+		let board_id = $(this).data("id");
+		
+		location.href = "boardUpdate?board_id=" + board_id;
+	})
+	
+	$(document).on("click", ".delete_btn", function () {	
+		// 해당 게시글 번호
+		let select_ctg_id = $("#category").val();
+		let board_id = $(this).data("id");
+		
+		let answer = confirm("해당 게시물을 삭제하시겠습니까?");
+		
+		if(answer){
+			$.ajax({
+				url: "boardDelete",
+				type: "GET",
+				data: {
+					board_id: board_id,
+					board_ctg_id: select_ctg_id
+				},
+				dataType: "html",
+				success: function (result) {
+					$(".board_list").html(result);
+				},
+				error: function (xhr, status, error) {
+					console.log(error);
+				}
+			});
+		}else{
+			alert("삭제 취소");
+		}
 	})
 	
 </script>

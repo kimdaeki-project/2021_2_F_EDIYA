@@ -40,24 +40,20 @@
 
 	<div class="admin_board_container">
 		
-		<form action="insertPost" method="POST" enctype="multipart/form-data">
+		<form action="updatePost" method="POST" enctype="multipart/form-data">
 		
 			<!-- (1번: notice, 2번: event, 3번: social_mate, 4번: social_campus, 5번: social_sanitation, 6번: social_accompany, 7번: social_etc, .... 추가) -->
 			<div class="block">
 				카테고리 선택 :
-				<select id="category" name="board_ctg_id">
-					<option value=""> == 카테고리 선택 == </option>
-					<c:forEach items="${ctg_list}" var="list">
-						<option value="${list.board_ctg_id}">
-							${list.board_type_k}
-						</option>
-					</c:forEach>
+				<input type="hidden" name="board_id" value="${post.board_id}">
+				<select id="category" name="board_ctg_id" disabled="disabled">
+					<option value="${board_ctg.board_ctg_id}">${board_ctg.board_type_k}</option>
 				</select>
 			</div>
 			
 			<div class="block">
 				제목 :
-				<input type="text" name="board_title">
+				<input type="text" name="board_title" value="${post.board_title}">
 			</div>
 			
 			<div class="block">
@@ -67,7 +63,7 @@
 			</div>
 			
 			<div class="block">
-				<textarea id="summernote" name="board_content"></textarea>
+				<textarea id="summernote" name="board_content">${post.board_content}</textarea>
 			</div>
 			
 			<div class="block">
@@ -78,11 +74,11 @@
 			<!-- 이벤트만 넣어주세요 -->
 			<div class="block">
 				이벤트 기간 :
-				<input type="date" class="datepicker" name="board_start_date" disabled="disabled"> ~ <input type="date" class="datepicker" name="board_end_date" disabled="disabled">
+				<input type="date" class="datepicker" name="board_start_date" disabled="disabled" value="${post.board_start_date}"> ~ <input type="date" class="datepicker" name="board_end_date" disabled="disabled" value="${post.board_end_date}">
 			</div>
 			
 			<div class="block">
-				<button type="submit">게시글 추가</button>
+				<button type="submit">게시글 수정</button>
 			</div>	
 		
 		</form>
@@ -100,9 +96,9 @@
 
 	/* (1번: notice, 2번: event, 3번: social_mate, 4번: social_campus, 5번: social_sanitation, 6번: social_accompany, 7번: social_etc, .... 추가) */
 	// 카테고리 변경 할때마다 list 바뀌기
-	$("#category").on("change", function () {
+	$(document).ready( function () {
 		
-		let select_ctg_id = $(this).val();
+		let select_ctg_id = $("#category").val();
 		
 		// event 선택 시 이벤트 기간 활성화
 		if(select_ctg_id == 2){
@@ -110,21 +106,6 @@
 		}else{
 			$(".datepicker").prop("disabled", true);
 		}
-		
-		// 해당 ctg 리스트 가져오기
-		$.ajax({
-			url: "getSelectCtgList",
-			type: "GET",
-			data: {
-				board_ctg_id: select_ctg_id,
-			},
-			success: function (result) {
-				$(".board_list").html(result);
-			},
-			error: function (xhr, status, error) {
-				console.log(error);
-			}
-		});
 	})
 	
 	// summernote

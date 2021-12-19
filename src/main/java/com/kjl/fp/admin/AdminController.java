@@ -28,6 +28,9 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
+	@Autowired
+	private BoardService boardService;
+	
 	@GetMapping("adminpage")
 	public ModelAndView admin(ModelAndView modelAndView) throws Exception{
 		
@@ -90,6 +93,23 @@ public class AdminController {
 		return mv;
 	}
 	
+	// boardUpdatePage 이동
+	@GetMapping("boardUpdate")
+	public ModelAndView goBoardUpdate(BoardVO boardVO) throws Exception{
+		
+		BoardVO getOne = boardService.getSelectOne(boardVO);
+		
+		// 해당 ctg 가져오기
+		BoardCtgVO boardCtgVO = adminService.getBoardType(getOne);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("post", getOne);
+		mv.addObject("board_ctg", boardCtgVO);
+		mv.setViewName("admin/boardUpdate");
+		
+		return mv;
+	}
+	
 	// 게시글 추가하기
 	@PostMapping("insertPost")
 	public ModelAndView insertPost(BoardVO boardVO, @RequestParam("board_file") MultipartFile file) throws Exception{
@@ -105,7 +125,52 @@ public class AdminController {
 		return mv;
 	}
 	
+	// 게시글 업데이트
+	@PostMapping("updatePost")
+	public ModelAndView updatePost(BoardVO boardVO, @RequestParam("board_file") MultipartFile file) throws Exception{
+		
+		int result = adminService.updatePost(boardVO, file);
+		
+		List<BoardCtgVO> board_ctg_list = adminService.getBoardCtg();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("ctg_list", board_ctg_list);
+		mv.setViewName("admin/boardAdmin");
+		
+		return mv;
+	}
+	
+	// 게시글 삭제
+	@GetMapping("boardDelete")
+	@ResponseBody
+	public ModelAndView deletePost(BoardVO boardVO, BoardCtgVO boardCtgVO) throws Exception{
+		
+		int result = adminService.deletePost(boardVO);
+		
+		List<BoardVO> select_ctg_list = adminService.getSelectCtgList(boardCtgVO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("select_ctg_list", select_ctg_list);
+		mv.setViewName("admin/boardList");
+		
+		return mv;
+	}
+	
 	// ===================================================== //
 	
+	
+	// payment_admin ========================================= //
+	
+	@GetMapping("paymentAdmin")
+	public ModelAndView getPaymentList() throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("admin/paymentAdmin");
+		
+		return mv;
+	}
+	
+	
+	// ===================================================== //
 
 }

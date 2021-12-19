@@ -32,4 +32,15 @@ public class BoardFileManager {
 		return fileName;
 	}
 	
+	// 파일 삭제
+	public void fileDelete(File file) throws Exception{
+		
+		if(file.exists()) {
+			file.delete();
+		}else {
+			System.out.println("삭제할 파일이 없습니다.");
+		}
+		
+	}
+	
 }
