@@ -26,6 +26,7 @@ public class MemberVO implements UserDetails{
 	private String phone;
 	private Date birthday;
 	private boolean enabled;
+	private String number;
 	
 	private List<RoleVO> roles;
 	private List<Coupon_MemberVO> cmVO;

@@ -6,12 +6,15 @@ package com.kjl.fp.member;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import lombok.AllArgsConstructor;
 
 
 @Controller
@@ -20,6 +23,55 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	
+	
+	
+	@PostMapping("pwReset")
+	public ModelAndView pwReset(String email, String email_etc) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		MemberVO memberVO = new MemberVO();
+		
+		String userName = email + "@" + email_etc;
+		
+		System.out.println("넣기전: "+userName);
+		
+		memberVO.setUserName(userName);
+		
+		System.out.println(memberVO.getUserName());
+		
+		int result = memberService.setPassword(memberVO);
+
+		modelAndView.addObject("msg", "이메일로 임시 비밀번호 발송완료!");
+		modelAndView.addObject("url", "./login");
+		modelAndView.setViewName("common/result");
+		
+		
+		return modelAndView;
+		
+	}
+	
+	
+	@PostMapping("pwCheck")
+	@ResponseBody
+	public String pwCheck(MemberVO memberVO) throws Exception{
+		System.out.println(memberService.pwCheck(memberVO).getNumber());
+		return memberService.pwCheck(memberVO).getNumber();
+	}
+	
+	
+	
+	
+	@PostMapping("pwFind")
+	@ResponseBody
+	public String pwFind(MemberVO memberVO) throws Exception{
+		
+			
+		
+		return memberService.findPW(memberVO);
+	}
+	
 	
 	@PostMapping("findId")
 	@ResponseBody

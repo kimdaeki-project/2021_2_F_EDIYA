@@ -43,7 +43,7 @@
 								<p class="ns level_txt">
 									<span class="status_bold_txt"><sec:authentication property="principal.name"/></span>
 									회원님은 <br>
-									<span class="status_family_txt status_exbold_txt">회원레벨</span>
+									<span class="status_family_txt status_exbold_txt">Family</span>
 									입니다.
 								</p>
 							</div>
@@ -168,10 +168,12 @@
 						</dl>
 					</c:if>
 					<c:if test="${not empty coupons}">
-					<c:forEach items="${coupons.coupons}" var="cou">
+					
 						<tr>
 							<th>쿠폰번호</th> <th>쿠폰이름</th> <th>유효기간</th>
 						</tr>	
+					<c:forEach items="${coupons.coupons}" var="cou">
+						
 						<tr>
 						<td>${cou.couponNum}</td> <td>${cou.couponName}</td> <td>${cou.validity}</td>
 						</tr>
@@ -199,10 +201,12 @@
 						</dl>
 					</c:if>
 					<c:if test="${not empty Usecoupons}">
-						<c:forEach items="${Usecoupons.coupons}" var="ucou">
-						<tr>
+					
+					    <tr>
 							<th>쿠폰번호</th> <th>쿠폰이름</th> <th>유효기간</th>
 						</tr>
+						<c:forEach items="${Usecoupons.coupons}" var="ucou">
+						
 						
 						<tr>
 						<td>${ucou.couponNum}</td> <td>${ucou.couponName}</td> <td>${ucou.validity}</td>
