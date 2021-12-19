@@ -101,7 +101,7 @@
 							<div class="list_item_txt">
 								<a href="getSelectOne?board_type=${param.board_type}&board_id=${list.board_id}&pn=${param.pn}">
 									<h5>${list.board_title}</h5>
-									<p>${list.board_content}</p>
+									<p>${list.board_title}</p>
 								</a>
 							</div>
 							<div class="list_item_more">

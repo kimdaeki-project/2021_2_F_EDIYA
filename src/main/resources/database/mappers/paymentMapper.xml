@@ -17,6 +17,25 @@
   			payment_id = #{payment_id}	
   	</select>
   	
+  	<!-- 해당 결제번호의 아이템 리스트 가져오기 -->
+  	<select id="selectPaymentItem" parameterType="PaymentInfoVO" resultType="PaymentItemListVO">
+  		SELECT *
+  		FROM
+  			payment_item
+  		WHERE
+  			payment_id = #{payment_id}
+  	</select>
+  	
+  	<!-- 스탬프 갯수 가져오기 -->
+  	<select id="selectStampCount" parameterType="String" resultType="Integer">
+  		SELECT
+  			count(userName)
+  		FROM
+  			stamp
+  		WHERE
+  			userName = #{userName}
+  	</select>
+  	
   	<!-- 기본 결제 정보 저장 -->
   	<insert id="insertPaymentInfo" parameterType="PaymentInfoVO" useGeneratedKeys="true" keyProperty="payment_id">
   		INSERT INTO
@@ -40,6 +59,31 @@
   		VALUES
   			(null, #{payment_id}, #{pdNum}, #{pdName}, #{pdPrice}, #{pdCnt})
   	</insert>
+  	
+  	<!-- 상품 갯수만큼 스탬프 넣기 -->
+  	<insert id="insertStamp" parameterType="String">
+  		INSERT INTO
+  			stamp (userName, stampDate, validity)
+  		VALUES
+  			(#{userName}, SYSDATE(), DATE_ADD(NOW(), INTERVAL 1 YEAR));
+  	</insert>
+  	
+  	<!-- 이벤트 쿠폰 발급하기 -->
+  	<insert id="insertEventCoupon" parameterType="CmVO">
+  		INSERT INTO
+  			member_coupon (couponNum, userName, used)
+  		VALUES
+  			(#{couponNum}, #{userName}, 0)
+  	</insert>
+  	
+  	<!-- 스탬프 초기화 시키기 -->
+  	<delete id="deleteAllStamp" parameterType="String">
+  		DELETE
+  		FROM
+  			stamp
+  		WHERE
+  			userName = #{userName}
+  	</delete>
   	
   	<!-- 결제 후 장바구니에서 삭제 -->
   	<delete id="deletePaymentAfter" parameterType="CartVO">

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +78,7 @@
 							</div>
 							<div class="board_list_con">
 								<h5><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}&pn=${param.pn}">${list.board_title}</a></h5>
-								<p><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}&pn=${param.pn}">${list.board_content}</a></p>
+								<p><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}&pn=${param.pn}">${list.board_title}</a></p>
 								<p class="board_date">
 									<fmt:formatDate value="${list.board_regdate}" pattern="yyyy-MM-dd"/>
 								</p>

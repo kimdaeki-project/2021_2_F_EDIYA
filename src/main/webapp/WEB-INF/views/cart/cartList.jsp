@@ -178,7 +178,14 @@
 							<div class="coupon_item">
 								
 								<div class="coupon_kind">
-									<h1><span class="percent">${list.couponPercent}</span> %</h1>
+									<c:choose>
+										<c:when test="${list.couponPercent > 0}">
+											<h1><span class="percent">${list.couponPercent}</span> %</h1>
+										</c:when>
+										<c:otherwise>
+											<h3><span class="coupon_name">${list.couponName}</span></h3>
+										</c:otherwise>
+									</c:choose>
 								</div>
 								
 								<div class="coupon_state">

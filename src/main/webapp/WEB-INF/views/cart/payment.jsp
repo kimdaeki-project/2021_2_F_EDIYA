@@ -167,6 +167,12 @@
 				
 				<div class="item_list_wrap">
 					
+					<c:if test="${selectCoupon.couponPercent <= 0}">
+						<span class="item_list_select">
+							${selectCoupon.couponName}
+						</span>
+					</c:if>
+					
 					<c:forEach items="${selectList}" var="list">
 						
 						
@@ -328,6 +334,7 @@
 		
 		$(".payment_btn.kakao").on("click", function () {
 			
+			let couponId = Number("${selectCoupon.couponNum}");
 			let payment_type = "kakaopay"
 			// 카트 ID List
 			let id_list = new Array();
@@ -353,6 +360,7 @@
 						url: "../payment/paymentKakao",
 						type: "POST",
 						data: {
+							couponNum: couponId,
 							payment_type: payment_type,
 							item_list: id_list
 						},
