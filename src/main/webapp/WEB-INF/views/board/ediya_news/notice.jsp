@@ -74,7 +74,7 @@
 						<li>
 							<!-- 특별한 공지들은 board_notice 사용해서 아이콘 추가 -->
 							<div class="board_num">
-								${list.board_id}
+								${list.no}
 							</div>
 							<div class="board_list_con">
 								<h5><a href="getSelectOne?board_id=${list.board_id}&board_type=${param.board_type}&pn=${param.pn}">${list.board_title}</a></h5>

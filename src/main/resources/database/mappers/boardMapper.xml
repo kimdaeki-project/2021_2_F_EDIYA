@@ -24,6 +24,7 @@
   		<result property="board_hit" column="board_hit"/>
   		<result property="board_start_date" column="board_start_date"/>
   		<result property="board_end_date" column="board_end_date"/>
+  		<result property="no" column="no"/>
   		<collection property="boardFilesVO" select="getPostFile" column="board_id">
   		</collection>
   	</resultMap>
@@ -50,8 +51,10 @@
   			b.board_start_date,
   			b.board_end_date,
   			b_ctg.board_ctg,
-  			b_ctg.board_type
+  			b_ctg.board_type,
+  			@rownum := @rownum + 1 AS no
   		FROM
+  			(SELECT @rownum := 0) AS tmp,
   			board b INNER JOIN board_category b_ctg
   		ON
   			b.board_ctg_id = b_ctg.board_ctg_id
@@ -69,7 +72,7 @@
   			</if>
   			b_ctg.board_type = #{boardCtgVO.board_type}
   		ORDER BY
-  			board_id DESC
+  			no DESC
   		LIMIT
   			#{boardPager.startRow}, #{boardPager.perPage}
   	</select>
@@ -93,6 +96,32 @@
   			board_category
   		WHERE
   			board_type = #{board_type}
+  	</select>
+  	
+  	<!-- 이전 글 불러오기 -->
+  	<select id="getPrevId" parameterType="BoardVO" resultType="BoardVO">
+  		SELECT
+  			board_id
+  		FROM
+  			board
+  		WHERE
+  			board_id IN (
+  				SELECT * FROM
+  				(SELECT board_id FROM board WHERE board_id &lt; #{board_id} AND board_ctg_id = #{board_ctg_id} ORDER BY board_id DESC LIMIT 1) AS t
+  			)	
+  	</select>
+  	
+  	<!-- 다음 글 불러오기 -->
+  	<select id="getNextId" parameterType="BoardVO" resultType="BoardVO">
+  		SELECT
+  			board_id
+  		FROM
+  			board
+  		WHERE
+  			board_id IN (
+  				SELECT * FROM
+  				(SELECT board_id FROM board WHERE board_id &gt; #{board_id} AND board_ctg_id = #{board_ctg_id} ORDER BY board_id LIMIT 1) AS t
+  			)	
   	</select>
   	
   	<!-- 하나의 게시글 불러오기 -->

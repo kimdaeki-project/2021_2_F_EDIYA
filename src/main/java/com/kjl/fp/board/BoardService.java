@@ -75,4 +75,14 @@ public class BoardService {
 
 		return boardMapper.getSelectOne(boardVO);
 	}
+	
+	// 이전 글, 다음글 불러오기
+	public BoardVO getPrevId(BoardVO boardVO) throws Exception{
+		
+		return boardMapper.getPrevId(boardVO);
+	}
+	public BoardVO getNextId(BoardVO boardVO) throws Exception{
+		
+		return boardMapper.getNextId(boardVO);
+	}
 }

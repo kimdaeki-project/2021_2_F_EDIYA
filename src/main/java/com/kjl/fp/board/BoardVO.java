@@ -23,6 +23,9 @@ public class BoardVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date board_end_date;
 	
+	// rownum
+	private Integer no;
+	
 	private BoardFilesVO boardFilesVO;
 	
 }

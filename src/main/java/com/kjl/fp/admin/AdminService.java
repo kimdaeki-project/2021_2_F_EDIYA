@@ -16,6 +16,7 @@ import com.kjl.fp.board.BoardFilesVO;
 import com.kjl.fp.board.BoardVO;
 import com.kjl.fp.board.util.BoardFileManager;
 import com.kjl.fp.member.MemberVO;
+import com.kjl.fp.payment.PaymentInfoVO;
 
 
 
@@ -120,6 +121,14 @@ public class AdminService {
 		}
 		
 		return adminMapper.deletePost(boardVO);
+	}
+	
+	// ===================================================== payment
+	
+	// Payment List 가져오기
+	public List<PaymentInfoVO> getPaymentList() throws Exception{
+		
+		return adminMapper.getPaymentList();
 	}
 
 }

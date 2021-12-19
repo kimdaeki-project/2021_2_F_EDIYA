@@ -70,6 +70,13 @@
   		board_id = #{board_id}
   </select>
   
+  <!-- Payment List 가져오기 -->
+  <select id="getPaymentList" resultType="PaymentInfoVO">
+  	SELECT *
+  	FROM
+  		payment
+  </select>
+  
   <!-- 게시글 추가하기 -->
   <insert id="insertPost" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="board_id">
   	INSERT INTO

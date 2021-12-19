@@ -8,6 +8,7 @@ import com.kjl.fp.board.BoardCtgVO;
 import com.kjl.fp.board.BoardFilesVO;
 import com.kjl.fp.board.BoardVO;
 import com.kjl.fp.member.MemberVO;
+import com.kjl.fp.payment.PaymentInfoVO;
 
 @Mapper
 public interface AdminMapper {
@@ -25,6 +26,9 @@ public interface AdminMapper {
 	
 	// 해당 board_id의 파일 가져오기
 	public BoardFilesVO getBoardFile(BoardVO boardVO) throws Exception;
+	
+	// Payment List 가져오기
+	public List<PaymentInfoVO> getPaymentList() throws Exception;
 	
 	// 게시글 추가하기
 	public int insertPost(BoardVO boardVO) throws Exception;

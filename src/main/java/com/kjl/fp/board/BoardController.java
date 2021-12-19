@@ -93,11 +93,32 @@ public class BoardController {
 		BoardVO getOne = new BoardVO();
 		getOne = boardService.getSelectOne(boardVO);
 		
+		// 이전글 번호, 다음글 번호 가져오기
+		
+		BoardVO prev = new BoardVO();
+		BoardVO next = new BoardVO();
+		prev = boardService.getPrevId(getOne);
+		next = boardService.getNextId(getOne);
+		
+		BoardVO getPrev = new BoardVO();
+		BoardVO getNext = new BoardVO();
+		
+		if(prev != null) {
+			getPrev = boardService.getSelectOne(prev);
+		}
+		
+		if(next != null) {
+			getNext = boardService.getSelectOne(next);
+		}
+		
+		
 		// board_type을 이용해 해당 board_ctg 가져오기
 		String board_ctg = boardService.getBoardCtg(board_type);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board_type", board_type);
+		mv.addObject("prev_post", getPrev);
+		mv.addObject("next_post", getNext);
 		mv.addObject("post", getOne);
 		
 		// view형식이 달라서 분기나눔
