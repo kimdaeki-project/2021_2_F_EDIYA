@@ -589,12 +589,13 @@
 		
 		}
 		
-		
 		/* 임시 비밀번호 발급  */
 		function passwordUpdate(){
 			
 			if(pw_numberCheck == true){
 				$("#pwReset").submit();
+			}else{
+				alert("인증번호를 확인해주세요!");
 			}
 			
 			

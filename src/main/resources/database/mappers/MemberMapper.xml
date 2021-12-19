@@ -136,7 +136,7 @@
   	
   	
   	<insert id="setJoin" parameterType="MemberVO">
-  		insert into member values(#{userName},#{password},#{name},#{nickName},#{sex},#{phone},#{birthday},1)
+  		insert into member values(#{userName},#{password},#{name},#{nickName},#{sex},#{phone},#{birthday},1, null)
   	</insert>
   	
   	<insert id="setRoleMember" parameterType="MemberVO">

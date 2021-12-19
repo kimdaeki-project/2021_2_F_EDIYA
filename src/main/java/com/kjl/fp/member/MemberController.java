@@ -35,11 +35,9 @@ public class MemberController {
 		
 		String userName = email + "@" + email_etc;
 		
-		System.out.println("넣기전: "+userName);
 		
 		memberVO.setUserName(userName);
 		
-		System.out.println(memberVO.getUserName());
 		
 		int result = memberService.setPassword(memberVO);
 
