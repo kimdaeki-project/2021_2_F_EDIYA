@@ -257,7 +257,7 @@
     
     <div class="form_btn">
     	<a href="#c" class="gray_btn" onclick="open_login_pop('email_find')">이전화면</a>
-      <input type="button" onclick="find_email()" value="이메일 찾기" class="submit_btn submit_half_btn" /> <!-- onclick 수정하기!!!!!!!! -->
+      <input type="button" onclick="find_email()" value="이메일 찾기" class="submit_btn submit_half_btn" />
     </div>
     </fieldset>
     </form>
@@ -282,7 +282,7 @@
     </div>
     
     <div class="form_btn">
-    	<a href="#c" onClick="" class="blue_btn full_btn">임시 비밀번호 발급</a>
+    	<a href="#c" onClick="close_login_pop()" class="blue_btn full_btn">확인</a>
     </div>
     </fieldset>
   </div>
@@ -330,7 +330,7 @@
     <p class="pop_txt">타인의 개인정보를 도용 할 경우<br />
     서비스 이용 제한 및 법적 제재를 받으실 수 있습니다.</p>
     
-    <form>
+    <form method="post" id="pwReset" action="./pwReset">
     <fieldset>
     <div class="certify_form">
       <dl>
@@ -339,7 +339,7 @@
         	<ul class="pop_email_form">
           	<li class="join_email01">
             	<label for="join_email01" class="blind"></label>
-              <input type="text" name="email" id="email" value="" placeholder="이메일" />
+              <input type="text" name="email" id="pw_email" value="" placeholder="이메일" />
             </li>
             <li class="join_at">@</li>
             <li class="join_email02">
@@ -362,16 +362,23 @@
       </dl>
       <dl>
         <dt><label for="phone">휴대폰</label></dt>
-        <dd><input id="phone" placeholder="가입시 입력한 휴대폰 번호를 '-' 없이 입력하세요" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="11"/></dd>
+        <dd><input id="pw_phone" placeholder="가입시 입력한 휴대폰 번호를 '-' 없이 입력하세요" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="11"/></dd>
       </dl>
-      
+       <dl>
+        <dt><label for="Number">인증번호</label></dt>
+        <dd><input id="pw_number" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="6"/></dd>
+      </dl>
+      <div class="button_box">
+      	<button type="button" onclick="passwd_find()"   class="number_btn">인증번호발송</button>
+        <button type="button" onclick="passwd_check()"  class="numberCheck_btn">인증번호확인</button>
+        </div>
       <p class="info_txt" id="passwd_info_txt" style="display:none">입력하신 정보와 일치하는 회원정보가 없습니다.<br />
       정보를 다시 입력하시거나 회원가입을 이용해주세요.</p>
     </div>
     
     <div class="form_btn">
     	<a href="#c" class="gray_btn" onclick="open_login_pop('passwd_find')">이전화면</a>
-      <input type="button" name="Submit" value="임시 비밀번호 발급" class="submit_btn submit_half_btn" onclick=""/>
+      <input type="button" onclick="passwordUpdate()"  value="임시 비밀번호 발급" class="submit_btn submit_half_btn"/>
     </div>
     </fieldset>
     </form>
@@ -511,12 +518,88 @@
 				
 				
 			})
+			
+		}
 		
+		/* 이메일 인증   */
+		function passwd_find(){
+			
+			/* email이랑 phone 부분이 null일 경우 alert으로 적으라고 알람 보내기.  */
+			
+			var email = $("#pw_email").val();
+			var email_etc = $("#email_etc").val();
+
+			var emailFind = email  + "@" +  email_etc;
+			var phone = $("#pw_phone").val();
 			
 			
+			if(email == "" || email_etc == ""){
+				alert("이메일을 작성해주세요");
+			}else{
+				
+				if(phone == ""){
+					alert("휴대폰 번호를 작성해주세요")
+				}else{
+					
+					$.ajax({
+						type : "POST",
+						url : "./pwFind",
+						data : { userName : emailFind , phone : phone},
+						success : function(data){
+							alert(data);
+						}
+					
+					})
+			
+				}
+				
+				
+			}
+	
+		}
+		
+		let pw_numberCheck = false;
+		/* 인증번호 체크  */
+		function passwd_check(){
+			
+				var email = $("#pw_email").val();
+				var email_etc = $("#email_etc").val();
+				var emailFind = email  + "@" +  email_etc;
+			
+				var number = $("#pw_number").val();
+		
+				$.ajax({
+					
+					type : "POST",
+					url : "./pwCheck",
+					data : {userName : emailFind},
+					success : function(data){
+						
+						if(number == data){
+							alert("인증번호 확인");
+							pw_numberCheck = true;
+						}else{
+							alert("인증번호가 다릅니다.");
+						}
+						
+					}
+					
+					
+				})
+		
+		}
+		
+		
+		/* 임시 비밀번호 발급  */
+		function passwordUpdate(){
+			
+			if(pw_numberCheck == true){
+				$("#pwReset").submit();
+			}
 			
 			
 		}
+		
 		
 		
 		

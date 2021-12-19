@@ -41,5 +41,16 @@ public interface MemberMapper {
 	//findId
 	public String findId(MemberVO memberVO) throws Exception;
 	
+	//findPw
+	public String findPW(MemberVO memberVO) throws Exception;
+	
+	//number setting
+	public int setNumber(MemberVO memberVO) throws Exception;
+	
+	//number get
+	public MemberVO getNumber(MemberVO memberVO) throws Exception;
+	
+	//setPassword
+	public int setPassword(MemberVO memberVO) throws Exception;
 
 }

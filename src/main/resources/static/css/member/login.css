@@ -292,6 +292,29 @@
 	line-height: 2.2em;
 }
 
+.button_box{
+	margin-left: 170px;
+}
+
+.number_btn{
+	width:30%;
+	height: 40px;
+	border: solid 1px #002f6c;
+	border-radius:3px;
+	background: #002f6c;
+	color: #FFF;
+}
+
+.numberCheck_btn{
+	width:30%;
+	height: 40px;
+	border: solid 1px #002f6c;
+	border-radius:3px;
+	background: #002f6c;
+	color: #FFF;
+}
+
+
 /* /가입정보확인  */
 
 
