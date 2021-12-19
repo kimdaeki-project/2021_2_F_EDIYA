@@ -27,8 +27,7 @@
 			
 			<!-- lnb : local navigation bar -->
 			<ul class="lnb">
-				<li class="on"><a href="ediya_reservation_main">예약시스템 소개</a></li>
-				<li><a href="#">기프트카드 조회</a></li>
+				
 			</ul>	
 		</div>
 		

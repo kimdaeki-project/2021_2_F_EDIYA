@@ -74,6 +74,12 @@
 				<input type="file" name="board_file">
 			</div>
 			
+			<!-- 이벤트만 넣어주세요 -->
+			<div class="block">
+				이벤트 기간 :
+				<input type="date" class="datepicker" name="board_start_date" disabled="disabled"> ~ <input type="date" class="datepicker" name="board_end_date" disabled="disabled">
+			</div>
+			
 			<div class="block">
 				<button type="submit">게시글 추가</button>
 			</div>	
@@ -90,12 +96,20 @@
 
 <!-- /footer  -->
 <script type="text/javascript">
-	
+
+	/* (1번: notice, 2번: event, 3번: social_mate, 4번: social_campus, 5번: social_sanitation, 6번: social_accompany, 7번: social_etc, .... 추가) */
 	// 카테고리 변경 할때마다 list 바뀌기
 	$("#category").on("change", function () {
 		
 		let select_ctg_id = $(this).val();
-
+		
+		// event 선택 시 이벤트 기간 활성화
+		if(select_ctg_id == 2){
+			$(".datepicker").prop("disabled", false);
+		}else{
+			$(".datepicker").prop("disabled", true);
+		}
+		
 		// 해당 ctg 리스트 가져오기
 		$.ajax({
 			url: "getSelectCtgList",

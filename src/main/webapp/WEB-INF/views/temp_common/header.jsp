@@ -11,6 +11,7 @@
 				<sec:authorize access="isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/member/mypage">마이페이지</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath}/cart/cartList">장바구니</a></li>
 				</sec:authorize>
 				<sec:authorize access="!isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
