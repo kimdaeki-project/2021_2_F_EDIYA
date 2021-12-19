@@ -22,8 +22,12 @@ public class BoardService {
 		
 		// board_ctg_id, board_ctg 가져오기
 		BoardCtgVO ctg_id = boardMapper.getBoardCtgId(board_type);
-		int board_ctg_id = ctg_id.getBoard_ctg_id();
-		String board_ctg = ctg_id.getBoard_ctg();
+		int board_ctg_id = 0;
+		String board_ctg = "";
+		if(ctg_id != null) {
+			board_ctg_id = ctg_id.getBoard_ctg_id();
+			board_ctg = ctg_id.getBoard_ctg();
+		}
 		
 		// 찾아올 게시판 종류 set
 		boardCtgVO.setBoard_ctg_id(board_ctg_id);

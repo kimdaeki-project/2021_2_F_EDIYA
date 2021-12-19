@@ -29,7 +29,7 @@ public class BoardController {
 
 	// 카테고리별로 boardList 가져오기
 	// 게시글 검색 in_search
-	@GetMapping(value = {"notice","event","campaign", "in_search"})
+	@GetMapping(value = {"notice","event","campaign", "ediya_members_faq", "in_search"})
 	public ModelAndView getboardList(BoardCtgVO boardCtgVO, BoardPager boardPager, HttpServletRequest request) throws Exception {
 		
 		// board_ctg 가져오기 검색시 분기점을 위해
@@ -77,6 +77,9 @@ public class BoardController {
 				mv.setViewName("board/ediya_news/" + boardCtgVO.getBoard_type());
 			}
 
+		} else if (request_url.equals("/board/ediya_members_faq")) {
+			
+			mv.setViewName("board/ediya_members/ediya_members_faq");
 		}
 		// else ......... 추가되는 게시판있으면 더 추가할수 있음
 
