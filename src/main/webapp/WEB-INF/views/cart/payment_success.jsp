@@ -46,7 +46,10 @@
 			url: "cart/cartList",
 			type: "GET",
 			success: function (result) {
-			
+				
+				result_coupon = $(result).find(".coupon_body").html();
+				$(".coupon_body").html(result_coupon);
+				
 				result_list = $(result).find(".cart_list").html();
 				$(".cart_list").html(result_list);
 				

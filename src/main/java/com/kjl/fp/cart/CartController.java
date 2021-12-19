@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.kjl.fp.member.CouponVO;
+import com.kjl.fp.member.Coupon_MemberVO;
+import com.kjl.fp.member.MemberVO;
 
 @Controller
 @RequestMapping("/cart/**")
@@ -24,14 +27,18 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
-	// 11/24
 	// cartList
 	@GetMapping("cartList")
 	public ModelAndView goCartList(Principal principal) throws Exception{
 		
+		// 쿠폰
+		List<CouponVO> couponList = cartService.getCouponList(principal);
+		
+		// 카트리스트
 		List<CartVO> cartList = cartService.getCartList(principal);
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("couponList", couponList);
 		mv.addObject("cartList", cartList);
 		mv.setViewName("cart/cartList");
 		
@@ -64,15 +71,17 @@ public class CartController {
 	
 	//getSelectList
 	@PostMapping("getSelectList")
-	public ModelAndView getSelectList(@RequestParam(value = "selected[]") List<Integer> selected, CartVO cartVO) throws Exception{
+	public ModelAndView getSelectList(@RequestParam(value = "selected[]") List<Integer> selected, CartVO cartVO, CouponVO couponVO) throws Exception{
 		
-		Map<String, Object> map = cartService.getSelectList(selected, cartVO);
+		Map<String, Object> map = cartService.getSelectList(selected, cartVO, couponVO);
 		
 		@SuppressWarnings("unchecked")
 		List<CartVO> selectList = (List<CartVO>)map.get("selectList");
+		CouponVO coupon = (CouponVO) map.get("coupon");
 		int totalPrice = (int)map.get("totalPrice");
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("selectCoupon", coupon);
 		mv.addObject("selectList", selectList);
 		mv.addObject("totalPrice", totalPrice);
 		mv.setViewName("cart/payment");

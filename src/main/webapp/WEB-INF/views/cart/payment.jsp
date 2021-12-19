@@ -274,6 +274,7 @@
 		// 카드결제하기 버튼
 		$(".payment_btn.card").on("click", function () {
 			
+			let couponId = Number("${selectCoupon.couponNum}");
 			let payment_type = "card";
 			let card_kind = $(".card_item.on").text();
 			card_kind = card_kind.trim();
@@ -298,6 +299,7 @@
 				url: "../payment/paymentCard",
 				type: "POST",
 				data: {
+					couponNum: couponId,
 					payment_type: payment_type,
 					card_kind: card_kind,
 					card_number: card_number,

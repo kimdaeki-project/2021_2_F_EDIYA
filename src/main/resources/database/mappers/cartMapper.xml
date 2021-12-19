@@ -27,6 +27,58 @@
   			cart_id = #{cart_id}
   	</select>
   	
+  	<resultMap type="CouponVO" id="couponMap">
+  		<id property="couponNum" column="couponNum"/>
+  		<result property="couponName" column="couponName"/>
+  		<result property="validity" column="validity"/>
+  		<result property="couponPercent" column="couponPercent"/>
+  		<collection property="coupon_MemberVO" resultMap="couponM">
+  		</collection>
+  	</resultMap>
+  	
+  	<resultMap type="CmVO" id="couponM">
+  		<id property="couponNum" column="couponNum"/>
+  		<result property="userName" column="userName"/>
+  		<result property="used" column="used"/>
+  	</resultMap>
+  	
+  	<!-- Coupon 불러오기 -->
+  	<select id="getCouponList" parameterType="String" resultMap="couponMap">
+  		SELECT 
+  			c.couponNum,
+  			c.couponName,
+  			c.validity,
+  			c.couponPercent,
+  			cm.userName,
+  			cm.used
+  		FROM
+  			coupon c INNER JOIN member_coupon cm
+  		ON
+  			c.couponNum = cm.couponNum
+  		WHERE
+  			cm.userName = #{userName} AND
+  			cm.used = 0
+  	</select>
+  	
+  	<!-- Coupon id에 해당하는 값 불러오기 -->
+  	<select id="getCoupon" parameterType="CouponVO" resultType="CouponVO">
+  		SELECT *
+  		FROM
+  			coupon
+  		WHERE
+  			couponNum = #{couponNum}
+  	</select>
+  	
+  	<!-- 사용한 쿠폰 사용상태 변경 -->
+  	<delete id="deleteUsing" parameterType="CouponVO">
+  		UPDATE
+  			member_coupon
+  		SET
+  			used = 1
+  		WHERE
+  			couponNum = #{couponNum}
+  	</delete>
+  	
   	<!-- Delete One -->
   	<delete id="deleteOne" parameterType="CartVO">
   		DELETE
