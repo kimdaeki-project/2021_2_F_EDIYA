@@ -1,138 +1,145 @@
 package com.kjl.fp.board;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kjl.fp.board.util.BoardNullCheck;
 import com.kjl.fp.board.util.BoardPager;
 
 @Controller
 @RequestMapping("/board/**")
 public class BoardController {
-	
+
 	@Autowired
 	private BoardService boardService;
-	
-	// in_serach 공지사항, 이벤트 내부 검색
-	@GetMapping("in_search")
-	public ModelAndView goSearch(
-			@RequestParam(value = "searchValue", required = false) String searchValue,
-			@RequestParam(value = "kind", required = false) String kind,
-			@RequestParam(value = "board_category", required = false) String board_category) throws Exception{
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		// searchValue
-		if(searchValue.equals(null)) {
-			map.put("searchValue", " ");
-		}else {
-			map.put("searchValue", searchValue);
-		}
-		// kind
-		map.put("kind", kind);
-		// board_category
-		map.put("board_category", board_category);
-		
-		List<BoardVO> searchAr = boardService.getSearch(map);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject(board_category + "Ar", searchAr);
-		mv.setViewName("board/ediya_news/" + board_category);
-		
-		return mv;
-	}
-	
-	// 공지사항, 이벤트, 캠페인
-	@GetMapping("notice")
-	public ModelAndView goNotice(BoardVO boardVO, BoardPager boardPager) throws Exception{
-		
-		List<BoardVO> noticeAr = boardService.getList(boardVO, boardPager);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("noticeAr", noticeAr);
-		mv.addObject("pager", boardPager);
-		mv.setViewName("board/ediya_news/notice");
-		
-		return mv;
-	}
-	
-	@GetMapping("event")
-	public ModelAndView goEvent(BoardVO boardVO, BoardPager boardPager) throws Exception{
-		
-		List<BoardVO> eventAr = boardService.getList(boardVO, boardPager);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("eventAr", eventAr);
-		mv.addObject("pager", boardPager);
-		mv.setViewName("board/ediya_news/event");
-		
-		return mv;
-	}
-	
-	@GetMapping("campaign")
-	public String goCamp(BoardVO boardVO) throws Exception{
-		
-		return "board/campaign/campaign";
-	}
-	
-	// notice, event 부분 뷰 형식
-	@GetMapping("news_view")
-	public ModelAndView goDetailView(BoardVO boardVO) throws Exception{
-		
-		BoardVO getBoardVO = boardService.getSelectOne(boardVO);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("view", getBoardVO);
-		mv.setViewName("board/common/news_view");
-		
-		return mv;
-	}
-	// campaign 부분 뷰 형식
-	@GetMapping("campaign_view")
-	public ModelAndView goCampaignView(BoardVO boardVO) throws Exception{
-		
-		BoardVO getBoardVO = boardService.getSelectOne(boardVO);
 
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("view", getBoardVO);
-		mv.setViewName("board/common/campaign_view");
+	// board =============================================== //
+
+	// 카테고리별로 boardList 가져오기
+	// 게시글 검색 in_search
+	@GetMapping(value = {"notice","event","campaign", "ediya_members_faq", "in_search"})
+	public ModelAndView getboardList(BoardCtgVO boardCtgVO, BoardPager boardPager, HttpServletRequest request) throws Exception {
 		
+		// board_ctg 가져오기 검색시 분기점을 위해
+		String board_ctg = boardService.getBoardCtg(boardCtgVO.getBoard_type());
+		
+		// URL 가져오기
+		String request_url = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+
+		BoardCtgVO boardList = boardService.getBoardList(boardCtgVO, boardPager);
+		List<BoardVO> list = new ArrayList<BoardVO>();
+
+		// Null체크
+		if(BoardNullCheck.isEmpty(boardList)) {
+			
+			boardList = new BoardCtgVO();
+			boardList.setBoard_type(boardCtgVO.getBoard_type());
+			
+			list = null;
+		}else {
+			list = boardList.getBoardList();
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardAttribute", boardList);
+		mv.addObject("boardList", list);
+		mv.addObject("pager", boardPager);
+
+		// URL 분기처리
+		if(request_url.equals("/board/notice")) {
+			
+			mv.setViewName("board/ediya_news/notice");
+			
+		} else if (request_url.equals("/board/event")) {
+			
+			mv.setViewName("board/ediya_news/event");
+			
+		} else if (request_url.equals("/board/campaign")) {
+			
+			mv.setViewName("board/campaign/campaign");
+		} else if (request_url.equals("/board/in_search")) {
+			
+			// 검색 기능 faq, news
+			if(board_ctg.equals("news")) {
+				
+				mv.setViewName("board/ediya_news/" + boardCtgVO.getBoard_type());
+			}
+
+		} else if (request_url.equals("/board/ediya_members_faq")) {
+			
+			mv.setViewName("board/ediya_members/ediya_members_faq");
+		}
+		// else ......... 추가되는 게시판있으면 더 추가할수 있음
+
+		return mv;
+	}
+
+	// 게시글 하나 가져오기
+	@GetMapping("getSelectOne")
+	public ModelAndView getSelectOne(BoardVO boardVO, String board_type) throws Exception{
+		
+		BoardVO getOne = new BoardVO();
+		getOne = boardService.getSelectOne(boardVO);
+		
+		// board_type을 이용해 해당 board_ctg 가져오기
+		String board_ctg = boardService.getBoardCtg(board_type);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("board_type", board_type);
+		mv.addObject("post", getOne);
+		
+		// view형식이 달라서 분기나눔
+		if(board_ctg.equals("news")) {
+			
+			mv.setViewName("board/common/news_view");
+			
+		} else if(board_ctg.equals("campaign")) {
+			
+			mv.setViewName("board/common/campaign_view");
+			
+		}
+		// else ..... 추가
+
 		return mv;
 	}
 	
+	// ===================================================== //
 	
 	
-	// 기타 페이지 쿠폰, 소개 등등
-	@GetMapping("ediya_findplace")
-	public String goFindPlace() throws Exception{
+	// 따로 Parameter값이 없는 페이지들
+	@GetMapping(value = {"ediya_findplace","ediya_members_main","ediya_members_card", "coupon"})
+	public String goFindPlace(HttpServletRequest request) throws Exception{
 		
-		return "board/ediya_findplace";
-	}
-	@GetMapping("ediya_members_faq")
-	public String goFaq() throws Exception{
+		// URL 가져오기
+		String request_url = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 		
-		return "board/ediya_members/ediya_members_faq";
-	}
-	@GetMapping("coupon")
-	public String goCoupon() throws Exception{
+		if(request_url.equals("/board/ediya_findplace")) {
+			return "board/ediya_findplace";
+		}
+		else if(request_url.equals("/board/ediya_members_main")) {
+			return "board/ediya_members/ediya_members_main";
+		}
+		else if(request_url.equals("/board/ediya_members_card")) {
+			return "board/ediya_members/ediya_members_card";
+		}
+		else if(request_url.equals("/board/coupon")) {
+			return "board/ediya_news/coupon";
+		}
+		// else..... 추가
 		
-		return "board/ediya_news/coupon";
+		return "";
 	}
-	@GetMapping("ediya_members_main")
-	public String goMembersMain() throws Exception{
-		
-		return "board/ediya_members/ediya_members_main";
-	}
-	@GetMapping("ediya_members_card")
-	public String goMembersCard() throws Exception{
-		
-		return "board/ediya_members/ediya_members_card";
-	}
+
 }

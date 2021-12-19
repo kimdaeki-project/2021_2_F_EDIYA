@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.admin_board_container{
+	width: 1180px;
+	height: auto;
+	min-height: 500px;
+	margin: 100px auto;
+	background: #D4F4FA;
+}
+
+.admin_board_container .board_list .board_list_tbl{
+	border: 1px solid black;
+}
+.admin_board_container .board_list .board_list_tbl th{
+	padding: 15px;
+	background: #B2EBF4;
+}
+.admin_board_container .board_list .board_list_tbl td{
+	text-align: center;
+	border-top: 1px solid black;
+	padding: 10px;
+}
+.admin_board_container .board_list .board_list_tbl td:first-child{
+	width: 10%;
+}
+.admin_board_container .board_list .board_list_tbl td:last-child{
+	width: 5%;
+}
+.admin_board_container .board_list .board_list_tbl td:not(:last-child) {
+	border-right: 1px solid black;
+}
+
+/* 버튼박스 */
+.admin_board_container .board_button_box{
+	width: 100%;
+	height: 100px;
+	text-align: center;
+}
+.admin_board_container .board_button_box .board_button{
+	width: 200px;
+	height: 50px;
+	margin-top: 25px;
+}
+
+
+/* ===== insert page ===== */
+.admin_board_container .block{
+	display: block;
+	margin-top: 30px;
+	font-size: 18px;
+	font-weight: 500;
+}

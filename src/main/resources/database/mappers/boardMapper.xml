@@ -4,57 +4,133 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.kjl.fp.board.BoardMapper">
-  
-  	<select id="getList" parameterType="Map" resultType="BoardVO">
-  		select *
-  		from
-  			board
-  		where
-  			board_category = #{board_category}
-  		limit
-  			#{pager.startRow}, #{pager.perPage}
-  	</select>
   	
-  	<select id="getSelectOne" parameterType="BoardVO" resultType="BoardVO">
-  		select *
-  		from
-  			board
-  		where
+  	<resultMap type="BoardCtgVO" id="boardResultMap">
+  		<id property="board_ctg_id" column="board_ctg_id"/>
+  		<result property="board_ctg" column="board_ctg"/>
+  		<result property="board_type" column="board_type"/>
+  		
+  		<collection property="boardList" resultMap="boardMap">
+  		</collection>
+  	</resultMap>
+  	
+  	<resultMap type="BoardVO" id="boardMap">
+  		<id property="board_id" column="board_id"/>
+		<result property="board_ctg_id" column="board_ctg_id"/>
+  		<result property="board_title" column="board_title"/>
+  		<result property="board_writer" column="board_writer"/>
+  		<result property="board_content" column="board_content"/>
+  		<result property="board_regdate" column="board_regdate"/>
+  		<result property="board_hit" column="board_hit"/>
+  		<result property="board_start_date" column="board_start_date"/>
+  		<result property="board_end_date" column="board_end_date"/>
+  		<collection property="boardFilesVO" select="getPostFile" column="board_id">
+  		</collection>
+  	</resultMap>
+  	
+  	<!-- 파일 불러오기 -->
+  	<select id="getPostFile" resultType="BoardFilesVO">
+  		SELECT *
+  		FROM
+  			board_files
+  		WHERE
   			board_id = #{board_id}
   	</select>
   	
-  	<!-- for pager totalCount -->
-  	<select id="getTotalCount" parameterType="BoardVO" resultType="Long">
-  		select
+  	<!-- 카테고리 별 게시판 리스트 불러오기 -->
+  	<select id="getBoardList" parameterType="Map" resultMap="boardResultMap">
+  		SELECT
+  			b.board_id,
+  			b.board_ctg_id,
+  			b.board_title,
+  			b.board_writer,
+  			b.board_content,
+  			b.board_regdate,
+  			b.board_hit,
+  			b.board_start_date,
+  			b.board_end_date,
+  			b_ctg.board_ctg,
+  			b_ctg.board_type
+  		FROM
+  			board b INNER JOIN board_category b_ctg
+  		ON
+  			b.board_ctg_id = b_ctg.board_ctg_id
+  		WHERE
+  			<if test="boardPager.searchValue != null">
+	  			<choose>
+	  				<when test="boardPager.kind == 'title'">
+	  					board_title
+	  				</when>
+	  				<when test="boardPager.kind == 'contents'">
+	  					board_content
+	  				</when>
+	  			</choose>
+  				LIKE CONCAT('%', #{boardPager.searchValue}, '%') AND
+  			</if>
+  			b_ctg.board_type = #{boardCtgVO.board_type}
+  		ORDER BY
+  			board_id DESC
+  		LIMIT
+  			#{boardPager.startRow}, #{boardPager.perPage}
+  	</select>
+  	
+  	<!-- board_type의 board_ctg 찾아오기 -->
+  	<select id="getBoardCtg" parameterType="String" resultType="String">
+  		SELECT
+  			board_ctg
+  		FROM
+  			board_category
+  		WHERE
+  			board_type = #{board_type}
+  	</select>
+  	
+  	<!-- board_type의 board_ctg_id, board_ctg 찾아오기 -->
+  	<select id="getBoardCtgId" parameterType="String" resultType="BoardCtgVO">
+  		SELECT
+  			board_ctg_id,
+  			board_ctg
+  		FROM
+  			board_category
+  		WHERE
+  			board_type = #{board_type}
+  	</select>
+  	
+  	<!-- 하나의 게시글 불러오기 -->
+  	<select id="getSelectOne" parameterType="BoardVO" resultType="BoardVO">
+  		SELECT *
+  		FROM
+  			board
+  		WHERE
+  			board_id = #{board_id}
+  	</select>
+  	
+  	<!-- 게시글 totalCount -->
+  	<select id="getTotalCount" parameterType="Map" resultType="Long">
+  		SELECT
   			count(board_id)
-  		from
+  		FROM
   			board
-  		where
-  			board_category = #{board_category}
+  		WHERE
+  			<if test="boardPager.searchValue != null">
+	  			<choose>
+	  				<when test="boardPager.kind == 'title'">
+	  					board_title
+	  				</when>
+	  				<when test="boardPager.kind == 'contents'">
+	  					board_content
+	  				</when>
+	  			</choose>
+  				LIKE CONCAT('%', #{boardPager.searchValue}, '%') AND
+  			</if>
+  			board_ctg_id = #{boardCtgVO.board_ctg_id}
   	</select>
   	
-  	<!-- search -->
-  	<select id="getSearch" parameterType="Map" resultType="BoardVO">
-  		select *
-  		from
-  			board
-  		where
-  			board_category = #{board_category} and
-  			<choose>
-  				<when test="kind == 'title'">
-  					board_title like concat('%',#{searchValue},'%')
-  				</when>
-  				<when test="kind == 'contents'">
-  					board_contents like concat('%',#{searchValue},'%')
-  				</when>
-  			</choose>
-  	</select>
-  	
-  	<insert id="setInsert" parameterType="BoardVO">
-  		insert into
-  			board (board_id, board_category, member_id, board_title, board_contents, regDate, startDate, endDate)
-  		values
-  			(null, #{board_category}, #{member_id}, #{board_title}, #{board_contents}, #{regDate}, #{startDate}, #{endDate})
+  	<!-- 게시글 Insert -->
+  	<insert id="insertBoard" parameterType="BoardVO">
+  		INSERT INTO
+  			board (board_id, board_ctg_id, board_title, board_writer, board_content, board_regdate, board_hit, board_start_date, board_end_date)
+  		VALUES
+  			(NULL, #{board_ctg_id}, #{board_title}, #{board_writer}, #{board_content}, NOW(), 0, #{board_start_date}, #{board_end_date});
   	</insert>
   	
   </mapper>

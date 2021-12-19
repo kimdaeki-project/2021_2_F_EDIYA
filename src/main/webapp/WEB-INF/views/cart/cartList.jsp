@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -61,6 +62,10 @@
 			
 				<div class="cart_list">
 					
+					<c:if test="${empty cartList}">
+						<h1 class="cart_noItem">장바구니에 담긴 상품이 없습니다.</h1>
+					</c:if>
+					
 					<c:forEach items="${cartList}" var="list">
 						
 						<div class="cart_item_wrap" data-pdnum="${list.pdNum}">
@@ -71,7 +76,7 @@
 							</div>
 							
 							<div class="box item_img">
-								<img alt="temp" src="${pageContext.request.contextPath}/images/product/bread/IMG_1510912318685.png">
+								<img alt="temp" src="../images/product/bread/IMG_${list.pdImg}.png">
 							</div>
 							
 							<div class="box item_name">
@@ -157,7 +162,8 @@
 		<div class="coupon_contents">
 		
 			<div class="coupon_title">
-				<h1>userName 님의 쿠폰함입니다.</h1>
+				<sec:authentication property="principal" var="user"/>
+				<h1>${user.username}님의 쿠폰함입니다.></h1>
 			</div>
 			
 			<!-- 적용한 쿠폰 -->
@@ -165,22 +171,29 @@
 			
 			<div class="coupon_body">
 	
-					<c:forEach begin="1" end="3" varStatus="i">
+					<c:forEach items="${couponList}" var="list">
 					
 						<div class="coupon_item_wrap">
 							
 							<div class="coupon_item">
 								
 								<div class="coupon_kind">
-									<h1><span class="percent">${i.index}0</span> %</h1>
+									<c:choose>
+										<c:when test="${list.couponPercent > 0}">
+											<h1><span class="percent">${list.couponPercent}</span> %</h1>
+										</c:when>
+										<c:otherwise>
+											<h3><span class="coupon_name">${list.couponName}</span></h3>
+										</c:otherwise>
+									</c:choose>
 								</div>
 								
 								<div class="coupon_state">
-									<h3>기한: 2021.12.03 ~ 2021.12.31</h3>
+									<h3>기한: ${list.validity} 까지</h3>
 								</div>
 								
 								<div class="coupon_useBtn">
-									<button type="button" class="coupon_btn" data-sale-percent="${i.index}0" data-coupon-id="${i.index}">사용</button>
+									<button type="button" class="coupon_btn" data-sale-percent="${list.couponPercent}" data-coupon-id="${list.couponNum}">사용</button>
 								</div>
 								
 							</div>
@@ -551,10 +564,11 @@
 	$(document).on("mouseup", function (e) {
 		
 		let modal = $(".modal");
-		if(modal.has(e.target).length === 0){
-			modal.fadeOut();
-		}
+		let isDo = Number($(".isPaymentDo").val());
 		
+		if(modal.has(e.target).length === 0){
+			modal.fadeOut();		
+		}	
 	})
 	
 	// 첫 화면 체크박스 모두 비활성화: 뒤로가기 하면 체크되어있어서
@@ -621,6 +635,8 @@
 	// 결제 하기 버튼
 	$("#add_orderinfo").on("click", function () {
 		
+		// 선택된 쿠폰 키값
+		let couponId = $(".using_coupon").data("couponId");
 		// 선택된 아이템들 모아놓는 배열
 		let selectItem = new Array();
 		
@@ -640,7 +656,7 @@
 			url: "getSelectList",
 			type: "POST",
 			data: {
-				// couponId: 쿠폰 키값
+				couponNum: couponId,
 				selected: selectItem
 			},
 			success: function (result) {

@@ -5,6 +5,10 @@ import lombok.Data;
 @Data
 public class BoardPager {
 	
+	// 게시글
+	private String kind;
+	private String searchValue;
+
 	private Integer perPage;
 	private Integer pn;
 	private Integer startRow;

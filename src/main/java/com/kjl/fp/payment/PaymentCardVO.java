@@ -10,11 +10,12 @@ import lombok.Data;
 @Data
 public class PaymentCardVO {
 	
-	private String payment_type;
+	private Integer id;
+	private Integer payment_id;
 	private String card_kind;
 	private String card_number;
 	@DateTimeFormat(pattern = "yyyy-MM")
 	private Date card_date;
 	private String card_cvc;
-	private List<Integer> item_list;
+	
 }

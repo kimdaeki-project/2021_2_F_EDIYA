@@ -15,37 +15,64 @@ public class BoardService {
 	@Autowired
 	private BoardMapper boardMapper;
 	
-	// 게시글 검색 기능
-	public List<BoardVO> getSearch(Map<String, Object> map) throws Exception{
+	// 카테고리 별 게시판 리스트 불러오기
+	public BoardCtgVO getBoardList(BoardCtgVO boardCtgVO, BoardPager boardPager) throws Exception{
 		
-		return boardMapper.getSearch(map);
-	}
-	
-	// 게시글 리스트 가져오기
-	public List<BoardVO> getList(BoardVO boardVO, BoardPager boardPager) throws Exception{
+		String board_type = boardCtgVO.getBoard_type();
 		
+		// board_ctg_id, board_ctg 가져오기
+		BoardCtgVO ctg_id = boardMapper.getBoardCtgId(board_type);
+		int board_ctg_id = 0;
+		String board_ctg = "";
+		if(ctg_id != null) {
+			board_ctg_id = ctg_id.getBoard_ctg_id();
+			board_ctg = ctg_id.getBoard_ctg();
+		}
+		
+		// 찾아올 게시판 종류 set
+		boardCtgVO.setBoard_ctg_id(board_ctg_id);
+		boardCtgVO.setBoard_ctg(board_ctg);
+		boardCtgVO.setBoard_type(board_type);
+		
+		// board_ctg에 따른 페이지에 최대로보여주는 게시물 수
+		// news: 이디야소식, campaign: 사회공헌
+		if(board_ctg.equals("news")) {
+			boardPager.setPerPage(10);
+		}
+		else if(board_ctg.equals("campaign")) {
+			boardPager.setPerPage(6);
+		}
+		
+		// totalCount Map
+		HashMap<String, Object> map_count = new HashMap<String, Object>();
+		map_count.put("boardCtgVO", boardCtgVO);
+		map_count.put("boardPager", boardPager);
+		
+		// makeRow
 		boardPager.makeRow();
-		Long totalCount = boardMapper.getTotalCount(boardVO);
+		
+		// board 테이블의 해당 board_ctg_id 갯수 가져오기
+		Long totalCount = boardMapper.getTotalCount(map_count);
 		boardPager.makeNum(totalCount);
 		
-		Map<String, Object> map = new HashMap<String, Object>();
+		// List 가져오는 Mapping
+		HashMap<String, Object> map_list = new HashMap<String, Object>();
+		map_list.put("boardCtgVO", boardCtgVO);
+		map_list.put("boardPager", boardPager);
 		
-		map.put("board_category", boardVO.getBoard_category());
-		map.put("pager", boardPager);
 		
-		
-		return boardMapper.getList(map);
+		return boardMapper.getBoardList(map_list);
 	}
 	
-	// 게시글 하나 가져오기
+	// board_type의 board_ctg 찾아오기
+	public String getBoardCtg(String board_type) throws Exception{
+		
+		return boardMapper.getBoardCtg(board_type);
+	}
+	
+	// 하나의 게시글 불러오기
 	public BoardVO getSelectOne(BoardVO boardVO) throws Exception{
-		
+
 		return boardMapper.getSelectOne(boardVO);
-	}
-	
-	// 게시글 Insert
-	public int setInsert(BoardVO boardVO) throws Exception{
-		
-		return boardMapper.setInsert(boardVO);
 	}
 }

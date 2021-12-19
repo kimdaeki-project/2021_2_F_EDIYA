@@ -1,6 +1,8 @@
 package com.kjl.fp.board;
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -8,12 +10,19 @@ import lombok.Data;
 public class BoardVO {
 	
 	private Integer board_id;
-	private String board_category;
-	private Integer member_id;
+	private Integer board_ctg_id;
 	private String board_title;
-	private String board_contents;
-	private Date regDate;
-	private Date startDate;
-	private Date endDate;
+	private String board_writer;
+	private String board_content;
+	private Date board_regdate;
+	private Integer board_hit;
+	
+	//Only Event
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date board_start_date;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date board_end_date;
+	
+	private BoardFilesVO boardFilesVO;
 	
 }

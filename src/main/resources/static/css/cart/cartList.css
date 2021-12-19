@@ -101,8 +101,17 @@
 }
 .cart_body .cart_list_wrap .cart_list{
 	width: 100%;
-	min-height: 300px;
+	min-height: 200px;
 	height: auto;
+}
+.cart_list .cart_noItem{
+	position: relative;
+	display: block;
+	font-size: 24px;
+	font-weight: 500;
+	color: #002f6c;
+	top: 50px;
+	left: 440px;
 }
 .cart_list .cart_item_wrap{
 	display: flex;
@@ -387,6 +396,13 @@
 }
 .coupon_item .coupon_kind h1 .percent{
 	font-size: 42px;
+	font-weight: 700;
+	color: #002f6c;
+}
+.coupon_item .coupon_kind h3 .coupon_name{
+	display: inline-block;
+	margin-top: 20px;
+	font-size: 14px;
 	font-weight: 700;
 	color: #002f6c;
 }
