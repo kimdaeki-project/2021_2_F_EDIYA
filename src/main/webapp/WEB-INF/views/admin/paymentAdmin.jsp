@@ -89,4 +89,11 @@
 <!-- /footer  -->
 
 </body>
+<script type="text/javascript">
+	$(".detail_btn").on("click", function () {
+		
+		
+		
+	})
+</script>
 </html>
