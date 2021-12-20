@@ -215,7 +215,13 @@
 			//
 			function aa(url) {
 				
-				open(url, "", "width=300, height=200");
+				let popupWidth = 800;
+				let popupHeight = 900;
+				
+				let popupX = (window.screen.width/2) - (popupWidth/2);
+				let popupY = (window.screen.height/2) - (popupHeight/2);
+				
+				window.open(url, "", "status=no, width=" + popupWidth + ", height=" + popupHeight + ", top=" + popupY + ", left=" + popupX);
 				
 			}
 			

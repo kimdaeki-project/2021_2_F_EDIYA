@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +37,46 @@
 	</div>
 	
 	<div class="admin_payment_container">
+		
+		<h1>결제현황 전체 리스트</h1>
+		<div class="payment_list">
+			<table class="payment_list_tbl">
+				<thead>
+					<tr>
+						<th>결제번호</th>
+						<th>결제종류</th>
+						<th>결제인</th>
+						<th>결제일시</th>
+						<th>결제금액</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${payment_list}" var="list">
+						<tr>
+							<td>${list.payment_id}</td>
+							<td>
+								<c:choose>
+									<c:when test="${list.payment_type == 'card'}">
+									카드결제
+									</c:when>
+									<c:when test="${list.payment_type == 'kakaopay'}">
+									카카오페이결제
+									</c:when>
+								</c:choose>
+							</td>
+							<td>${list.userName}</td>
+							<td><fmt:formatDate value="${list.payment_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+							<td><fmt:formatNumber>${list.payment_price}</fmt:formatNumber>원</td>
+							<td>
+								<button type="button" class="detail_btn">자세히보기</button>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		
 	</div>
 
 
@@ -46,5 +87,13 @@
 <!-- footer  -->
 <c:import url="../temp_common/footer.jsp"></c:import>
 <!-- /footer  -->
+
 </body>
+<script type="text/javascript">
+	$(".detail_btn").on("click", function () {
+		
+		
+		
+	})
+</script>
 </html>

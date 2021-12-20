@@ -73,16 +73,38 @@
 				<a href="./${board_type}?board_type=${board_type}&pn=${param.pn}">목록보기</a>
 			</div>
 			<div class="board_view_page">
-				<dl>
-					<dt>이전글</dt>
-					<dd>이디야멤버스 이용약관 변경 공지</dd>
-					<dd>2021.11.16</dd>
-				</dl>
-				<dl>
-					<dt>다음글</dt>
-					<dd>이디야멤버스 이용약관 변경 공지</dd>
-					<dd>2021.11.16</dd>
-				</dl>
+				<c:choose>
+					<c:when test="${not empty prev_post.board_title}">
+						<dl>
+							<dt>이전글</dt>
+							<dd><a href="getSelectOne?board_id=${prev_post.board_id}&board_type=${param.board_type}&pn=${param.pn}">${prev_post.board_title}</a></dd>
+							<dd><fmt:formatDate value="${prev_post.board_regdate}" pattern="yyyy-MM-dd"/></dd>
+						</dl>
+					</c:when>
+					<c:otherwise>
+						<dl>
+							<dt>이전글</dt>
+							<dd>이전글이 존재하지 않습니다.</dd>
+							<dd></dd>
+						</dl>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${not empty next_post.board_title}">
+						<dl>
+							<dt>다음글</dt>
+							<dd><a href="getSelectOne?board_id=${next_post.board_id}&board_type=${param.board_type}&pn=${param.pn}">${next_post.board_title}</a></dd>
+							<dd><fmt:formatDate value="${next_post.board_regdate}" pattern="yyyy-MM-dd"/></dd>
+						</dl>
+					</c:when>
+					<c:otherwise>
+						<dl>
+							<dt>다음글</dt>
+							<dd>다음글이 존재하지 않습니다.</dd>
+							<dd></dd>
+						</dl>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		

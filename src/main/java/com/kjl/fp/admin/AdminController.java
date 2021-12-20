@@ -19,6 +19,7 @@ import com.kjl.fp.board.BoardCtgVO;
 import com.kjl.fp.board.BoardService;
 import com.kjl.fp.board.BoardVO;
 import com.kjl.fp.member.MemberVO;
+import com.kjl.fp.payment.PaymentInfoVO;
 
 @Controller
 @RequestMapping("/admin/**")
@@ -164,7 +165,10 @@ public class AdminController {
 	@GetMapping("paymentAdmin")
 	public ModelAndView getPaymentList() throws Exception{
 		
+		List<PaymentInfoVO> paymentList = adminService.getPaymentList();
+		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("payment_list", paymentList);
 		mv.setViewName("admin/paymentAdmin");
 		
 		return mv;

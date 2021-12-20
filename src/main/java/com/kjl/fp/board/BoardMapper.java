@@ -25,6 +25,10 @@ public interface BoardMapper {
 	// 게시글 totalCount
 	public Long getTotalCount(Map<String, Object> map) throws Exception;
 	
+	// 이전 글, 다음글 불러오기
+	public BoardVO getNextId(BoardVO boardVO) throws Exception;
+	public BoardVO getPrevId(BoardVO boardVO) throws Exception;
+	
 	// 게시글 Insert
 	public int insertBoard(BoardVO boardVO) throws Exception;
 }

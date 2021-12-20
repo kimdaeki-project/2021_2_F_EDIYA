@@ -96,7 +96,8 @@
 					<c:forEach items="${boardList}" var="list">
 						<div class="board_list_item">
 							<div class="list_item_img">
-								<img alt="thumb" src="${pageContext.request.contextPath}/images/temp/IMG_1511156632684.png">
+								<c:set value="${list.boardFilesVO}" var="file"></c:set>
+								<img alt="campaign_img" src="${pageContext.request.contextPath}/upload/boardImage/${file.fileName}" width="100%" height="100%">
 							</div>
 							<div class="list_item_txt">
 								<a href="getSelectOne?board_type=${param.board_type}&board_id=${list.board_id}&pn=${param.pn}">
